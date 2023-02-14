@@ -1,0 +1,33 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="vellsPos.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="IsDBCredentialsDefault" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="DBServerString" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Server=localhost;port=3306;</Value>
+    </Setting>
+    <Setting Name="DBName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">vellspos</Value>
+    </Setting>
+    <Setting Name="DBserver" Type="System.String" Scope="User">
+      <Value Profile="(Default)">localhost</Value>
+    </Setting>
+    <Setting Name="DBuser" Type="System.String" Scope="User">
+      <Value Profile="(Default)">root</Value>
+    </Setting>
+    <Setting Name="DBpassword" Type="System.String" Scope="User">
+      <Value Profile="(Default)">root</Value>
+    </Setting>
+    <Setting Name="DBport" Type="System.String" Scope="User">
+      <Value Profile="(Default)">3306</Value>
+    </Setting>
+    <Setting Name="SMTPemail" Type="System.String" Scope="User">
+      <Value Profile="(Default)">smsivanujan@gmail.com</Value>
+    </Setting>
+    <Setting Name="SMTPpassword" Type="System.String" Scope="User">
+      <Value Profile="(Default)">hgzidhsvdkuhoehs</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Compile Update="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Layouts\FrmForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Layouts\frmHome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Layouts\frmLoading.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Layouts\frmPointOfSale.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Layouts\frmReference.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Masters\Complains\frmComplain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Masters\Customer\frmCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Masters\Customer\frmLoyalityCard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Masters\Other\frmDBUpload.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Masters\Payment\frmPayouts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Masters\Product\frmBarcode.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Masters\Product\frmCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Masters\Product\frmDiscount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Masters\Product\frmProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Masters\Product\frmSubCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Masters\Product\frmSubCoCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Masters\Sale\frmreturn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Masters\Setting\frmActivations.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Masters\User\frmAuthentication.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Masters\User\frmUserRegister.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>

@@ -14,16 +14,17 @@ namespace vellsPos.Entities.Masters
         private String cardNumber;
         private String cardType;
         private Customer customer;
-        private DateTime issuedDate;
+        private String issuedDate;
         private Int32 status;
         private User user;
+
 
         public LoyalityCard()
         {
 
         }
 
-        public LoyalityCard(int id, string cardNumber, string cardType, Customer customer, DateTime issuedDate, int status, User user)
+        public LoyalityCard(int id, string cardNumber, string cardType, Customer customer, string issuedDate, int status, User user)
         {
             this.Id = id;
             this.CardNumber = cardNumber;
@@ -37,9 +38,9 @@ namespace vellsPos.Entities.Masters
         public int Id { get => id; set => id = value; }
         public string CardNumber { get => cardNumber; set => cardNumber = value; }
         public string CardType { get => cardType; set => cardType = value; }
-        public DateTime IssuedDate { get => issuedDate; set => issuedDate = value; }
-        public int Status { get => status; set => status = value; }
         internal Customer Customer { get => customer; set => customer = value; }
+        public string IssuedDate { get => issuedDate; set => issuedDate = value; }
+        public int Status { get => status; set => status = value; }
         internal User User { get => user; set => user = value; }
 
         public static ReturnResult store(LoyalityCard loyalityCard)
@@ -52,12 +53,12 @@ namespace vellsPos.Entities.Masters
                 string sql = "INSERT INTO `loyality_cards` " +
                     "(`card_number`,`card_type`,`customer_id`,`issued_date`,`status`,`user_id`) VALUES (@card_number,@card_type,@customer_id,@issued_date,@status,@user_id)";
                 List<QueryParameter> parameters = new List<QueryParameter>();
-                parameters.Add(new QueryParameter("card_number", MySqlDbType.String, loyalityCard.cardNumber));
-                parameters.Add(new QueryParameter("card_type", MySqlDbType.String, loyalityCard.cardType));
-                parameters.Add(new QueryParameter("customer_id", MySqlDbType.Int32, loyalityCard.customer.Id));
-                parameters.Add(new QueryParameter("issued_date", MySqlDbType.DateTime, loyalityCard.issuedDate));
-                parameters.Add(new QueryParameter("status", MySqlDbType.Int32, loyalityCard.status));
-                parameters.Add(new QueryParameter("user_id", MySqlDbType.Int32, loyalityCard.user.Id));
+                parameters.Add(new QueryParameter("card_number", MySqlDbType.String, loyalityCard.CardNumber));
+                parameters.Add(new QueryParameter("card_type", MySqlDbType.String, loyalityCard.CardType));
+                parameters.Add(new QueryParameter("customer_id", MySqlDbType.Int32, loyalityCard.Customer.Id));
+                parameters.Add(new QueryParameter("issued_date", MySqlDbType.String, loyalityCard.IssuedDate));
+                parameters.Add(new QueryParameter("status", MySqlDbType.Int32, loyalityCard.Status));
+                parameters.Add(new QueryParameter("user_id", MySqlDbType.Int32, loyalityCard.User.Id));
 
                 commands.Add(new QueryCommand(sql, parameters));
                 result = DBTransactionService.executeNonQuery(commands);
@@ -88,12 +89,12 @@ namespace vellsPos.Entities.Masters
                     "`user_id` = @user_id " +
                     " WHERE `id` = @id ";
                 List<QueryParameter> parameters = new List<QueryParameter>();
-                parameters.Add(new QueryParameter("card_number", MySqlDbType.String, loyalityCard.cardNumber));
-                parameters.Add(new QueryParameter("card_type", MySqlDbType.String, loyalityCard.cardType));
-                parameters.Add(new QueryParameter("customer_id", MySqlDbType.Int32, loyalityCard.customer.Id));
-                parameters.Add(new QueryParameter("issued_date", MySqlDbType.DateTime, loyalityCard.issuedDate));
-                parameters.Add(new QueryParameter("status", MySqlDbType.Int32, loyalityCard.status));
-                parameters.Add(new QueryParameter("user_id", MySqlDbType.Int32, loyalityCard.user.Id));
+                parameters.Add(new QueryParameter("card_number", MySqlDbType.String, loyalityCard.CardNumber));
+                parameters.Add(new QueryParameter("card_type", MySqlDbType.String, loyalityCard.CardType));
+                parameters.Add(new QueryParameter("customer_id", MySqlDbType.Int32, loyalityCard.Customer.Id));
+                parameters.Add(new QueryParameter("issued_date", MySqlDbType.String, loyalityCard.IssuedDate));
+                parameters.Add(new QueryParameter("status", MySqlDbType.Int32, loyalityCard.Status));
+                parameters.Add(new QueryParameter("user_id", MySqlDbType.Int32, loyalityCard.User.Id));
 
                 commands.Add(new QueryCommand(sql, parameters));
                 result = DBTransactionService.executeNonQuery(commands);
@@ -156,12 +157,12 @@ namespace vellsPos.Entities.Masters
 
                 if (dbData != null)
                 {
-                    loyalityCard.cardNumber = dbData["card_number"];
-                    loyalityCard.cardType = dbData["card_type"];
-                    loyalityCard.customer = customer;
-                    loyalityCard.issuedDate = Convert.ToDateTime(dbData["issued_date"]);
-                    loyalityCard.status =Convert.ToInt32(dbData["status"]);
-                    loyalityCard.user = user;
+                    loyalityCard.CardNumber = dbData["card_number"];
+                    loyalityCard.CardType = dbData["card_type"];
+                    loyalityCard.Customer = customer;
+                    loyalityCard.IssuedDate = dbData["issued_date"];
+                    loyalityCard.Status =Convert.ToInt32(dbData["status"]);
+                    loyalityCard.User = user;
                 }
                 else
                 {

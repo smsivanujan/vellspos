@@ -1,6 +1,6 @@
 ﻿namespace vellsPos.Forms.Layouts
 {
-    partial class FrmForm
+    partial class frmPayout
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPayout));
             this.pnl_head = new System.Windows.Forms.Panel();
             this.lbl_title = new System.Windows.Forms.Label();
             this.btn_close = new System.Windows.Forms.Button();
@@ -39,9 +39,19 @@
             this.btn_cancel = new System.Windows.Forms.Button();
             this.pnl_body = new System.Windows.Forms.Panel();
             this.pnl_container = new System.Windows.Forms.Panel();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.rtxt_description = new System.Windows.Forms.RichTextBox();
+            this.ntxt_saleprice = new System.Windows.Forms.NumericUpDown();
+            this.label4 = new System.Windows.Forms.Label();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.label6 = new System.Windows.Forms.Label();
             this.pnl_head.SuspendLayout();
             this.pnl_root.SuspendLayout();
             this.pnl_body.SuspendLayout();
+            this.pnl_container.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ntxt_saleprice)).BeginInit();
             this.SuspendLayout();
             // 
             // pnl_head
@@ -95,7 +105,6 @@
             // 
             // btn_delete
             // 
-            this.btn_delete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_delete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.btn_delete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_delete.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -129,7 +138,6 @@
             // 
             // btn_save
             // 
-            this.btn_save.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_save.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.btn_save.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_save.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -147,7 +155,6 @@
             // 
             // btn_cancel
             // 
-            this.btn_cancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_cancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.btn_cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_cancel.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -174,13 +181,104 @@
             // 
             // pnl_container
             // 
+            this.pnl_container.Controls.Add(this.comboBox2);
+            this.pnl_container.Controls.Add(this.label3);
+            this.pnl_container.Controls.Add(this.label9);
+            this.pnl_container.Controls.Add(this.rtxt_description);
+            this.pnl_container.Controls.Add(this.ntxt_saleprice);
+            this.pnl_container.Controls.Add(this.label4);
+            this.pnl_container.Controls.Add(this.dateTimePicker1);
+            this.pnl_container.Controls.Add(this.label6);
             this.pnl_container.Location = new System.Drawing.Point(12, 6);
             this.pnl_container.Name = "pnl_container";
             this.pnl_container.Size = new System.Drawing.Size(403, 464);
             this.pnl_container.TabIndex = 0;
             this.pnl_container.Paint += new System.Windows.Forms.PaintEventHandler(this.pnl_container_Paint);
             // 
-            // FrmForm
+            // comboBox2
+            // 
+            this.comboBox2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(7, 210);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(221, 33);
+            this.comboBox2.TabIndex = 83;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI Historic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label3.Location = new System.Drawing.Point(7, 177);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(127, 30);
+            this.label3.TabIndex = 82;
+            this.label3.Text = "Payout Type";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Segoe UI Historic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label9.Location = new System.Drawing.Point(7, 246);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(118, 30);
+            this.label9.TabIndex = 81;
+            this.label9.Text = "Description";
+            // 
+            // rtxt_description
+            // 
+            this.rtxt_description.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.rtxt_description.Location = new System.Drawing.Point(7, 290);
+            this.rtxt_description.Name = "rtxt_description";
+            this.rtxt_description.Size = new System.Drawing.Size(221, 62);
+            this.rtxt_description.TabIndex = 80;
+            this.rtxt_description.Text = "";
+            // 
+            // ntxt_saleprice
+            // 
+            this.ntxt_saleprice.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.ntxt_saleprice.Location = new System.Drawing.Point(7, 129);
+            this.ntxt_saleprice.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.ntxt_saleprice.Name = "ntxt_saleprice";
+            this.ntxt_saleprice.Size = new System.Drawing.Size(221, 33);
+            this.ntxt_saleprice.TabIndex = 79;
+            this.ntxt_saleprice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.ntxt_saleprice.ThousandsSeparator = true;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI Historic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label4.Location = new System.Drawing.Point(7, 96);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(102, 30);
+            this.label4.TabIndex = 78;
+            this.label4.Text = "Sale Price";
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker1.Location = new System.Drawing.Point(7, 49);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(221, 33);
+            this.dateTimePicker1.TabIndex = 76;
+            this.dateTimePicker1.Value = new System.DateTime(2023, 2, 8, 19, 27, 14, 0);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI Historic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label6.Location = new System.Drawing.Point(7, 15);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(57, 30);
+            this.label6.TabIndex = 77;
+            this.label6.Text = "Date";
+            // 
+            // fPayouts
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(427, 604);
@@ -188,7 +286,7 @@
             this.Controls.Add(this.pnl_root);
             this.Controls.Add(this.pnl_head);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "FrmForm";
+            this.Name = "fPayouts";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmForm";
             this.Load += new System.EventHandler(this.FrmForm_Load);
@@ -196,6 +294,9 @@
             this.pnl_head.PerformLayout();
             this.pnl_root.ResumeLayout(false);
             this.pnl_body.ResumeLayout(false);
+            this.pnl_container.ResumeLayout(false);
+            this.pnl_container.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ntxt_saleprice)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -212,5 +313,13 @@
         private Panel pnl_container;
         private Button button1;
         private Button btn_delete;
+        private ComboBox comboBox2;
+        private Label label3;
+        private Label label9;
+        private RichTextBox rtxt_description;
+        private NumericUpDown ntxt_saleprice;
+        private Label label4;
+        private DateTimePicker dateTimePicker1;
+        private Label label6;
     }
 }

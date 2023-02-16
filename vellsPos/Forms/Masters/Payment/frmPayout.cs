@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace vellsPos.Forms.Layouts
 {
-    public partial class frmReturn : Form
+    public partial class frmPayout : Form
     {
-        public frmReturn()
+        public frmPayout()
         {
             InitializeComponent();
         }

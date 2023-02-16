@@ -9,9 +9,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Entities\Layouts\" />
+    <None Remove="Forms\Masters\Sale\fReturn.Designer.cs~RF2c42dc3.TMP" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Forms\Masters\Pos\" />
-    <Folder Include="Resources\" />
+    <Folder Include="Resources\images\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -19,6 +22,39 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Forms\Masters\Complains\frmComplain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Masters\Customer\frmCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Masters\Customer\frmLoyalityCard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Masters\Payment\frmPayout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Masters\Product\frmCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Masters\Product\frmDiscount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Masters\Product\frmSubCoCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Masters\Product\frmSubCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Masters\Product\frmProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Masters\Sale\frmReturn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Masters\User\frmUserRegister.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\Masters\User\frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>

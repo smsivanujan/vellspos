@@ -16,7 +16,7 @@ namespace vellsPos
             ApplicationConfiguration.Initialize();
             //Application.Run(new frmLoading());
             //Application.Run(new FrmForm());
-            Application.Run(new FrmForm());
+            Application.Run(new frmTestForms());
         }
     }
 }

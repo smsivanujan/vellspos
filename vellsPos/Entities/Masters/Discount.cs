@@ -12,8 +12,8 @@ namespace vellsPos.Entities.Masters
     {
         private Int32 id;
         private String discountName;
-        private DateTime dateTo;
-        private DateTime dateFrom;
+        private String dateTo;
+        private String dateFrom;
         private Int32 status;
         private String description;
         private User user;
@@ -23,7 +23,7 @@ namespace vellsPos.Entities.Masters
 
         }
 
-        public Discount(int id, string discountName, DateTime dateTo, DateTime dateFrom, int status, string description, User user)
+        public Discount(int id, string discountName, string dateTo, string dateFrom, int status, string description, User user)
         {
             this.Id = id;
             this.DiscountName = discountName;
@@ -36,8 +36,8 @@ namespace vellsPos.Entities.Masters
 
         public int Id { get => id; set => id = value; }
         public string DiscountName { get => discountName; set => discountName = value; }
-        public DateTime DateTo { get => dateTo; set => dateTo = value; }
-        public DateTime DateFrom { get => dateFrom; set => dateFrom = value; }
+        public string DateTo { get => dateTo; set => dateTo = value; }
+        public string DateFrom { get => dateFrom; set => dateFrom = value; }
         public int Status { get => status; set => status = value; }
         public string Description { get => description; set => description = value; }
         internal User User { get => user; set => user = value; }
@@ -53,8 +53,8 @@ namespace vellsPos.Entities.Masters
                     "(`discount_name`,`date_to`,`date_from`,`status`,`description`,`user_id`) VALUES (@discount_name,@date_to,@date_from,@status,@description,@user_id)";
                 List<QueryParameter> parameters = new List<QueryParameter>();
                 parameters.Add(new QueryParameter("discount_name", MySqlDbType.String, discount.discountName));
-                parameters.Add(new QueryParameter("date_to", MySqlDbType.DateTime, discount.dateFrom));
-                parameters.Add(new QueryParameter("date_from", MySqlDbType.DateTime, discount.DateTo));
+                parameters.Add(new QueryParameter("date_to", MySqlDbType.String, discount.dateFrom));
+                parameters.Add(new QueryParameter("date_from", MySqlDbType.String, discount.DateTo));
                 parameters.Add(new QueryParameter("status", MySqlDbType.Int32, discount.status));
                 parameters.Add(new QueryParameter("description", MySqlDbType.String, discount.description));
                 parameters.Add(new QueryParameter("user_id", MySqlDbType.Int32, discount.user.Id));
@@ -156,8 +156,8 @@ namespace vellsPos.Entities.Masters
                 if (dbData != null)
                 {
                     discount.discountName = dbData["discount_name"];
-                    discount.dateTo = Convert.ToDateTime(dbData["date_to"]);
-                    discount.dateFrom = Convert.ToDateTime(dbData["date_from"]);
+                    discount.dateTo = dbData["date_to"];
+                    discount.dateFrom = dbData["date_from"];
                     discount.status = Convert.ToInt32(dbData["status"]);
                     discount.description = dbData["description"];
                     discount.user = user;

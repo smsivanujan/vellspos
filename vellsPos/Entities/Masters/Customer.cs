@@ -14,7 +14,7 @@ namespace vellsPos.Entities.Masters
         private String customerNumber;
         private String customerFirstName;
         private String customerLastName;
-        private DateTime dateOfBirth;
+        private String dateOfBirth;
         private Int32 gender;
         private String nic;
         private String phoneNumber;
@@ -27,7 +27,7 @@ namespace vellsPos.Entities.Masters
 
         }
 
-        public Customer(int id, string customerNumber, string customerFirstName, string customerLastName, DateTime dateOfBirth, int gender, string nic, string phoneNumber, string email, User user)
+        public Customer(int id, string customerNumber, string customerFirstName, string customerLastName, string dateOfBirth, int gender, string nic, string phoneNumber, string email, User user)
         {
             this.Id = id;
             this.CustomerNumber = customerNumber;
@@ -45,7 +45,7 @@ namespace vellsPos.Entities.Masters
         public string CustomerNumber { get => customerNumber; set => customerNumber = value; }
         public string CustomerFirstName { get => customerFirstName; set => customerFirstName = value; }
         public string CustomerLastName { get => customerLastName; set => customerLastName = value; }
-        public DateTime DateOfBirth { get => dateOfBirth; set => dateOfBirth = value; }
+        public string DateOfBirth { get => dateOfBirth; set => dateOfBirth = value; }
         public int Gender { get => gender; set => gender = value; }
         public string Nic { get => nic; set => nic = value; }
         public string PhoneNumber { get => phoneNumber; set => phoneNumber = value; }
@@ -66,7 +66,7 @@ namespace vellsPos.Entities.Masters
                 parameters.Add(new QueryParameter("customer_number", MySqlDbType.String, customer.CustomerNumber));
                 parameters.Add(new QueryParameter("customer_first_name", MySqlDbType.String, customer.CustomerLastName));
                 parameters.Add(new QueryParameter("customer_last_name", MySqlDbType.String, customer.CustomerLastName));
-                parameters.Add(new QueryParameter("date_of_birth", MySqlDbType.DateTime, customer.dateOfBirth));
+                parameters.Add(new QueryParameter("date_of_birth", MySqlDbType.String, customer.dateOfBirth));
                 parameters.Add(new QueryParameter("gender", MySqlDbType.Int32, customer.gender));
                 parameters.Add(new QueryParameter("nic", MySqlDbType.String, customer.nic));
                 parameters.Add(new QueryParameter("phone_number", MySqlDbType.String, customer.phoneNumber));
@@ -108,7 +108,7 @@ namespace vellsPos.Entities.Masters
                 parameters.Add(new QueryParameter("customer_number", MySqlDbType.String, customer.CustomerNumber));
                 parameters.Add(new QueryParameter("customer_first_name", MySqlDbType.String, customer.CustomerLastName));
                 parameters.Add(new QueryParameter("customer_last_name", MySqlDbType.String, customer.CustomerLastName));
-                parameters.Add(new QueryParameter("date_of_birth", MySqlDbType.DateTime, customer.dateOfBirth));
+                parameters.Add(new QueryParameter("date_of_birth", MySqlDbType.String, customer.dateOfBirth));
                 parameters.Add(new QueryParameter("gender", MySqlDbType.Int32, customer.gender));
                 parameters.Add(new QueryParameter("nic", MySqlDbType.String, customer.nic));
                 parameters.Add(new QueryParameter("phone_number", MySqlDbType.String, customer.phoneNumber));
@@ -178,7 +178,7 @@ namespace vellsPos.Entities.Masters
                     customer.customerNumber = dbData["customer_number"];
                     customer.customerFirstName = dbData["customer_first_name"];
                     customer.customerLastName = dbData["customer_last_name"];
-                    customer.dateOfBirth = Convert.ToDateTime(dbData["date_of_birth"]);
+                    customer.dateOfBirth = dbData["date_of_birth"];
                     customer.gender = Convert.ToInt32(dbData["gender"]);
                     customer.nic = dbData["nic"];
                     customer.phoneNumber = dbData["phone_number"];

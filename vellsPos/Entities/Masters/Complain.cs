@@ -11,7 +11,8 @@ namespace vellsPos.Entities.Masters
     internal class Complain
     {
         private Int32 id;
-        private DateTime date;
+        private String date;
+        private string type;
         private String description;
         private String priority;
         private Int32 status;
@@ -22,10 +23,11 @@ namespace vellsPos.Entities.Masters
 
         }
 
-        public Complain(int id, DateTime date, string description, string priority, int status, User user)
+        public Complain(int id, string date, string type, string description, string priority, int status, User user)
         {
             this.Id = id;
             this.Date = date;
+            this.Type = type;
             this.Description = description;
             this.Priority = priority;
             this.Status = status;
@@ -33,7 +35,8 @@ namespace vellsPos.Entities.Masters
         }
 
         public int Id { get => id; set => id = value; }
-        public DateTime Date { get => date; set => date = value; }
+        public string Date { get => date; set => date = value; }
+        public string Type { get => type; set => type = value; }
         public string Description { get => description; set => description = value; }
         public string Priority { get => priority; set => priority = value; }
         public int Status { get => status; set => status = value; }
@@ -47,13 +50,14 @@ namespace vellsPos.Entities.Masters
             {
                 //store data
                 string sql = "INSERT INTO `complains` " +
-                    "(`date`,`description`,`priority`,`status`,`user_id`) VALUES (@date,@priority,@description,@status,@user_id)";
+                    "(`date`,`description`,`priority`,`type`,`status`,`user_id`) VALUES (@date,@priority,@description,@type,@status,@user_id)";
                 List<QueryParameter> parameters = new List<QueryParameter>();
-                parameters.Add(new QueryParameter("date", MySqlDbType.DateTime, complain.date));
-                parameters.Add(new QueryParameter("description", MySqlDbType.String, complain.description));
-                parameters.Add(new QueryParameter("priority", MySqlDbType.String, complain.priority));
+                parameters.Add(new QueryParameter("date", MySqlDbType.String, complain.Date));
+                parameters.Add(new QueryParameter("description", MySqlDbType.String, complain.Description));
+                parameters.Add(new QueryParameter("priority", MySqlDbType.String, complain.Priority));
+                parameters.Add(new QueryParameter("type", MySqlDbType.String, complain.type));
                 parameters.Add(new QueryParameter("status", MySqlDbType.Int32, complain.Status));
-                parameters.Add(new QueryParameter("user_id", MySqlDbType.Int32, complain.user.Id));
+                parameters.Add(new QueryParameter("user_id", MySqlDbType.Int32, complain.User.Id));
 
                 commands.Add(new QueryCommand(sql, parameters));
                 result = DBTransactionService.executeNonQuery(commands);
@@ -83,11 +87,12 @@ namespace vellsPos.Entities.Masters
                     "`user_id` = @user_id " +
                     " WHERE `id` = @id ";
                 List<QueryParameter> parameters = new List<QueryParameter>();
-                parameters.Add(new QueryParameter("date", MySqlDbType.DateTime, complain.date));
-                parameters.Add(new QueryParameter("description", MySqlDbType.String, complain.description));
-                parameters.Add(new QueryParameter("priority", MySqlDbType.String, complain.priority));
+                parameters.Add(new QueryParameter("date", MySqlDbType.String, complain.Date));
+                parameters.Add(new QueryParameter("description", MySqlDbType.String, complain.Description));
+                parameters.Add(new QueryParameter("priority", MySqlDbType.String, complain.Priority));
+                parameters.Add(new QueryParameter("type", MySqlDbType.String, complain.type));
                 parameters.Add(new QueryParameter("status", MySqlDbType.Int32, complain.Status));
-                parameters.Add(new QueryParameter("user_id", MySqlDbType.Int32, complain.user.Id));
+                parameters.Add(new QueryParameter("user_id", MySqlDbType.Int32, complain.User.Id));
 
                 commands.Add(new QueryCommand(sql, parameters));
                 result = DBTransactionService.executeNonQuery(commands);
@@ -149,11 +154,12 @@ namespace vellsPos.Entities.Masters
 
                 if (dbData != null)
                 {
-                    complain.date = Convert.ToDateTime(dbData["date"]);
-                    complain.description = dbData["description"];
-                    complain.priority = dbData["priority"];
-                    complain.status = Convert.ToInt32(dbData["status"]);
-                    complain.user = user;
+                    complain.Date = dbData["date"];
+                    complain.Description = dbData["description"];
+                    complain.Priority = dbData["priority"];
+                    complain.type = dbData["type"];
+                    complain.Status = Convert.ToInt32(dbData["status"]);
+                    complain.User = user;
                 }
                 else
                 {

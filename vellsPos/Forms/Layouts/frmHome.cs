@@ -26,5 +26,11 @@ namespace vellsPos.Forms.Layouts
         {
            
         }
+
+        private void btn_pos_Click(object sender, EventArgs e)
+        {
+            frmPointOfSale frmPointOfSale=new frmPointOfSale();
+            frmPointOfSale.Show();
+        }
     }
 }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using vellsPos.Forms.Layouts;
 using vellsPos.Services;
 
 namespace vellsPos.Entities.Masters
@@ -132,6 +133,37 @@ namespace vellsPos.Entities.Masters
         //    vData.Show();
         //}
 
+        public static void showOnViewFormSaleProduct(TextBox labelBox = null, TextBox idBox = null,String x=null )
+        {
+            Console.WriteLine(x);
+            DataViewParam dvParam = new DataViewParam();
+            dvParam.Title = "Sale Product Detail";
+            dvParam.TableName = "sale_details";
+            dvParam.SelectSql = "SELECT sd.id, p.product_number, p.product_name, sd.qty, sd.amount  ";
+            dvParam.FromSql = "from sale_details sd  " +
+                "LEFT JOIN products p ON sd.product_id=p.id  " +
+                "WHERE sd.id='"+ x + "' AND  p.product_number like @s1 or p.product_name like @s2  ORDER BY sd.id DESC ";
+            dvParam.SearchParamCount = 2; //name and description
+            dvParam.TitleList = new List<string>() { "", "Product Number", "Product Name", "Qty", "Amount" };
+            dvParam.InvisibleColumnList = new List<int>() { 1 };
+            dvParam.NumericColumnList = new List<int>() { 3, 4  };//Column titles
+            //dvParam.FixedColumnNumber = 3;
+            dvParam.ShowImage = "show";
+
+
+            dvParam.AddForm = new frmReturn();
+            dvParam.ViewForm = new frmReturn();
+
+
+            frmView vData = null;
+
+            if (idBox == null && labelBox == null)
+                vData = new frmView(dvParam);
+            else
+                vData = new frmView(dvParam, idBox, labelBox);
+            vData.Show();
+        }
+
         public static SalesDetail getOneSaleDetail(int id)
         {
             SalesDetail salesDetail = new SalesDetail();
@@ -146,8 +178,37 @@ namespace vellsPos.Entities.Masters
                 {
                     salesDetail.sale = sale;
                     salesDetail.product = product;
-                    salesDetail.qty = Convert.ToInt32(dbData["description"]);
-                    salesDetail.amount = Convert.ToDecimal(dbData["description"]);
+                    salesDetail.qty = Convert.ToInt32(dbData["qty"]);
+                    salesDetail.amount = Convert.ToDecimal(dbData["amount"]);
+                }
+                else
+                {
+                    //
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return salesDetail;
+        }
+
+        public static SalesDetail getOneSaleDetail(int saleID, int productID)
+        {
+            SalesDetail salesDetail = new SalesDetail();
+            Sale sale = new Sale();
+            Product product = new Product();
+            try
+            {
+                String query = "SELECT * FROM sale_details where sale_id = '" + saleID + "' and product_id = '" + productID + "' ";
+                Dictionary<String, String> dbData = DBTransactionService.getDataAsDictionary(query);
+
+                if (dbData != null)
+                {
+                    //salesDetail.sale = sale;
+                    //salesDetail.product = product;
+                    salesDetail.qty = Convert.ToInt32(dbData["qty"]);
+                    salesDetail.amount = Convert.ToDecimal(dbData["amount"]);
                 }
                 else
                 {

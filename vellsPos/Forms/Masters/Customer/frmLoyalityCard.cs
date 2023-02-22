@@ -17,14 +17,11 @@ namespace vellsPos.Forms.Layouts
     public partial class frmLoyalityCard : Form
     {
         private List<ListItem> customers = new List<ListItem>();
+        private string uid;
+
         public frmLoyalityCard()
         {
             InitializeComponent();
-        }
-
-        private void btn_close_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
 
         private void btn_save_Click(object sender, EventArgs e)
@@ -38,16 +35,14 @@ namespace vellsPos.Forms.Layouts
             else
             {
                 int customerId = 0;
-                Customer customer = new Customer();
-                User user = new User();
-               
-
                 if (cmb_customer.SelectedIndex >= 0)
                 {
                     customerId = int.Parse(customers[cmb_customer.SelectedIndex].Value);
                 }
 
+                Customer customer = new Customer();
                 customer.Id = customerId;
+                User user = new User();
                 user.Id = 1;
 
                 LoyalityCard loyalityCard = new LoyalityCard();
@@ -93,12 +88,12 @@ namespace vellsPos.Forms.Layouts
             this.Close();
         }
 
-        private void pnl_container_Paint(object sender, PaintEventArgs e)
+        private void btn_close_Click(object sender, EventArgs e)
         {
-           
+            this.Close();
         }
 
-        private void FrmForm_Load(object sender, EventArgs e)
+        private void frmLoyalityCard_Load(object sender, EventArgs e)
         {
             String customerQuery = "SELECT id as value,concat(customer_number,' ',customer_first_name) as text FROM customers";
             customers = DBTransactionService.getDataAsListItemsAndFillComboBox(customerQuery, cmb_customer);

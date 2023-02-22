@@ -2,8 +2,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Intrinsics.Arm;
 using System.Text;
 using System.Threading.Tasks;
+using vellsPos.Forms.Layouts;
 using vellsPos.Services;
 
 namespace vellsPos.Entities.Masters
@@ -50,7 +52,8 @@ namespace vellsPos.Entities.Masters
             {
                 //store data
                 string sql = "INSERT INTO `complains` " +
-                    "(`date`,`description`,`priority`,`type`,`status`,`user_id`) VALUES (@date,@priority,@description,@type,@status,@user_id)";
+                    "(`date`,`description`,`priority`,`type`,`status`,`user_id`) " +
+                    "VALUES (@date,@priority,@description,@type,@status,@user_id)";
                 List<QueryParameter> parameters = new List<QueryParameter>();
                 parameters.Add(new QueryParameter("date", MySqlDbType.String, complain.Date));
                 parameters.Add(new QueryParameter("description", MySqlDbType.String, complain.Description));
@@ -87,6 +90,7 @@ namespace vellsPos.Entities.Masters
                     "`user_id` = @user_id " +
                     " WHERE `id` = @id ";
                 List<QueryParameter> parameters = new List<QueryParameter>();
+                parameters.Add(new QueryParameter("id", MySqlDbType.Int32, complain.Id));
                 parameters.Add(new QueryParameter("date", MySqlDbType.String, complain.Date));
                 parameters.Add(new QueryParameter("description", MySqlDbType.String, complain.Description));
                 parameters.Add(new QueryParameter("priority", MySqlDbType.String, complain.Priority));
@@ -129,19 +133,28 @@ namespace vellsPos.Entities.Masters
             return result;
         }
 
-        //public static void showOnViewForm()
-        //{
-        //    DataViewParam dvParam = new DataViewParam();
-        //    dvParam.Title = "Job Roles";
-        //    dvParam.SelectSql = "SELECT id, code, tittle, description ";
-        //    dvParam.FromSql = "from job_role where tittle like @s1 or code like @s2 ORDER BY id DESC ";
-        //    dvParam.SearchParamCount = 2; //name and description
-        //    dvParam.TitleList = new List<string>() { "", "Code", "Job Role", "Description" }; //Column titles
-        //    dvParam.AddForm = new JobRoleManagement();
-        //    dvParam.ViewForm = new ViewSingleJobRole();
-        //    ViewData vData = new ViewData(dvParam);
-        //    vData.Show();
-        //}
+        public static void showOnViewForm(TextBox labelBox = null, TextBox idBox = null)
+        {
+            DataViewParam dvParam = new DataViewParam();
+            dvParam.Title = "Product Return";
+            dvParam.SelectSql = "SELECT c.id, c.date, c.type, c.priority, c.description, c.status ";
+            dvParam.FromSql = "FROM  complains c " +
+                "where c.date like @s1 or c.type like @s2 or c.priority like @s3 or c.status like @s4 ORDER BY c.id DESC ";
+            dvParam.SearchParamCount = 3; //name and description
+            dvParam.TitleList = new List<string>() { "", "Date", "Type", "Priority", "Description", "Status" }; //Column titles
+            dvParam.InvisibleColumnList = new List<int>() { 1 };
+            dvParam.NumericColumnList = new List<int>() { };
+            dvParam.AddForm = new frmComplain();
+            dvParam.ViewForm = new frmComplain();
+
+            frmView vData = null;
+
+            if (idBox == null && labelBox == null)
+                vData = new frmView(dvParam);
+            else
+                vData = new frmView(dvParam, idBox, labelBox);
+            vData.Show();
+        }
 
         public static Complain getOneComplain(int id)
         {

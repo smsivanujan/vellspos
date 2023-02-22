@@ -23,26 +23,30 @@ namespace vellsPos.Forms.Masters.user
 
         }
 
-        private void btn_login_Click(object sender, EventArgs e)
+        private void frmLogin_Load(object sender, EventArgs e)
         {
-            String userName = txt_username.Text.Trim();
-            String password = txt_password.Text.Trim();
-            userName = RemoveSpecialCharacters(userName);
-            password = RemoveSpecialCharacters(password);
+            try
+            {
+                //textBox2.UseSystemPasswordChar = false;
+                //String calculationMethod = "SELECT svalue FROM setting WHERE skey= 'SalaryCalculationMethod' ";
+                //Int32 CalMethod = Int32.Parse(DBTransactionService.getScalerData(calculationMethod));
 
-            if (userName.Equals(""))
-            {
-                txt_username.Focus();
-                MessageBox.Show("Please enter your username", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //if (CalMethod == 1)//JeganPharmacy
+                //{
+                //    this.Text = "Payroll Management System  - Jegan Pharmacy";
+                //}
+                //else if (CalMethod == 2) //Valampuri / Greengrass
+                //{
+                //    this.Text = "Payroll Management System ";
+                //}
+                //else
+                //{
+                //    this.Text = "Payroll Management System";
+                //}
             }
-            else if (password.Equals(""))
+            catch
             {
-                txt_password.Focus();
-                MessageBox.Show("Please enter your password", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                getAuth(userName, password);
+                MessageBox.Show("Connection Failed");
             }
         }
 
@@ -53,7 +57,7 @@ namespace vellsPos.Forms.Masters.user
 
             int authStatus;//User.userAuth(userName, password);
 
-            if (txt_username.Text==uname && txt_password.Text==upassword)
+            if (txt_username.Text == uname && txt_password.Text == upassword)
             {
                 authStatus = 1;
             }
@@ -62,7 +66,7 @@ namespace vellsPos.Forms.Masters.user
                 authStatus = 0;
             }
 
-           
+
             if (authStatus == 1)
             {
                 DateTime now = DateTime.Now;//2020-11-18 09:51:09
@@ -100,31 +104,28 @@ namespace vellsPos.Forms.Masters.user
             return sb.ToString();
         }
 
-        private void frmLogin_Load(object sender, EventArgs e)
+        private void btn_login_Click(object sender, EventArgs e)
         {
-            try
-            {
-                //textBox2.UseSystemPasswordChar = false;
-                //String calculationMethod = "SELECT svalue FROM setting WHERE skey= 'SalaryCalculationMethod' ";
-                //Int32 CalMethod = Int32.Parse(DBTransactionService.getScalerData(calculationMethod));
+            String userName = txt_username.Text.Trim();
+            String password = txt_password.Text.Trim();
+            userName = RemoveSpecialCharacters(userName);
+            password = RemoveSpecialCharacters(password);
 
-                //if (CalMethod == 1)//JeganPharmacy
-                //{
-                //    this.Text = "Payroll Management System  - Jegan Pharmacy";
-                //}
-                //else if (CalMethod == 2) //Valampuri / Greengrass
-                //{
-                //    this.Text = "Payroll Management System ";
-                //}
-                //else
-                //{
-                //    this.Text = "Payroll Management System";
-                //}
-            }
-            catch
+            if (userName.Equals(""))
             {
-                MessageBox.Show("Connection Failed");
+                txt_username.Focus();
+                MessageBox.Show("Please enter your username", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (password.Equals(""))
+            {
+                txt_password.Focus();
+                MessageBox.Show("Please enter your password", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                getAuth(userName, password);
             }
         }
+       
     }
 }

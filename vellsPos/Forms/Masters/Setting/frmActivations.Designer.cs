@@ -37,7 +37,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btn_active = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -123,7 +123,7 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.btn_active);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label1);
@@ -133,25 +133,25 @@
             this.panel1.Controls.Add(this.txt_username);
             this.panel1.Location = new System.Drawing.Point(13, 27);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(354, 147);
+            this.panel1.Size = new System.Drawing.Size(354, 141);
             this.panel1.TabIndex = 59;
             // 
-            // button1
+            // btn_active
             // 
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button1.Location = new System.Drawing.Point(193, 88);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(136, 30);
-            this.button1.TabIndex = 60;
-            this.button1.Text = "ACTIVE";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btn_active.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_active.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_active.Location = new System.Drawing.Point(193, 86);
+            this.btn_active.Name = "btn_active";
+            this.btn_active.Size = new System.Drawing.Size(136, 30);
+            this.btn_active.TabIndex = 60;
+            this.btn_active.Text = "ACTIVE";
+            this.btn_active.UseVisualStyleBackColor = true;
             // 
             // frmActivations
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(378, 199);
+            this.ClientSize = new System.Drawing.Size(378, 182);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -175,6 +175,6 @@
         private Label label3;
         private Label label4;
         private Panel panel1;
-        private Button button1;
+        private Button btn_active;
     }
 }

@@ -12,6 +12,7 @@ namespace vellsPos.Entities.Layouts
         String rootPath;
         String directoryPath;
         String imagePath;
+        Image Image;
 
         public ImageUpload()
         {
@@ -63,6 +64,10 @@ namespace vellsPos.Entities.Layouts
                     //di.Delete();
                     //Console.WriteLine("The directory was deleted successfully.");
                     result.Status = true;
+
+                    if (result.Status == true)
+
+                        result.Msg = Constants.MSG_STORE_SUCCESS;
                 }
                 catch (Exception ex)
                 {
@@ -70,26 +75,8 @@ namespace vellsPos.Entities.Layouts
                     Console.WriteLine("The process failed: {0}", ex.ToString());
                 }
                 finally { }
-                //store data
-                //string sql = "INSERT INTO `customers` " +
-                //    "(`customer_number`,`customer_first_name`,`customer_last_name`,`date_of_birth`,`gender`,`nic`,`phone_number`,`email`,`user_id`) " +
-                //    "VALUES (@customer_number,@customer_first_name,@customer_last_name,@date_of_birth,@gender,@nic,@phone_number,@email,@user_id)";
-                //List<QueryParameter> parameters = new List<QueryParameter>();
-                //parameters.Add(new QueryParameter("customer_number", MySqlDbType.String, customer.CustomerNumber));
-                //parameters.Add(new QueryParameter("customer_first_name", MySqlDbType.String, customer.CustomerLastName));
-                //parameters.Add(new QueryParameter("customer_last_name", MySqlDbType.String, customer.CustomerLastName));
-                //parameters.Add(new QueryParameter("date_of_birth", MySqlDbType.String, customer.dateOfBirth));
-                //parameters.Add(new QueryParameter("gender", MySqlDbType.Int32, customer.gender));
-                //parameters.Add(new QueryParameter("nic", MySqlDbType.String, customer.nic));
-                //parameters.Add(new QueryParameter("phone_number", MySqlDbType.String, customer.phoneNumber));
-                //parameters.Add(new QueryParameter("email", MySqlDbType.String, customer.email));
-                //parameters.Add(new QueryParameter("user_id", MySqlDbType.Int32, customer.user.Id));
 
-                //commands.Add(new QueryCommand(sql, parameters));
-                //result = DBTransactionService.executeNonQuery(commands);
-                if (result.Status == true)
-
-                    result.Msg = Constants.MSG_STORE_SUCCESS;
+                
             }
             catch (Exception e)
             {

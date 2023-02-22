@@ -30,22 +30,22 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmHome));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btn_search = new System.Windows.Forms.Button();
             this.btn_minimize = new System.Windows.Forms.Button();
             this.btn_close = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txt_search = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btn_report = new System.Windows.Forms.Button();
+            this.btn_complain = new System.Windows.Forms.Button();
+            this.btn_faq = new System.Windows.Forms.Button();
+            this.btn_setting = new System.Windows.Forms.Button();
+            this.btn_crm = new System.Windows.Forms.Button();
+            this.btn_sale = new System.Windows.Forms.Button();
+            this.btn_pos = new System.Windows.Forms.Button();
             this.btn_dashboard = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.button9 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -53,10 +53,10 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.button3);
+            this.panel1.Controls.Add(this.btn_search);
             this.panel1.Controls.Add(this.btn_minimize);
             this.panel1.Controls.Add(this.btn_close);
-            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.txt_search);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -65,18 +65,18 @@
             this.panel1.Size = new System.Drawing.Size(1300, 59);
             this.panel1.TabIndex = 0;
             // 
-            // button3
+            // btn_search
             // 
-            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.ForeColor = System.Drawing.Color.Transparent;
-            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
-            this.button3.Location = new System.Drawing.Point(607, 12);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(43, 40);
-            this.button3.TabIndex = 5;
-            this.button3.UseVisualStyleBackColor = false;
+            this.btn_search.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_search.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.btn_search.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_search.ForeColor = System.Drawing.Color.Transparent;
+            this.btn_search.Image = ((System.Drawing.Image)(resources.GetObject("btn_search.Image")));
+            this.btn_search.Location = new System.Drawing.Point(607, 12);
+            this.btn_search.Name = "btn_search";
+            this.btn_search.Size = new System.Drawing.Size(43, 40);
+            this.btn_search.TabIndex = 5;
+            this.btn_search.UseVisualStyleBackColor = false;
             // 
             // btn_minimize
             // 
@@ -108,16 +108,16 @@
             this.btn_close.UseVisualStyleBackColor = false;
             this.btn_close.Click += new System.EventHandler(this.btn_close_Click);
             // 
-            // textBox1
+            // txt_search
             // 
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox1.Location = new System.Drawing.Point(263, 12);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.PlaceholderText = "search here";
-            this.textBox1.Size = new System.Drawing.Size(338, 40);
-            this.textBox1.TabIndex = 2;
+            this.txt_search.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txt_search.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txt_search.Location = new System.Drawing.Point(263, 12);
+            this.txt_search.Multiline = true;
+            this.txt_search.Name = "txt_search";
+            this.txt_search.PlaceholderText = "search here";
+            this.txt_search.Size = new System.Drawing.Size(338, 40);
+            this.txt_search.TabIndex = 2;
             // 
             // label1
             // 
@@ -141,13 +141,13 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.button9);
-            this.panel2.Controls.Add(this.button8);
-            this.panel2.Controls.Add(this.button6);
-            this.panel2.Controls.Add(this.button7);
-            this.panel2.Controls.Add(this.button5);
-            this.panel2.Controls.Add(this.button4);
-            this.panel2.Controls.Add(this.button1);
+            this.panel2.Controls.Add(this.btn_report);
+            this.panel2.Controls.Add(this.btn_complain);
+            this.panel2.Controls.Add(this.btn_faq);
+            this.panel2.Controls.Add(this.btn_setting);
+            this.panel2.Controls.Add(this.btn_crm);
+            this.panel2.Controls.Add(this.btn_sale);
+            this.panel2.Controls.Add(this.btn_pos);
             this.panel2.Controls.Add(this.btn_dashboard);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(0, 59);
@@ -155,101 +155,118 @@
             this.panel2.Size = new System.Drawing.Size(180, 661);
             this.panel2.TabIndex = 1;
             // 
-            // button8
+            // btn_report
             // 
-            this.button8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button8.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button8.Image = ((System.Drawing.Image)(resources.GetObject("button8.Image")));
-            this.button8.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button8.Location = new System.Drawing.Point(9, 457);
-            this.button8.Name = "button8";
-            this.button8.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button8.Size = new System.Drawing.Size(162, 48);
-            this.button8.TabIndex = 7;
-            this.button8.Text = "Complains";
-            this.button8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button8.UseVisualStyleBackColor = false;
+            this.btn_report.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.btn_report.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_report.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_report.Image = ((System.Drawing.Image)(resources.GetObject("btn_report.Image")));
+            this.btn_report.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_report.Location = new System.Drawing.Point(9, 310);
+            this.btn_report.Name = "btn_report";
+            this.btn_report.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btn_report.Size = new System.Drawing.Size(162, 48);
+            this.btn_report.TabIndex = 8;
+            this.btn_report.Text = "Reports";
+            this.btn_report.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_report.UseVisualStyleBackColor = false;
             // 
-            // button6
+            // btn_complain
             // 
-            this.button6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button6.Image = ((System.Drawing.Image)(resources.GetObject("button6.Image")));
-            this.button6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button6.Location = new System.Drawing.Point(75, 606);
-            this.button6.Name = "button6";
-            this.button6.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button6.Size = new System.Drawing.Size(96, 43);
-            this.button6.TabIndex = 6;
-            this.button6.Text = "FAQ";
-            this.button6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button6.UseVisualStyleBackColor = false;
+            this.btn_complain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.btn_complain.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_complain.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_complain.Image = ((System.Drawing.Image)(resources.GetObject("btn_complain.Image")));
+            this.btn_complain.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_complain.Location = new System.Drawing.Point(9, 457);
+            this.btn_complain.Name = "btn_complain";
+            this.btn_complain.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btn_complain.Size = new System.Drawing.Size(162, 48);
+            this.btn_complain.TabIndex = 7;
+            this.btn_complain.Text = "Complains";
+            this.btn_complain.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_complain.UseVisualStyleBackColor = false;
             // 
-            // button7
+            // btn_faq
             // 
-            this.button7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button7.Image = ((System.Drawing.Image)(resources.GetObject("button7.Image")));
-            this.button7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button7.Location = new System.Drawing.Point(9, 383);
-            this.button7.Name = "button7";
-            this.button7.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button7.Size = new System.Drawing.Size(162, 48);
-            this.button7.TabIndex = 5;
-            this.button7.Text = "Settings";
-            this.button7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button7.UseVisualStyleBackColor = false;
+            this.btn_faq.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.btn_faq.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_faq.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_faq.Image = ((System.Drawing.Image)(resources.GetObject("btn_faq.Image")));
+            this.btn_faq.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_faq.Location = new System.Drawing.Point(75, 606);
+            this.btn_faq.Name = "btn_faq";
+            this.btn_faq.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btn_faq.Size = new System.Drawing.Size(96, 43);
+            this.btn_faq.TabIndex = 6;
+            this.btn_faq.Text = "FAQ";
+            this.btn_faq.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_faq.UseVisualStyleBackColor = false;
             // 
-            // button5
+            // btn_setting
             // 
-            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button5.Image = ((System.Drawing.Image)(resources.GetObject("button5.Image")));
-            this.button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button5.Location = new System.Drawing.Point(9, 237);
-            this.button5.Name = "button5";
-            this.button5.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button5.Size = new System.Drawing.Size(162, 48);
-            this.button5.TabIndex = 3;
-            this.button5.Text = "Customers";
-            this.button5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button5.UseVisualStyleBackColor = false;
+            this.btn_setting.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.btn_setting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_setting.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_setting.Image = ((System.Drawing.Image)(resources.GetObject("btn_setting.Image")));
+            this.btn_setting.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_setting.Location = new System.Drawing.Point(9, 383);
+            this.btn_setting.Name = "btn_setting";
+            this.btn_setting.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btn_setting.Size = new System.Drawing.Size(162, 48);
+            this.btn_setting.TabIndex = 5;
+            this.btn_setting.Text = "Settings";
+            this.btn_setting.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_setting.UseVisualStyleBackColor = false;
             // 
-            // button4
+            // btn_crm
             // 
-            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
-            this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button4.Location = new System.Drawing.Point(9, 166);
-            this.button4.Name = "button4";
-            this.button4.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button4.Size = new System.Drawing.Size(162, 48);
-            this.button4.TabIndex = 2;
-            this.button4.Text = "Sales";
-            this.button4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button4.UseVisualStyleBackColor = false;
+            this.btn_crm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.btn_crm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_crm.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_crm.Image = ((System.Drawing.Image)(resources.GetObject("btn_crm.Image")));
+            this.btn_crm.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_crm.Location = new System.Drawing.Point(9, 237);
+            this.btn_crm.Name = "btn_crm";
+            this.btn_crm.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btn_crm.Size = new System.Drawing.Size(162, 48);
+            this.btn_crm.TabIndex = 3;
+            this.btn_crm.Text = "CRM";
+            this.btn_crm.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_crm.UseVisualStyleBackColor = false;
             // 
-            // button1
+            // btn_sale
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(9, 95);
-            this.button1.Name = "button1";
-            this.button1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button1.Size = new System.Drawing.Size(162, 48);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Point Of Sales";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.UseVisualStyleBackColor = false;
+            this.btn_sale.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.btn_sale.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_sale.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_sale.Image = ((System.Drawing.Image)(resources.GetObject("btn_sale.Image")));
+            this.btn_sale.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_sale.Location = new System.Drawing.Point(9, 166);
+            this.btn_sale.Name = "btn_sale";
+            this.btn_sale.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btn_sale.Size = new System.Drawing.Size(162, 48);
+            this.btn_sale.TabIndex = 2;
+            this.btn_sale.Text = "Sales";
+            this.btn_sale.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_sale.UseVisualStyleBackColor = false;
+            // 
+            // btn_pos
+            // 
+            this.btn_pos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.btn_pos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_pos.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_pos.Image = ((System.Drawing.Image)(resources.GetObject("btn_pos.Image")));
+            this.btn_pos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_pos.Location = new System.Drawing.Point(9, 95);
+            this.btn_pos.Name = "btn_pos";
+            this.btn_pos.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btn_pos.Size = new System.Drawing.Size(162, 48);
+            this.btn_pos.TabIndex = 1;
+            this.btn_pos.Text = "Point Of Sales";
+            this.btn_pos.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_pos.UseVisualStyleBackColor = false;
+            this.btn_pos.Click += new System.EventHandler(this.btn_pos_Click);
             // 
             // btn_dashboard
             // 
@@ -274,22 +291,6 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1120, 626);
             this.panel3.TabIndex = 2;
-            // 
-            // button9
-            // 
-            this.button9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button9.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button9.Image = ((System.Drawing.Image)(resources.GetObject("button9.Image")));
-            this.button9.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button9.Location = new System.Drawing.Point(9, 310);
-            this.button9.Name = "button9";
-            this.button9.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button9.Size = new System.Drawing.Size(162, 48);
-            this.button9.TabIndex = 8;
-            this.button9.Text = "Reports";
-            this.button9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button9.UseVisualStyleBackColor = false;
             // 
             // frmHome
             // 
@@ -318,18 +319,18 @@
         private Label label1;
         private PictureBox pictureBox1;
         private Panel panel2;
-        private TextBox textBox1;
+        private TextBox txt_search;
         private Button btn_dashboard;
         private Panel panel3;
         private Button btn_close;
         private Button btn_minimize;
-        private Button button3;
-        private Button button5;
-        private Button button4;
-        private Button button1;
-        private Button button8;
-        private Button button6;
-        private Button button7;
-        private Button button9;
+        private Button btn_search;
+        private Button btn_crm;
+        private Button btn_sale;
+        private Button btn_pos;
+        private Button btn_complain;
+        private Button btn_faq;
+        private Button btn_setting;
+        private Button btn_report;
     }
 }

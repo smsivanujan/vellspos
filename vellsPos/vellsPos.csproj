@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <PackageReference Include="MySql.Data" Version="8.0.32" />
+    <PackageReference Include="Zen.Barcode.Rendering.Framework" Version="3.1.10729.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -38,6 +39,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\Masters\Product\frmDiscount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Masters\Product\frmProductBarcode.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\Masters\Product\frmSubCoCategory.cs">

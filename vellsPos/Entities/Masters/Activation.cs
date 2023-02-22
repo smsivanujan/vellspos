@@ -11,7 +11,8 @@ namespace vellsPos.Entities.Masters
     internal class Activation
     {
         private Int32 id;
-        private DateTime date;
+        private String date;
+        private String endDate;
         private String serialKey;
         private Int32 status;
 
@@ -20,18 +21,21 @@ namespace vellsPos.Entities.Masters
 
         }
 
-        public Activation(int id, DateTime date, string serialKey, int status)
+        public Activation(int id, string date, string endDate, string serialKey, int status)
         {
             this.Id = id;
             this.Date = date;
+            this.EndDate = endDate;
             this.SerialKey = serialKey;
             this.Status = status;
         }
 
         public int Id { get => id; set => id = value; }
-        public DateTime Date { get => date; set => date = value; }
+        public string Date { get => date; set => date = value; }
+        public string EndDate { get => endDate; set => endDate = value; }
         public string SerialKey { get => serialKey; set => serialKey = value; }
         public int Status { get => status; set => status = value; }
+
 
         public static ReturnResult store(Activation activation)
         {
@@ -41,10 +45,11 @@ namespace vellsPos.Entities.Masters
             {
                 //store data
                 string sql = "INSERT INTO `activations` " +
-                    "(`date`,`serial_key`,`status`) VALUES (@date,@serial_key,@status)";
+                    "(`date`,`serial_key`,`end_date`,`status`) VALUES (@date,@serial_key,@end_date,@status)";
                 List<QueryParameter> parameters = new List<QueryParameter>();
-                parameters.Add(new QueryParameter("date", MySqlDbType.DateTime, activation.Date));
-                parameters.Add(new QueryParameter("serial_key", MySqlDbType.String, activation.serialKey));
+                parameters.Add(new QueryParameter("date", MySqlDbType.String, activation.Date));
+                parameters.Add(new QueryParameter("serial_key", MySqlDbType.String, activation.SerialKey));
+                parameters.Add(new QueryParameter("end_date", MySqlDbType.String, activation.Date));
                 parameters.Add(new QueryParameter("status", MySqlDbType.Int32, activation.Status));
 
                 commands.Add(new QueryCommand(sql, parameters));
@@ -70,11 +75,13 @@ namespace vellsPos.Entities.Masters
                 string sql = "UPDATE `activations` SET " +
                     "`date` = @date, " +
                      "`serial_key` = @serial_key, " +
+                      "`end_date` = @end_date, " +
                     "`status` = @status " +
                     " WHERE `id` = @id ";
                 List<QueryParameter> parameters = new List<QueryParameter>();
-                parameters.Add(new QueryParameter("date", MySqlDbType.DateTime, activation.Date));
-                parameters.Add(new QueryParameter("serial_key", MySqlDbType.String, activation.serialKey));
+                parameters.Add(new QueryParameter("date", MySqlDbType.String, activation.Date));
+                parameters.Add(new QueryParameter("serial_key", MySqlDbType.String, activation.SerialKey));
+                parameters.Add(new QueryParameter("end_date", MySqlDbType.String, activation.Date));
                 parameters.Add(new QueryParameter("status", MySqlDbType.Int32, activation.Status));
 
                 commands.Add(new QueryCommand(sql, parameters));
@@ -136,8 +143,9 @@ namespace vellsPos.Entities.Masters
 
                 if (dbData != null)
                 {
-                    activation.Date = Convert.ToDateTime(dbData["date"]);
-                    activation.serialKey = dbData["serial_key"];
+                    activation.Date = dbData["date"];
+                    activation.Date = dbData["end_date"];
+                    activation.SerialKey = dbData["serial_key"];
                     activation.Status = Convert.ToInt32(dbData["status"]);
                 }
                 else

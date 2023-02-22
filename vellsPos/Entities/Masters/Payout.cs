@@ -8,7 +8,7 @@ using vellsPos.Services;
 
 namespace vellsPos.Entities.Masters
 {
-    internal class Payouts
+    internal class Payout
     {
         private Int32 id;
         private DateTime date;
@@ -16,12 +16,12 @@ namespace vellsPos.Entities.Masters
         private String description;
         private User user;
 
-        public Payouts()
+        public Payout()
         {
 
         }
 
-        public Payouts(int id, DateTime date, decimal amount, string description, User user)
+        public Payout(int id, DateTime date, decimal amount, string description, User user)
         {
             this.Id = id;
             this.Date = date;
@@ -36,7 +36,7 @@ namespace vellsPos.Entities.Masters
         public string Description { get => description; set => description = value; }
         internal User User { get => user; set => user = value; }
 
-        public static ReturnResult store(Payouts payouts)
+        public static ReturnResult store(Payout payouts)
         {
             ReturnResult result = new ReturnResult(false, "Error");
             List<QueryCommand> commands = new List<QueryCommand>();
@@ -65,7 +65,7 @@ namespace vellsPos.Entities.Masters
             return result;
         }
 
-        public static ReturnResult update(Payouts payouts)
+        public static ReturnResult update(Payout payouts)
         {
             ReturnResult result = new ReturnResult(false, "Error");
             List<QueryCommand> commands = new List<QueryCommand>();
@@ -132,9 +132,9 @@ namespace vellsPos.Entities.Masters
         //    vData.Show();
         //}
 
-        public static Payouts getOnePayout(int id)
+        public static Payout getOnePayout(int id)
         {
-            Payouts payouts = new Payouts();
+            Payout payouts = new Payout();
             User user = new User();
             try
             {

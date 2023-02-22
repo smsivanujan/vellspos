@@ -38,6 +38,8 @@
             this.btn_cancel = new System.Windows.Forms.Button();
             this.pnl_body = new System.Windows.Forms.Panel();
             this.pnl_container = new System.Windows.Forms.Panel();
+            this.txt_id = new System.Windows.Forms.TextBox();
+            this.lb_user = new System.Windows.Forms.Label();
             this.cmb_type = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -46,7 +48,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.rtxt_description = new System.Windows.Forms.RichTextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.lb_user = new System.Windows.Forms.Label();
             this.pnl_head.SuspendLayout();
             this.pnl_root.SuspendLayout();
             this.pnl_body.SuspendLayout();
@@ -166,6 +167,7 @@
             // 
             // pnl_container
             // 
+            this.pnl_container.Controls.Add(this.txt_id);
             this.pnl_container.Controls.Add(this.lb_user);
             this.pnl_container.Controls.Add(this.cmb_type);
             this.pnl_container.Controls.Add(this.label3);
@@ -179,7 +181,22 @@
             this.pnl_container.Name = "pnl_container";
             this.pnl_container.Size = new System.Drawing.Size(403, 443);
             this.pnl_container.TabIndex = 0;
-            this.pnl_container.Paint += new System.Windows.Forms.PaintEventHandler(this.pnl_container_Paint);
+            // 
+            // txt_id
+            // 
+            this.txt_id.Location = new System.Drawing.Point(329, 23);
+            this.txt_id.Name = "txt_id";
+            this.txt_id.Size = new System.Drawing.Size(41, 23);
+            this.txt_id.TabIndex = 89;
+            // 
+            // lb_user
+            // 
+            this.lb_user.AutoSize = true;
+            this.lb_user.Location = new System.Drawing.Point(357, 413);
+            this.lb_user.Name = "lb_user";
+            this.lb_user.Size = new System.Drawing.Size(13, 15);
+            this.lb_user.TabIndex = 69;
+            this.lb_user.Text = "1";
             // 
             // cmb_type
             // 
@@ -269,15 +286,6 @@
             this.label2.TabIndex = 44;
             this.label2.Text = "Priority";
             // 
-            // lb_user
-            // 
-            this.lb_user.AutoSize = true;
-            this.lb_user.Location = new System.Drawing.Point(357, 413);
-            this.lb_user.Name = "lb_user";
-            this.lb_user.Size = new System.Drawing.Size(13, 15);
-            this.lb_user.TabIndex = 69;
-            this.lb_user.Text = "1";
-            // 
             // frmComplain
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -289,7 +297,7 @@
             this.Name = "frmComplain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmForm";
-            this.Load += new System.EventHandler(this.FrmForm_Load);
+            this.Load += new System.EventHandler(this.frmComplain_Load);
             this.pnl_head.ResumeLayout(false);
             this.pnl_head.PerformLayout();
             this.pnl_root.ResumeLayout(false);
@@ -320,5 +328,6 @@
         private Label label4;
         private DateTimePicker dtp_date;
         private Label lb_user;
+        private TextBox txt_id;
     }
 }

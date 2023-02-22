@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using vellsPos.Forms.Layouts;
 using vellsPos.Services;
 
 namespace vellsPos.Entities.Masters
@@ -124,17 +125,59 @@ namespace vellsPos.Entities.Masters
             return result;
         }
 
-        //public static void showOnViewForm()
+        public static void showOnViewForm(TextBox labelBox = null, TextBox idBox = null)
+        {
+            DataViewParam dvParam = new DataViewParam();
+            dvParam.Title = "Product Return";
+            dvParam.SelectSql = "SELECT pr.id, s.date, s.invoice_number, p.product_number, p.product_name, pr.qty, pr.amount  ";
+            dvParam.FromSql = "FROM  product_returns pr " +
+                "INNER JOIN sales s ON pr.sale_id = s.id " +
+                "INNER JOIN products p ON pr.product_id = p.id  " +
+                "where p.product_number like @s1 or p.product_name like @s2 ORDER BY pr.id DESC ";
+            dvParam.SearchParamCount = 2; //name and description
+            dvParam.TitleList = new List<string>() { "", "Date", "Invoice Number", "Product Number", "Product Name", "Qty", "Amount" }; //Column titles
+
+            dvParam.AddForm = new frmReturn();
+            dvParam.ViewForm = new frmReturn();
+
+            frmView vData = null;
+
+            if (idBox == null && labelBox == null)
+                vData = new frmView(dvParam);
+            else
+                vData = new frmView(dvParam, idBox, labelBox);
+            vData.Show();
+        }
+
+        //public static void showOnViewFormSaleProduct(TextBox labelBox = null, TextBox idBox = null)
         //{
         //    DataViewParam dvParam = new DataViewParam();
-        //    dvParam.Title = "Job Roles";
-        //    dvParam.SelectSql = "SELECT id, code, tittle, description ";
-        //    dvParam.FromSql = "from job_role where tittle like @s1 or code like @s2 ORDER BY id DESC ";
-        //    dvParam.SearchParamCount = 2; //name and description
-        //    dvParam.TitleList = new List<string>() { "", "Code", "Job Role", "Description" }; //Column titles
-        //    dvParam.AddForm = new JobRoleManagement();
-        //    dvParam.ViewForm = new ViewSingleJobRole();
-        //    ViewData vData = new ViewData(dvParam);
+        //    dvParam.Title = "Employees";
+        //    dvParam.TableName = "employee";
+        //    dvParam.SelectSql = "SELECT e.id, CONCAT(e.f_name,' ',e.l_name ), e.code, jr.tittle, p.name, d.name,e.work_hours,e.basic_salary, e.nic, e.gender  ";
+        //    dvParam.FromSql = "from employee e  " +
+        //        "LEFT JOIN job_role jr ON e.job_role_id=jr.id  " +
+        //        "LEFT JOIN property p ON e.property_id=p.id  " +
+        //        "LEFT JOIN department d ON e.depatrment_id=d.id " +
+        //        "WHERE e.code like @s1 or CONCAT(e.f_name,' ',e.l_name) like @s2 or e.work_hours like @s3 or e.basic_salary like @s4 or nic like @s5 or jr.tittle like @s6 or  e.gender like @s7 or p.name like @s8 or d.name like @s9  ORDER BY e.id DESC ";
+        //    dvParam.SearchParamCount = 8; //name and description
+        //    dvParam.TitleList = new List<string>() { "", "Employee", "Code", "Job Role", "Property", "Department", "Work Hours", "Basic Salary", "NIC", "Gender" };
+        //    dvParam.InvisibleColumnList = new List<int>() { 1 };
+        //    dvParam.NumericColumnList = new List<int>() { };//Column titles
+        //    //dvParam.FixedColumnNumber = 3;
+        //    dvParam.ShowImage = "show";
+
+
+        //    dvParam.AddForm = new frmReturn();
+        //    dvParam.ViewForm = new frmReturn();
+
+
+        //    frmView vData = null;
+
+        //    if (idBox == null && labelBox == null)
+        //        vData = new frmView(dvParam);
+        //    else
+        //        vData = new frmView(dvParam, idBox, labelBox);
         //    vData.Show();
         //}
 

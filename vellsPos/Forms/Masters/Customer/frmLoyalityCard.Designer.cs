@@ -38,6 +38,7 @@
             this.btn_cancel = new System.Windows.Forms.Button();
             this.pnl_body = new System.Windows.Forms.Panel();
             this.pnl_container = new System.Windows.Forms.Panel();
+            this.txt_id = new System.Windows.Forms.TextBox();
             this.cmb_customer = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -166,6 +167,7 @@
             // 
             // pnl_container
             // 
+            this.pnl_container.Controls.Add(this.txt_id);
             this.pnl_container.Controls.Add(this.cmb_customer);
             this.pnl_container.Controls.Add(this.label1);
             this.pnl_container.Controls.Add(this.label4);
@@ -180,7 +182,13 @@
             this.pnl_container.Name = "pnl_container";
             this.pnl_container.Size = new System.Drawing.Size(405, 464);
             this.pnl_container.TabIndex = 0;
-            this.pnl_container.Paint += new System.Windows.Forms.PaintEventHandler(this.pnl_container_Paint);
+            // 
+            // txt_id
+            // 
+            this.txt_id.Location = new System.Drawing.Point(356, 63);
+            this.txt_id.Name = "txt_id";
+            this.txt_id.Size = new System.Drawing.Size(41, 23);
+            this.txt_id.TabIndex = 89;
             // 
             // cmb_customer
             // 
@@ -304,7 +312,7 @@
             this.Name = "frmLoyalityCard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmForm";
-            this.Load += new System.EventHandler(this.FrmForm_Load);
+            this.Load += new System.EventHandler(this.frmLoyalityCard_Load);
             this.pnl_head.ResumeLayout(false);
             this.pnl_head.PerformLayout();
             this.pnl_root.ResumeLayout(false);
@@ -336,5 +344,6 @@
         private DateTimePicker dtp_issuedDate;
         private ComboBox cmb_customer;
         private Label label1;
+        private TextBox txt_id;
     }
 }

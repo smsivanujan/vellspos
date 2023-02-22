@@ -29,20 +29,29 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Location = new System.Drawing.Point(23, 21);
+            this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(595, 154);
             this.panel1.TabIndex = 0;
+            // 
+            // panel2
+            // 
+            this.panel2.Location = new System.Drawing.Point(12, 200);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(595, 154);
+            this.panel2.TabIndex = 1;
             // 
             // frmDBUpload
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(630, 450);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "frmDBUpload";
             this.Text = "frmDBUpload";
@@ -53,5 +62,6 @@
         #endregion
 
         private Panel panel1;
+        private Panel panel2;
     }
 }

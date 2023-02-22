@@ -38,6 +38,7 @@
             this.btn_cancel = new System.Windows.Forms.Button();
             this.pnl_body = new System.Windows.Forms.Panel();
             this.pnl_container = new System.Windows.Forms.Panel();
+            this.txt_id = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txt_phoneNumber = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -116,7 +117,7 @@
             this.btn_delete.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_delete.Image = ((System.Drawing.Image)(resources.GetObject("btn_delete.Image")));
             this.btn_delete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_delete.Location = new System.Drawing.Point(366, 12);
+            this.btn_delete.Location = new System.Drawing.Point(166, 12);
             this.btn_delete.Name = "btn_delete";
             this.btn_delete.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.btn_delete.Size = new System.Drawing.Size(108, 51);
@@ -133,7 +134,7 @@
             this.btn_save.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_save.Image = ((System.Drawing.Image)(resources.GetObject("btn_save.Image")));
             this.btn_save.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_save.Location = new System.Drawing.Point(594, 12);
+            this.btn_save.Location = new System.Drawing.Point(394, 12);
             this.btn_save.Name = "btn_save";
             this.btn_save.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.btn_save.Size = new System.Drawing.Size(108, 51);
@@ -151,7 +152,7 @@
             this.btn_cancel.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_cancel.Image = ((System.Drawing.Image)(resources.GetObject("btn_cancel.Image")));
             this.btn_cancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_cancel.Location = new System.Drawing.Point(480, 12);
+            this.btn_cancel.Location = new System.Drawing.Point(280, 12);
             this.btn_cancel.Name = "btn_cancel";
             this.btn_cancel.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.btn_cancel.Size = new System.Drawing.Size(108, 51);
@@ -172,6 +173,7 @@
             // 
             // pnl_container
             // 
+            this.pnl_container.Controls.Add(this.txt_id);
             this.pnl_container.Controls.Add(this.label8);
             this.pnl_container.Controls.Add(this.txt_phoneNumber);
             this.pnl_container.Controls.Add(this.label7);
@@ -190,15 +192,21 @@
             this.pnl_container.Controls.Add(this.txt_cusromerLastName);
             this.pnl_container.Location = new System.Drawing.Point(12, 6);
             this.pnl_container.Name = "pnl_container";
-            this.pnl_container.Size = new System.Drawing.Size(672, 464);
+            this.pnl_container.Size = new System.Drawing.Size(490, 464);
             this.pnl_container.TabIndex = 0;
-            this.pnl_container.Paint += new System.Windows.Forms.PaintEventHandler(this.pnl_container_Paint);
+            // 
+            // txt_id
+            // 
+            this.txt_id.Location = new System.Drawing.Point(243, 57);
+            this.txt_id.Name = "txt_id";
+            this.txt_id.Size = new System.Drawing.Size(41, 23);
+            this.txt_id.TabIndex = 98;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI Historic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label8.Location = new System.Drawing.Point(3, 356);
+            this.label8.Location = new System.Drawing.Point(16, 346);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(154, 30);
             this.label8.TabIndex = 96;
@@ -207,7 +215,7 @@
             // txt_phoneNumber
             // 
             this.txt_phoneNumber.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.txt_phoneNumber.Location = new System.Drawing.Point(3, 390);
+            this.txt_phoneNumber.Location = new System.Drawing.Point(16, 380);
             this.txt_phoneNumber.Multiline = true;
             this.txt_phoneNumber.Name = "txt_phoneNumber";
             this.txt_phoneNumber.PlaceholderText = "phone number";
@@ -218,7 +226,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI Historic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label7.Location = new System.Drawing.Point(241, 258);
+            this.label7.Location = new System.Drawing.Point(255, 260);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(63, 30);
             this.label7.TabIndex = 94;
@@ -227,7 +235,7 @@
             // txt_Email
             // 
             this.txt_Email.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.txt_Email.Location = new System.Drawing.Point(241, 292);
+            this.txt_Email.Location = new System.Drawing.Point(255, 294);
             this.txt_Email.Multiline = true;
             this.txt_Email.Name = "txt_Email";
             this.txt_Email.PlaceholderText = "email";
@@ -238,7 +246,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI Historic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(3, 258);
+            this.label6.Location = new System.Drawing.Point(16, 261);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(132, 30);
             this.label6.TabIndex = 92;
@@ -247,7 +255,7 @@
             // txt_nic
             // 
             this.txt_nic.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.txt_nic.Location = new System.Drawing.Point(3, 292);
+            this.txt_nic.Location = new System.Drawing.Point(16, 295);
             this.txt_nic.Multiline = true;
             this.txt_nic.Name = "txt_nic";
             this.txt_nic.PlaceholderText = "social security number";
@@ -262,7 +270,7 @@
             "Male",
             "Female",
             "Other"});
-            this.cmb_gender.Location = new System.Drawing.Point(241, 211);
+            this.cmb_gender.Location = new System.Drawing.Point(255, 213);
             this.cmb_gender.Name = "cmb_gender";
             this.cmb_gender.Size = new System.Drawing.Size(221, 33);
             this.cmb_gender.TabIndex = 91;
@@ -271,7 +279,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI Historic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(241, 178);
+            this.label5.Location = new System.Drawing.Point(255, 180);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(80, 30);
             this.label5.TabIndex = 90;
@@ -281,7 +289,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI Historic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(3, 178);
+            this.label4.Location = new System.Drawing.Point(16, 181);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(131, 30);
             this.label4.TabIndex = 89;
@@ -292,7 +300,7 @@
             this.dtp_dateOfBirth.CustomFormat = "yyyy-MM-dd";
             this.dtp_dateOfBirth.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.dtp_dateOfBirth.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtp_dateOfBirth.Location = new System.Drawing.Point(3, 211);
+            this.dtp_dateOfBirth.Location = new System.Drawing.Point(16, 214);
             this.dtp_dateOfBirth.Name = "dtp_dateOfBirth";
             this.dtp_dateOfBirth.Size = new System.Drawing.Size(221, 33);
             this.dtp_dateOfBirth.TabIndex = 88;
@@ -301,7 +309,7 @@
             // txt_customerNumber
             // 
             this.txt_customerNumber.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.txt_customerNumber.Location = new System.Drawing.Point(3, 43);
+            this.txt_customerNumber.Location = new System.Drawing.Point(16, 46);
             this.txt_customerNumber.Multiline = true;
             this.txt_customerNumber.Name = "txt_customerNumber";
             this.txt_customerNumber.PlaceholderText = "customer number";
@@ -312,7 +320,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Historic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(3, 10);
+            this.label2.Location = new System.Drawing.Point(16, 13);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(184, 30);
             this.label2.TabIndex = 77;
@@ -322,7 +330,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Historic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(3, 89);
+            this.label1.Location = new System.Drawing.Point(16, 92);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(208, 30);
             this.label1.TabIndex = 79;
@@ -331,7 +339,7 @@
             // txt_customerFirstName
             // 
             this.txt_customerFirstName.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.txt_customerFirstName.Location = new System.Drawing.Point(3, 122);
+            this.txt_customerFirstName.Location = new System.Drawing.Point(16, 125);
             this.txt_customerFirstName.Multiline = true;
             this.txt_customerFirstName.Name = "txt_customerFirstName";
             this.txt_customerFirstName.PlaceholderText = "first name";
@@ -342,7 +350,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI Historic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(241, 89);
+            this.label3.Location = new System.Drawing.Point(255, 91);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(207, 30);
             this.label3.TabIndex = 81;
@@ -351,7 +359,7 @@
             // txt_cusromerLastName
             // 
             this.txt_cusromerLastName.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.txt_cusromerLastName.Location = new System.Drawing.Point(241, 123);
+            this.txt_cusromerLastName.Location = new System.Drawing.Point(255, 125);
             this.txt_cusromerLastName.Multiline = true;
             this.txt_cusromerLastName.Name = "txt_cusromerLastName";
             this.txt_cusromerLastName.PlaceholderText = "last name";
@@ -369,7 +377,7 @@
             this.Name = "frmCustomer";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmForm";
-            this.Load += new System.EventHandler(this.FrmForm_Load);
+            this.Load += new System.EventHandler(this.frmCustomer_Load);
             this.pnl_head.ResumeLayout(false);
             this.pnl_head.PerformLayout();
             this.pnl_root.ResumeLayout(false);
@@ -407,5 +415,6 @@
         private ComboBox cmb_gender;
         private Label label5;
         private Button btn_delete;
+        private TextBox txt_id;
     }
 }

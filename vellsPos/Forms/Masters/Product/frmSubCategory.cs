@@ -7,24 +7,90 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using vellsPos.Entities.Layouts;
+using vellsPos.Entities.Masters;
+using vellsPos.Services;
 
 namespace vellsPos.Forms.Layouts
 {
     public partial class frmSubCategory : Form
     {
+        private List<ListItem> categories = new List<ListItem>();
+        private string uid;
+
         public frmSubCategory()
         {
             InitializeComponent();
         }
 
-        private void btn_close_Click(object sender, EventArgs e)
+
+        private void frmSubCategory_Load(object sender, EventArgs e)
         {
-            this.Close();
+            String categoryQuery = "SELECT id as value,category_name as text FROM categories";
+            categories = DBTransactionService.getDataAsListItemsAndFillComboBox(categoryQuery, cmb_category);
+
+            if (categories.Count > 0)
+            {
+                cmb_category.SelectedIndex = 0;
+            }
         }
 
         private void btn_save_Click(object sender, EventArgs e)
         {
+            ReturnResult nameResult = Validator.validateText(txt_subCategory.Text, "SubCategory");
 
+            if (!nameResult.Status)
+            {
+                MessageBox.Show(nameResult.Msg, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                int categoryId = 0;
+                if (cmb_category.SelectedIndex >= 0)
+                {
+                    categoryId = int.Parse(categories[cmb_category.SelectedIndex].Value);
+                }
+
+                Category category = new Category();
+                category.Id = categoryId;
+
+                string rootPath = @"c:\vellspos";
+                String directoryPath = Path.Combine(rootPath, Path.GetFileName(lbl_imagePath.Text));
+
+                ImageUpload imageUpload = new ImageUpload();
+                imageUpload.DirectoryPath = directoryPath;
+                imageUpload.RootPath = rootPath;//root folder from save
+                imageUpload.ImagePath = lbl_imagePath.Text;
+                ReturnResult resul2 = ImageUpload.store(imageUpload);
+
+                SubCategory subCategory = new SubCategory();
+                subCategory.SubCategoryName = txt_subCategory.Text;
+                subCategory.Category = category;
+                subCategory.Description = rtxt_description.Text;
+                subCategory.Image = directoryPath;//root folder to save
+                ReturnResult result = SubCategory.store(subCategory);
+
+
+                if (result.Status)
+                {
+                    //ActivityLog aL = new ActivityLog();
+                    //aL.Date = DateTime.Now;
+                    //User user = new User();
+                    //String query = "SELECT id from user WHERE name = '" + Session.uname + "'";
+                    //String id = DBTransactionService.getScalerData(query);
+                    //user.Id = Int32.Parse(id);
+                    //aL.User = user;
+                    //aL.Description = "One New Transaction Added.[Date : " + dtp_dateFrom.Value + "Employee : " + txtname.Text + "Transaction Category : " + txttransaction.Text + "Invoice No : " + txtInvoiceNo.Text + "Amount : " + txtamount.Text + " Description :" + txtdescrib.Text + " Added by :" + Session.uname + "]";
+                    //ActivityLog.store(aL);
+                    MessageBox.Show("Sub Category has been added successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show(result.Msg, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                //}
+            }
         }
 
         private void btn_cancel_Click(object sender, EventArgs e)
@@ -32,14 +98,9 @@ namespace vellsPos.Forms.Layouts
             this.Close();
         }
 
-        private void pnl_container_Paint(object sender, PaintEventArgs e)
+        private void btn_close_Click(object sender, EventArgs e)
         {
-           
-        }
-
-        private void FrmForm_Load(object sender, EventArgs e)
-        {
-            
+            this.Close();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -47,6 +108,22 @@ namespace vellsPos.Forms.Layouts
             //frmProductCreate p = new frmProductCreate() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
             //this.pnl_container.Controls.Add(p);
             //p.Show();
+        }
+
+        private void btn_uploadImage_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Title = "Select Image file..";
+            ofd.DefaultExt = ".jpg";
+            ofd.Filter = "Media Files|*.jpg;*.png;*.gif;*.bmp;*.jpeg|All Files|*.*";
+            DialogResult result = ofd.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                lbl_imagePath.Text = ofd.FileName;
+                pb_subCategoryImage.Load(ofd.FileName);
+                lbl_imageStatus.Text = "Image Uploded";
+                lbl_imageStatus.ForeColor = System.Drawing.Color.Green;
+            }
         }
     }
 }

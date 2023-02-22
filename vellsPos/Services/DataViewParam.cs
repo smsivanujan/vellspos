@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace vellsPos.Services
 {
-    internal class DataViewParam
+    public class DataViewParam
     {
         private string title;
         private string selectSql;
@@ -28,27 +28,27 @@ namespace vellsPos.Services
         private string addAuthority;
         private string viewAuthority;
 
-        public DataViewParam(string title, string selectSql, string fromSql, string whereSql, string groupSql, string tableName, int searchParamCount, int fixedColumnNumber, string hidebox, string strechImage, string showImage, List<string> titleList, List<int> invisibleColumnList, List<int> numericColumnList, Form addForm, Form viewForm, string addAuthority, string viewAuthority)
-        {
-            this.Title = title;
-            this.SelectSql = selectSql;
-            this.FromSql = fromSql;
-            this.WhereSql = whereSql;
-            this.GroupSql = groupSql;
-            this.TableName = tableName;
-            this.SearchParamCount = searchParamCount;
-            this.FixedColumnNumber = fixedColumnNumber;
-            this.Hidebox = hidebox;
-            this.StrechImage = strechImage;
-            this.ShowImage = showImage;
-            this.TitleList = titleList;
-            this.InvisibleColumnList = invisibleColumnList;
-            this.NumericColumnList = numericColumnList;
-            this.AddForm = addForm;
-            this.ViewForm = viewForm;
-            this.AddAuthority = addAuthority;
-            this.ViewAuthority = viewAuthority;
-        }
+        //public DataViewParam(string title, string selectSql, string fromSql, string whereSql, string groupSql, string tableName, int searchParamCount, int fixedColumnNumber, string hidebox, string strechImage, string showImage, List<string> titleList, List<int> invisibleColumnList, List<int> numericColumnList, Form addForm, Form viewForm, string addAuthority, string viewAuthority)
+        //{
+        //    this.Title = title;
+        //    this.SelectSql = selectSql;
+        //    this.FromSql = fromSql;
+        //    this.WhereSql = whereSql;
+        //    this.GroupSql = groupSql;
+        //    this.TableName = tableName;
+        //    this.SearchParamCount = searchParamCount;
+        //    this.FixedColumnNumber = fixedColumnNumber;
+        //    this.Hidebox = hidebox;
+        //    this.StrechImage = strechImage;
+        //    this.ShowImage = showImage;
+        //    this.TitleList = titleList;
+        //    this.InvisibleColumnList = invisibleColumnList;
+        //    this.NumericColumnList = numericColumnList;
+        //    this.AddForm = addForm;
+        //    this.ViewForm = viewForm;
+        //    this.AddAuthority = addAuthority;
+        //    this.ViewAuthority = viewAuthority;
+        //}
 
         public string Title { get => title; set => title = value; }
         public string SelectSql { get => selectSql; set => selectSql = value; }

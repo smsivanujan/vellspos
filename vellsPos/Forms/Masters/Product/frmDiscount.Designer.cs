@@ -33,10 +33,12 @@
             this.lbl_title = new System.Windows.Forms.Label();
             this.btn_close = new System.Windows.Forms.Button();
             this.pnl_root = new System.Windows.Forms.Panel();
+            this.btn_delete = new System.Windows.Forms.Button();
             this.btn_save = new System.Windows.Forms.Button();
             this.btn_cancel = new System.Windows.Forms.Button();
             this.pnl_body = new System.Windows.Forms.Panel();
             this.pnl_container = new System.Windows.Forms.Panel();
+            this.txt_id = new System.Windows.Forms.TextBox();
             this.lb_user = new System.Windows.Forms.Label();
             this.cb_status = new System.Windows.Forms.CheckBox();
             this.dtp_dateTo = new System.Windows.Forms.DateTimePicker();
@@ -47,7 +49,6 @@
             this.rtxt_description = new System.Windows.Forms.RichTextBox();
             this.txt_discountName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.btn_delete = new System.Windows.Forms.Button();
             this.pnl_head.SuspendLayout();
             this.pnl_root.SuspendLayout();
             this.pnl_body.SuspendLayout();
@@ -102,6 +103,23 @@
             this.pnl_root.Size = new System.Drawing.Size(427, 75);
             this.pnl_root.TabIndex = 1;
             // 
+            // btn_delete
+            // 
+            this.btn_delete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_delete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.btn_delete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_delete.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_delete.Image = ((System.Drawing.Image)(resources.GetObject("btn_delete.Image")));
+            this.btn_delete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_delete.Location = new System.Drawing.Point(79, 12);
+            this.btn_delete.Name = "btn_delete";
+            this.btn_delete.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btn_delete.Size = new System.Drawing.Size(108, 51);
+            this.btn_delete.TabIndex = 5;
+            this.btn_delete.Text = "Delete";
+            this.btn_delete.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_delete.UseVisualStyleBackColor = false;
+            // 
             // btn_save
             // 
             this.btn_save.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
@@ -147,6 +165,7 @@
             // 
             // pnl_container
             // 
+            this.pnl_container.Controls.Add(this.txt_id);
             this.pnl_container.Controls.Add(this.lb_user);
             this.pnl_container.Controls.Add(this.cb_status);
             this.pnl_container.Controls.Add(this.dtp_dateTo);
@@ -161,12 +180,18 @@
             this.pnl_container.Name = "pnl_container";
             this.pnl_container.Size = new System.Drawing.Size(403, 464);
             this.pnl_container.TabIndex = 0;
-            this.pnl_container.Paint += new System.Windows.Forms.PaintEventHandler(this.pnl_container_Paint);
+            // 
+            // txt_id
+            // 
+            this.txt_id.Location = new System.Drawing.Point(245, 58);
+            this.txt_id.Name = "txt_id";
+            this.txt_id.Size = new System.Drawing.Size(41, 23);
+            this.txt_id.TabIndex = 89;
             // 
             // lb_user
             // 
             this.lb_user.AutoSize = true;
-            this.lb_user.Location = new System.Drawing.Point(366, 436);
+            this.lb_user.Location = new System.Drawing.Point(387, 449);
             this.lb_user.Name = "lb_user";
             this.lb_user.Size = new System.Drawing.Size(13, 15);
             this.lb_user.TabIndex = 68;
@@ -176,7 +201,7 @@
             // 
             this.cb_status.AutoSize = true;
             this.cb_status.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.cb_status.Location = new System.Drawing.Point(18, 265);
+            this.cb_status.Location = new System.Drawing.Point(18, 263);
             this.cb_status.Name = "cb_status";
             this.cb_status.Size = new System.Drawing.Size(85, 29);
             this.cb_status.TabIndex = 67;
@@ -188,7 +213,7 @@
             this.dtp_dateTo.CustomFormat = "yyyy-MM-dd";
             this.dtp_dateTo.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.dtp_dateTo.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtp_dateTo.Location = new System.Drawing.Point(18, 208);
+            this.dtp_dateTo.Location = new System.Drawing.Point(18, 206);
             this.dtp_dateTo.Name = "dtp_dateTo";
             this.dtp_dateTo.Size = new System.Drawing.Size(221, 33);
             this.dtp_dateTo.TabIndex = 66;
@@ -198,7 +223,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI Historic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(18, 175);
+            this.label5.Location = new System.Drawing.Point(18, 173);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(86, 30);
             this.label5.TabIndex = 65;
@@ -208,7 +233,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI Historic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(18, 96);
+            this.label4.Location = new System.Drawing.Point(18, 94);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(110, 30);
             this.label4.TabIndex = 64;
@@ -219,7 +244,7 @@
             this.dtp_dateFrom.CustomFormat = "yyyy-MM-dd";
             this.dtp_dateFrom.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.dtp_dateFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtp_dateFrom.Location = new System.Drawing.Point(18, 129);
+            this.dtp_dateFrom.Location = new System.Drawing.Point(18, 127);
             this.dtp_dateFrom.Name = "dtp_dateFrom";
             this.dtp_dateFrom.Size = new System.Drawing.Size(221, 33);
             this.dtp_dateFrom.TabIndex = 63;
@@ -229,7 +254,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Historic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(10, 310);
+            this.label1.Location = new System.Drawing.Point(10, 305);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(118, 30);
             this.label1.TabIndex = 62;
@@ -238,7 +263,7 @@
             // rtxt_description
             // 
             this.rtxt_description.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.rtxt_description.Location = new System.Drawing.Point(10, 343);
+            this.rtxt_description.Location = new System.Drawing.Point(10, 338);
             this.rtxt_description.Name = "rtxt_description";
             this.rtxt_description.Size = new System.Drawing.Size(221, 108);
             this.rtxt_description.TabIndex = 61;
@@ -247,7 +272,7 @@
             // txt_discountName
             // 
             this.txt_discountName.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.txt_discountName.Location = new System.Drawing.Point(18, 49);
+            this.txt_discountName.Location = new System.Drawing.Point(18, 47);
             this.txt_discountName.Multiline = true;
             this.txt_discountName.Name = "txt_discountName";
             this.txt_discountName.PlaceholderText = "discount";
@@ -258,28 +283,11 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Historic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(18, 16);
+            this.label2.Location = new System.Drawing.Point(18, 14);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(157, 30);
             this.label2.TabIndex = 59;
             this.label2.Text = "Discount Name";
-            // 
-            // btn_delete
-            // 
-            this.btn_delete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_delete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.btn_delete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_delete.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn_delete.Image = ((System.Drawing.Image)(resources.GetObject("btn_delete.Image")));
-            this.btn_delete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_delete.Location = new System.Drawing.Point(79, 12);
-            this.btn_delete.Name = "btn_delete";
-            this.btn_delete.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btn_delete.Size = new System.Drawing.Size(108, 51);
-            this.btn_delete.TabIndex = 5;
-            this.btn_delete.Text = "Delete";
-            this.btn_delete.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btn_delete.UseVisualStyleBackColor = false;
             // 
             // frmDiscount
             // 
@@ -292,7 +300,7 @@
             this.Name = "frmDiscount";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmForm";
-            this.Load += new System.EventHandler(this.FrmForm_Load);
+            this.Load += new System.EventHandler(this.frmDiscount_Load);
             this.pnl_head.ResumeLayout(false);
             this.pnl_head.PerformLayout();
             this.pnl_root.ResumeLayout(false);
@@ -324,5 +332,6 @@
         private Label lb_user;
         private CheckBox cb_status;
         private Button btn_delete;
+        private TextBox txt_id;
     }
 }

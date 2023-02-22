@@ -19,7 +19,13 @@
     <Compile Update="Forms\Layouts\frmReference.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\Layouts\frmTestBarcode.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\Layouts\frmTestForms.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Layouts\frmView.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\Masters\Other\frmDBUpload.cs">

@@ -13,25 +13,29 @@ namespace vellsPos.Entities.Masters
         private Int32 id;
         private String subCoCategoryName;
         private SubCategory subCategory;
+        private String image;
         private String description;
+
 
         public SubCoCategory()
         {
 
         }
 
-        public SubCoCategory(int id, string subCoCategoryName, SubCategory subCategory, string description)
+        public SubCoCategory(int id, string subCoCategoryName, SubCategory subCategory, string image, string description)
         {
             this.Id = id;
             this.SubCoCategoryName = subCoCategoryName;
             this.SubCategory = subCategory;
+            this.Image = image;
             this.Description = description;
         }
 
         public int Id { get => id; set => id = value; }
         public string SubCoCategoryName { get => subCoCategoryName; set => subCoCategoryName = value; }
-        public string Description { get => description; set => description = value; }
         internal SubCategory SubCategory { get => subCategory; set => subCategory = value; }
+        public string Image { get => image; set => image = value; }
+        public string Description { get => description; set => description = value; }
 
         public static ReturnResult store(SubCoCategory subCoCategory)
         {
@@ -41,11 +45,12 @@ namespace vellsPos.Entities.Masters
             {
                 //store data
                 string sql = "INSERT INTO `sub_co_categories` " +
-                    "(`sub_co_category_name`,`sub_category_id`,`description`) VALUES (@sub_co_category_name,@sub_category_id,@description)";
+                    "(`sub_co_category_name`,`sub_category_id`,`image`,`description`) VALUES (@sub_co_category_name,@sub_category_id,@image,@description)";
                 List<QueryParameter> parameters = new List<QueryParameter>();
-                parameters.Add(new QueryParameter("sub_co_category_name", MySqlDbType.String, subCoCategory.subCoCategoryName));
+                parameters.Add(new QueryParameter("sub_co_category_name", MySqlDbType.String, subCoCategory.SubCoCategoryName));
                 parameters.Add(new QueryParameter("sub_category_id", MySqlDbType.Int32, subCoCategory.SubCategory.Id));
-                parameters.Add(new QueryParameter("description", MySqlDbType.String, subCoCategory.description));
+                parameters.Add(new QueryParameter("image", MySqlDbType.String, subCoCategory.image));
+                parameters.Add(new QueryParameter("description", MySqlDbType.String, subCoCategory.Description));
 
                 commands.Add(new QueryCommand(sql, parameters));
                 result = DBTransactionService.executeNonQuery(commands);
@@ -70,12 +75,14 @@ namespace vellsPos.Entities.Masters
                 string sql = "UPDATE `sub_co_categories` SET " +
                     "`sub_co_category_name` = @sub_co_category_name, " +
                      "`sub_category_id` = @sub_category_id, " +
+                     "`image` = @image, " +
                     "`description` = @description " +
                     " WHERE `id` = @id ";
                 List<QueryParameter> parameters = new List<QueryParameter>();
-                parameters.Add(new QueryParameter("sub_co_category_name", MySqlDbType.String, subCoCategory.subCoCategoryName));
+                parameters.Add(new QueryParameter("sub_co_category_name", MySqlDbType.String, subCoCategory.SubCoCategoryName));
                 parameters.Add(new QueryParameter("sub_category_id", MySqlDbType.Int32, subCoCategory.SubCategory.Id));
-                parameters.Add(new QueryParameter("description", MySqlDbType.String, subCoCategory.description));
+                parameters.Add(new QueryParameter("image", MySqlDbType.String, subCoCategory.image));
+                parameters.Add(new QueryParameter("description", MySqlDbType.String, subCoCategory.Description));
 
                 commands.Add(new QueryCommand(sql, parameters));
                 result = DBTransactionService.executeNonQuery(commands);
@@ -137,9 +144,10 @@ namespace vellsPos.Entities.Masters
 
                 if (dbData != null)
                 {
-                    subCoCategory.subCoCategoryName = dbData["sub_co_category_name"];
-                    subCoCategory.subCategory = subCategory;
-                    subCoCategory.description = dbData["description"];
+                    subCoCategory.SubCoCategoryName = dbData["sub_co_category_name"];
+                    subCoCategory.SubCategory = subCategory;
+                    subCoCategory.image = dbData["image"];
+                    subCoCategory.Description = dbData["description"];
                 }
                 else
                 {

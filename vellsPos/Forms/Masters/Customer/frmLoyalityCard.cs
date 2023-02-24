@@ -28,21 +28,21 @@ namespace vellsPos.Forms.Layouts
 
         private void frmLoyalityCard_Load(object sender, EventArgs e)
         {
-            String customerQuery = "SELECT id as value,concat(customer_number,' ',customer_first_name) as text FROM customers";
-            customers = DBTransactionService.getDataAsListItemsAndFillComboBox(customerQuery, cmb_customer);
+            //String customerQuery = "SELECT id as value,concat(customer_number,' ',customer_first_name) as text FROM customers";
+            //customers = DBTransactionService.getDataAsListItemsAndFillComboBox(customerQuery, cmb_customer);
 
-            if (customers.Count > 0)
-            {
-                cmb_customer.SelectedIndex = 0;
-            }
+            //if (customers.Count > 0)
+            //{
+            //    cmb_customer.SelectedIndex = 0;
+            //}
 
-            uid = this.Tag.ToString();
-            if (String.IsNullOrEmpty(uid))
+            if (this.Tag is null)
             {
                 //
             }
             else
             {
+                uid = this.Tag.ToString();
                 fillData();
             }
         }
@@ -51,7 +51,7 @@ namespace vellsPos.Forms.Layouts
         {
             LoyalityCard loyalityCard = LoyalityCard.getOneLoyalityCard(Int32.Parse(uid));
             txt_id.Text = uid;
-            cmb_customer.Text = loyalityCard.Customer.CustomerFirstName;
+            txt_customer.Text = loyalityCard.Customer.CustomerFirstName;
             txt_cardNumber.Text = loyalityCard.CardNumber;
             cmb_cardType.Text = loyalityCard.CardType;
             dtp_issuedDate.Text = loyalityCard.IssuedDate;
@@ -129,14 +129,14 @@ namespace vellsPos.Forms.Layouts
             }
             else
             {
-                int customerId = 0;
-                if (cmb_customer.SelectedIndex >= 0)
-                {
-                    customerId = int.Parse(customers[cmb_customer.SelectedIndex].Value);
-                }
+                //int customerId = 0;
+                //if (cmb_customer.SelectedIndex >= 0)
+                //{
+                //    customerId = int.Parse(customers[cmb_customer.SelectedIndex].Value);
+                //}
 
                 Customer customer = new Customer();
-                customer.Id = customerId;
+                customer.Id = Convert.ToInt32(txt_customerID.Text);
                 User user = new User();
                 user.Id = 1;
 
@@ -156,7 +156,7 @@ namespace vellsPos.Forms.Layouts
 
                 //ReturnResult result = LoyalityCard.store(loyalityCard);
 
-                if (String.IsNullOrEmpty(txt_id.Text))
+                if (this.Tag is null)
                 {
                     //save();
                     result = LoyalityCard.store(loyalityCard);
@@ -208,6 +208,19 @@ namespace vellsPos.Forms.Layouts
             //frmProductCreate p = new frmProductCreate() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
             //this.pnl_container.Controls.Add(p);
             //p.Show();
+        }
+
+        private void txt_customer_Click(object sender, EventArgs e)
+        {
+            Customer.showOnViewFormCustomer(txt_customer, txt_customerID);
+        }
+
+        private void txt_customerID_TextChanged(object sender, EventArgs e)
+        {
+            String customerNameQuery = "SELECT concat(customer_first_name,' ',customer_last_name)  FROM customers WHERE id='" + txt_customerID.Text + "' ";
+            String customerName = DBTransactionService.getScalerData(customerNameQuery);
+
+            txt_customer.Text = customerName;
         }
     }
 }

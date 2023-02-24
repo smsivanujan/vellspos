@@ -76,6 +76,7 @@ namespace vellsPos.Entities.Masters
                 parameters.Add(new QueryParameter("date", MySqlDbType.DateTime, payment.date));
                 parameters.Add(new QueryParameter("sale_id", MySqlDbType.Int32, payment.sale.Id));
                 parameters.Add(new QueryParameter("payable_amount", MySqlDbType.Decimal, payment.payableAmount));
+                parameters.Add(new QueryParameter("id", MySqlDbType.Int32, payment.Id));
 
                 commands.Add(new QueryCommand(sql, parameters));
                 result = DBTransactionService.executeNonQuery(commands);

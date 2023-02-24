@@ -22,6 +22,7 @@ namespace vellsPos.Entities.Masters
 
 
         }
+        
         public DBUpload(int id, DateTime uploadDate, string api, string type, int status, string description)
         {
             this.Id = id;
@@ -88,6 +89,7 @@ namespace vellsPos.Entities.Masters
                 parameters.Add(new QueryParameter("type", MySqlDbType.String, dBUpload.type));
                 parameters.Add(new QueryParameter("status", MySqlDbType.Int32, dBUpload.status));
                 parameters.Add(new QueryParameter("description", MySqlDbType.String, dBUpload.Description));
+                parameters.Add(new QueryParameter("id", MySqlDbType.Int32, dBUpload.Id));
 
                 commands.Add(new QueryCommand(sql, parameters));
                 result = DBTransactionService.executeNonQuery(commands);
@@ -128,9 +130,17 @@ namespace vellsPos.Entities.Masters
         {
             DataViewParam dvParam = new DataViewParam();
             dvParam.Title = "Database Uploads";
-            dvParam.SelectSql = "SELECT du.id, du.upload_date, du.type, du.status, du.description ";
+            dvParam.SelectSql = "SELECT " +
+                "du.id, " +
+                "date_format(du.upload_date,'%Y-%m-%d %H:%i'), " +
+                "du.type, " +
+                "du.status, " +
+                "du.description ";
             dvParam.FromSql = "FROM  db_uploads du " +
-                "WHERE du.upload_date like @s1 or du.type like @s2 or  du.status like @s3 or du.descriptionn like @s4 " +
+                "WHERE du.upload_date like @s1 or " +
+                "du.type like @s2 or  " +
+                "du.status like @s3 or " +
+                "du.descriptionn like @s4 " +
                 "ORDER BY du.id DESC ";
             dvParam.SearchParamCount = 3; //name and description
             dvParam.TitleList = new List<string>() { "", "Date", "Type", "Status", "Description" }; //Column titles
@@ -153,7 +163,14 @@ namespace vellsPos.Entities.Masters
             DBUpload dBUpload = new DBUpload();
             try
             {
-                String query = "SELECT * FROM db_uploads where id = '" + id + "'";
+                String query = "SELECT id, " +
+                    "date_format(upload_date,'%Y-%m-%d %H:%i') AS upload_date, " +
+                    "api, " +
+                    "type, " +
+                    "status, " +
+                    "description " +
+                    "FROM db_uploads " +
+                    "WHERE id = '" + id + "'";
                 Dictionary<String, String> dbData = DBTransactionService.getDataAsDictionary(query);
 
                 if (dbData != null)

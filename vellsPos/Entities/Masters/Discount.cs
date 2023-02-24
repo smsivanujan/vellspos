@@ -51,7 +51,8 @@ namespace vellsPos.Entities.Masters
             {
                 //store data
                 string sql = "INSERT INTO `discounts` " +
-                    "(`discount_name`,`date_to`,`date_from`,`status`,`description`,`user_id`) VALUES (@discount_name,@date_to,@date_from,@status,@description,@user_id)";
+                    "(`discount_name`,`date_to`,`date_from`,`status`,`description`,`user_id`) " +
+                    "VALUES (@discount_name,@date_to,@date_from,@status,@description,@user_id)";
                 List<QueryParameter> parameters = new List<QueryParameter>();
                 parameters.Add(new QueryParameter("discount_name", MySqlDbType.String, discount.discountName));
                 parameters.Add(new QueryParameter("date_to", MySqlDbType.String, discount.dateFrom));
@@ -90,11 +91,12 @@ namespace vellsPos.Entities.Masters
                     " WHERE `id` = @id ";
                 List<QueryParameter> parameters = new List<QueryParameter>();
                 parameters.Add(new QueryParameter("discount_name", MySqlDbType.String, discount.discountName));
-                parameters.Add(new QueryParameter("date_to", MySqlDbType.DateTime, discount.dateFrom));
-                parameters.Add(new QueryParameter("date_from", MySqlDbType.DateTime, discount.DateTo));
+                parameters.Add(new QueryParameter("date_to", MySqlDbType.String, discount.dateFrom));
+                parameters.Add(new QueryParameter("date_from", MySqlDbType.String, discount.DateTo));
                 parameters.Add(new QueryParameter("status", MySqlDbType.Int32, discount.status));
                 parameters.Add(new QueryParameter("description", MySqlDbType.String, discount.description));
                 parameters.Add(new QueryParameter("user_id", MySqlDbType.Int32, discount.user.Id));
+                parameters.Add(new QueryParameter("id", MySqlDbType.Int32, discount.Id));
 
                 commands.Add(new QueryCommand(sql, parameters));
                 result = DBTransactionService.executeNonQuery(commands);
@@ -135,9 +137,19 @@ namespace vellsPos.Entities.Masters
         {
             DataViewParam dvParam = new DataViewParam();
             dvParam.Title = "Discounts";
-            dvParam.SelectSql = "SELECT d.id, d.discount_name, d.date_to, d.date_from, d.description, d.status ";
+            dvParam.SelectSql = "SELECT " +
+                "d.id, " +
+                "d.discount_name, " +
+                "date_format(d.date_to,'%Y-%m-%d %H:%i'), " +
+                "date_format(d.date_from,'%Y-%m-%d %H:%i'), " +
+                "d.description, " +
+                "d.status ";
             dvParam.FromSql = "FROM  discounts d " +
-                "WHERE d.discount_name like @s1 or d.date_to like @s2 or d.date_from like @s3 or d.status like @s4 " +
+                "WHERE " +
+                "d.discount_name like @s1 or " +
+                "d.date_to like @s2 or " +
+                "d.date_from like @s3 or " +
+                "d.status like @s4 " +
                 "ORDER BY d.id DESC ";
             dvParam.SearchParamCount = 3; //name and description
             dvParam.TitleList = new List<string>() { "", "Discount", "Date From", "Date To", "Description", "Status" }; //Column titles
@@ -161,7 +173,15 @@ namespace vellsPos.Entities.Masters
             User user = new User();
             try
             {
-                String query = "SELECT * FROM discounts where id = '" + id + "'";
+                String query = "SELECT " +
+                    "id, " +
+                    "discount_name, " +
+                    "date_format(date_to,'%Y-%m-%d %H:%i') AS date_to, " +
+                    "date_format(date_from,'%Y-%m-%d %H:%i') AS date_from, " +
+                    "description, " +
+                    "status " +
+                    "FROM discounts " +
+                    "WHERE id = '" + id + "'";
                 Dictionary<String, String> dbData = DBTransactionService.getDataAsDictionary(query);
 
                 if (dbData != null)
@@ -171,7 +191,6 @@ namespace vellsPos.Entities.Masters
                     discount.dateFrom = dbData["date_from"];
                     discount.status = Convert.ToInt32(dbData["status"]);
                     discount.description = dbData["description"];
-                    discount.user = user;
                 }
                 else
                 {

@@ -44,43 +44,20 @@ namespace vellsPos.Forms.Layouts
                 cmb_role.SelectedIndex = 0;
             }
 
-            uid = this.Tag.ToString();
-            if (String.IsNullOrEmpty(uid))
+            if (this.Tag is null)
             {
                 //
             }
             else
             {
-
+                uid = this.Tag.ToString();
                 fillData();
             }
         }
 
         private void fillData()
         {
-
-            //String branchQuery = "SELECT id as value,branch_name as text FROM branches";
-            //branches = DBTransactionService.getDataAsListItemsAndFillComboBox(branchQuery, cmb_branch);
-
-            //if (branches.Count > 0)
-            //{
-            //    cmb_branch.SelectedIndex = 0;
-            //}
-
-            //String roleQuery = "SELECT id as value,role_name as text FROM roles";
-            //roles = DBTransactionService.getDataAsListItemsAndFillComboBox(roleQuery, cmb_role);
-
-            //if (roles.Count > 0)
-            //{
-            //    cmb_role.SelectedIndex = 0;
-            //}
-
-           
             User user = User.getOneUser(Int32.Parse(uid));
-            //Console.WriteLine("xxxxxxxxxxxxxxxxxxxxxx");
-            //Console.WriteLine(user.UserName);
-            //Console.WriteLine(user.Branch.BranchName);
-            //Console.WriteLine("xxxxxxxxxxxxxxxxxxxxxx");
             txt_id.Text = uid;
             txt_userName.Text = user.UserName;
             cmb_branch.Text= user.Branch.BranchName;
@@ -196,7 +173,7 @@ namespace vellsPos.Forms.Layouts
                 user.Password = txt_password.Text;
                 user.Authentication = authentication;
 
-                if (String.IsNullOrEmpty(txt_id.Text))
+                if (this.Tag is null)
                 {
                     //save();
                     result = User.store(user);

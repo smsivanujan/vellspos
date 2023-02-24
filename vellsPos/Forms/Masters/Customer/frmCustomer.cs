@@ -26,13 +26,13 @@ namespace vellsPos.Forms.Layouts
 
         private void frmCustomer_Load(object sender, EventArgs e)
         {
-            uid = this.Tag.ToString();
-            if (String.IsNullOrEmpty(uid))
+            if (this.Tag is null)
             {
                 //
             }
             else
             {
+                uid = this.Tag.ToString();
                 fillData();
             }
         }
@@ -43,7 +43,7 @@ namespace vellsPos.Forms.Layouts
             txt_id.Text = uid;
             txt_customerNumber.Text = customer.CustomerNumber;
             txt_customerFirstName.Text = customer.CustomerFirstName;
-            txt_cusromerLastName.Text = customer.CustomerLastName;
+            txt_customerLastName.Text = customer.CustomerLastName;
             dtp_dateOfBirth.Text = customer.DateOfBirth;
             if(customer.Gender==1)
             {
@@ -118,7 +118,7 @@ namespace vellsPos.Forms.Layouts
         {
             ReturnResult numberResult = Validator.validateText(txt_customerNumber.Text, "Number");
             ReturnResult fNameResult = Validator.validateText(txt_customerFirstName.Text, "First Name");
-            ReturnResult lNameResult = Validator.validateText(txt_cusromerLastName.Text, "Last Name");
+            ReturnResult lNameResult = Validator.validateText(txt_customerLastName.Text, "Last Name");
             ReturnResult emailResult = Validator.validateText(txt_Email.Text, "Email");
             ReturnResult identyResult = Validator.validateText(txt_nic.Text, "Identy Card");
             ReturnResult pnumberResult = Validator.validateText(txt_phoneNumber.Text, "Phone Number");
@@ -152,7 +152,7 @@ namespace vellsPos.Forms.Layouts
                 Customer customer = new Customer();
                 customer.CustomerNumber = txt_customerNumber.Text;
                 customer.CustomerFirstName = txt_customerFirstName.Text;
-                customer.CustomerLastName = txt_cusromerLastName.Text;
+                customer.CustomerLastName = txt_customerLastName.Text;
                 customer.DateOfBirth = dtp_dateOfBirth.Value.ToString("yyyy-MM-dd");
 
                 if (cmb_gender.Text == "Male")
@@ -179,7 +179,7 @@ namespace vellsPos.Forms.Layouts
 
                 //ReturnResult result = Customer.store(customer);
 
-                if (String.IsNullOrEmpty(txt_id.Text))
+                if (this.Tag is null)
                 {
                     //save();
                     result = Customer.store(customer);

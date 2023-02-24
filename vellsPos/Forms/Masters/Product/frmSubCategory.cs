@@ -37,13 +37,13 @@ namespace vellsPos.Forms.Layouts
                 cmb_category.SelectedIndex = 0;
             }
 
-            uid = this.Tag.ToString();
-            if (String.IsNullOrEmpty(uid))
+            if (this.Tag is null)
             {
                 //
             }
             else
             {
+                uid = this.Tag.ToString();
                 fillData();
             }
         }
@@ -167,7 +167,7 @@ namespace vellsPos.Forms.Layouts
                 subCategory.Image = directoryPath;//root folder to save
                 //ReturnResult result = SubCategory.store(subCategory);
 
-                if (String.IsNullOrEmpty(txt_id.Text))
+                if (this.Tag is null)
                 {
                     //save();
                     result = SubCategory.store(subCategory);

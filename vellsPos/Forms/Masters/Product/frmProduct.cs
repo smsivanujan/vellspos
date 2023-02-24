@@ -36,13 +36,13 @@ namespace vellsPos.Forms.Layouts
                 cmb_subCoCategory.SelectedIndex = 0;
             }
 
-            uid = this.Tag.ToString();
-            if (String.IsNullOrEmpty(uid))
+            if (this.Tag is null)
             {
                 //
             }
             else
             {
+                uid = this.Tag.ToString();
                 fillData();
             }
         }
@@ -188,7 +188,7 @@ namespace vellsPos.Forms.Layouts
                 product.User = user;
                 //ReturnResult result = Product.store(product);
 
-                if (String.IsNullOrEmpty(txt_id.Text))
+                if (this.Tag is null)
                 {
                     //save();
                     result = Product.store(product);

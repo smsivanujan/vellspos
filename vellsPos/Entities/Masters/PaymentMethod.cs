@@ -70,6 +70,7 @@ namespace vellsPos.Entities.Masters
                 List<QueryParameter> parameters = new List<QueryParameter>();
                 parameters.Add(new QueryParameter("payment_method_name", MySqlDbType.String, paymentMethod.paymentMethodName));
                 parameters.Add(new QueryParameter("description", MySqlDbType.String, paymentMethod.description));
+                parameters.Add(new QueryParameter("id", MySqlDbType.Int32, paymentMethod.Id));
 
                 commands.Add(new QueryCommand(sql, parameters));
                 result = DBTransactionService.executeNonQuery(commands);
@@ -110,9 +111,14 @@ namespace vellsPos.Entities.Masters
         {
             DataViewParam dvParam = new DataViewParam();
             dvParam.Title = "Payment Methods";
-            dvParam.SelectSql = "SELECT pm.id, pm.payment_method_name, pm.description ";
+            dvParam.SelectSql = "SELECT " +
+                "pm.id, " +
+                "pm.payment_method_name, " +
+                "pm.description ";
             dvParam.FromSql = "FROM  payment_methods pm " +
-                "WHERE pm.payment_method_name like @s1 or pm.description like @s2 " +
+                "WHERE " +
+                "pm.payment_method_name like @s1 or " +
+                "pm.description like @s2 " +
                 "ORDER BY pm.id DESC ";
             dvParam.SearchParamCount = 1; //name and description
             dvParam.TitleList = new List<string>() { "", "Payment Method", "Description" }; //Column titles
@@ -135,13 +141,18 @@ namespace vellsPos.Entities.Masters
             PaymentMethod paymentMethod = new PaymentMethod();
             try
             {
-                String query = "SELECT * FROM payment_methods where id = '" + id + "'";
+                String query = "SELECT " +
+                    "id, " +
+                    "payment_method_name, " +
+                    "description " +
+                    "FROM payment_methods " +
+                    "WHERE id = '" + id + "'";
                 Dictionary<String, String> dbData = DBTransactionService.getDataAsDictionary(query);
 
                 if (dbData != null)
                 {
                     paymentMethod.paymentMethodName = dbData["payment_method_name"];
-                    paymentMethod.Description = dbData["description"];
+                    paymentMethod.description = dbData["description"];
                 }
                 else
                 {

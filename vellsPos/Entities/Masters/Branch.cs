@@ -118,10 +118,17 @@ namespace vellsPos.Entities.Masters
         {
             DataViewParam dvParam = new DataViewParam();
             dvParam.Title = "Branches";
-            dvParam.SelectSql = "SELECT b.id, s.shop_name, b.branch_name, b.status ";
+            dvParam.SelectSql = "SELECT " +
+                "b.id, " +
+                "s.shop_name, " +
+                "b.branch_name, " +
+                "b.status ";
             dvParam.FromSql = "FROM  branches b " +
                  "INNER JOIN shops s ON b.shop_id = s.id " +
-                "WHERE s.shop_name like @s1 or b.branch_name like @s2 or b.status like @s3 " +
+                "WHERE " +
+                "s.shop_name like @s1 or " +
+                "b.branch_name like @s2 or " +
+                "b.status like @s3 " +
                 "ORDER BY b.id DESC ";
             dvParam.SearchParamCount = 2; //name and description
             dvParam.TitleList = new List<string>() { "", "Shop", "Branch", "Status" }; //Column titles
@@ -145,14 +152,22 @@ namespace vellsPos.Entities.Masters
             Shop shop = new Shop();
             try
             {
-                String query = "SELECT * FROM branches where id = '" + id + "'";
+                String query = "SELECT " +
+                    "b.id, " +
+                    "s.shop_name AS shop, " +
+                    "b.branch_name, " +
+                    "b.status " +
+                    "FROM branches b " +
+                    "INNER JOIN shops s ON b.shop_id = s.id " +
+                    "WHERE b.id = '" + id + "'";
                 Dictionary<String, String> dbData = DBTransactionService.getDataAsDictionary(query);
 
                 if (dbData != null)
                 {
-                    branch.BranchName = dbData["branch_name"];
-                    branch.Shop = shop;
-                    branch.Status = Convert.ToInt32(dbData["status"]);
+                    branch.branchName = dbData["branch_name"];
+                    shop.ShopName = dbData["shop"];
+                    branch.shop = shop;
+                    branch.status = Convert.ToInt32(dbData["status"]);
                 }
                 else
                 {

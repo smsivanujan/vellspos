@@ -98,6 +98,7 @@ namespace vellsPos.Entities.Masters
                 parameters.Add(new QueryParameter("barcode_width", MySqlDbType.Decimal, productBarcode.barcodeWidth));
                 parameters.Add(new QueryParameter("barcode_height", MySqlDbType.Decimal, productBarcode.barcodeHeight));
                 parameters.Add(new QueryParameter("barcode_image", MySqlDbType.String, productBarcode.BarcodeImage));
+                parameters.Add(new QueryParameter("id", MySqlDbType.Int32, productBarcode.Id));
 
                 commands.Add(new QueryCommand(sql, parameters));
                 result = DBTransactionService.executeNonQuery(commands);
@@ -138,10 +139,19 @@ namespace vellsPos.Entities.Masters
         {
             DataViewParam dvParam = new DataViewParam();
             dvParam.Title = "Product Barcodes";
-            dvParam.SelectSql = "SELECT pb.id, concat(p.product_number +' '+ p.product_name), pb.barcode_number, pb.barcode_type, pb.barcode_width, pb.barcode_height ";
+            dvParam.SelectSql = "SELECT " +
+                "pb.id, " +
+                "concat(p.product_number,' ',p.product_name), " +
+                "pb.barcode_number, " +
+                "pb.barcode_type, " +
+                "pb.barcode_width, " +
+                "pb.barcode_height ";
             dvParam.FromSql = "FROM  product_barcodes pb " +
                  "INNER JOIN products p ON pb.product_id = p.id " +
-                "WHERE p.product_name like @s1 or pb.barcode_number like @s2 or pb.barcode_type like @s3 " +
+                "WHERE " +
+                "p.product_name like @s1 or " +
+                "pb.barcode_number like @s2 or " +
+                "pb.barcode_type like @s3 " +
                 "ORDER BY pb.id DESC ";
             dvParam.SearchParamCount = 5; //name and description
             dvParam.TitleList = new List<string>() { "", "Product", "Barcode Number", "Barcode type", "Barcode Width", "Barcode Height" }; //Column titles
@@ -166,11 +176,24 @@ namespace vellsPos.Entities.Masters
             Discount discount = new Discount();
             try
             {
-                String query = "SELECT * FROM product_barcodes where id = '" + id + "'";
+                String query = "SELECT " +
+                    "pb.id, " +
+                    "p.product_number AS productNu, " +
+                    "p.product_name AS productNa, " +
+                    "pb.barcode_number, " +
+                    "pb.barcode_type, " +
+                    "pb.barcode_width, " +
+                    "pb.barcode_height, " +
+                    "pb.barcode_image " +
+                    "FROM product_barcodes pb " +
+                    "INNER JOIN products p ON pb.product_id = p.id " +
+                    "WHERE pb.id = '" + id + "'";
                 Dictionary<String, String> dbData = DBTransactionService.getDataAsDictionary(query);
 
                 if (dbData != null)
                 {
+                    product.ProductNumber = dbData["productNu"];
+                    product.ProductName = dbData["productNa"];
                     productBarcode.product = product;
                     productBarcode.barcodeNumber = dbData["barcode_number"];
                     productBarcode.barcodeType = dbData["barcode_type"];

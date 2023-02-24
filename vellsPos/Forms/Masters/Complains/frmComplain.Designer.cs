@@ -200,6 +200,7 @@
             // 
             // cmb_type
             // 
+            this.cmb_type.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb_type.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.cmb_type.FormattingEnabled = true;
             this.cmb_type.Items.AddRange(new object[] {
@@ -246,6 +247,7 @@
             // 
             // cmb_priority
             // 
+            this.cmb_priority.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb_priority.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.cmb_priority.FormattingEnabled = true;
             this.cmb_priority.Items.AddRange(new object[] {

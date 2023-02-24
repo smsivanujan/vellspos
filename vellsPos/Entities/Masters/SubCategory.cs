@@ -83,6 +83,7 @@ namespace vellsPos.Entities.Masters
                 parameters.Add(new QueryParameter("category_id", MySqlDbType.Int32, subCategory.category.Id));
                 parameters.Add(new QueryParameter("image", MySqlDbType.String, subCategory.image));
                 parameters.Add(new QueryParameter("description", MySqlDbType.String, subCategory.description));
+                parameters.Add(new QueryParameter("id", MySqlDbType.Int32, subCategory.Id));
 
                 commands.Add(new QueryCommand(sql, parameters));
                 result = DBTransactionService.executeNonQuery(commands);
@@ -123,10 +124,16 @@ namespace vellsPos.Entities.Masters
         {
             DataViewParam dvParam = new DataViewParam();
             dvParam.Title = "Sub Categories";
-            dvParam.SelectSql = "SELECT sc.id, c.category_name, sc.sub_category_name, sc.description ";
+            dvParam.SelectSql = "SELECT " +
+                "sc.id, " +
+                "c.category_name, " +
+                "sc.sub_category_name, " +
+                "sc.description ";
             dvParam.FromSql = "FROM  sub_categories sc " +
                   "INNER JOIN categories c ON sc.category_id = c.id " +
-                "WHERE c.category_name like @s1 or sc.sub_category_name like @s2 " +
+                "WHERE " +
+                "c.category_name like @s1 or " +
+                "sc.sub_category_name like @s2 " +
                 "ORDER BY sc.id DESC ";
             dvParam.SearchParamCount = 1; //name and description
             dvParam.TitleList = new List<string>() { "", "Category", "Sub Category", "Description" }; //Column titles
@@ -150,21 +157,23 @@ namespace vellsPos.Entities.Masters
             Category category = new Category();
             try
             {
-                String query = "SELECT * FROM sub_categories where id = '" + id + "'";
+                String query = "SELECT " +
+                    "sc.id, " +
+                    "c.category_name AS category, " +
+                    "sc.sub_category_name, " +
+                    "sc.description " +
+                    "FROM sub_categories sc " +
+                    "INNER JOIN categories c ON sc.category_id = c.id " +
+                    "WHERE sc.id = '" + id + "'";
                 Dictionary<String, String> dbData = DBTransactionService.getDataAsDictionary(query);
 
                 if (dbData != null)
                 {
                     subCategory.subCategoryName = dbData["sub_category_name"];
-                    category.CategoryName = dbData["category_name"];
+                    category.CategoryName = dbData["category"];
                     subCategory.category = category;
                     subCategory.image = dbData["image"];
                     subCategory.description = dbData["description"];
-
-                    Console.WriteLine("++++++++++++++++++++++");
-                    Console.WriteLine(dbData["sub_category_name"]);
-                    Console.WriteLine(category);
-                    Console.WriteLine("++++++++++++++++++++++");
                 }
                 else
                 {

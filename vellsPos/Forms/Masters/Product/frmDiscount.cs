@@ -27,13 +27,13 @@ namespace vellsPos.Forms.Layouts
 
         private void frmDiscount_Load(object sender, EventArgs e)
         {
-            uid = this.Tag.ToString();
-            if (String.IsNullOrEmpty(uid))
+            if (this.Tag is null)
             {
                 //
             }
             else
             {
+                uid = this.Tag.ToString();
                 fillData();
             }
         }
@@ -137,9 +137,7 @@ namespace vellsPos.Forms.Layouts
 
                 discount.User = user;
 
-                ReturnResult result = Discount.store(discount);
-
-                if (String.IsNullOrEmpty(txt_id.Text))
+                if (this.Tag is null)
                 {
                     //save();
                     result = Discount.store(discount);
@@ -149,7 +147,7 @@ namespace vellsPos.Forms.Layouts
                 else
                 {
                     //update();
-                    discount.Id = Int32.Parse(this.Tag.ToString());
+                    discount.Id = Int32.Parse(uid);
                     result = Discount.update(discount);
                     msgStatus = "updated";
                 }

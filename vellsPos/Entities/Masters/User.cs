@@ -96,6 +96,7 @@ namespace vellsPos.Entities.Masters
                 parameters.Add(new QueryParameter("role_id", MySqlDbType.Int32, user.role.Id));
                 parameters.Add(new QueryParameter("password", MySqlDbType.String, user.password));
                 parameters.Add(new QueryParameter("authentication_id", MySqlDbType.Int32, user.authentication.Id));
+                parameters.Add(new QueryParameter("id", MySqlDbType.Int32, user.Id));
 
                 commands.Add(new QueryCommand(sql, parameters));
                 result = DBTransactionService.executeNonQuery(commands);
@@ -136,11 +137,20 @@ namespace vellsPos.Entities.Masters
         {
             DataViewParam dvParam = new DataViewParam();
             dvParam.Title = "Users";
-            dvParam.SelectSql = "SELECT u.id, u.date, b.branch_name, r.role_name, u.user_name ";
+            dvParam.SelectSql = "SELECT " +
+                "u.id, " +
+                "date_format(u.date,'%Y-%m-%d %H:%i'), " +
+                "b.branch_name, " +
+                "r.role_name, " +
+                "u.user_name ";
             dvParam.FromSql = "FROM  users u " +
                  "INNER JOIN branches b ON u.branch_id = b.id " +
                   "INNER JOIN roles r ON u.role_id = r.id " +
-                "WHERE u.date like @s1 or b.branch_name like @s2 or r.role_name like @s3 or u.user_name like @s4 " +
+                "WHERE " +
+                "u.date like @s1 or " +
+                "b.branch_name like @s2 or " +
+                "r.role_name like @s3 or " +
+                "u.user_name like @s4 " +
                 "ORDER BY u.id DESC ";
             dvParam.SearchParamCount = 3; //name and description
             dvParam.TitleList = new List<string>() { "", "Date", "Branch", "Role", "User" }; //Column titles
@@ -168,7 +178,7 @@ namespace vellsPos.Entities.Masters
             {
                 String query = "SELECT " +
                     "u.id, " +
-                    "u.date, " +
+                    "date_format(u.date,'%Y-%m-%d %H:%i') AS date, " +
                     "b.branch_name AS branch, " +
                     "r.role_name AS role, " +
                     "u.user_name, " +
@@ -188,7 +198,6 @@ namespace vellsPos.Entities.Masters
                     role.RoleName = dbData["role"];
                     user.role = role;
                     user.password = dbData["password"];
-                    user.authentication = authentication;
                 }
                 else
                 {

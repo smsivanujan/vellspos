@@ -83,6 +83,7 @@ namespace vellsPos.Entities.Masters
                 parameters.Add(new QueryParameter("user_id", MySqlDbType.Int32, drawerLog.user.Id));
                 parameters.Add(new QueryParameter("type", MySqlDbType.String, drawerLog.type));
                 parameters.Add(new QueryParameter("action", MySqlDbType.String, drawerLog.action));
+                parameters.Add(new QueryParameter("id", MySqlDbType.Int32, drawerLog.Id));
 
                 commands.Add(new QueryCommand(sql, parameters));
                 result = DBTransactionService.executeNonQuery(commands);
@@ -123,10 +124,19 @@ namespace vellsPos.Entities.Masters
         {
             DataViewParam dvParam = new DataViewParam();
             dvParam.Title = "Drawer Logs";
-            dvParam.SelectSql = "SELECT dl.id, dl.date, u.user_name, dl.type, dl.action ";
-            dvParam.FromSql = "FROM  drawer_logs dl " +
+            dvParam.SelectSql = "SELECT " +
+                "dl.id, " +
+                "date_format(dl.date,'%Y-%m-%d %H:%i'), " +
+                "u.user_name, " +
+                "dl.type, " +
+                "dl.action ";
+            dvParam.FromSql = "FROM drawer_logs dl " +
                  "INNER JOIN users u ON dl.user_id = u.id " +
-                "WHERE dl.date like @s1 or u.user_name like @s2 or dl.type like @s3 or dl.action like @s4 " +
+                "WHERE " +
+                "dl.date like @s1 or " +
+                "u.user_name like @s2 or " +
+                "dl.type like @s3 or " +
+                "dl.action like @s4 " +
                 "ORDER BY dl.id DESC ";
             dvParam.SearchParamCount = 3; //name and description
             dvParam.TitleList = new List<string>() { "", "Date", "User", "Type", "Acton" }; //Column titles
@@ -150,12 +160,20 @@ namespace vellsPos.Entities.Masters
             User user = new User();
             try
             {
-                String query = "SELECT * FROM drawer_logs where id = '" + id + "'";
+                String query = "SELECT " +
+                    "dl.id, " +
+                    "date_format(dl.date,'%Y-%m-%d %H:%i') AS date, " +
+                    "u.user_name AS user, " +
+                    "dl.type, " +
+                    "dl.action " +
+                    "FROM drawer_logs dl " +
+                    "WHERE dl.id = '" + id + "'";
                 Dictionary<String, String> dbData = DBTransactionService.getDataAsDictionary(query);
 
                 if (dbData != null)
                 {
                     drawerLog.date = Convert.ToDateTime(dbData["date"]);
+                    user.UserName = dbData["user"];
                     drawerLog.user = user;
                     drawerLog.type = dbData["type"];
                     drawerLog.action = dbData["action"];

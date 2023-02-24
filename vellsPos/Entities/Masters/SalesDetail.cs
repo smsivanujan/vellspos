@@ -51,6 +51,7 @@ namespace vellsPos.Entities.Masters
                 parameters.Add(new QueryParameter("product_id", MySqlDbType.Int32, salesDetail.product.Id));
                 parameters.Add(new QueryParameter("qty", MySqlDbType.Int32, salesDetail.qty));
                 parameters.Add(new QueryParameter("amount", MySqlDbType.Decimal, salesDetail.amount));
+                parameters.Add(new QueryParameter("id", MySqlDbType.Int32, salesDetail.Id));
 
                 commands.Add(new QueryCommand(sql, parameters));
                 result = DBTransactionService.executeNonQuery(commands);
@@ -123,14 +124,26 @@ namespace vellsPos.Entities.Masters
         {
             DataViewParam dvParam = new DataViewParam();
             dvParam.Title = "Sale Details";
-            dvParam.SelectSql = "SELECT sd.id, s.date, b.branch_name, s.invoice_number, concat(p.product_number +' '+ p.product_name), sd.qty, sd.amount ";
+            dvParam.SelectSql = "SELECT " +
+                "sd.id, " +
+                "s.date, " +
+                "b.branch_name, " +
+                "s.invoice_number, " +
+                "concat(p.product_number,' ',p.product_name), " +
+                "sd.qty, " +
+                "sd.amount ";
             dvParam.FromSql = "FROM  sale_details sd " +
                  "INNER JOIN sales s ON sd.sale_id = s.id " +
                   "INNER JOIN products p ON sd.product_id = p.id " +
                   "INNER JOIN branches b ON sd.branch_id = b.id " +
-                "WHERE s.date like @s1 or b.branch_name like @s2 or s.invoice_number like @s3 or concat(p.product_number +' '+ p.product_name) like @s4 " +
+                "WHERE " +
+                "s.date like @s1 or " +
+                "b.branch_name like @s2 or " +
+                "s.invoice_number like @s3 or " +
+                "p.product_number like @s4 or " +
+                "p.product_name like @s5 " +
                 "ORDER BY sd.id DESC ";
-            dvParam.SearchParamCount = 3; //name and description
+            dvParam.SearchParamCount = 4; //name and description
             dvParam.TitleList = new List<string>() { "", "Date", "Branch", "Invoice", "Product", "Qty", "Amount" }; //Column titles
             dvParam.InvisibleColumnList = new List<int>() { 5 , 6 };
             dvParam.NumericColumnList = new List<int>() { };
@@ -152,7 +165,12 @@ namespace vellsPos.Entities.Masters
             DataViewParam dvParam = new DataViewParam();
             dvParam.Title = "Sale Product Detail";
             dvParam.TableName = "sale_details";
-            dvParam.SelectSql = "SELECT sd.id, p.product_number, p.product_name, sd.qty, sd.amount  ";
+            dvParam.SelectSql = "SELECT " +
+                "sd.id, " +
+                "p.product_number, " +
+                "p.product_name, " +
+                "sd.qty, " +
+                "sd.amount  ";
             dvParam.FromSql = "from sale_details sd  " +
                 "LEFT JOIN products p ON sd.product_id=p.id  " +
                 "WHERE sd.id='"+ x + "' AND  p.product_number like @s1 or p.product_name like @s2  ORDER BY sd.id DESC ";
@@ -184,12 +202,29 @@ namespace vellsPos.Entities.Masters
             Product product = new Product();
             try
             {
-                String query = "SELECT * FROM sale_details where id = '" + id + "'";
+                String query = "SELECT " +
+                    "sd.id, " +
+                    "s.date AS date, " +
+                    "b.branch_name AS branch, " +
+                    "s.invoice_number AS invoice, " +
+                    "p.product_number AS productNu, " +
+                    "p.product_name AS productNa, " +
+                    "sd.qty, " +
+                    "sd.amount " +
+                    "FROM sale_details sd " +
+                    "INNER JOIN sales s ON sd.sale_id = s.id " +
+                    "INNER JOIN products p ON sd.product_id = p.id " +
+                    "INNER JOIN branches b ON sd.branch_id = b.id " +
+                    "WHERE sd.id = '" + id + "'";
                 Dictionary<String, String> dbData = DBTransactionService.getDataAsDictionary(query);
 
                 if (dbData != null)
                 {
+                    sale.Date = dbData["date"];
+                    sale.InvoiceNumber = dbData["invoice"];
                     salesDetail.sale = sale;
+                    product.ProductNumber = dbData["productNu"];
+                    product.ProductName = dbData["productNa"];
                     salesDetail.product = product;
                     salesDetail.qty = Convert.ToInt32(dbData["qty"]);
                     salesDetail.amount = Convert.ToDecimal(dbData["amount"]);
@@ -213,7 +248,11 @@ namespace vellsPos.Entities.Masters
             Product product = new Product();
             try
             {
-                String query = "SELECT * FROM sale_details where sale_id = '" + saleID + "' and product_id = '" + productID + "' ";
+                String query = "SELECT * " +
+                    "qty, " +
+                    "amount " +
+                    "FROM sale_details " +
+                    "WHERE sale_id = '" + saleID + "' and product_id = '" + productID + "' ";
                 Dictionary<String, String> dbData = DBTransactionService.getDataAsDictionary(query);
 
                 if (dbData != null)

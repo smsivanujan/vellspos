@@ -71,6 +71,7 @@ namespace vellsPos.Entities.Masters
                 List<QueryParameter> parameters = new List<QueryParameter>();
                 parameters.Add(new QueryParameter("route", MySqlDbType.String, authenticationKey.route));
                 parameters.Add(new QueryParameter("description", MySqlDbType.String, authenticationKey.description));
+                parameters.Add(new QueryParameter("id", MySqlDbType.Int32, authenticationKey.Id));
 
                 commands.Add(new QueryCommand(sql, parameters));
                 result = DBTransactionService.executeNonQuery(commands);
@@ -111,9 +112,14 @@ namespace vellsPos.Entities.Masters
         {
             DataViewParam dvParam = new DataViewParam();
             dvParam.Title = "Authentication Keys";
-            dvParam.SelectSql = "SELECT ak.id, ak.route, ak.description ";
+            dvParam.SelectSql = "SELECT " +
+                "ak.id, " +
+                "ak.route, " +
+                "ak.description ";
             dvParam.FromSql = "FROM  authentication_keys ak " +
-                "WHERE ak.route like @s1 or ak.description like @s2 " +
+                "WHERE " +
+                "ak.route like @s1 or " +
+                "ak.description like @s2 " +
                 "ORDER BY ak.id DESC ";
             dvParam.SearchParamCount = 1; //name and description
             dvParam.TitleList = new List<string>() { "", "Route", "Description" }; //Column titles
@@ -136,7 +142,12 @@ namespace vellsPos.Entities.Masters
             AuthenticationKey authenticationKey = new AuthenticationKey();
             try
             {
-                String query = "SELECT * FROM authentication_keys where id = '" + id + "'";
+                String query = "SELECT " +
+                    "id, " +
+                    "route, " +
+                    "description " +
+                    "FROM authentication_keys " +
+                    "WHERE id = '" + id + "'";
                 Dictionary<String, String> dbData = DBTransactionService.getDataAsDictionary(query);
 
                 if (dbData != null)

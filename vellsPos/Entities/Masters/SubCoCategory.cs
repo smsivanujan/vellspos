@@ -84,6 +84,7 @@ namespace vellsPos.Entities.Masters
                 parameters.Add(new QueryParameter("sub_category_id", MySqlDbType.Int32, subCoCategory.SubCategory.Id));
                 parameters.Add(new QueryParameter("image", MySqlDbType.String, subCoCategory.image));
                 parameters.Add(new QueryParameter("description", MySqlDbType.String, subCoCategory.Description));
+                parameters.Add(new QueryParameter("id", MySqlDbType.Int32, subCoCategory.Id));
 
                 commands.Add(new QueryCommand(sql, parameters));
                 result = DBTransactionService.executeNonQuery(commands);
@@ -124,11 +125,18 @@ namespace vellsPos.Entities.Masters
         {
             DataViewParam dvParam = new DataViewParam();
             dvParam.Title = "Sub Co Categories";
-            dvParam.SelectSql = "SELECT scc.id, c.category_name, sc.sub_category_name, scc.sub_co_category_name, scc.description ";
-            dvParam.FromSql = "FROM  sub_co_categories scc " +
+            dvParam.SelectSql = "SELECT " +
+                "scc.id, c.category_name, " +
+                "sc.sub_category_name, " +
+                "scc.sub_co_category_name, " +
+                "scc.description ";
+            dvParam.FromSql = "FROM sub_co_categories scc " +
                  "INNER JOIN sub_categories sc ON scc.sub_category_id = sc.id " +
                  "INNER JOIN categories c ON sc.category_id = c.id " +
-                "WHERE c.category_name like @s1 or sc.sub_category_name like @s2 or scc.sub_co_category_name like @s3 " +
+                "WHERE " +
+                "c.category_name like @s1 or " +
+                "sc.sub_category_name like @s2 or " +
+                "scc.sub_co_category_name like @s3 " +
                 "ORDER BY scc.id DESC ";
             dvParam.SearchParamCount = 2; //name and description
             dvParam.TitleList = new List<string>() { "", "Category", "Sub Category", "Sub Co Category", "Description" }; //Column titles
@@ -162,18 +170,18 @@ namespace vellsPos.Entities.Masters
                     "FROM sub_co_categories scc " +
                     "INNER JOIN sub_categories sc ON scc.sub_category_id = sc.id " +
                     "INNER JOIN categories c ON sc.category_id = c.id " +
-                    "WHERE id = '" + id + "'";
+                    "WHERE scc.id = '" + id + "'";
                 Dictionary<String, String> dbData = DBTransactionService.getDataAsDictionary(query);
 
                 if (dbData != null)
                 {
-                    subCoCategory.SubCoCategoryName = dbData["sub_co_category_name"];
+                    subCoCategory.subCoCategoryName = dbData["sub_co_category_name"];
                     category.CategoryName = dbData["category"];
                     subCategory.Category = category;
                     subCategory.SubCategoryName = dbData["subCategory"];
-                    subCoCategory.SubCategory = subCategory;
+                    subCoCategory.subCategory = subCategory;
                     subCoCategory.image = dbData["image"];
-                    subCoCategory.Description = dbData["description"];
+                    subCoCategory.description = dbData["description"];
                 }
                 else
                 {

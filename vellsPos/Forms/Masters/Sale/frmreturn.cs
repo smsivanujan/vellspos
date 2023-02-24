@@ -29,13 +29,13 @@ namespace vellsPos.Forms.Layouts
 
         private void frmReturn_Load(object sender, EventArgs e)
         {
-            uid = this.Tag.ToString();
-            if (String.IsNullOrEmpty(uid))
+            if (this.Tag is null)
             {
                 //
             }
             else
             {
+                uid = this.Tag.ToString();
                 fillData();
             }
         }
@@ -67,25 +67,25 @@ namespace vellsPos.Forms.Layouts
 
         private void fill()
         {
-            try
-            {
-                if (String.IsNullOrEmpty(txt_saleID.Text))
-                {
-                    //
-                }
-                else
-                {
+            //try
+            //{
+            //    if (this.Tag is null)
+            //    {
+            //        //
+            //    }
+            //    else
+            //    {
                     int saletID = Int32.Parse(txt_saleID.Text);
                     int productID = Int32.Parse(txt_productID.Text);
                     SalesDetail salesDetail = SalesDetail.getOneSaleDetail(saletID, productID);
                     ntxt_qty.Value = salesDetail.Qty;
                     ntxt_amount.Value = salesDetail.Amount;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.ToString());
+            //}
         }
 
         private void fillData()
@@ -214,7 +214,7 @@ namespace vellsPos.Forms.Layouts
                     productReturn.User = user;
                     //ReturnResult result = ProductReturn.store(productReturn);
 
-                    if (String.IsNullOrEmpty(txt_id.Text))
+                    if (this.Tag is null)
                     {
                         //save();
                         result = ProductReturn.store(productReturn);

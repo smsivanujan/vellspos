@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System.Data;
+using System.Drawing;
 using vellsPos.Entities.Layouts;
 using vellsPos.Services;
 

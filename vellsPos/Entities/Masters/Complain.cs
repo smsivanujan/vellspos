@@ -137,9 +137,18 @@ namespace vellsPos.Entities.Masters
         {
             DataViewParam dvParam = new DataViewParam();
             dvParam.Title = "Complains";
-            dvParam.SelectSql = "SELECT c.id, c.date, c.type, c.priority, c.description, c.status ";
+            dvParam.SelectSql = "SELECT " +
+                "c.id, " +
+                "date_format(c.date,'%Y-%m-%d %H:%i'), " +
+                "c.type, " +
+                "c.priority, " +
+                "c.description, " +
+                "c.status ";
             dvParam.FromSql = "FROM  complains c " +
-                "WHERE c.date like @s1 or c.type like @s2 or c.priority like @s3 or c.status like @s4 " +
+                "WHERE c.date like @s1 or " +
+                "c.type like @s2 or " +
+                "c.priority like @s3 or " +
+                "c.status like @s4 " +
                 "ORDER BY c.id DESC ";
             dvParam.SearchParamCount = 3; //name and description
             dvParam.TitleList = new List<string>() { "", "Date", "Type", "Priority", "Description", "Status" }; //Column titles
@@ -163,17 +172,25 @@ namespace vellsPos.Entities.Masters
             User user = new User();
             try
             {
-                String query = "SELECT * FROM complains where id = '" + id + "'";
+                String query = "SELECT " +
+                    "id, " +
+                    "date_format(date,'%Y-%m-%d %H:%i') AS date, " +
+                    "type, " +
+                    "priority, " +
+                    "description, " +
+                    "status " +
+                    "FROM complains " +
+                    "WHERE id = '" + id + "'";
                 Dictionary<String, String> dbData = DBTransactionService.getDataAsDictionary(query);
 
                 if (dbData != null)
                 {
-                    complain.Date = dbData["date"];
-                    complain.Description = dbData["description"];
-                    complain.Priority = dbData["priority"];
+                    complain.date = dbData["date"];
+                    complain.description = dbData["description"];
+                    complain.priority = dbData["priority"];
                     complain.type = dbData["type"];
-                    complain.Status = Convert.ToInt32(dbData["status"]);
-                    complain.User = user;
+                    complain.status = Convert.ToInt32(dbData["status"]);
+                    complain.user = user;
                 }
                 else
                 {

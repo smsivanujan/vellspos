@@ -38,6 +38,7 @@
             this.btn_cancel = new System.Windows.Forms.Button();
             this.pnl_body = new System.Windows.Forms.Panel();
             this.pnl_container = new System.Windows.Forms.Panel();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.txt_id = new System.Windows.Forms.TextBox();
             this.lbl_imageStatus = new System.Windows.Forms.Label();
             this.lbl_imagePath = new System.Windows.Forms.Label();
@@ -50,7 +51,6 @@
             this.rtxt_description = new System.Windows.Forms.RichTextBox();
             this.txt_subCategory = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.pnl_head.SuspendLayout();
             this.pnl_root.SuspendLayout();
             this.pnl_body.SuspendLayout();
@@ -188,6 +188,15 @@
             this.pnl_container.Size = new System.Drawing.Size(520, 536);
             this.pnl_container.TabIndex = 0;
             // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.richTextBox1.Location = new System.Drawing.Point(85, 412);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(221, 62);
+            this.richTextBox1.TabIndex = 90;
+            this.richTextBox1.Text = "";
+            // 
             // txt_id
             // 
             this.txt_id.Location = new System.Drawing.Point(235, 20);
@@ -244,6 +253,7 @@
             // 
             // cmb_category
             // 
+            this.cmb_category.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb_category.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.cmb_category.FormattingEnabled = true;
             this.cmb_category.Location = new System.Drawing.Point(14, 49);
@@ -299,15 +309,6 @@
             this.label2.Size = new System.Drawing.Size(137, 30);
             this.label2.TabIndex = 38;
             this.label2.Text = "Sub Category";
-            // 
-            // richTextBox1
-            // 
-            this.richTextBox1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.richTextBox1.Location = new System.Drawing.Point(85, 412);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(221, 62);
-            this.richTextBox1.TabIndex = 90;
-            this.richTextBox1.Text = "";
             // 
             // frmSubCategory
             // 

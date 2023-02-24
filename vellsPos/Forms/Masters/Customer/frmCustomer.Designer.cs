@@ -54,7 +54,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txt_customerFirstName = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.txt_cusromerLastName = new System.Windows.Forms.TextBox();
+            this.txt_customerLastName = new System.Windows.Forms.TextBox();
             this.pnl_head.SuspendLayout();
             this.pnl_root.SuspendLayout();
             this.pnl_body.SuspendLayout();
@@ -189,7 +189,7 @@
             this.pnl_container.Controls.Add(this.label1);
             this.pnl_container.Controls.Add(this.txt_customerFirstName);
             this.pnl_container.Controls.Add(this.label3);
-            this.pnl_container.Controls.Add(this.txt_cusromerLastName);
+            this.pnl_container.Controls.Add(this.txt_customerLastName);
             this.pnl_container.Location = new System.Drawing.Point(12, 6);
             this.pnl_container.Name = "pnl_container";
             this.pnl_container.Size = new System.Drawing.Size(490, 464);
@@ -264,6 +264,7 @@
             // 
             // cmb_gender
             // 
+            this.cmb_gender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb_gender.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.cmb_gender.FormattingEnabled = true;
             this.cmb_gender.Items.AddRange(new object[] {
@@ -356,15 +357,15 @@
             this.label3.TabIndex = 81;
             this.label3.Text = "Customer Last Name";
             // 
-            // txt_cusromerLastName
+            // txt_customerLastName
             // 
-            this.txt_cusromerLastName.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.txt_cusromerLastName.Location = new System.Drawing.Point(255, 125);
-            this.txt_cusromerLastName.Multiline = true;
-            this.txt_cusromerLastName.Name = "txt_cusromerLastName";
-            this.txt_cusromerLastName.PlaceholderText = "last name";
-            this.txt_cusromerLastName.Size = new System.Drawing.Size(221, 34);
-            this.txt_cusromerLastName.TabIndex = 82;
+            this.txt_customerLastName.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.txt_customerLastName.Location = new System.Drawing.Point(255, 125);
+            this.txt_customerLastName.Multiline = true;
+            this.txt_customerLastName.Name = "txt_customerLastName";
+            this.txt_customerLastName.PlaceholderText = "last name";
+            this.txt_customerLastName.Size = new System.Drawing.Size(221, 34);
+            this.txt_customerLastName.TabIndex = 82;
             // 
             // frmCustomer
             // 
@@ -403,7 +404,7 @@
         private Label label1;
         private TextBox txt_customerFirstName;
         private Label label3;
-        private TextBox txt_cusromerLastName;
+        private TextBox txt_customerLastName;
         private Label label4;
         private DateTimePicker dtp_dateOfBirth;
         private Label label8;

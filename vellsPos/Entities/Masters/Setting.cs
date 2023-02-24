@@ -48,6 +48,7 @@ namespace vellsPos.Entities.Masters
                 parameters.Add(new QueryParameter("key_name", MySqlDbType.String, setting.keyName));
                 parameters.Add(new QueryParameter("key_value", MySqlDbType.String, setting.keyValue));
                 parameters.Add(new QueryParameter("description", MySqlDbType.String, setting.Description));
+                parameters.Add(new QueryParameter("id", MySqlDbType.Int32, setting.Id));
 
                 commands.Add(new QueryCommand(sql, parameters));
                 result = DBTransactionService.executeNonQuery(commands);
@@ -118,7 +119,11 @@ namespace vellsPos.Entities.Masters
         {
             DataViewParam dvParam = new DataViewParam();
             dvParam.Title = "Setings";
-            dvParam.SelectSql = "SELECT s.id, s.key_name, s.key_value, s.description ";
+            dvParam.SelectSql = "SELECT " +
+                "s.id, " +
+                "s.key_name, " +
+                "s.key_value, " +
+                "s.description ";
             dvParam.FromSql = "FROM  settings s " +
                 "WHERE s.key_name like @s1 or s.key_value like @s2 " +
                 "ORDER BY s.id DESC ";
@@ -143,14 +148,20 @@ namespace vellsPos.Entities.Masters
             Setting setting = new Setting();
             try
             {
-                String query = "SELECT * FROM settings where id = '" + id + "'";
+                String query = "SELECT  " +
+                    "id, " +
+                    "key_name, " +
+                    "key_value, " +
+                    "description " +
+                    "FROM settings " +
+                    "WHERE id = '" + id + "'";
                 Dictionary<String, String> dbData = DBTransactionService.getDataAsDictionary(query);
 
                 if (dbData != null)
                 {
                     setting.keyName = dbData["key_name"];
                     setting.keyValue = dbData["key_value"];
-                    setting.Description = dbData["description"];
+                    setting.description = dbData["description"];
                 }
                 else
                 {

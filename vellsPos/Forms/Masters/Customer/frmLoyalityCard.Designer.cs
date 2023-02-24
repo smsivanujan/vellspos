@@ -38,8 +38,9 @@
             this.btn_cancel = new System.Windows.Forms.Button();
             this.pnl_body = new System.Windows.Forms.Panel();
             this.pnl_container = new System.Windows.Forms.Panel();
+            this.txt_customerID = new System.Windows.Forms.TextBox();
+            this.txt_customer = new System.Windows.Forms.TextBox();
             this.txt_id = new System.Windows.Forms.TextBox();
-            this.cmb_customer = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.dtp_issuedDate = new System.Windows.Forms.DateTimePicker();
@@ -63,7 +64,7 @@
             this.pnl_head.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnl_head.Location = new System.Drawing.Point(0, 0);
             this.pnl_head.Name = "pnl_head";
-            this.pnl_head.Size = new System.Drawing.Size(435, 53);
+            this.pnl_head.Size = new System.Drawing.Size(722, 53);
             this.pnl_head.TabIndex = 0;
             // 
             // lbl_title
@@ -84,7 +85,7 @@
             this.btn_close.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_close.ForeColor = System.Drawing.Color.Transparent;
             this.btn_close.Image = ((System.Drawing.Image)(resources.GetObject("btn_close.Image")));
-            this.btn_close.Location = new System.Drawing.Point(396, 11);
+            this.btn_close.Location = new System.Drawing.Point(683, 11);
             this.btn_close.Name = "btn_close";
             this.btn_close.Size = new System.Drawing.Size(31, 30);
             this.btn_close.TabIndex = 4;
@@ -100,7 +101,7 @@
             this.pnl_root.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pnl_root.Location = new System.Drawing.Point(0, 529);
             this.pnl_root.Name = "pnl_root";
-            this.pnl_root.Size = new System.Drawing.Size(435, 75);
+            this.pnl_root.Size = new System.Drawing.Size(722, 75);
             this.pnl_root.TabIndex = 1;
             // 
             // btn_delete
@@ -111,7 +112,7 @@
             this.btn_delete.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_delete.Image = ((System.Drawing.Image)(resources.GetObject("btn_delete.Image")));
             this.btn_delete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_delete.Location = new System.Drawing.Point(68, 12);
+            this.btn_delete.Location = new System.Drawing.Point(355, 12);
             this.btn_delete.Name = "btn_delete";
             this.btn_delete.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.btn_delete.Size = new System.Drawing.Size(108, 51);
@@ -128,7 +129,7 @@
             this.btn_save.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_save.Image = ((System.Drawing.Image)(resources.GetObject("btn_save.Image")));
             this.btn_save.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_save.Location = new System.Drawing.Point(296, 12);
+            this.btn_save.Location = new System.Drawing.Point(583, 12);
             this.btn_save.Name = "btn_save";
             this.btn_save.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.btn_save.Size = new System.Drawing.Size(108, 51);
@@ -146,7 +147,7 @@
             this.btn_cancel.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_cancel.Image = ((System.Drawing.Image)(resources.GetObject("btn_cancel.Image")));
             this.btn_cancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_cancel.Location = new System.Drawing.Point(182, 12);
+            this.btn_cancel.Location = new System.Drawing.Point(469, 12);
             this.btn_cancel.Name = "btn_cancel";
             this.btn_cancel.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.btn_cancel.Size = new System.Drawing.Size(108, 51);
@@ -162,13 +163,14 @@
             this.pnl_body.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnl_body.Location = new System.Drawing.Point(0, 53);
             this.pnl_body.Name = "pnl_body";
-            this.pnl_body.Size = new System.Drawing.Size(435, 476);
+            this.pnl_body.Size = new System.Drawing.Size(722, 476);
             this.pnl_body.TabIndex = 2;
             // 
             // pnl_container
             // 
+            this.pnl_container.Controls.Add(this.txt_customerID);
+            this.pnl_container.Controls.Add(this.txt_customer);
             this.pnl_container.Controls.Add(this.txt_id);
-            this.pnl_container.Controls.Add(this.cmb_customer);
             this.pnl_container.Controls.Add(this.label1);
             this.pnl_container.Controls.Add(this.label4);
             this.pnl_container.Controls.Add(this.dtp_issuedDate);
@@ -180,31 +182,35 @@
             this.pnl_container.Controls.Add(this.label5);
             this.pnl_container.Location = new System.Drawing.Point(12, 6);
             this.pnl_container.Name = "pnl_container";
-            this.pnl_container.Size = new System.Drawing.Size(405, 464);
+            this.pnl_container.Size = new System.Drawing.Size(667, 464);
             this.pnl_container.TabIndex = 0;
+            // 
+            // txt_customerID
+            // 
+            this.txt_customerID.Location = new System.Drawing.Point(247, 73);
+            this.txt_customerID.Name = "txt_customerID";
+            this.txt_customerID.Size = new System.Drawing.Size(38, 23);
+            this.txt_customerID.TabIndex = 119;
+            this.txt_customerID.TextChanged += new System.EventHandler(this.txt_customerID_TextChanged);
+            // 
+            // txt_customer
+            // 
+            this.txt_customer.BackColor = System.Drawing.SystemColors.Control;
+            this.txt_customer.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.txt_customer.Location = new System.Drawing.Point(20, 53);
+            this.txt_customer.Multiline = true;
+            this.txt_customer.Name = "txt_customer";
+            this.txt_customer.PlaceholderText = "[ Select ]";
+            this.txt_customer.Size = new System.Drawing.Size(221, 43);
+            this.txt_customer.TabIndex = 118;
+            this.txt_customer.Click += new System.EventHandler(this.txt_customer_Click);
             // 
             // txt_id
             // 
-            this.txt_id.Location = new System.Drawing.Point(356, 63);
+            this.txt_id.Location = new System.Drawing.Point(247, 44);
             this.txt_id.Name = "txt_id";
             this.txt_id.Size = new System.Drawing.Size(41, 23);
             this.txt_id.TabIndex = 89;
-            // 
-            // cmb_customer
-            // 
-            this.cmb_customer.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cmb_customer.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cmb_customer.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.cmb_customer.FormattingEnabled = true;
-            this.cmb_customer.Items.AddRange(new object[] {
-            "Brownce",
-            "Silver",
-            "Gold",
-            "Plattinum"});
-            this.cmb_customer.Location = new System.Drawing.Point(20, 53);
-            this.cmb_customer.Name = "cmb_customer";
-            this.cmb_customer.Size = new System.Drawing.Size(330, 33);
-            this.cmb_customer.TabIndex = 73;
             // 
             // label1
             // 
@@ -304,7 +310,7 @@
             // frmLoyalityCard
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(435, 604);
+            this.ClientSize = new System.Drawing.Size(722, 604);
             this.Controls.Add(this.pnl_body);
             this.Controls.Add(this.pnl_root);
             this.Controls.Add(this.pnl_head);
@@ -342,8 +348,9 @@
         private Label label2;
         private Label label4;
         private DateTimePicker dtp_issuedDate;
-        private ComboBox cmb_customer;
         private Label label1;
         private TextBox txt_id;
+        private TextBox txt_customerID;
+        private TextBox txt_customer;
     }
 }

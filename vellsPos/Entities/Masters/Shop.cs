@@ -65,6 +65,7 @@ namespace vellsPos.Entities.Masters
                 List<QueryParameter> parameters = new List<QueryParameter>();
                 parameters.Add(new QueryParameter("shop_name", MySqlDbType.String, shop.shopName));
                 parameters.Add(new QueryParameter("id", MySqlDbType.Int32, shop.Id));
+                parameters.Add(new QueryParameter("id", MySqlDbType.Int32, shop.Id));
 
                 commands.Add(new QueryCommand(sql, parameters));
                 result = DBTransactionService.executeNonQuery(commands);
@@ -105,7 +106,9 @@ namespace vellsPos.Entities.Masters
         {
             DataViewParam dvParam = new DataViewParam();
             dvParam.Title = "Shops";
-            dvParam.SelectSql = "SELECT s.id, s.shop_name ";
+            dvParam.SelectSql = "SELECT " +
+                "s.id, " +
+                "s.shop_name ";
             dvParam.FromSql = "FROM  shopes s " +
                 "WHERE s.shop_name like @s1 " +
                 "ORDER BY s.id DESC ";
@@ -130,7 +133,11 @@ namespace vellsPos.Entities.Masters
             Shop shop = new Shop();
             try
             {
-                String query = "SELECT * FROM shops where id = '" + id + "'";
+                String query = "SELECT " +
+                    "id, " +
+                    "shop_name " +
+                    "FROM shops " +
+                    "WHERE id = '" + id + "'";
                 Dictionary<String, String> dbData = DBTransactionService.getDataAsDictionary(query);
 
                 if (dbData != null)

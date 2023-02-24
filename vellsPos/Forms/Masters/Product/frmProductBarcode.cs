@@ -31,13 +31,13 @@ namespace vellsPos.Forms.Layouts
         }
         private void frmProductBarcode_Load(object sender, EventArgs e)
         {
-            uid = this.Tag.ToString();
-            if (String.IsNullOrEmpty(uid))
+            if (this.Tag is null)
             {
                 //
             }
             else
             {
+                uid = this.Tag.ToString();
                 fillData();
             }
         }
@@ -137,7 +137,7 @@ namespace vellsPos.Forms.Layouts
                 productBarcode.BarcodeImage = directoryPath;//root folder to save
  
 
-                if (String.IsNullOrEmpty(txt_id.Text))
+                if (this.Tag is null)
                 {
                     //save();
                     result = ProductBarcode.store(productBarcode);

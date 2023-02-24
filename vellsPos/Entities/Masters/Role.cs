@@ -43,6 +43,7 @@ namespace vellsPos.Entities.Masters
                 List<QueryParameter> parameters = new List<QueryParameter>();
                 parameters.Add(new QueryParameter("role_name", MySqlDbType.String, role.roleName));
                 parameters.Add(new QueryParameter("description", MySqlDbType.String, role.Description));
+                parameters.Add(new QueryParameter("id", MySqlDbType.Int32, role.Id));
 
                 commands.Add(new QueryCommand(sql, parameters));
                 result = DBTransactionService.executeNonQuery(commands);
@@ -112,7 +113,10 @@ namespace vellsPos.Entities.Masters
         {
             DataViewParam dvParam = new DataViewParam();
             dvParam.Title = "Roles";
-            dvParam.SelectSql = "SELECT r.id, r.role_name, r.description ";
+            dvParam.SelectSql = "SELECT " +
+                "r.id, " +
+                "r.role_name, " +
+                "r.description ";
             dvParam.FromSql = "FROM  roles r " +
                 "WHERE r.role_name like @s1 " +
                 "ORDER BY r.id DESC ";
@@ -137,7 +141,12 @@ namespace vellsPos.Entities.Masters
             Role role = new Role();
             try
             {
-                String query = "SELECT * FROM roles where id = '" + id + "'";
+                String query = "SELECT " +
+                    "id, " +
+                    "role_name, " +
+                    "description " +
+                    "FROM roles " +
+                    "WHERE id = '" + id + "'";
                 Dictionary<String, String> dbData = DBTransactionService.getDataAsDictionary(query);
 
                 if (dbData != null)

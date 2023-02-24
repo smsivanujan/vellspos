@@ -55,6 +55,7 @@ namespace vellsPos.Entities.Masters
                 parameters.Add(new QueryParameter("qty", MySqlDbType.Int32, productReturn.qty));
                 parameters.Add(new QueryParameter("amount", MySqlDbType.Decimal, productReturn.amount));
                 parameters.Add(new QueryParameter("user_id", MySqlDbType.Int32, productReturn.user.Id));
+                parameters.Add(new QueryParameter("id", MySqlDbType.Int32, productReturn.Id));
 
                 commands.Add(new QueryCommand(sql, parameters));
                 result = DBTransactionService.executeNonQuery(commands);
@@ -129,11 +130,19 @@ namespace vellsPos.Entities.Masters
         {
             DataViewParam dvParam = new DataViewParam();
             dvParam.Title = "Product Returns";
-            dvParam.SelectSql = "SELECT pr.id, s.date, s.invoice_number, p.product_number, p.product_name, pr.qty, pr.amount  ";
+            dvParam.SelectSql = "SELECT " +
+                "pr.id, " +
+                "s.date, " +
+                "s.invoice_number, " +
+                "p.product_number, " +
+                "p.product_name, " +
+                "pr.qty, pr.amount  ";
             dvParam.FromSql = "FROM  product_returns pr " +
                 "INNER JOIN sales s ON pr.sale_id = s.id " +
                 "INNER JOIN products p ON pr.product_id = p.id  " +
-                "WHERE p.product_number like @s1 or p.product_name like @s2 " +
+                "WHERE " +
+                "p.product_number like @s1 or " +
+                "p.product_name like @s2 " +
                 "ORDER BY pr.id DESC ";
             dvParam.SearchParamCount = 2; //name and description
             dvParam.TitleList = new List<string>() { "", "Date", "Invoice Number", "Product Number", "Product Name", "Qty", "Amount" }; //Column titles
@@ -190,16 +199,30 @@ namespace vellsPos.Entities.Masters
             User user = new User();
             try
             {
-                String query = "SELECT * FROM product_returns where id = '" + id + "'";
+                String query = "SELECT " +
+                    "pr.id, " +
+                    "s.date AS date, " +
+                    "s.invoice_number AS invoice, " +
+                    "p.product_number AS productNu, " +
+                    "p.product_name AS productNa, " +
+                    "pr.qty, " +
+                    "pr.amount " +
+                    "FROM product_returns pr " +
+                    "INNER JOIN sales s ON pr.sale_id = s.id " +
+                    "INNER JOIN products p ON pr.product_id = p.id  " +
+                    "WHERE pr.id = '" + id + "'";
                 Dictionary<String, String> dbData = DBTransactionService.getDataAsDictionary(query);
 
                 if (dbData != null)
                 {
+                    sale.Date = dbData["date"];
+                    sale.InvoiceNumber = dbData["invoice"];
                     productReturn.sale = sale;
+                    product.ProductNumber = dbData["productNu"];
+                    product.ProductName = dbData["productNa"];
                     productReturn.product = product;
                     productReturn.qty = Convert.ToInt32(dbData["qty"]);
                     productReturn.amount = Convert.ToDecimal(dbData["amount"]);
-                    productReturn.user = user;
                 }
                 else
                 {

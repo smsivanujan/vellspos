@@ -85,6 +85,7 @@ namespace vellsPos.Entities.Masters
                 parameters.Add(new QueryParameter("status", MySqlDbType.Int32, product.Status));
                 parameters.Add(new QueryParameter("temp", MySqlDbType.Int32, product.Temp));
                 parameters.Add(new QueryParameter("user_id", MySqlDbType.Int32, product.User.Id));
+                parameters.Add(new QueryParameter("id", MySqlDbType.Int32, product.Id));
 
                 commands.Add(new QueryCommand(sql, parameters));
                 result = DBTransactionService.executeNonQuery(commands);
@@ -172,12 +173,27 @@ namespace vellsPos.Entities.Masters
         {
             DataViewParam dvParam = new DataViewParam();
             dvParam.Title = "Products";
-            dvParam.SelectSql = "SELECT p.id, p.product_number, p.product_name, c.category_name, sc.sub_category_name, scc.sub_co_category_name, p.sale_price, p.added_date, p.description ";
+            dvParam.SelectSql = "SELECT " +
+                "p.id, " +
+                "p.product_number, " +
+                "p.product_name, " +
+                "c.category_name, " +
+                "sc.sub_category_name, " +
+                "scc.sub_co_category_name, " +
+                "p.sale_price, " +
+                "date_format(p.added_date,'%Y-%m-%d %H:%i'), " +
+                "p.description ";
             dvParam.FromSql = "FROM  products p " +
                  "INNER JOIN sub_co_categories scc ON p.sub_co_category_id = scc.id " +
                   "INNER JOIN sub_categories sc ON scc.sub_category_id = sc.id " +
                   "INNER JOIN categories c ON sc.category_id = c.id " +
-                "WHERE c.category_name like @s1 or sc.sub_category_name like @s2 or scc.sub_co_category_name like @s3 or p.product_number like @s4 or p.product_name like @s5 or p.status like @s6 " +
+                "WHERE " +
+                "c.category_name like @s1 or " +
+                "sc.sub_category_name like @s2 or " +
+                "scc.sub_co_category_name like @s3 or " +
+                "p.product_number like @s4 or " +
+                "p.product_name like @s5 or " +
+                "p.status like @s6 " +
                 "ORDER BY p.id DESC ";
             dvParam.SearchParamCount = 5; //name and description
             dvParam.TitleList = new List<string>() { "", "Product Number", "Product", "Category", "Sub Category", "Sub Co Category", "Sale Price", "Added Date", "Description", "Status" }; //Column titles
@@ -200,7 +216,13 @@ namespace vellsPos.Entities.Masters
             DataViewParam dvParam = new DataViewParam();
             dvParam.Title = "Product Whithout Barcode";
             dvParam.TableName = "products";
-            dvParam.SelectSql = "SELECT p.id, p.product_number, p.product_name, c.category_name, sc.sub_category_name, scc.sub_co_category_name ";
+            dvParam.SelectSql = "SELECT " +
+                "p.id, " +
+                "p.product_number, " +
+                "p.product_name, " +
+                "c.category_name, " +
+                "sc.sub_category_name, " +
+                "scc.sub_co_category_name ";
             dvParam.FromSql = "from products p  " +
                 "LEFT JOIN sub_co_categories scc ON p.sub_co_category_id=scc.id  " +
                 "LEFT JOIN sub_categories sc ON scc.sub_category_id=sc.id  " +
@@ -231,27 +253,46 @@ namespace vellsPos.Entities.Masters
         public static Product getOneProduct(int id)
         {
             Product product = new Product();
+            Category category = new Category();
+            SubCategory subCategory = new SubCategory();
             SubCoCategory subCoCategory = new SubCoCategory();
             User user = new User();
             try
             {
-                String query = "SELECT * FROM products where id = '" + id + "'";
+                String query = "SELECT " +
+                    "p.id, " +
+                    "p.product_number, " +
+                    "p.product_name, " +
+                    "c.category_name AS category, " +
+                    "sc.sub_category_name AS subCategory, " +
+                    "scc.sub_co_category_name AS subCoCategory, " +
+                    "p.sale_price, " +
+                    "date_format(p.added_date,'%Y-%m-%d %H:%i') AS added_date, " +
+                    "p.description " +
+                    "FROM products p " +
+                    "INNER JOIN sub_co_categories scc ON p.sub_co_category_id = scc.id " +
+                    "INNER JOIN sub_categories sc ON scc.sub_category_id = sc.id " +
+                    "INNER JOIN categories c ON sc.category_id = c.id " +
+                    "WHERE p.id = '" + id + "'";
                 Dictionary<String, String> dbData = DBTransactionService.getDataAsDictionary(query);
 
                 if (dbData != null)
                 {
-                    product.ProductNumber = dbData["product_number"];
-                    product.ProductName = dbData["product_name"];
-                    product.SubCoCategory = subCoCategory;
+                    product.productNumber = dbData["product_number"];
+                    product.productName = dbData["product_name"];
+                    category.CategoryName = dbData["category"];
+                    subCategory.Category = category;
+                    subCategory.SubCategoryName = dbData["subCategory"];
+                    product.subCoCategory = subCoCategory;
                     product.SalePrice = Convert.ToDecimal(dbData["sale_price"]);
-                    product.AddedDate = Convert.ToDateTime(dbData["added_date"]);
-                    product.Image = dbData["image"];
-                    product.Description = dbData["description"];
+                    product.addedDate = Convert.ToDateTime(dbData["added_date"]);
+                    product.image = dbData["image"];
+                    product.description = dbData["description"];
                     product.isBarcode= Convert.ToInt32(dbData["is_barcode"]);
-                    product.AgeVerify = Convert.ToInt32(dbData["age_verify"]);
-                    product.Status = Convert.ToInt32(dbData["status"]);
-                    product.Temp = Convert.ToInt32(dbData["temp"]);
-                    product.User= user;
+                    product.ageVerify = Convert.ToInt32(dbData["age_verify"]);
+                    product.status = Convert.ToInt32(dbData["status"]);
+                    product.temp = Convert.ToInt32(dbData["temp"]);
+                    product.user= user;
                 }
                 else
                 {

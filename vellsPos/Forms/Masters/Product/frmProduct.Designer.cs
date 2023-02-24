@@ -295,6 +295,7 @@
             // 
             // cmb_subCoCategory
             // 
+            this.cmb_subCoCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb_subCoCategory.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.cmb_subCoCategory.FormattingEnabled = true;
             this.cmb_subCoCategory.Location = new System.Drawing.Point(15, 210);

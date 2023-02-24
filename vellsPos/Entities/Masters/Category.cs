@@ -77,6 +77,7 @@ namespace vellsPos.Entities.Masters
                 parameters.Add(new QueryParameter("category_name", MySqlDbType.String, category.categoryName));
                 parameters.Add(new QueryParameter("image", MySqlDbType.String, category.image));
                 parameters.Add(new QueryParameter("description", MySqlDbType.String, category.description));
+                parameters.Add(new QueryParameter("id", MySqlDbType.Int32, category.Id));
 
                 commands.Add(new QueryCommand(sql, parameters));
                 result = DBTransactionService.executeNonQuery(commands);
@@ -117,7 +118,10 @@ namespace vellsPos.Entities.Masters
         {
             DataViewParam dvParam = new DataViewParam();
             dvParam.Title = "Categories";
-            dvParam.SelectSql = "SELECT c.id, c.category_name, c.description ";
+            dvParam.SelectSql = "SELECT " +
+                "c.id, " +
+                "c.category_name, " +
+                "c.description ";
             dvParam.FromSql = "FROM categories c " +
                 "WHERE c.category_name like @s1 " +
                 "ORDER BY c.id DESC ";
@@ -142,7 +146,13 @@ namespace vellsPos.Entities.Masters
             Category category = new Category();
             try
             {
-                String query = "SELECT * FROM categories where id = '" + id + "'";
+                String query = "SELECT " +
+                    "id, " +
+                    "category_name, " +
+                    "image " +
+                    "description " +
+                    "FROM categories " +
+                    "WHERE id = '" + id + "'";
                 Dictionary<String, String> dbData = DBTransactionService.getDataAsDictionary(query);
 
                 if (dbData != null)

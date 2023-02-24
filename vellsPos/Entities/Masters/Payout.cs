@@ -83,6 +83,7 @@ namespace vellsPos.Entities.Masters
                 parameters.Add(new QueryParameter("amount", MySqlDbType.Decimal, payouts.amount));
                 parameters.Add(new QueryParameter("description", MySqlDbType.String, payouts.description));
                 parameters.Add(new QueryParameter("user_id", MySqlDbType.Int32, payouts.user.Id));
+                parameters.Add(new QueryParameter("id", MySqlDbType.Int32, payouts.Id));
 
                 commands.Add(new QueryCommand(sql, parameters));
                 result = DBTransactionService.executeNonQuery(commands);
@@ -123,9 +124,15 @@ namespace vellsPos.Entities.Masters
         {
             DataViewParam dvParam = new DataViewParam();
             dvParam.Title = "Payouts";
-            dvParam.SelectSql = "SELECT p.id, p.date, p.description, p.amount ";
+            dvParam.SelectSql = "SELECT " +
+                "p.id, " +
+                "date_format(p.date,'%Y-%m-%d %H:%i'), " +
+                "p.description, " +
+                "p.amount ";
             dvParam.FromSql = "FROM  payouts p " +
-                "WHERE p.date like @s1 or p.description like @s2 " +
+                "WHERE " +
+                "p.date like @s1 or " +
+                "p.description like @s2 " +
                 "ORDER BY p.id DESC ";
             dvParam.SearchParamCount = 1; //name and description
             dvParam.TitleList = new List<string>() { "", "Date", "Description", "Amount" }; //Column titles
@@ -149,7 +156,13 @@ namespace vellsPos.Entities.Masters
             User user = new User();
             try
             {
-                String query = "SELECT * FROM payouts where id = '" + id + "'";
+                String query = "SELECT " +
+                    "id, " +
+                    "date_format(date,'%Y-%m-%d %H:%i') AS date, " +
+                    "description, " +
+                    "amount " +
+                    "FROM payouts " +
+                    "WHERE id = '" + id + "'";
                 Dictionary<String, String> dbData = DBTransactionService.getDataAsDictionary(query);
 
                 if (dbData != null)
@@ -157,7 +170,6 @@ namespace vellsPos.Entities.Masters
                     payouts.date = Convert.ToDateTime(dbData["date"]);
                     payouts.amount = Convert.ToDecimal(dbData["amount"]);
                     payouts.description = dbData["description"];
-                    payouts.user = user;
                 }
                 else
                 {

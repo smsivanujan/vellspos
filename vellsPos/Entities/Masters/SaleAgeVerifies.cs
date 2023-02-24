@@ -91,6 +91,7 @@ namespace vellsPos.Entities.Masters
                 parameters.Add(new QueryParameter("verification_method", MySqlDbType.String, saleAgeVerifies.verificationMethod));
                 parameters.Add(new QueryParameter("status", MySqlDbType.Int32, saleAgeVerifies.Status));
                 parameters.Add(new QueryParameter("user_id", MySqlDbType.Int32, saleAgeVerifies.user.Id));
+                parameters.Add(new QueryParameter("id", MySqlDbType.Int32, saleAgeVerifies.Id));
 
                 commands.Add(new QueryCommand(sql, parameters));
                 result = DBTransactionService.executeNonQuery(commands);
@@ -131,11 +132,23 @@ namespace vellsPos.Entities.Masters
         {
             DataViewParam dvParam = new DataViewParam();
             dvParam.Title = "Sale Age Verifies";
-            dvParam.SelectSql = "SELECT sav.id, s.date, s.invoice_number, concat(p.product_number +' '+ p.product_name), sav.verification_method, sav.status ";
+            dvParam.SelectSql = "SELECT " +
+                "sav.id, " +
+                "s.date, " +
+                "s.invoice_number, " +
+                "concat(p.product_number,' ',p.product_name), " +
+                "sav.verification_method, " +
+                "sav.status ";
             dvParam.FromSql = "FROM  sale_age_verifies sav " +
                    "INNER JOIN sales s ON sav.sale_id = s.id " +
-                      "INNER JOIN products p ON sav.product_id = p.id " +
-                "WHERE s.date like @s1 or s.invoice_number like @s2 or p.product_number like @s3 or p.product_name like @s4 or sav.verification_method like @s5 or sav.status like @s6 " +
+                   "INNER JOIN products p ON sav.product_id = p.id " +
+                "WHERE " +
+                "s.date like @s1 or " +
+                "s.invoice_number like @s2 or " +
+                "p.product_number like @s3 or " +
+                "p.product_name like @s4 or " +
+                "sav.verification_method like @s5 or " +
+                "sav.status like @s6 " +
                 "ORDER BY sav.id DESC ";
             dvParam.SearchParamCount = 5; //name and description
             dvParam.TitleList = new List<string>() { "", "Date", "Invoice Number", "Product", "Verification Method", "Status" }; //Column titles
@@ -161,12 +174,27 @@ namespace vellsPos.Entities.Masters
             User user = new User();
             try
             {
-                String query = "SELECT * FROM sale_age_verifies where id = '" + id + "'";
+                String query = "SELECT " +
+                    "sav.id, " +
+                    "s.date AS date, " +
+                    "s.invoice_number AS invoice, " +
+                    "p.product_number AS productNu, " +
+                    "p.product_name AS productNa, " +
+                    "sav.verification_method, " +
+                    "sav.status " +
+                    "FROM sale_age_verifies sav " +
+                    "INNER JOIN sales s ON sav.sale_id = s.id " +
+                    "INNER JOIN products p ON sav.product_id = p.id " +
+                    "WHERE sav.id = '" + id + "'";
                 Dictionary<String, String> dbData = DBTransactionService.getDataAsDictionary(query);
 
                 if (dbData != null)
                 {
+                    sale.Date = dbData["date"];
+                    sale.InvoiceNumber = dbData["invoice"];
                     saleAgeVerifies.sale = sale;
+                    product.ProductNumber = dbData["productNu"];
+                    product.ProductName = dbData["productNa"];
                     saleAgeVerifies.product = product;
                     saleAgeVerifies.verificationMethod = dbData["verification_method"];
                     saleAgeVerifies.status = Convert.ToInt32(dbData["status"]);

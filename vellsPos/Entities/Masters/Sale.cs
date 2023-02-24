@@ -65,6 +65,7 @@ namespace vellsPos.Entities.Masters
                 parameters.Add(new QueryParameter("total_discount", MySqlDbType.Decimal, sale.TotalDiscount));
                 parameters.Add(new QueryParameter("status", MySqlDbType.Int32, sale.Status));
                 parameters.Add(new QueryParameter("user_id", MySqlDbType.Int32, sale.User.Id));
+                parameters.Add(new QueryParameter("id", MySqlDbType.Int32, sale.Id));
 
                 commands.Add(new QueryCommand(sql, parameters));
                 result = DBTransactionService.executeNonQuery(commands);
@@ -143,10 +144,20 @@ namespace vellsPos.Entities.Masters
         {
             DataViewParam dvParam = new DataViewParam();
             dvParam.Title = "Sales";
-            dvParam.SelectSql = "SELECT s.id, s.date, b.branch_name, s.invoice_number, s.total_amount, s.total_discount, s.status ";
+            dvParam.SelectSql = "SELECT " +
+                "s.id, " +
+                "date_format(s.date,'%Y-%m-%d %H:%i') AS date, " +
+                "b.branch_name, " +
+                "s.invoice_number, " +
+                "s.total_amount, " +
+                "s.total_discount, " +
+                "s.status ";
             dvParam.FromSql = "FROM  sales s " +
-                  "INNER JOIN branches b ON sd.branch_id = b.id " +
-                "WHERE s.date like @s1 or b.branch_name like @s2 or s.invoice_number like @s3 or s.status like @s4 " +
+                  "INNER JOIN branches b ON s.branch_id = b.id " +
+                "WHERE s.date like @s1 or " +
+                "b.branch_name like @s2 or " +
+                "s.invoice_number like @s3 or " +
+                "s.status like @s4 " +
                 "ORDER BY s.id DESC ";
             dvParam.SearchParamCount = 3; //name and description
             dvParam.TitleList = new List<string>() { "", "Date", "Branch", "Total Amount", "Total Discount", "Qty", "Status" }; //Column titles
@@ -171,18 +182,28 @@ namespace vellsPos.Entities.Masters
             User user = new User();
             try
             {
-                String query = "SELECT * FROM sales where id = '" + id + "'";
+                String query = "SELECT " +
+                    "s.id, " +
+                    "date_format(s.date,'%Y-%m-%d %H:%i') AS date, " +
+                    "b.branch_name AS branch, " +
+                    "s.invoice_number, " +
+                    "s.total_amount, " +
+                    "s.total_discount, " +
+                    "s.status " +
+                    "FROM sales s " +
+                    "INNER JOIN branches b ON s.branch_id = b.id " +
+                    "WHERE s.id = '" + id + "'";
                 Dictionary<String, String> dbData = DBTransactionService.getDataAsDictionary(query);
 
                 if (dbData != null)
                 {
-                    sale.Date = dbData["date"];
-                    sale.Branch = branch;
-                    sale.InvoiceNumber = dbData["invoice_number"];
-                    sale.TotalAmount = Convert.ToDecimal(dbData["total_amount"]);
-                    sale.TotalDiscount = Convert.ToDecimal(dbData["total_discount"]);
-                    sale.Status = Convert.ToInt32(dbData["status"]);
-                    sale.User = user;
+                    sale.date = dbData["date"];
+                    branch.BranchName = dbData["branch"];
+                    sale.branch = branch;
+                    sale.invoiceNumber = dbData["invoice_number"];
+                    sale.totalAmount = Convert.ToDecimal(dbData["total_amount"]);
+                    sale.totalDiscount = Convert.ToDecimal(dbData["total_discount"]);
+                    sale.status = Convert.ToInt32(dbData["status"]);
                 }
                 else
                 {

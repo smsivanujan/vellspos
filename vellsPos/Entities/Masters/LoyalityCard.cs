@@ -96,6 +96,7 @@ namespace vellsPos.Entities.Masters
                 parameters.Add(new QueryParameter("issued_date", MySqlDbType.String, loyalityCard.IssuedDate));
                 parameters.Add(new QueryParameter("status", MySqlDbType.Int32, loyalityCard.Status));
                 parameters.Add(new QueryParameter("user_id", MySqlDbType.Int32, loyalityCard.User.Id));
+                parameters.Add(new QueryParameter("id", MySqlDbType.Int32, loyalityCard.Id));
 
                 commands.Add(new QueryCommand(sql, parameters));
                 result = DBTransactionService.executeNonQuery(commands);
@@ -136,10 +137,19 @@ namespace vellsPos.Entities.Masters
         {
             DataViewParam dvParam = new DataViewParam();
             dvParam.Title = "Loyality Cards";
-            dvParam.SelectSql = "SELECT lc.id, lc.issued_date, lc.card_number, concat(c.customer_number +' '+ c.customer_first_name), lc.card_type, lc.status ";
+            dvParam.SelectSql = "SELECT " +
+                "lc.id, " +
+                "date_format(lc.issued_date,'%Y-%m-%d %H:%i'), " +
+                "lc.card_number, " +
+                "concat(c.customer_number,' ',c.customer_first_name), " +
+                "lc.card_type, lc.status ";
             dvParam.FromSql = "FROM loyality_cards lc " +
                 "INNER JOIN customers c ON lc.customer_id = c.id " +
-                "WHERE lc.issued_date like @s1 or lc.card_number like @s2 or c.customer_number like @s3 or c.customer_first_name like @s4 or lc.card_type like @s5 or lc.status like @s6 " +
+                "WHERE lc.issued_date like @s1 or " +
+                "lc.card_number like @s2 or " +
+                "c.customer_number like @s3 or " +
+                "c.customer_first_name like @s4 or " +
+                "lc.card_type like @s5 or lc.status like @s6 " +
                 "ORDER BY lc.id DESC ";
             dvParam.SearchParamCount = 5; //name and description
             dvParam.TitleList = new List<string>() { "", "Date", "Card Number", "Customer", "Card Type", "Status" }; //Column titles
@@ -164,17 +174,33 @@ namespace vellsPos.Entities.Masters
             User user = new User();
             try
             {
-                String query = "SELECT * FROM loyality_cards where id = '" + id + "'";
+                String query = "SELECT " +
+                    "lc.id, " +
+                    "date_format(lc.issued_date,'%Y-%m-%d %H:%i') AS date, " +
+                    "lc.card_number, " +
+                    "c.customer_number AS customerFN, " +
+                    "c.customer_first_name AS customerLN, " +
+                    "lc.card_type, " +
+                    "lc.issued_date, " +
+                    "lc.status, " +
+                     "u.user_name AS user " +
+                    "FROM loyality_cards lc " +
+                    "INNER JOIN customers c ON lc.customer_id = c.id " +
+                    "INNER JOIN users u ON lc.user_id = u.id " +
+                    "WHERE lc.id = '" + id + "'";
                 Dictionary<String, String> dbData = DBTransactionService.getDataAsDictionary(query);
 
                 if (dbData != null)
                 {
-                    loyalityCard.CardNumber = dbData["card_number"];
-                    loyalityCard.CardType = dbData["card_type"];
-                    loyalityCard.Customer = customer;
-                    loyalityCard.IssuedDate = dbData["issued_date"];
-                    loyalityCard.Status =Convert.ToInt32(dbData["status"]);
-                    loyalityCard.User = user;
+                    loyalityCard.cardNumber = dbData["card_number"];
+                    loyalityCard.cardType = dbData["card_type"];
+                    customer.CustomerFirstName = dbData["customerFN"];
+                    customer.CustomerLastName = dbData["customerLN"];
+                    loyalityCard.customer = customer;
+                    loyalityCard.issuedDate = dbData["issued_date"];
+                    loyalityCard.status =Convert.ToInt32(dbData["status"]);
+                    user.UserName = dbData["user"];
+                    loyalityCard.user = user;
                 }
                 else
                 {

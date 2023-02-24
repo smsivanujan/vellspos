@@ -46,6 +46,7 @@ namespace vellsPos.Entities.Masters
                 parameters.Add(new QueryParameter("date", MySqlDbType.DateTime, activityLog.date));
                 parameters.Add(new QueryParameter("user_id", MySqlDbType.Int32, activityLog.user.Id));
                 parameters.Add(new QueryParameter("action", MySqlDbType.String, activityLog.action));
+                parameters.Add(new QueryParameter("id", MySqlDbType.Int32, activityLog.Id));
 
                 commands.Add(new QueryCommand(sql, parameters));
                 result = DBTransactionService.executeNonQuery(commands);
@@ -116,10 +117,17 @@ namespace vellsPos.Entities.Masters
         {
             DataViewParam dvParam = new DataViewParam();
             dvParam.Title = "Activity Logs";
-            dvParam.SelectSql = "SELECT al.id, al.date, u.user_name, al.action ";
+            dvParam.SelectSql = "SELECT " +
+                "al.id, " +
+                "date_format(al.date,'%Y-%m-%d %H:%i'), " +
+                "u.user_name, " +
+                "al.action ";
             dvParam.FromSql = "FROM  activity_logs al " +
                   "INNER JOIN users u ON al.user_id = u.id " +
-                "WHERE al.date like @s1 or u.user_name like @s2 or al.action like @s3 " +
+                "WHERE " +
+                "al.date like @s1 " +
+                "or u.user_name like @s2 or " +
+                "al.action like @s3 " +
                 "ORDER BY al.id DESC ";
             dvParam.SearchParamCount = 2; //name and description
             dvParam.TitleList = new List<string>() { "", "Date", "User", "Acton" }; //Column titles
@@ -143,12 +151,20 @@ namespace vellsPos.Entities.Masters
             User user = new User();
             try
             {
-                String query = "SELECT * FROM activity_logs where id = '" + id + "'";
+                String query = "SELECT " +
+                    "al.id, " +
+                    "date_format(al.date,'%Y-%m-%d %H:%i') AS date, " +
+                    "u.user_name AS user, " +
+                    "al.action " +
+                    "FROM activity_logs al " +
+                    "INNER JOIN users u ON al.user_id = u.id " +
+                    "WHERE al.id = '" + id + "'";
                 Dictionary<String, String> dbData = DBTransactionService.getDataAsDictionary(query);
 
                 if (dbData != null)
                 {
                     activityLog.date = Convert.ToDateTime(dbData["date"]);
+                    user.UserName = dbData["user"];
                     activityLog.user = user;
                     activityLog.action = dbData["action"];
                 }

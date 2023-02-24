@@ -115,6 +115,7 @@ namespace vellsPos.Entities.Masters
                 parameters.Add(new QueryParameter("phone_number", MySqlDbType.String, customer.phoneNumber));
                 parameters.Add(new QueryParameter("email", MySqlDbType.String, customer.email));
                 parameters.Add(new QueryParameter("user_id", MySqlDbType.Int32, customer.user.Id));
+                parameters.Add(new QueryParameter("id", MySqlDbType.Int32, customer.Id));
 
                 commands.Add(new QueryCommand(sql, parameters));
                 result = DBTransactionService.executeNonQuery(commands);
@@ -155,12 +156,24 @@ namespace vellsPos.Entities.Masters
         {
             DataViewParam dvParam = new DataViewParam();
             dvParam.Title = "Customers";
-            dvParam.SelectSql = "SELECT c.id, c.customer_number, concat(c.customer_first_name +' '+ c.customer_last_name), c.nic, c.gender, c.phone_number, c.email ";
+            dvParam.SelectSql = "SELECT " +
+                "c.id, " +
+                "c.customer_number, concat(c.customer_first_name,' ',c.customer_last_name), " +
+                "c.nic, " +
+                "c.gender, " +
+                "date_format(c.date_of_birth,'%Y-%m-%d'), " +
+                "c.phone_number, " +
+                "c.email ";
             dvParam.FromSql = "FROM  customers c " +
-                "WHERE c.customer_number like @s1 or c.customer_first_name like @s2 or c.customer_last_name like @s3 or c.nic like @s4 or c.gender like @s5 or c.phone_number like @s6 " +
+                "WHERE " +
+                "c.customer_number like @s1 or " +
+                "c.customer_first_name like @s2 or " +
+                "c.customer_last_name like @s3 or " +
+                "c.nic like @s4 or c.gender like @s5 or " +
+                "c.phone_number like @s6 " +
                 "ORDER BY c.id DESC ";
             dvParam.SearchParamCount = 5; //name and description
-            dvParam.TitleList = new List<string>() { "", "Customer Number", "Customer", "NIC", "Gender", "Phone Number", "Email" }; //Column titles
+            dvParam.TitleList = new List<string>() { "", "Customer Number", "Customer", "NIC", "Gender", "Date of Birth", "Phone Number", "Email" }; //Column titles
             dvParam.InvisibleColumnList = new List<int>() { 1 };
             dvParam.NumericColumnList = new List<int>() { };
             dvParam.AddForm = new frmCustomer();
@@ -175,13 +188,62 @@ namespace vellsPos.Entities.Masters
             vData.Show();
         }
 
+        public static void showOnViewFormCustomer(TextBox labelBox = null, TextBox idBox = null)
+        {
+            DataViewParam dvParam = new DataViewParam();
+            dvParam.Title = "Customers";
+            dvParam.TableName = "customers";
+            dvParam.SelectSql = "SELECT " +
+                "c.id, " +
+                "c.customer_number, " +
+                "concat(c.customer_first_name,' ',c.customer_last_name), " +
+                "c.nic, " +
+                "c.gender, " +
+                "date_format(c.date_of_birth,'%Y-%m-%d'), " +
+                "c.phone_number, " +
+                "c.email ";
+            dvParam.FromSql = "FROM  customers c " +
+                 "LEFT JOIN loyality_cards lc ON lc.customer_id=c.id  " +
+                 "WHERE lc.customer_id IS NULL " +
+                "ORDER BY c.id DESC ";
+            dvParam.SearchParamCount = 0; //name and description //AND p.product_number like @s1 or p.product_name like @s2 or c.category_name like @s3 or sc.sub_category_name like @s4 or scc.sub_co_category_name like @s5 
+            dvParam.TitleList = new List<string>() { "", "Customer Number", "Customer", "NIC", "Gender", "Date of Birth", "Phone Number", "Email" }; //Column titles
+            dvParam.InvisibleColumnList = new List<int>() { 1 };
+            dvParam.NumericColumnList = new List<int>() { };//Column titles
+            //dvParam.FixedColumnNumber = 3;
+            dvParam.ShowImage = "show";
+
+
+            dvParam.AddForm = new frmProduct();
+            //dvParam.ViewForm = new frmProduct();
+
+
+            frmView vData = null;
+
+            if (idBox == null && labelBox == null)
+                vData = new frmView(dvParam);
+            else
+                vData = new frmView(dvParam, idBox, labelBox);
+            vData.Show();
+        }
         public static Customer getOneCustomer(int id)
         {
             Customer customer = new Customer();
             User user = new User();
             try
             {
-                String query = "SELECT * FROM customers where id = '" + id + "'";
+                String query = "SELECT " +
+                    "id, " +
+                    "customer_number, " +
+                    "customer_first_name, " +
+                    "customer_last_name, " +
+                    "nic, " +
+                    "gender, "+
+                    "date_format(date_of_birth,'%Y-%m-%d') AS date_of_birth, " +
+                    "phone_number, " +
+                    "email " +
+                    "FROM customers " +
+                    "WHERE id = '" + id + "'";
                 Dictionary<String, String> dbData = DBTransactionService.getDataAsDictionary(query);
 
                 if (dbData != null)

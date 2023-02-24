@@ -76,6 +76,7 @@ namespace vellsPos.Entities.Masters
                 parameters.Add(new QueryParameter("loyalitycard_id", MySqlDbType.Int32, customerPurchasedHistory.loyalityCard.Id));
                 parameters.Add(new QueryParameter("sale_id", MySqlDbType.Int32, customerPurchasedHistory.sale.Id));
                 parameters.Add(new QueryParameter("reward_point", MySqlDbType.Decimal, customerPurchasedHistory.rewardPoint));
+                parameters.Add(new QueryParameter("id", MySqlDbType.Int32, customerPurchasedHistory.Id));
 
                 commands.Add(new QueryCommand(sql, parameters));
                 result = DBTransactionService.executeNonQuery(commands);
@@ -116,12 +117,21 @@ namespace vellsPos.Entities.Masters
         {
             DataViewParam dvParam = new DataViewParam();
             dvParam.Title = "Customer Purchase History";
-            dvParam.SelectSql = "SELECT cph.id, concat(c.customer_number +' '+ c.customer_first_name), lc.card_number, s.invoice_number, cph.reward_point ";
+            dvParam.SelectSql = "SELECT " +
+                "cph.id, " +
+                "concat(c.customer_number,' ',c.customer_first_name), " +
+                "lc.card_number, " +
+                "s.invoice_number, " +
+                "cph.reward_point ";
             dvParam.FromSql = "FROM  customer_purchased_histories cph " +
                  "INNER JOIN loyality_cards lc ON cph.loyalitycard_id = s.id " +
                   "INNER JOIN customers c ON cph.loyalitycard_id = s.id " +
                   "INNER JOIN sales s ON cph.sale_id = s.id " +
-                "WHERE lc.card_number like @s1 or s.invoice_number like @s2 or c.customer_number like @s3 or c.customer_first_name like @s4 " +
+                "WHERE " +
+                "lc.card_number like @s1 or " +
+                "s.invoice_number like @s2 or " +
+                "c.customer_number like @s3 or " +
+                "c.customer_first_name like @s4 " +
                 "ORDER BY cph.id DESC ";
             dvParam.SearchParamCount = 3; //name and description
             dvParam.TitleList = new List<string>() { "", "Customer", "Loyality Card", "Invoice", "Reward Point" }; //Column titles
@@ -142,16 +152,33 @@ namespace vellsPos.Entities.Masters
         public static CustomerPurchasedHistory getOneCustomerPurchasedHistory(int id)
         {
             CustomerPurchasedHistory customerPurchasedHistory = new CustomerPurchasedHistory();
-            LoyalityCard loyality = new LoyalityCard();
+            LoyalityCard loyalityCard = new LoyalityCard();
             Sale sale = new Sale();
+            Customer customer = new Customer();
             try
             {
-                String query = "SELECT * FROM customer_purchased_histories where id = '" + id + "'";
+                String query = "SELECT " +
+                    "cph.id, " +
+                    "c.customer_number AS customerFN, " +
+                    "c.customer_first_name AS customerLN, " +
+                    "lc.card_number AS loyalityCard, " +
+                    "s.invoice_number AS invoice, " +
+                    "cph.reward_point " +
+                    "FROM customer_purchased_histories cph " +
+                    "INNER JOIN loyality_cards lc ON cph.loyalitycard_id = s.id " +
+                    "INNER JOIN customers c ON cph.loyalitycard_id = s.id " +
+                    "INNER JOIN sales s ON cph.sale_id = s.id " +
+                    "WHERE cph.id = '" + id + "'";
                 Dictionary<String, String> dbData = DBTransactionService.getDataAsDictionary(query);
 
                 if (dbData != null)
                 {
-                    customerPurchasedHistory.loyalityCard = loyality;
+                    customer.CustomerFirstName = dbData["customerFN"];
+                    customer.CustomerLastName = dbData["customerLN"];
+                    loyalityCard.Customer = customer;
+                    loyalityCard.CardNumber = dbData["loyalityCard"];
+                    customerPurchasedHistory.loyalityCard = loyalityCard;
+                    sale.InvoiceNumber = dbData["invoice"];
                     customerPurchasedHistory.sale = sale;
                     customerPurchasedHistory.rewardPoint = Convert.ToDecimal(dbData["reward_point"]);
                 }

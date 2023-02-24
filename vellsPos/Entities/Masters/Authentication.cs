@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using Org.BouncyCastle.Asn1.X509;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -72,6 +73,7 @@ namespace vellsPos.Entities.Masters
                 List<QueryParameter> parameters = new List<QueryParameter>();
                 parameters.Add(new QueryParameter("role_id", MySqlDbType.Int32, authentication.role.Id));
                 parameters.Add(new QueryParameter("authentication_key_id", MySqlDbType.Int32, authentication.authenticationKey.Id));
+                parameters.Add(new QueryParameter("id", MySqlDbType.Int32, authentication.Id));
 
                 commands.Add(new QueryCommand(sql, parameters));
                 result = DBTransactionService.executeNonQuery(commands);
@@ -112,11 +114,18 @@ namespace vellsPos.Entities.Masters
         {
             DataViewParam dvParam = new DataViewParam();
             dvParam.Title = "Authentications";
-            dvParam.SelectSql = "SELECT a.id, r.role_name, ak.route, ak.description ";
+            dvParam.SelectSql = "SELECT " +
+                "a.id, " +
+                "r.role_name, " +
+                "ak.route, " +
+                "ak.description ";
             dvParam.FromSql = "FROM  authentications a " +
                  "INNER JOIN roles r ON a.role_id = r.id " +
                   "INNER JOIN authentication_keys ak ON a.authentication_key_id = ak.id " +
-                "WHERE r.role_name like @s1 or ak.route like @s2 or ak.description like @s3 " +
+                "WHERE " +
+                "r.role_name like @s1 or " +
+                "ak.route like @s2 or " +
+                "ak.description like @s3 " +
                 "ORDER BY a.id DESC ";
             dvParam.SearchParamCount = 2; //name and description
             dvParam.TitleList = new List<string>() { "", "Role", "Route", "Description" }; //Column titles
@@ -138,14 +147,26 @@ namespace vellsPos.Entities.Masters
         {
             Authentication authentication = new Authentication();
             AuthenticationKey authenticationKey = new AuthenticationKey();
+            Role role = new Role();
             try
             {
-                String query = "SELECT * FROM settings where id = '" + id + "'";
+                String query = "SELECT " +
+                    "a.id, " +
+                    "r.role_name AS role, " +
+                    "ak.route AS route, " +
+                    "ak.description " +
+                    "FROM authentications a " +
+                    "INNER JOIN roles r ON a.role_id = r.id " +
+                   "INNER JOIN authentication_keys ak ON a.authentication_key_id = ak.id " +
+                    "WHERE a.id = '" + id + "'";
                 Dictionary<String, String> dbData = DBTransactionService.getDataAsDictionary(query);
 
                 if (dbData != null)
                 {
-                    authentication.role.Id = Convert.ToInt32(dbData["role_id"]);
+                    role.Id = Convert.ToInt32(dbData["role_id"]);
+                    role.RoleName = dbData["role"];
+                    authentication.role= role;
+                    authenticationKey.Route = dbData["route"];
                     authentication.authenticationKey = authenticationKey;
                 }
                 else

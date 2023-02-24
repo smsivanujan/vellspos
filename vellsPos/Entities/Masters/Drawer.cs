@@ -76,6 +76,7 @@ namespace vellsPos.Entities.Masters
                 parameters.Add(new QueryParameter("date", MySqlDbType.DateTime, drawer.Date));
                 parameters.Add(new QueryParameter("initial_amount", MySqlDbType.Decimal, drawer.initialAmount));
                 parameters.Add(new QueryParameter("user_id", MySqlDbType.Int32, drawer.user.Id));
+                parameters.Add(new QueryParameter("id", MySqlDbType.Int32, drawer.Id));
 
                 commands.Add(new QueryCommand(sql, parameters));
                 result = DBTransactionService.executeNonQuery(commands);
@@ -116,10 +117,15 @@ namespace vellsPos.Entities.Masters
         {
             DataViewParam dvParam = new DataViewParam();
             dvParam.Title = "Drawers";
-            dvParam.SelectSql = "SELECT d.id, d.date, d.initial_amount, u.user_name ";
+            dvParam.SelectSql = "SELECT " +
+                "d.id, " +
+                "date_format(d.date,'%Y-%m-%d %H:%i'), " +
+                "d.initial_amount, u.user_name ";
             dvParam.FromSql = "FROM  drawers d " +
                   "INNER JOIN users u ON d.user_id = u.id " +
-                "WHERE d.date like @s1 or u.user_name like @s2 " +
+                "WHERE " +
+                "d.date like @s1 or " +
+                "u.user_name like @s2 " +
                 "ORDER BY d.id DESC ";
             dvParam.SearchParamCount = 1; //name and description
             dvParam.TitleList = new List<string>() { "", "Date", "Initial Amount", "User" }; //Column titles
@@ -143,13 +149,21 @@ namespace vellsPos.Entities.Masters
             User user = new User();
             try
             {
-                String query = "SELECT * FROM drawers where id = '" + id + "'";
+                String query = "SELECT " +
+                    "d.id, " +
+                    "date_format(d.date,'%Y-%m-%d %H:%i') AS date, " +
+                    "d.initial_amount, " +
+                    "u.user_name AS user " +
+                    "FROM drawers d " +
+                     "INNER JOIN users u ON d.user_id = u.id " +
+                    "WHERE d.id = '" + id + "'";
                 Dictionary<String, String> dbData = DBTransactionService.getDataAsDictionary(query);
 
                 if (dbData != null)
                 {
                     drawer.date = Convert.ToDateTime(dbData["date"]);
                     drawer.initialAmount = Convert.ToDecimal(dbData["initial_amount"]);
+                    user.UserName = dbData["user"];
                     drawer.user = user;
                 }
                 else

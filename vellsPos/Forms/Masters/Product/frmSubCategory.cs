@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic.ApplicationServices;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,12 +18,14 @@ namespace vellsPos.Forms.Layouts
     {
         private List<ListItem> categories = new List<ListItem>();
         private string uid;
+        ReturnResult result;
+        String msgStatus;
+        string rootPath = @"c:\vellspos";
 
         public frmSubCategory()
         {
             InitializeComponent();
         }
-
 
         private void frmSubCategory_Load(object sender, EventArgs e)
         {
@@ -33,7 +36,102 @@ namespace vellsPos.Forms.Layouts
             {
                 cmb_category.SelectedIndex = 0;
             }
+
+            uid = this.Tag.ToString();
+            if (String.IsNullOrEmpty(uid))
+            {
+                //
+            }
+            else
+            {
+                fillData();
+            }
         }
+
+        private void fillData()
+        {
+            //String categoryQuery = "SELECT id as value,category_name as text FROM categories";
+            //categories = DBTransactionService.getDataAsListItemsAndFillComboBox(categoryQuery, cmb_category);
+
+            //if (categories.Count > 0)
+            //{
+            //    cmb_category.SelectedIndex = 0;
+            //}
+
+            SubCategory subCategory = SubCategory.getOneSubCategory(Int32.Parse(uid));
+            Console.WriteLine("xxxxxxxxxxxxxxx");
+            Console.WriteLine(subCategory.Category.CategoryName);
+            Console.WriteLine(subCategory.SubCategoryName);
+            Console.WriteLine("xxxxxxxxxxxxxxx");
+            txt_id.Text = uid;
+            cmb_category.Text = subCategory.Category.CategoryName;
+            txt_subCategory.Text = subCategory.SubCategoryName;
+            rtxt_description.Text = subCategory.Description;
+            pb_subCategoryImage.Image = Image.FromFile(subCategory.Image);
+        }
+
+        //private void save()
+        //{
+            
+        //}
+
+        //private void update()
+        //{
+        //    ReturnResult nameResult = Validator.validateText(txt_subCategory.Text, "SubCategory");
+
+        //    if (!nameResult.Status)
+        //    {
+        //        MessageBox.Show(nameResult.Msg, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //    }
+        //    else
+        //    {
+        //        int categoryId = 0;
+        //        if (cmb_category.SelectedIndex >= 0)
+        //        {
+        //            categoryId = int.Parse(categories[cmb_category.SelectedIndex].Value);
+        //        }
+
+        //        Category category = new Category();
+        //        category.Id = categoryId;
+
+        //        string rootPath = @"c:\vellspos";
+        //        String directoryPath = Path.Combine(rootPath, Path.GetFileName(lbl_imagePath.Text));
+
+        //        ImageUpload imageUpload = new ImageUpload();
+        //        imageUpload.DirectoryPath = directoryPath;
+        //        imageUpload.RootPath = rootPath;//root folder from save
+        //        imageUpload.ImagePath = lbl_imagePath.Text;
+        //        ReturnResult resul2 = ImageUpload.store(imageUpload);
+
+        //        SubCategory subCategory = new SubCategory();
+        //        subCategory.SubCategoryName = txt_subCategory.Text;
+        //        subCategory.Category = category;
+        //        subCategory.Description = rtxt_description.Text;
+        //        subCategory.Image = directoryPath;//root folder to save
+        //        ReturnResult result = SubCategory.store(subCategory);
+
+
+        //        if (result.Status)
+        //        {
+        //            //ActivityLog aL = new ActivityLog();
+        //            //aL.Date = DateTime.Now;
+        //            //User user = new User();
+        //            //String query = "SELECT id from user WHERE name = '" + Session.uname + "'";
+        //            //String id = DBTransactionService.getScalerData(query);
+        //            //user.Id = Int32.Parse(id);
+        //            //aL.User = user;
+        //            //aL.Description = "One New Transaction Added.[Date : " + dtp_dateFrom.Value + "Employee : " + txtname.Text + "Transaction Category : " + txttransaction.Text + "Invoice No : " + txtInvoiceNo.Text + "Amount : " + txtamount.Text + " Description :" + txtdescrib.Text + " Added by :" + Session.uname + "]";
+        //            //ActivityLog.store(aL);
+        //            MessageBox.Show("Sub Category has been added successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //            this.Close();
+        //        }
+        //        else
+        //        {
+        //            MessageBox.Show(result.Msg, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //        }
+        //        //}
+        //    }
+        //}
 
         private void btn_save_Click(object sender, EventArgs e)
         {
@@ -54,7 +152,6 @@ namespace vellsPos.Forms.Layouts
                 Category category = new Category();
                 category.Id = categoryId;
 
-                string rootPath = @"c:\vellspos";
                 String directoryPath = Path.Combine(rootPath, Path.GetFileName(lbl_imagePath.Text));
 
                 ImageUpload imageUpload = new ImageUpload();
@@ -68,7 +165,22 @@ namespace vellsPos.Forms.Layouts
                 subCategory.Category = category;
                 subCategory.Description = rtxt_description.Text;
                 subCategory.Image = directoryPath;//root folder to save
-                ReturnResult result = SubCategory.store(subCategory);
+                //ReturnResult result = SubCategory.store(subCategory);
+
+                if (String.IsNullOrEmpty(txt_id.Text))
+                {
+                    //save();
+                    result = SubCategory.store(subCategory);
+                    msgStatus = "added";
+
+                }
+                else
+                {
+                    //update();
+                    subCategory.Id = Int32.Parse(this.Tag.ToString());
+                    result = SubCategory.update(subCategory);
+                    msgStatus = "updated";
+                }
 
 
                 if (result.Status)
@@ -82,7 +194,7 @@ namespace vellsPos.Forms.Layouts
                     //aL.User = user;
                     //aL.Description = "One New Transaction Added.[Date : " + dtp_dateFrom.Value + "Employee : " + txtname.Text + "Transaction Category : " + txttransaction.Text + "Invoice No : " + txtInvoiceNo.Text + "Amount : " + txtamount.Text + " Description :" + txtdescrib.Text + " Added by :" + Session.uname + "]";
                     //ActivityLog.store(aL);
-                    MessageBox.Show("Sub Category has been added successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Sub Category has been "+ msgStatus +" successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
                 }
                 else

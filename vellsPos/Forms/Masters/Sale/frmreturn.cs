@@ -19,6 +19,9 @@ namespace vellsPos.Forms.Layouts
     public partial class frmReturn : Form
     {
         private string uid;
+        ReturnResult result;
+        String msgStatus;
+
         public frmReturn()
         {
             InitializeComponent();
@@ -26,7 +29,15 @@ namespace vellsPos.Forms.Layouts
 
         private void frmReturn_Load(object sender, EventArgs e)
         {
-
+            uid = this.Tag.ToString();
+            if (String.IsNullOrEmpty(uid))
+            {
+                //
+            }
+            else
+            {
+                fillData();
+            }
         }
 
         private void search()
@@ -54,7 +65,7 @@ namespace vellsPos.Forms.Layouts
             }
         }
 
-        private void fillData()
+        private void fill()
         {
             try
             {
@@ -76,7 +87,90 @@ namespace vellsPos.Forms.Layouts
                 MessageBox.Show(ex.ToString());
             }
         }
-       
+
+        private void fillData()
+        {
+            ProductReturn productReturn = ProductReturn.getOneProductReturn(Int32.Parse(uid));
+            txt_id.Text = uid;
+
+            txt_invoiceNumber.Text = productReturn.Sale.InvoiceNumber;
+            txt_date.Text = productReturn.Sale.Date;
+            txt_product.Text = productReturn.Product.ProductName;
+            ntxt_amount.Value = productReturn.Amount;
+            ntxt_qty.Value = productReturn.Qty;
+        }
+
+        //private void save()
+        //{
+            
+        //}
+
+        //private void update()
+        //{
+        //    ReturnResult invoiceNumberResult = Validator.validateText(txt_invoiceNumber.Text, "Invoice Number");
+        //    ReturnResult productResult = Validator.validateText(txt_product.Text, "Product");
+        //    ReturnResult AmountResult = Validator.validateDecimal(Decimal.Parse(ntxt_amount.Text), "Amount", false);
+
+        //    if (!invoiceNumberResult.Status)
+        //    {
+        //        MessageBox.Show(invoiceNumberResult.Msg, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //    }
+        //    else if (!productResult.Status)
+        //    {
+        //        MessageBox.Show(productResult.Msg, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //    }
+        //    else if (!AmountResult.Status)
+        //    {
+        //        MessageBox.Show(AmountResult.Msg, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //    }
+        //    else
+        //    {
+
+        //        if (String.IsNullOrEmpty(txt_saleID.Text))
+        //        {
+        //            MessageBox.Show("Select Sale", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        //        }
+        //        else if (txt_invoiceNumber.Text != "[ Select ]")
+        //        {
+
+        //            Sale sale = new Sale();
+        //            sale.Id = Convert.ToInt32(txt_saleID.Text);
+        //            Product product = new Product();
+        //            product.Id = Convert.ToInt32(txt_productID.Text);
+        //            User user = new User();
+        //            user.Id = 1;
+
+        //            ProductReturn productReturn = new ProductReturn();
+        //            productReturn.Sale = sale;
+        //            productReturn.Product = product;
+        //            productReturn.Qty = Convert.ToInt32(ntxt_qty.Value);
+        //            productReturn.Amount = ntxt_amount.Value;
+        //            productReturn.User = user;
+        //            ReturnResult result = ProductReturn.store(productReturn);
+
+
+        //            if (result.Status)
+        //            {
+        //                //ActivityLog aL = new ActivityLog();
+        //                //aL.Date = DateTime.Now;
+        //                //User user = new User();
+        //                //String query = "SELECT id from user WHERE name = '" + Session.uname + "'";
+        //                //String id = DBTransactionService.getScalerData(query);
+        //                //user.Id = Int32.Parse(id);
+        //                //aL.User = user;
+        //                //aL.Description = "One New Transaction Added.[Date : " + dateTimePicker1.Value + "Employee : " + txtname.Text + "Transaction Category : " + txttransaction.Text + "Invoice No : " + txtInvoiceNo.Text + "Amount : " + txtamount.Text + " Description :" + txtdescrib.Text + " Added by :" + Session.uname + "]";
+        //                //ActivityLog.store(aL);
+        //                MessageBox.Show("Product Return has been updated successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //                this.Close();
+        //            }
+        //            else
+        //            {
+        //                MessageBox.Show(result.Msg, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //            }
+        //        }
+        //    }
+        //}
+        
         private void btn_save_Click(object sender, EventArgs e)
         {
             ReturnResult invoiceNumberResult = Validator.validateText(txt_invoiceNumber.Text, "Invoice Number");
@@ -118,7 +212,22 @@ namespace vellsPos.Forms.Layouts
                     productReturn.Qty = Convert.ToInt32(ntxt_qty.Value);
                     productReturn.Amount = ntxt_amount.Value;
                     productReturn.User = user;
-                    ReturnResult result = ProductReturn.store(productReturn);
+                    //ReturnResult result = ProductReturn.store(productReturn);
+
+                    if (String.IsNullOrEmpty(txt_id.Text))
+                    {
+                        //save();
+                        result = ProductReturn.store(productReturn);
+                        msgStatus = "added";
+
+                    }
+                    else
+                    {
+                        //update();
+                        user.Id = Int32.Parse(this.Tag.ToString());
+                        result = ProductReturn.update(productReturn);
+                        msgStatus = "updated";
+                    }
 
 
                     if (result.Status)
@@ -132,7 +241,7 @@ namespace vellsPos.Forms.Layouts
                         //aL.User = user;
                         //aL.Description = "One New Transaction Added.[Date : " + dateTimePicker1.Value + "Employee : " + txtname.Text + "Transaction Category : " + txttransaction.Text + "Invoice No : " + txtInvoiceNo.Text + "Amount : " + txtamount.Text + " Description :" + txtdescrib.Text + " Added by :" + Session.uname + "]";
                         //ActivityLog.store(aL);
-                        MessageBox.Show("Product Return has been added successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Product Return has been "+ msgStatus + " successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         this.Close();
                     }
                     else
@@ -140,7 +249,7 @@ namespace vellsPos.Forms.Layouts
                         MessageBox.Show(result.Msg, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-            }
+            } 
         }
 
         private void btn_cancel_Click(object sender, EventArgs e)
@@ -166,7 +275,7 @@ namespace vellsPos.Forms.Layouts
 
         private void txt_productID_TextChanged(object sender, EventArgs e)
         {
-            fillData();
+            fill();
         }
 
         

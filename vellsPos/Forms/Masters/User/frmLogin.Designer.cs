@@ -50,7 +50,7 @@
             this.btn_close.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_close.ForeColor = System.Drawing.Color.Transparent;
             this.btn_close.Image = ((System.Drawing.Image)(resources.GetObject("btn_close.Image")));
-            this.btn_close.Location = new System.Drawing.Point(270, 11);
+            this.btn_close.Location = new System.Drawing.Point(461, 11);
             this.btn_close.Name = "btn_close";
             this.btn_close.Size = new System.Drawing.Size(31, 30);
             this.btn_close.TabIndex = 4;
@@ -64,7 +64,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(313, 53);
+            this.panel1.Size = new System.Drawing.Size(504, 53);
             this.panel1.TabIndex = 1;
             // 
             // label1
@@ -80,17 +80,17 @@
             // txt_username
             // 
             this.txt_username.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.txt_username.Location = new System.Drawing.Point(72, 76);
+            this.txt_username.Location = new System.Drawing.Point(133, 104);
             this.txt_username.Multiline = true;
             this.txt_username.Name = "txt_username";
             this.txt_username.PlaceholderText = "username";
-            this.txt_username.Size = new System.Drawing.Size(221, 30);
+            this.txt_username.Size = new System.Drawing.Size(221, 40);
             this.txt_username.TabIndex = 3;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(16, 67);
+            this.pictureBox1.Location = new System.Drawing.Point(77, 94);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(50, 50);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -100,7 +100,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(16, 131);
+            this.pictureBox2.Location = new System.Drawing.Point(77, 164);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(50, 50);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -110,12 +110,12 @@
             // txt_password
             // 
             this.txt_password.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.txt_password.Location = new System.Drawing.Point(72, 140);
+            this.txt_password.Location = new System.Drawing.Point(133, 174);
             this.txt_password.Multiline = true;
             this.txt_password.Name = "txt_password";
             this.txt_password.PasswordChar = '*';
             this.txt_password.PlaceholderText = "password";
-            this.txt_password.Size = new System.Drawing.Size(221, 30);
+            this.txt_password.Size = new System.Drawing.Size(221, 40);
             this.txt_password.TabIndex = 8;
             // 
             // btn_login
@@ -126,7 +126,7 @@
             this.btn_login.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_login.ForeColor = System.Drawing.Color.Transparent;
             this.btn_login.Image = ((System.Drawing.Image)(resources.GetObject("btn_login.Image")));
-            this.btn_login.Location = new System.Drawing.Point(231, 176);
+            this.btn_login.Location = new System.Drawing.Point(376, 165);
             this.btn_login.Name = "btn_login";
             this.btn_login.Size = new System.Drawing.Size(62, 55);
             this.btn_login.TabIndex = 9;
@@ -138,7 +138,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(313, 239);
+            this.ClientSize = new System.Drawing.Size(504, 286);
             this.Controls.Add(this.btn_login);
             this.Controls.Add(this.txt_password);
             this.Controls.Add(this.pictureBox2);

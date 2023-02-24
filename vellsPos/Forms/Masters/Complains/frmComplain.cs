@@ -15,6 +15,8 @@ namespace vellsPos.Forms.Layouts
     public partial class frmComplain : Form
     {
         private string uid;
+        ReturnResult result;
+        String msgStatus;
 
         public frmComplain()
         {
@@ -27,11 +29,9 @@ namespace vellsPos.Forms.Layouts
             if (String.IsNullOrEmpty(uid))
             {
                 //
-                MessageBox.Show("111");
             }
             else
             {
-                Console.WriteLine("2222");
                 fillData();
             }
         }
@@ -46,7 +46,59 @@ namespace vellsPos.Forms.Layouts
             rtxt_description.Text = complain.Description;
         }
 
-        private void save()
+        //private void save()
+        //{
+            
+        //}
+
+        //private void update()
+        //{
+        //    ReturnResult nameResult = Validator.validateText(rtxt_description.Text, "Discount");
+
+        //    if (!nameResult.Status)
+        //    {
+        //        MessageBox.Show(nameResult.Msg, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //    }
+        //    else
+        //    {
+        //        Complain complain = new Complain();
+        //        complain.Id = Int32.Parse(this.Tag.ToString());
+        //        complain.Date = dtp_date.Value.ToString("yyyy-MM-dd H:mm");
+        //        complain.Type = cmb_type.Text;
+        //        complain.Priority = cmb_priority.Text;
+        //        complain.Description = rtxt_description.Text;
+        //        complain.Status = 1;
+
+        //        User user = new User();
+        //        user.Id = 1;
+
+        //        complain.User = user;
+
+        //        ReturnResult result = Complain.update(complain);
+
+        //        if (result.Status)
+        //        {
+        //            //ActivityLog aL = new ActivityLog();
+        //            //aL.Date = DateTime.Now;
+        //            //User user = new User();
+        //            //String query = "SELECT id from user WHERE name = '" + Session.uname + "'";
+        //            //String id = DBTransactionService.getScalerData(query);
+        //            //user.Id = Int32.Parse(id);
+        //            //aL.User = user;
+        //            //aL.Description = "One New Transaction Added.[Date : " + dtp_dateFrom.Value + "Employee : " + txtname.Text + "Transaction Category : " + txttransaction.Text + "Invoice No : " + txtInvoiceNo.Text + "Amount : " + txtamount.Text + " Description :" + txtdescrib.Text + " Added by :" + Session.uname + "]";
+        //            //ActivityLog.store(aL);
+        //            MessageBox.Show("Complain has been Updated successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //            this.Close();
+        //        }
+        //        else
+        //        {
+        //            MessageBox.Show(result.Msg, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //        }
+        //        //}
+        //    }
+        //}
+
+        private void btn_save_Click(object sender, EventArgs e)
         {
             ReturnResult nameResult = Validator.validateText(rtxt_description.Text, "Discount");
 
@@ -62,7 +114,6 @@ namespace vellsPos.Forms.Layouts
                 complain.Priority = cmb_priority.Text;
                 complain.Description = rtxt_description.Text;
                 complain.Status = 1;
-
 
                 User user = new User();
                 user.Id = 1;
@@ -71,52 +122,20 @@ namespace vellsPos.Forms.Layouts
 
                 ReturnResult result = Complain.store(complain);
 
-                if (result.Status)
+                if (String.IsNullOrEmpty(txt_id.Text))
                 {
-                    //ActivityLog aL = new ActivityLog();
-                    //aL.Date = DateTime.Now;
-                    //User user = new User();
-                    //String query = "SELECT id from user WHERE name = '" + Session.uname + "'";
-                    //String id = DBTransactionService.getScalerData(query);
-                    //user.Id = Int32.Parse(id);
-                    //aL.User = user;
-                    //aL.Description = "One New Transaction Added.[Date : " + dtp_dateFrom.Value + "Employee : " + txtname.Text + "Transaction Category : " + txttransaction.Text + "Invoice No : " + txtInvoiceNo.Text + "Amount : " + txtamount.Text + " Description :" + txtdescrib.Text + " Added by :" + Session.uname + "]";
-                    //ActivityLog.store(aL);
-                    MessageBox.Show("Complain has been added successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Close();
+                    //save();
+                    result = Complain.store(complain);
+                    msgStatus = "added";
+
                 }
                 else
                 {
-                    MessageBox.Show(result.Msg, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //update();
+                    complain.Id = Int32.Parse(this.Tag.ToString());
+                    result = Complain.update(complain);
+                    msgStatus = "updated";
                 }
-                //}
-            }
-        }
-
-        private void update()
-        {
-            ReturnResult nameResult = Validator.validateText(rtxt_description.Text, "Discount");
-
-            if (!nameResult.Status)
-            {
-                MessageBox.Show(nameResult.Msg, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                Complain complain = new Complain();
-                complain.Id = Int32.Parse(this.Tag.ToString());
-                Console.WriteLine(Int32.Parse(this.Tag.ToString()));
-                complain.Date = dtp_date.Value.ToString("yyyy-MM-dd H:mm");
-                complain.Type = cmb_type.Text;
-                complain.Priority = cmb_priority.Text;
-                complain.Description = rtxt_description.Text;
-                complain.Status = 1;
-                User user = new User();
-                user.Id = 1;
-
-                complain.User = user;
-
-                ReturnResult result = Complain.update(complain);
 
                 if (result.Status)
                 {
@@ -129,7 +148,7 @@ namespace vellsPos.Forms.Layouts
                     //aL.User = user;
                     //aL.Description = "One New Transaction Added.[Date : " + dtp_dateFrom.Value + "Employee : " + txtname.Text + "Transaction Category : " + txttransaction.Text + "Invoice No : " + txtInvoiceNo.Text + "Amount : " + txtamount.Text + " Description :" + txtdescrib.Text + " Added by :" + Session.uname + "]";
                     //ActivityLog.store(aL);
-                    MessageBox.Show("Complain has been Updated successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Complain has been "+ msgStatus +" successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
                 }
                 else
@@ -137,18 +156,6 @@ namespace vellsPos.Forms.Layouts
                     MessageBox.Show(result.Msg, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 //}
-            }
-        }
-
-        private void btn_save_Click(object sender, EventArgs e)
-        {
-            if (String.IsNullOrEmpty(txt_id.Text))
-            {
-                save();
-            }
-            else
-            {
-                update();
             }
         }
 

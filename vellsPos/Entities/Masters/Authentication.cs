@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using vellsPos.Forms.Layouts;
+using vellsPos.Forms.Masters.User;
 using vellsPos.Services;
 
 namespace vellsPos.Entities.Masters
@@ -106,19 +108,31 @@ namespace vellsPos.Entities.Masters
             return result;
         }
 
-        //public static void showOnViewForm()
-        //{
-        //    DataViewParam dvParam = new DataViewParam();
-        //    dvParam.Title = "Job Roles";
-        //    dvParam.SelectSql = "SELECT id, code, tittle, description ";
-        //    dvParam.FromSql = "from job_role where tittle like @s1 or code like @s2 ORDER BY id DESC ";
-        //    dvParam.SearchParamCount = 2; //name and description
-        //    dvParam.TitleList = new List<string>() { "", "Code", "Job Role", "Description" }; //Column titles
-        //    dvParam.AddForm = new JobRoleManagement();
-        //    dvParam.ViewForm = new ViewSingleJobRole();
-        //    ViewData vData = new ViewData(dvParam);
-        //    vData.Show();
-        //}
+        public static void showOnViewForm(TextBox labelBox = null, TextBox idBox = null)
+        {
+            DataViewParam dvParam = new DataViewParam();
+            dvParam.Title = "Authentications";
+            dvParam.SelectSql = "SELECT a.id, r.role_name, ak.route, ak.description ";
+            dvParam.FromSql = "FROM  authentications a " +
+                 "INNER JOIN roles r ON a.role_id = r.id " +
+                  "INNER JOIN authentication_keys ak ON a.authentication_key_id = ak.id " +
+                "WHERE r.role_name like @s1 or ak.route like @s2 or ak.description like @s3 " +
+                "ORDER BY a.id DESC ";
+            dvParam.SearchParamCount = 2; //name and description
+            dvParam.TitleList = new List<string>() { "", "Role", "Route", "Description" }; //Column titles
+            dvParam.InvisibleColumnList = new List<int>() { 1 };
+            dvParam.NumericColumnList = new List<int>() { };
+            dvParam.AddForm = new frmAuthentication();
+            dvParam.ViewForm = new frmAuthentication();
+
+            frmView vData = null;
+
+            if (idBox == null && labelBox == null)
+                vData = new frmView(dvParam);
+            else
+                vData = new frmView(dvParam, idBox, labelBox);
+            vData.Show();
+        }
 
         public static Authentication getOneAuthentication(int id)
         {

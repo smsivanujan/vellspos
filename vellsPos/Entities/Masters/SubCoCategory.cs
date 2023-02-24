@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using vellsPos.Forms.Layouts;
 using vellsPos.Services;
 
 namespace vellsPos.Entities.Masters
@@ -119,32 +120,57 @@ namespace vellsPos.Entities.Masters
             return result;
         }
 
-        //public static void showOnViewForm()
-        //{
-        //    DataViewParam dvParam = new DataViewParam();
-        //    dvParam.Title = "Job Roles";
-        //    dvParam.SelectSql = "SELECT id, code, tittle, description ";
-        //    dvParam.FromSql = "from job_role where tittle like @s1 or code like @s2 ORDER BY id DESC ";
-        //    dvParam.SearchParamCount = 2; //name and description
-        //    dvParam.TitleList = new List<string>() { "", "Code", "Job Role", "Description" }; //Column titles
-        //    dvParam.AddForm = new JobRoleManagement();
-        //    dvParam.ViewForm = new ViewSingleJobRole();
-        //    ViewData vData = new ViewData(dvParam);
-        //    vData.Show();
-        //}
+        public static void showOnViewForm(TextBox labelBox = null, TextBox idBox = null)
+        {
+            DataViewParam dvParam = new DataViewParam();
+            dvParam.Title = "Sub Co Categories";
+            dvParam.SelectSql = "SELECT scc.id, c.category_name, sc.sub_category_name, scc.sub_co_category_name, scc.description ";
+            dvParam.FromSql = "FROM  sub_co_categories scc " +
+                 "INNER JOIN sub_categories sc ON scc.sub_category_id = sc.id " +
+                 "INNER JOIN categories c ON sc.category_id = c.id " +
+                "WHERE c.category_name like @s1 or sc.sub_category_name like @s2 or scc.sub_co_category_name like @s3 " +
+                "ORDER BY scc.id DESC ";
+            dvParam.SearchParamCount = 2; //name and description
+            dvParam.TitleList = new List<string>() { "", "Category", "Sub Category", "Sub Co Category", "Description" }; //Column titles
+            dvParam.InvisibleColumnList = new List<int>() { 1 };
+            dvParam.NumericColumnList = new List<int>() { };
+            dvParam.AddForm = new frmSubCoCategory();
+            dvParam.ViewForm = new frmSubCoCategory();
 
-        public static SubCoCategory getOneSubCategory(int id)
+            frmView vData = null;
+
+            if (idBox == null && labelBox == null)
+                vData = new frmView(dvParam);
+            else
+                vData = new frmView(dvParam, idBox, labelBox);
+            vData.Show();
+        }
+
+        public static SubCoCategory getOneSubCoCategory(int id)
         {
             SubCoCategory subCoCategory = new SubCoCategory();
             SubCategory subCategory = new SubCategory();
+            Category category = new Category();
             try
             {
-                String query = "SELECT * FROM sub_co_categories where id = '" + id + "'";
+                String query = "SELECT " +
+                    "scc.id, " +
+                    "c.category_name AS category, " +
+                    "sc.sub_category_name AS subCategory, " +
+                    "scc.sub_co_category_name, " +
+                    "scc.description " +
+                    "FROM sub_co_categories scc " +
+                    "INNER JOIN sub_categories sc ON scc.sub_category_id = sc.id " +
+                    "INNER JOIN categories c ON sc.category_id = c.id " +
+                    "WHERE id = '" + id + "'";
                 Dictionary<String, String> dbData = DBTransactionService.getDataAsDictionary(query);
 
                 if (dbData != null)
                 {
                     subCoCategory.SubCoCategoryName = dbData["sub_co_category_name"];
+                    category.CategoryName = dbData["category"];
+                    subCategory.Category = category;
+                    subCategory.SubCategoryName = dbData["subCategory"];
                     subCoCategory.SubCategory = subCategory;
                     subCoCategory.image = dbData["image"];
                     subCoCategory.Description = dbData["description"];

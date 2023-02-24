@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using vellsPos.Forms.Layouts;
 using vellsPos.Services;
 
 namespace vellsPos.Entities.Masters
@@ -131,19 +132,30 @@ namespace vellsPos.Entities.Masters
             return result;
         }
 
-        //public static void showOnViewForm()
-        //{
-        //    DataViewParam dvParam = new DataViewParam();
-        //    dvParam.Title = "Job Roles";
-        //    dvParam.SelectSql = "SELECT id, code, tittle, description ";
-        //    dvParam.FromSql = "from job_role where tittle like @s1 or code like @s2 ORDER BY id DESC ";
-        //    dvParam.SearchParamCount = 2; //name and description
-        //    dvParam.TitleList = new List<string>() { "", "Code", "Job Role", "Description" }; //Column titles
-        //    dvParam.AddForm = new JobRoleManagement();
-        //    dvParam.ViewForm = new ViewSingleJobRole();
-        //    ViewData vData = new ViewData(dvParam);
-        //    vData.Show();
-        //}
+        public static void showOnViewForm(TextBox labelBox = null, TextBox idBox = null)
+        {
+            DataViewParam dvParam = new DataViewParam();
+            dvParam.Title = "Loyality Cards";
+            dvParam.SelectSql = "SELECT lc.id, lc.issued_date, lc.card_number, concat(c.customer_number +' '+ c.customer_first_name), lc.card_type, lc.status ";
+            dvParam.FromSql = "FROM loyality_cards lc " +
+                "INNER JOIN customers c ON lc.customer_id = c.id " +
+                "WHERE lc.issued_date like @s1 or lc.card_number like @s2 or c.customer_number like @s3 or c.customer_first_name like @s4 or lc.card_type like @s5 or lc.status like @s6 " +
+                "ORDER BY lc.id DESC ";
+            dvParam.SearchParamCount = 5; //name and description
+            dvParam.TitleList = new List<string>() { "", "Date", "Card Number", "Customer", "Card Type", "Status" }; //Column titles
+            dvParam.InvisibleColumnList = new List<int>() { 1 };
+            dvParam.NumericColumnList = new List<int>() { };
+            dvParam.AddForm = new frmLoyalityCard();
+            dvParam.ViewForm = new frmLoyalityCard();
+
+            frmView vData = null;
+
+            if (idBox == null && labelBox == null)
+                vData = new frmView(dvParam);
+            else
+                vData = new frmView(dvParam, idBox, labelBox);
+            vData.Show();
+        }
 
         public static LoyalityCard getOneLoyalityCard(int id)
         {

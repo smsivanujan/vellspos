@@ -20,8 +20,9 @@ namespace vellsPos.Forms.Layouts
 
         private void btndiscount_Click(object sender, EventArgs e)
         {
-            frmDiscount dis = new frmDiscount();
-            dis.Show();
+            Discount.showOnViewForm();
+            //frmDiscount dis = new frmDiscount();
+            //dis.Show();
         }
 
         private void btn_complain_Click(object sender, EventArgs e)
@@ -33,44 +34,51 @@ namespace vellsPos.Forms.Layouts
 
         private void btn_customer_Click(object sender, EventArgs e)
         {
-            frmCustomer cus = new frmCustomer();
-            cus.Show();
+            Customer.showOnViewForm();
+            //frmCustomer cus = new frmCustomer();
+            //cus.Show();
         }
 
         private void btn_loyalityCard_Click(object sender, EventArgs e)
         {
-            frmLoyalityCard lcar = new frmLoyalityCard();
-            lcar.Show();
+            LoyalityCard.showOnViewForm();
+            //frmLoyalityCard lcar = new frmLoyalityCard();
+            //lcar.Show();
         }
 
         private void btn_category_Click(object sender, EventArgs e)
         {
-            frmCategory fcat = new frmCategory();
-            fcat.Show();
+            Category.showOnViewForm();
+            //frmCategory fcat = new frmCategory();
+            //fcat.Show();
         }
 
         private void btn_subCategory_Click(object sender, EventArgs e)
         {
-            frmSubCategory fsubcat = new frmSubCategory();
-            fsubcat.Show();
+            SubCategory.showOnViewForm();
+            //frmSubCategory fsubcat = new frmSubCategory();
+            //fsubcat.Show();
         }
 
         private void btn_subCoCategory_Click(object sender, EventArgs e)
         {
-            frmSubCoCategory fsubcocat = new frmSubCoCategory();
-            fsubcocat.Show();
+            SubCoCategory.showOnViewForm();
+            //frmSubCoCategory fsubcocat = new frmSubCoCategory();
+            //fsubcocat.Show();
         }
 
         private void btn_payout_Click(object sender, EventArgs e)
         {
-            frmPayout fpay = new frmPayout();
-            fpay.Show();
+            Payout.showOnViewForm();
+            //frmPayout fpay = new frmPayout();
+            //fpay.Show();
         }
 
         private void btn_user_Click(object sender, EventArgs e)
         {
-            frmUserRegister fusr=new frmUserRegister();
-            fusr.Show();
+            User.showOnViewForm();
+            //frmUserRegister fusr=new frmUserRegister();
+            //fusr.Show();
         }
 
         private void btn_pos_Click(object sender, EventArgs e)
@@ -81,8 +89,9 @@ namespace vellsPos.Forms.Layouts
 
         private void btn_product_Click(object sender, EventArgs e)
         {
-            frmProduct fpro = new frmProduct();
-            fpro.Show();
+            Product.showOnViewForm();
+            //frmProduct fpro = new frmProduct();
+            //fpro.Show();
         }
 
         private void btn_barcode_Click(object sender, EventArgs e)
@@ -100,8 +109,9 @@ namespace vellsPos.Forms.Layouts
 
         private void btn_productBarcode_Click(object sender, EventArgs e)
         {
-            frmProductBarcode fpb = new frmProductBarcode();
-            fpb.Show();
+            ProductBarcode.showOnViewForm();
+            //frmProductBarcode fpb = new frmProductBarcode();
+            //fpb.Show();
         }
     }
 }

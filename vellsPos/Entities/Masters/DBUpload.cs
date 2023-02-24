@@ -124,19 +124,29 @@ namespace vellsPos.Entities.Masters
             return result;
         }
 
-        //public static void showOnViewForm()
-        //{
-        //    DataViewParam dvParam = new DataViewParam();
-        //    dvParam.Title = "Job Roles";
-        //    dvParam.SelectSql = "SELECT id, code, tittle, description ";
-        //    dvParam.FromSql = "from job_role where tittle like @s1 or code like @s2 ORDER BY id DESC ";
-        //    dvParam.SearchParamCount = 2; //name and description
-        //    dvParam.TitleList = new List<string>() { "", "Code", "Job Role", "Description" }; //Column titles
-        //    dvParam.AddForm = new JobRoleManagement();
-        //    dvParam.ViewForm = new ViewSingleJobRole();
-        //    ViewData vData = new ViewData(dvParam);
-        //    vData.Show();
-        //}
+        public static void showOnViewForm(TextBox labelBox = null, TextBox idBox = null)
+        {
+            DataViewParam dvParam = new DataViewParam();
+            dvParam.Title = "Database Uploads";
+            dvParam.SelectSql = "SELECT du.id, du.upload_date, du.type, du.status, du.description ";
+            dvParam.FromSql = "FROM  db_uploads du " +
+                "WHERE du.upload_date like @s1 or du.type like @s2 or  du.status like @s3 or du.descriptionn like @s4 " +
+                "ORDER BY du.id DESC ";
+            dvParam.SearchParamCount = 3; //name and description
+            dvParam.TitleList = new List<string>() { "", "Date", "Type", "Status", "Description" }; //Column titles
+            dvParam.InvisibleColumnList = new List<int>() { 1 };
+            dvParam.NumericColumnList = new List<int>() { };
+            //dvParam.AddForm = new frmComplain();
+            //dvParam.ViewForm = new frmComplain();
+
+            //frmView vData = null;
+
+            //if (idBox == null && labelBox == null)
+            //    vData = new frmView(dvParam);
+            //else
+            //    vData = new frmView(dvParam, idBox, labelBox);
+            //vData.Show();
+        }
 
         public static DBUpload getOneDBUpload(int id)
         {

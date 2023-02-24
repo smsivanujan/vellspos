@@ -1,4 +1,5 @@
 ﻿using Google.Protobuf.WellKnownTypes;
+using Microsoft.VisualBasic.ApplicationServices;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,6 +21,9 @@ namespace vellsPos.Forms.Layouts
     {
         private List<ListItem> discounts = new List<ListItem>();
         private string uid;
+        ReturnResult result;
+        String msgStatus;
+        string rootPath = @"c:\vellspos";
 
         public frmProductBarcode()
         {
@@ -27,30 +31,95 @@ namespace vellsPos.Forms.Layouts
         }
         private void frmProductBarcode_Load(object sender, EventArgs e)
         {
-
+            uid = this.Tag.ToString();
+            if (String.IsNullOrEmpty(uid))
+            {
+                //
+            }
+            else
+            {
+                fillData();
+            }
         }
+
+        private void fillData()
+        {
+            Console.WriteLine("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+            MessageBox.Show("Test");
+            ProductBarcode productBarcode = ProductBarcode.getOneProductBarcode(Int32.Parse(uid));
+            txt_id.Text = uid;
+            textBox1.Text = productBarcode.Product.ProductName;
+            txt_productNumber.Text = productBarcode.Product.ProductNumber;
+            cmb_barcodeType.Text = productBarcode.BarcodeType;
+            ntxt_height.Value = productBarcode.BarcodeHeight;
+            pb_barcodeImage.Image= Image.FromFile(productBarcode.BarcodeImage);
+        }
+
+        //private void save()
+        //{
+           
+        //}
+        //private void update()
+        //{
+        //    ReturnResult nameResult = Validator.validateText(rtxt_description.Text, "Discount");
+
+        //    if (!nameResult.Status)
+        //    {
+        //        MessageBox.Show(nameResult.Msg, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //    }
+        //    else
+        //    {
+        //        Complain complain = new Complain();
+        //        complain.Id = Int32.Parse(this.Tag.ToString());
+        //        Console.WriteLine(Int32.Parse(this.Tag.ToString()));
+        //        complain.Date = dtp_date.Value.ToString("yyyy-MM-dd H:mm");
+        //        complain.Type = cmb_type.Text;
+        //        complain.Priority = cmb_priority.Text;
+        //        complain.Description = rtxt_description.Text;
+        //        complain.Status = 1;
+        //        User user = new User();
+        //        user.Id = 1;
+
+        //        complain.User = user;
+
+        //        ReturnResult result = Complain.update(complain);
+
+        //        if (result.Status)
+        //        {
+        //            //ActivityLog aL = new ActivityLog();
+        //            //aL.Date = DateTime.Now;
+        //            //User user = new User();
+        //            //String query = "SELECT id from user WHERE name = '" + Session.uname + "'";
+        //            //String id = DBTransactionService.getScalerData(query);
+        //            //user.Id = Int32.Parse(id);
+        //            //aL.User = user;
+        //            //aL.Description = "One New Transaction Added.[Date : " + dtp_dateFrom.Value + "Employee : " + txtname.Text + "Transaction Category : " + txttransaction.Text + "Invoice No : " + txtInvoiceNo.Text + "Amount : " + txtamount.Text + " Description :" + txtdescrib.Text + " Added by :" + Session.uname + "]";
+        //            //ActivityLog.store(aL);
+        //            MessageBox.Show("Complain has been Updated successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //            this.Close();
+        //        }
+        //        else
+        //        {
+        //            MessageBox.Show(result.Msg, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //        }
+        //        //}
+        //    }
+        //}
 
         private void btn_save_Click(object sender, EventArgs e)
         {
             ReturnResult numberResult = Validator.validateText(txt_productNumber.Text, "ProductNumber");
-            //ReturnResult nameResult = Validator.validateText(txt_productName.Text, "ProductName");
-
 
             if (!numberResult.Status)
             {
                 MessageBox.Show(numberResult.Msg, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            //if (!nameResult.Status)
-            //{
-            //    MessageBox.Show(nameResult.Msg, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
             else
             {
                 Product product = new Product();
                 product.Id = Convert.ToInt32(txt_productID.Text);
 
-                string fileName = txt_productNumber.Text + ".jpg";
-                string rootPath = @"c:\vellspos";
+                string fileName = txt_productNumber.Text + ".jpg";            
                 String directoryPath = Path.Combine(rootPath, Path.GetFileName(fileName));
 
                 ImageUpload imageUpload = new ImageUpload();
@@ -65,8 +134,23 @@ namespace vellsPos.Forms.Layouts
                 productBarcode.BarcodeNumber = txt_productNumber.Text;
                 productBarcode.BarcodeType = cmb_barcodeType.Text;
                 productBarcode.BarcodeHeight = ntxt_height.Value;
-                productBarcode.BarcodeImage= directoryPath;//root folder to save
-                ReturnResult result = ProductBarcode.store(productBarcode);
+                productBarcode.BarcodeImage = directoryPath;//root folder to save
+ 
+
+                if (String.IsNullOrEmpty(txt_id.Text))
+                {
+                    //save();
+                    result = ProductBarcode.store(productBarcode);
+                    msgStatus = "added";
+
+                }
+                else
+                {
+                    //update();
+                    productBarcode.Id = Int32.Parse(this.Tag.ToString());
+                    result = ProductBarcode.update(productBarcode);
+                    msgStatus = "updated";
+                }
 
 
                 if (result.Status)
@@ -80,7 +164,7 @@ namespace vellsPos.Forms.Layouts
                     //aL.User = user;
                     //aL.Description = "One New Transaction Added.[Date : " + dtp_dateFrom.Value + "Employee : " + txtname.Text + "Transaction Category : " + txttransaction.Text + "Invoice No : " + txtInvoiceNo.Text + "Amount : " + txtamount.Text + " Description :" + txtdescrib.Text + " Added by :" + Session.uname + "]";
                     //ActivityLog.store(aL);
-                    MessageBox.Show("Product Barcode has been added successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Product Barcode has been "+ msgStatus +" successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
                 }
                 else
@@ -112,11 +196,6 @@ namespace vellsPos.Forms.Layouts
             //pb_barcodeImage.Image = barcode.Draw(txt_productCode.Text, Convert.ToInt32(ntxt_height.Value));
             Zen.Barcode.CodeEan13BarcodeDraw barcode = Zen.Barcode.BarcodeDrawFactory.CodeEan13WithChecksum;
             pb_barcodeImage.Image = barcode.Draw(txt_productNumber.Text, Convert.ToInt32(ntxt_height.Value));
-        }
-
-        private void btn_search_Click(object sender, EventArgs e)
-        {
-            
         }
         
         private void txt_product_Click(object sender, EventArgs e)

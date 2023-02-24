@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,7 +25,6 @@ namespace vellsPos.Entities.Masters
         private Int32 status;
         private Int32 temp;
         private User user;
-
 
         public Product()
         {
@@ -168,20 +168,32 @@ namespace vellsPos.Entities.Masters
             return result;
         }
 
-        //public static void showOnViewForm()
-        //{
-        //    DataViewParam dvParam = new DataViewParam();
-        //    dvParam.Title = "Job Roles";
-        //    dvParam.SelectSql = "SELECT id, code, tittle, description ";
-        //    dvParam.FromSql = "from job_role where tittle like @s1 or code like @s2 ORDER BY id DESC ";
-        //    dvParam.SearchParamCount = 2; //name and description
-        //    dvParam.TitleList = new List<string>() { "", "Code", "Job Role", "Description" }; //Column titles
-        //    dvParam.AddForm = new JobRoleManagement();
-        //    dvParam.ViewForm = new ViewSingleJobRole();
-        //    ViewData vData = new ViewData(dvParam);
-        //    vData.Show();
-        //}
+        public static void showOnViewForm(TextBox labelBox = null, TextBox idBox = null)
+        {
+            DataViewParam dvParam = new DataViewParam();
+            dvParam.Title = "Products";
+            dvParam.SelectSql = "SELECT p.id, p.product_number, p.product_name, c.category_name, sc.sub_category_name, scc.sub_co_category_name, p.sale_price, p.added_date, p.description ";
+            dvParam.FromSql = "FROM  products p " +
+                 "INNER JOIN sub_co_categories scc ON p.sub_co_category_id = scc.id " +
+                  "INNER JOIN sub_categories sc ON scc.sub_category_id = sc.id " +
+                  "INNER JOIN categories c ON sc.category_id = c.id " +
+                "WHERE c.category_name like @s1 or sc.sub_category_name like @s2 or scc.sub_co_category_name like @s3 or p.product_number like @s4 or p.product_name like @s5 or p.status like @s6 " +
+                "ORDER BY p.id DESC ";
+            dvParam.SearchParamCount = 5; //name and description
+            dvParam.TitleList = new List<string>() { "", "Product Number", "Product", "Category", "Sub Category", "Sub Co Category", "Sale Price", "Added Date", "Description", "Status" }; //Column titles
+            dvParam.InvisibleColumnList = new List<int>() { 6 };
+            dvParam.NumericColumnList = new List<int>() { };
+            dvParam.AddForm = new frmProduct();
+            dvParam.ViewForm = new frmProduct();
 
+            frmView vData = null;
+
+            if (idBox == null && labelBox == null)
+                vData = new frmView(dvParam);
+            else
+                vData = new frmView(dvParam, idBox, labelBox);
+            vData.Show();
+        }
 
         public static void showOnViewFormProductWithoutBarcode(TextBox labelBox = null, TextBox idBox = null, String id = null)
         {

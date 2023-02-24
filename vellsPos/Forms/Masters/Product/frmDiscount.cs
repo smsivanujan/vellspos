@@ -17,6 +17,8 @@ namespace vellsPos.Forms.Layouts
     public partial class frmDiscount : Form
     {
         private string uid;
+        ReturnResult result;
+        String msgStatus;
 
         public frmDiscount()
         {
@@ -25,65 +27,102 @@ namespace vellsPos.Forms.Layouts
 
         private void frmDiscount_Load(object sender, EventArgs e)
         {
-
+            uid = this.Tag.ToString();
+            if (String.IsNullOrEmpty(uid))
+            {
+                //
+            }
+            else
+            {
+                fillData();
+            }
         }
+
+        private void fillData()
+        {
+            Discount discount = Discount.getOneDiscount(Int32.Parse(uid));
+            txt_id.Text = uid;
+            txt_discountName.Text = discount.DiscountName;
+            dtp_dateFrom.Text = discount.DateFrom;
+            dtp_dateTo.Text = discount.DateTo;
+            
+            if(discount.Status==1)
+            {
+                cb_status.Checked=true;
+            }
+            else
+            {
+                cb_status.Checked = false;
+            }
+            rtxt_description.Text = discount.Description;
+        }
+
+        //private void save()
+        //{
+            
+        //}
+
+        //private void update()
+        //{
+        //    ReturnResult nameResult = Validator.validateText(rtxt_description.Text, "Discount");
+
+        //    if (!nameResult.Status)
+        //    {
+        //        MessageBox.Show(nameResult.Msg, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //    }
+        //    else
+        //    {
+        //        Complain complain = new Complain();
+        //        complain.Id = Int32.Parse(this.Tag.ToString());
+        //        Console.WriteLine(Int32.Parse(this.Tag.ToString()));
+        //        complain.Date = dtp_date.Value.ToString("yyyy-MM-dd H:mm");
+        //        complain.Type = cmb_type.Text;
+        //        complain.Priority = cmb_priority.Text;
+        //        complain.Description = rtxt_description.Text;
+        //        complain.Status = 1;
+        //        User user = new User();
+        //        user.Id = 1;
+
+        //        complain.User = user;
+
+        //        ReturnResult result = Complain.update(complain);
+
+        //        if (result.Status)
+        //        {
+        //            //ActivityLog aL = new ActivityLog();
+        //            //aL.Date = DateTime.Now;
+        //            //User user = new User();
+        //            //String query = "SELECT id from user WHERE name = '" + Session.uname + "'";
+        //            //String id = DBTransactionService.getScalerData(query);
+        //            //user.Id = Int32.Parse(id);
+        //            //aL.User = user;
+        //            //aL.Description = "One New Transaction Added.[Date : " + dtp_dateFrom.Value + "Employee : " + txtname.Text + "Transaction Category : " + txttransaction.Text + "Invoice No : " + txtInvoiceNo.Text + "Amount : " + txtamount.Text + " Description :" + txtdescrib.Text + " Added by :" + Session.uname + "]";
+        //            //ActivityLog.store(aL);
+        //            MessageBox.Show("Complain has been Updated successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //            this.Close();
+        //        }
+        //        else
+        //        {
+        //            MessageBox.Show(result.Msg, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //        }
+        //        //}
+        //    }
+        //}
 
         private void btn_save_Click(object sender, EventArgs e)
         {
             ReturnResult nameResult = Validator.validateText(txt_discountName.Text, "Discount");
-            //ReturnResult transactonResult = Validator.validateText(txttransaction.Text, "Transaction");
-            //ReturnResult AmountResult = Validator.validateDecimal(Decimal.Parse(txtamount.Text), "Amount", false);
 
             if (!nameResult.Status)
             {
                 MessageBox.Show(nameResult.Msg, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            //else if (!transactonResult.Status)
-            //{
-            //    MessageBox.Show(transactonResult.Msg, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
-            //else if (!AmountResult.Status)
-            //{
-            //    MessageBox.Show(AmountResult.Msg, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
             else
             {
-                int pid = 0;
-                int pid1 = 0;
-                int pid2 = 0;
-
-                //if (txttransaction.SelectedIndex >= 0)
-                //{
-                //    pid2 = int.Parse(tran[txttransaction.SelectedIndex].Value);
-                //}
-
-                //TransactionCategory tc = new TransactionCategory();
-                //tc.Id = pid2;
-
-                //if (String.IsNullOrEmpty(txtId.Text))
-                //{
-                //    MessageBox.Show("Select Employee", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                //}
-                //else if (txtname.Text != "[ Select ]")
-                //{
-                    //String dep = "select depatrment_id from employee where id='" + txtId.Text + "' ";
-                    //String depID = DBTransactionService.getScalerData(dep);
-                    //String dep1 = "select name from department where id='" + depID + "'";
-                    //String depName = DBTransactionService.getScalerData(dep1);
-                    //String prtyid = "select property_id from employee where id='" + txtId.Text + "' ";
-                    //String prtyidID = DBTransactionService.getScalerData(prtyid);
-
-                    //Property pty = new Property();
-                    //pty.Id = Int32.Parse(prtyidID);
-                    //Employee em = new Employee();
-                    //em.Id = Int32.Parse(txtId.Text);
-                    //Department dp = new Department();
-                    //dp.Id = Int32.Parse(depID);
-
-                    Discount discount = new Discount();
-                    discount.DiscountName = txt_discountName.Text;
+                Discount discount = new Discount();
+                discount.DiscountName = txt_discountName.Text;
                 Console.WriteLine(dtp_dateFrom.Value.ToString("yyyy-MM-dd H:mm"));
-                    discount.DateFrom = dtp_dateFrom.Value.ToString("yyyy-MM-dd H:mm");
+                discount.DateFrom = dtp_dateFrom.Value.ToString("yyyy-MM-dd H:mm");
                 discount.DateTo = dtp_dateTo.Value.ToString("yyyy-MM-dd H:mm");
                 discount.Description = rtxt_description.Text;
 
@@ -97,43 +136,43 @@ namespace vellsPos.Forms.Layouts
                 user.Id = 1;
 
                 discount.User = user;
-                
-                    ReturnResult result = Discount.store(discount);
 
-                    //String transMaxID = "SELECT MAX(id) FROM transaction";
-                    //String transDetailID = DBTransactionService.getScalerData(transMaxID);
+                ReturnResult result = Discount.store(discount);
 
-                    //Transaction tr = new Transaction();
-                    //tr.Id = Int32.Parse(transDetailID);
+                if (String.IsNullOrEmpty(txt_id.Text))
+                {
+                    //save();
+                    result = Discount.store(discount);
+                    msgStatus = "added";
+                   
+                }
+                else
+                {
+                    //update();
+                    discount.Id = Int32.Parse(this.Tag.ToString());
+                    result = Discount.update(discount);
+                    msgStatus = "updated";
+                }
 
-                    //TransactionDetails transactionDetails = new TransactionDetails();
-                    //transactionDetails.Transaction = tr;
-                    //transactionDetails.Date = DateTime.Today;
-                    //transactionDetails.Amount = txtpaidAmount.Value;
-                    //if (txtpaidAmount.Value != 0)
-                    //{
-                    //    ReturnResult resulttransDetail1 = TransactionDetails.store(transactionDetails);
-                    //}
 
-                    if (result.Status)
-                    {
-                        //ActivityLog aL = new ActivityLog();
-                        //aL.Date = DateTime.Now;
-                        //User user = new User();
-                        //String query = "SELECT id from user WHERE name = '" + Session.uname + "'";
-                        //String id = DBTransactionService.getScalerData(query);
-                        //user.Id = Int32.Parse(id);
-                        //aL.User = user;
-                        //aL.Description = "One New Transaction Added.[Date : " + dtp_dateFrom.Value + "Employee : " + txtname.Text + "Transaction Category : " + txttransaction.Text + "Invoice No : " + txtInvoiceNo.Text + "Amount : " + txtamount.Text + " Description :" + txtdescrib.Text + " Added by :" + Session.uname + "]";
-                        //ActivityLog.store(aL);
-                        MessageBox.Show("Discount has been added successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        this.Close();
-                    }
-                    else
-                    {
-                        MessageBox.Show(result.Msg, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                //}
+                if (result.Status)
+                {
+                    //ActivityLog aL = new ActivityLog();
+                    //aL.Date = DateTime.Now;
+                    //User user = new User();
+                    //String query = "SELECT id from user WHERE name = '" + Session.uname + "'";
+                    //String id = DBTransactionService.getScalerData(query);
+                    //user.Id = Int32.Parse(id);
+                    //aL.User = user;
+                    //aL.Description = "One New Transaction Added.[Date : " + dtp_dateFrom.Value + "Employee : " + txtname.Text + "Transaction Category : " + txttransaction.Text + "Invoice No : " + txtInvoiceNo.Text + "Amount : " + txtamount.Text + " Description :" + txtdescrib.Text + " Added by :" + Session.uname + "]";
+                    //ActivityLog.store(aL);
+                    MessageBox.Show("Discount has been " + msgStatus + " successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show(result.Msg, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 

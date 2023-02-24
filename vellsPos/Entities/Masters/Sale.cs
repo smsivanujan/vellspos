@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using vellsPos.Forms.Layouts;
 using vellsPos.Services;
 
 namespace vellsPos.Entities.Masters
@@ -11,7 +12,7 @@ namespace vellsPos.Entities.Masters
     internal class Sale
     {
         private Int32 id;
-        private DateTime date;
+        private String date;
         private Branch branch;
         private String invoiceNumber;
         private Decimal totalAmount;
@@ -24,7 +25,7 @@ namespace vellsPos.Entities.Masters
 
         }
 
-        public Sale(int id, DateTime date, Branch branch, string invoiceNumber, decimal totalAmount, decimal totalDiscount, int status, User user)
+        public Sale(int id, string date, Branch branch, string invoiceNumber, decimal totalAmount, decimal totalDiscount, int status, User user)
         {
             this.Id = id;
             this.Date = date;
@@ -37,13 +38,14 @@ namespace vellsPos.Entities.Masters
         }
 
         public int Id { get => id; set => id = value; }
-        public DateTime Date { get => date; set => date = value; }
+        public string Date { get => date; set => date = value; }
+        internal Branch Branch { get => branch; set => branch = value; }
         public string InvoiceNumber { get => invoiceNumber; set => invoiceNumber = value; }
         public decimal TotalAmount { get => totalAmount; set => totalAmount = value; }
         public decimal TotalDiscount { get => totalDiscount; set => totalDiscount = value; }
         public int Status { get => status; set => status = value; }
-        internal Branch Branch { get => branch; set => branch = value; }
         internal User User { get => user; set => user = value; }
+
 
         public static ReturnResult store(Sale sale)
         {
@@ -56,13 +58,13 @@ namespace vellsPos.Entities.Masters
                     "(`date`,`branch_id`,`invoice_number`,`total_amount`,`total_discount`,`status`,`user_id`) " +
                     "VALUES (@branch_id,@invoice_number,@total_amount,@total_discount,@status,@user_id)";
                 List<QueryParameter> parameters = new List<QueryParameter>();
-                parameters.Add(new QueryParameter("date", MySqlDbType.DateTime, sale.date));
-                parameters.Add(new QueryParameter("branch_id", MySqlDbType.Int32, sale.branch.Id));
-                parameters.Add(new QueryParameter("invoice_number", MySqlDbType.String, sale.invoiceNumber));
-                parameters.Add(new QueryParameter("total_amount", MySqlDbType.Decimal, sale.totalAmount));
-                parameters.Add(new QueryParameter("total_discount", MySqlDbType.Decimal, sale.totalDiscount));
-                parameters.Add(new QueryParameter("status", MySqlDbType.Int32, sale.status));
-                parameters.Add(new QueryParameter("user_id", MySqlDbType.Int32, sale.user.Id));
+                parameters.Add(new QueryParameter("date", MySqlDbType.String, sale.Date));
+                parameters.Add(new QueryParameter("branch_id", MySqlDbType.Int32, sale.Branch.Id));
+                parameters.Add(new QueryParameter("invoice_number", MySqlDbType.String, sale.InvoiceNumber));
+                parameters.Add(new QueryParameter("total_amount", MySqlDbType.Decimal, sale.TotalAmount));
+                parameters.Add(new QueryParameter("total_discount", MySqlDbType.Decimal, sale.TotalDiscount));
+                parameters.Add(new QueryParameter("status", MySqlDbType.Int32, sale.Status));
+                parameters.Add(new QueryParameter("user_id", MySqlDbType.Int32, sale.User.Id));
 
                 commands.Add(new QueryCommand(sql, parameters));
                 result = DBTransactionService.executeNonQuery(commands);
@@ -94,13 +96,13 @@ namespace vellsPos.Entities.Masters
                     "`user_id` = @user_id " +
                     " WHERE `id` = @id ";
                 List<QueryParameter> parameters = new List<QueryParameter>();
-                parameters.Add(new QueryParameter("date", MySqlDbType.DateTime, sale.date));
-                parameters.Add(new QueryParameter("branch_id", MySqlDbType.Int32, sale.branch.Id));
-                parameters.Add(new QueryParameter("invoice_number", MySqlDbType.String, sale.invoiceNumber));
-                parameters.Add(new QueryParameter("total_amount", MySqlDbType.Decimal, sale.totalAmount));
-                parameters.Add(new QueryParameter("total_discount", MySqlDbType.Decimal, sale.totalDiscount));
-                parameters.Add(new QueryParameter("status", MySqlDbType.Int32, sale.status));
-                parameters.Add(new QueryParameter("user_id", MySqlDbType.Int32, sale.user.Id));
+                parameters.Add(new QueryParameter("date", MySqlDbType.String, sale.Date));
+                parameters.Add(new QueryParameter("branch_id", MySqlDbType.Int32, sale.Branch.Id));
+                parameters.Add(new QueryParameter("invoice_number", MySqlDbType.String, sale.InvoiceNumber));
+                parameters.Add(new QueryParameter("total_amount", MySqlDbType.Decimal, sale.TotalAmount));
+                parameters.Add(new QueryParameter("total_discount", MySqlDbType.Decimal, sale.TotalDiscount));
+                parameters.Add(new QueryParameter("status", MySqlDbType.Int32, sale.Status));
+                parameters.Add(new QueryParameter("user_id", MySqlDbType.Int32, sale.User.Id));
 
                 commands.Add(new QueryCommand(sql, parameters));
                 result = DBTransactionService.executeNonQuery(commands);
@@ -137,19 +139,30 @@ namespace vellsPos.Entities.Masters
             return result;
         }
 
-        //public static void showOnViewForm()
-        //{
-        //    DataViewParam dvParam = new DataViewParam();
-        //    dvParam.Title = "Job Roles";
-        //    dvParam.SelectSql = "SELECT id, code, tittle, description ";
-        //    dvParam.FromSql = "from job_role where tittle like @s1 or code like @s2 ORDER BY id DESC ";
-        //    dvParam.SearchParamCount = 2; //name and description
-        //    dvParam.TitleList = new List<string>() { "", "Code", "Job Role", "Description" }; //Column titles
-        //    dvParam.AddForm = new JobRoleManagement();
-        //    dvParam.ViewForm = new ViewSingleJobRole();
-        //    ViewData vData = new ViewData(dvParam);
-        //    vData.Show();
-        //}
+        public static void showOnViewForm(TextBox labelBox = null, TextBox idBox = null)
+        {
+            DataViewParam dvParam = new DataViewParam();
+            dvParam.Title = "Sales";
+            dvParam.SelectSql = "SELECT s.id, s.date, b.branch_name, s.invoice_number, s.total_amount, s.total_discount, s.status ";
+            dvParam.FromSql = "FROM  sales s " +
+                  "INNER JOIN branches b ON sd.branch_id = b.id " +
+                "WHERE s.date like @s1 or b.branch_name like @s2 or s.invoice_number like @s3 or s.status like @s4 " +
+                "ORDER BY s.id DESC ";
+            dvParam.SearchParamCount = 3; //name and description
+            dvParam.TitleList = new List<string>() { "", "Date", "Branch", "Total Amount", "Total Discount", "Qty", "Status" }; //Column titles
+            dvParam.InvisibleColumnList = new List<int>() { 3, 4 };
+            dvParam.NumericColumnList = new List<int>() { };
+            //dvParam.AddForm = new frms();
+            //dvParam.ViewForm = new frmComplain();
+
+            //frmView vData = null;
+
+            //if (idBox == null && labelBox == null)
+            //    vData = new frmView(dvParam);
+            //else
+            //    vData = new frmView(dvParam, idBox, labelBox);
+            //vData.Show();
+        }
 
         public static Sale getOneSale(int id)
         {
@@ -163,13 +176,13 @@ namespace vellsPos.Entities.Masters
 
                 if (dbData != null)
                 {
-                    sale.date = Convert.ToDateTime(dbData["date"]);
-                    sale.branch = branch;
-                    sale.invoiceNumber = dbData["invoice_number"];
-                    sale.totalAmount = Convert.ToDecimal(dbData["total_amount"]);
-                    sale.totalDiscount = Convert.ToDecimal(dbData["total_discount"]);
-                    sale.status = Convert.ToInt32(dbData["status"]);
-                    sale.user = user;
+                    sale.Date = dbData["date"];
+                    sale.Branch = branch;
+                    sale.InvoiceNumber = dbData["invoice_number"];
+                    sale.TotalAmount = Convert.ToDecimal(dbData["total_amount"]);
+                    sale.TotalDiscount = Convert.ToDecimal(dbData["total_discount"]);
+                    sale.Status = Convert.ToInt32(dbData["status"]);
+                    sale.User = user;
                 }
                 else
                 {

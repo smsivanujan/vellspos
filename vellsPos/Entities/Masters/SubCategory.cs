@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using vellsPos.Forms.Layouts;
 using vellsPos.Services;
 
 namespace vellsPos.Entities.Masters
@@ -118,21 +119,32 @@ namespace vellsPos.Entities.Masters
             return result;
         }
 
-        //public static void showOnViewForm()
-        //{
-        //    DataViewParam dvParam = new DataViewParam();
-        //    dvParam.Title = "Job Roles";
-        //    dvParam.SelectSql = "SELECT id, code, tittle, description ";
-        //    dvParam.FromSql = "from job_role where tittle like @s1 or code like @s2 ORDER BY id DESC ";
-        //    dvParam.SearchParamCount = 2; //name and description
-        //    dvParam.TitleList = new List<string>() { "", "Code", "Job Role", "Description" }; //Column titles
-        //    dvParam.AddForm = new JobRoleManagement();
-        //    dvParam.ViewForm = new ViewSingleJobRole();
-        //    ViewData vData = new ViewData(dvParam);
-        //    vData.Show();
-        //}
+        public static void showOnViewForm(TextBox labelBox = null, TextBox idBox = null)
+        {
+            DataViewParam dvParam = new DataViewParam();
+            dvParam.Title = "Sub Categories";
+            dvParam.SelectSql = "SELECT sc.id, c.category_name, sc.sub_category_name, sc.description ";
+            dvParam.FromSql = "FROM  sub_categories sc " +
+                  "INNER JOIN categories c ON sc.category_id = c.id " +
+                "WHERE c.category_name like @s1 or sc.sub_category_name like @s2 " +
+                "ORDER BY sc.id DESC ";
+            dvParam.SearchParamCount = 1; //name and description
+            dvParam.TitleList = new List<string>() { "", "Category", "Sub Category", "Description" }; //Column titles
+            dvParam.InvisibleColumnList = new List<int>() { 1 };
+            dvParam.NumericColumnList = new List<int>() { };
+            dvParam.AddForm = new frmSubCategory();
+            dvParam.ViewForm = new frmSubCategory();
 
-        public static SubCategory getOneSubCatrgory(int id)
+            frmView vData = null;
+
+            if (idBox == null && labelBox == null)
+                vData = new frmView(dvParam);
+            else
+                vData = new frmView(dvParam, idBox, labelBox);
+            vData.Show();
+        }
+
+        public static SubCategory getOneSubCategory(int id)
         {
             SubCategory subCategory = new SubCategory();
             Category category = new Category();
@@ -144,9 +156,15 @@ namespace vellsPos.Entities.Masters
                 if (dbData != null)
                 {
                     subCategory.subCategoryName = dbData["sub_category_name"];
+                    category.CategoryName = dbData["category_name"];
                     subCategory.category = category;
                     subCategory.image = dbData["image"];
                     subCategory.description = dbData["description"];
+
+                    Console.WriteLine("++++++++++++++++++++++");
+                    Console.WriteLine(dbData["sub_category_name"]);
+                    Console.WriteLine(category);
+                    Console.WriteLine("++++++++++++++++++++++");
                 }
                 else
                 {

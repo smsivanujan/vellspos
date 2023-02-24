@@ -119,19 +119,32 @@ namespace vellsPos.Entities.Masters
             return result;
         }
 
-        //public static void showOnViewForm()
-        //{
-        //    DataViewParam dvParam = new DataViewParam();
-        //    dvParam.Title = "Job Roles";
-        //    dvParam.SelectSql = "SELECT id, code, tittle, description ";
-        //    dvParam.FromSql = "from job_role where tittle like @s1 or code like @s2 ORDER BY id DESC ";
-        //    dvParam.SearchParamCount = 2; //name and description
-        //    dvParam.TitleList = new List<string>() { "", "Code", "Job Role", "Description" }; //Column titles
-        //    dvParam.AddForm = new JobRoleManagement();
-        //    dvParam.ViewForm = new ViewSingleJobRole();
-        //    ViewData vData = new ViewData(dvParam);
-        //    vData.Show();
-        //}
+        public static void showOnViewForm(TextBox labelBox = null, TextBox idBox = null)
+        {
+            DataViewParam dvParam = new DataViewParam();
+            dvParam.Title = "Sale Details";
+            dvParam.SelectSql = "SELECT sd.id, s.date, b.branch_name, s.invoice_number, concat(p.product_number +' '+ p.product_name), sd.qty, sd.amount ";
+            dvParam.FromSql = "FROM  sale_details sd " +
+                 "INNER JOIN sales s ON sd.sale_id = s.id " +
+                  "INNER JOIN products p ON sd.product_id = p.id " +
+                  "INNER JOIN branches b ON sd.branch_id = b.id " +
+                "WHERE s.date like @s1 or b.branch_name like @s2 or s.invoice_number like @s3 or concat(p.product_number +' '+ p.product_name) like @s4 " +
+                "ORDER BY sd.id DESC ";
+            dvParam.SearchParamCount = 3; //name and description
+            dvParam.TitleList = new List<string>() { "", "Date", "Branch", "Invoice", "Product", "Qty", "Amount" }; //Column titles
+            dvParam.InvisibleColumnList = new List<int>() { 5 , 6 };
+            dvParam.NumericColumnList = new List<int>() { };
+            //dvParam.AddForm = new frms();
+            //dvParam.ViewForm = new frmComplain();
+
+            //frmView vData = null;
+
+            //if (idBox == null && labelBox == null)
+            //    vData = new frmView(dvParam);
+            //else
+            //    vData = new frmView(dvParam, idBox, labelBox);
+            //vData.Show();
+        }
 
         public static void showOnViewFormSaleProduct(TextBox labelBox = null, TextBox idBox = null,String x=null )
         {

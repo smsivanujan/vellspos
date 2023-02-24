@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using vellsPos.Forms.Layouts;
 using vellsPos.Services;
 
 namespace vellsPos.Entities.Masters
@@ -118,19 +119,30 @@ namespace vellsPos.Entities.Masters
             return result;
         }
 
-        //public static void showOnViewForm()
-        //{
-        //    DataViewParam dvParam = new DataViewParam();
-        //    dvParam.Title = "Job Roles";
-        //    dvParam.SelectSql = "SELECT id, code, tittle, description ";
-        //    dvParam.FromSql = "from job_role where tittle like @s1 or code like @s2 ORDER BY id DESC ";
-        //    dvParam.SearchParamCount = 2; //name and description
-        //    dvParam.TitleList = new List<string>() { "", "Code", "Job Role", "Description" }; //Column titles
-        //    dvParam.AddForm = new JobRoleManagement();
-        //    dvParam.ViewForm = new ViewSingleJobRole();
-        //    ViewData vData = new ViewData(dvParam);
-        //    vData.Show();
-        //}
+        public static void showOnViewForm(TextBox labelBox = null, TextBox idBox = null)
+        {
+            DataViewParam dvParam = new DataViewParam();
+            dvParam.Title = "Drawer Logs";
+            dvParam.SelectSql = "SELECT dl.id, dl.date, u.user_name, dl.type, dl.action ";
+            dvParam.FromSql = "FROM  drawer_logs dl " +
+                 "INNER JOIN users u ON dl.user_id = u.id " +
+                "WHERE dl.date like @s1 or u.user_name like @s2 or dl.type like @s3 or dl.action like @s4 " +
+                "ORDER BY dl.id DESC ";
+            dvParam.SearchParamCount = 3; //name and description
+            dvParam.TitleList = new List<string>() { "", "Date", "User", "Type", "Acton" }; //Column titles
+            dvParam.InvisibleColumnList = new List<int>() { 1 };
+            dvParam.NumericColumnList = new List<int>() { };
+            //dvParam.AddForm = new frmComplain();
+            //dvParam.ViewForm = new frmComplain();
+
+            //frmView vData = null;
+
+            //if (idBox == null && labelBox == null)
+            //    vData = new frmView(dvParam);
+            //else
+            //    vData = new frmView(dvParam, idBox, labelBox);
+            //vData.Show();
+        }
 
         public static DrawerLog getOneDrawerLog(int id)
         {

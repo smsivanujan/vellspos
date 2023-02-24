@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using vellsPos.Forms.Layouts;
 using vellsPos.Services;
 
 namespace vellsPos.Entities.Masters
@@ -113,19 +114,30 @@ namespace vellsPos.Entities.Masters
             return result;
         }
 
-        //public static void showOnViewForm()
-        //{
-        //    DataViewParam dvParam = new DataViewParam();
-        //    dvParam.Title = "Job Roles";
-        //    dvParam.SelectSql = "SELECT id, code, tittle, description ";
-        //    dvParam.FromSql = "from job_role where tittle like @s1 or code like @s2 ORDER BY id DESC ";
-        //    dvParam.SearchParamCount = 2; //name and description
-        //    dvParam.TitleList = new List<string>() { "", "Code", "Job Role", "Description" }; //Column titles
-        //    dvParam.AddForm = new JobRoleManagement();
-        //    dvParam.ViewForm = new ViewSingleJobRole();
-        //    ViewData vData = new ViewData(dvParam);
-        //    vData.Show();
-        //}
+        public static void showOnViewForm(TextBox labelBox = null, TextBox idBox = null)
+        {
+            DataViewParam dvParam = new DataViewParam();
+            dvParam.Title = "Branches";
+            dvParam.SelectSql = "SELECT b.id, s.shop_name, b.branch_name, b.status ";
+            dvParam.FromSql = "FROM  branches b " +
+                 "INNER JOIN shops s ON b.shop_id = s.id " +
+                "WHERE s.shop_name like @s1 or b.branch_name like @s2 or b.status like @s3 " +
+                "ORDER BY b.id DESC ";
+            dvParam.SearchParamCount = 2; //name and description
+            dvParam.TitleList = new List<string>() { "", "Shop", "Branch", "Status" }; //Column titles
+            dvParam.InvisibleColumnList = new List<int>() { 1 };
+            dvParam.NumericColumnList = new List<int>() { };
+            //dvParam.AddForm = new frmComplain();
+            //dvParam.ViewForm = new frmComplain();
+
+            //frmView vData = null;
+
+            //if (idBox == null && labelBox == null)
+            //    vData = new frmView(dvParam);
+            //else
+            //    vData = new frmView(dvParam, idBox, labelBox);
+            //vData.Show();
+        }
 
         public static Branch getOneBranch(int id)
         {

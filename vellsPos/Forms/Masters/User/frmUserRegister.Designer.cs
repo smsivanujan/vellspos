@@ -181,9 +181,9 @@
             // 
             // txt_id
             // 
-            this.txt_id.Location = new System.Drawing.Point(248, 60);
+            this.txt_id.Location = new System.Drawing.Point(242, 60);
             this.txt_id.Name = "txt_id";
-            this.txt_id.Size = new System.Drawing.Size(41, 23);
+            this.txt_id.Size = new System.Drawing.Size(47, 23);
             this.txt_id.TabIndex = 88;
             // 
             // txt_password
@@ -218,9 +218,10 @@
             // 
             // cmb_branch
             // 
+            this.cmb_branch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb_branch.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.cmb_branch.FormattingEnabled = true;
-            this.cmb_branch.Location = new System.Drawing.Point(15, 119);
+            this.cmb_branch.Location = new System.Drawing.Point(15, 132);
             this.cmb_branch.Name = "cmb_branch";
             this.cmb_branch.Size = new System.Drawing.Size(221, 33);
             this.cmb_branch.TabIndex = 85;
@@ -239,7 +240,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI Historic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(15, 86);
+            this.label3.Location = new System.Drawing.Point(15, 99);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(77, 30);
             this.label3.TabIndex = 84;
@@ -257,6 +258,7 @@
             // 
             // cmb_role
             // 
+            this.cmb_role.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb_role.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.cmb_role.FormattingEnabled = true;
             this.cmb_role.Location = new System.Drawing.Point(15, 205);

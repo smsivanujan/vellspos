@@ -19,6 +19,7 @@ namespace vellsPos.Entities.Masters
         {
 
         }
+        
         public LoginLog(int id, DateTime date, User user, string action)
         {
             this.Id = id;
@@ -111,19 +112,30 @@ namespace vellsPos.Entities.Masters
             return result;
         }
 
-        //public static void showOnViewForm()
-        //{
-        //    DataViewParam dvParam = new DataViewParam();
-        //    dvParam.Title = "Job Roles";
-        //    dvParam.SelectSql = "SELECT id, code, tittle, description ";
-        //    dvParam.FromSql = "from job_role where tittle like @s1 or code like @s2 ORDER BY id DESC ";
-        //    dvParam.SearchParamCount = 2; //name and description
-        //    dvParam.TitleList = new List<string>() { "", "Code", "Job Role", "Description" }; //Column titles
-        //    dvParam.AddForm = new JobRoleManagement();
-        //    dvParam.ViewForm = new ViewSingleJobRole();
-        //    ViewData vData = new ViewData(dvParam);
-        //    vData.Show();
-        //}
+        public static void showOnViewForm(TextBox labelBox = null, TextBox idBox = null)
+        {
+            DataViewParam dvParam = new DataViewParam();
+            dvParam.Title = "Login Logs";
+            dvParam.SelectSql = "SELECT ll.id, ll.date, u.user_name, ll.action ";
+            dvParam.FromSql = "FROM  login_logs ll " +
+                  "INNER JOIN users u ON ll.user_id = u.id " +
+                "WHERE ll.date like @s1 or u.user_name like @s2 or ll.action like @s3 " +
+                "ORDER BY ll.id DESC ";
+            dvParam.SearchParamCount = 2; //name and description
+            dvParam.TitleList = new List<string>() { "", "Date", "User", "Acton" }; //Column titles
+            dvParam.InvisibleColumnList = new List<int>() { 1 };
+            dvParam.NumericColumnList = new List<int>() { };
+            //dvParam.AddForm = new frmComplain();
+            //dvParam.ViewForm = new frmComplain();
+
+            //frmView vData = null;
+
+            //if (idBox == null && labelBox == null)
+            //    vData = new frmView(dvParam);
+            //else
+            //    vData = new frmView(dvParam, idBox, labelBox);
+            //vData.Show();
+        }
 
         public static LoginLog getOneLoginLog(int id)
         {

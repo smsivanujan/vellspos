@@ -16,6 +16,8 @@ namespace vellsPos.Forms.Layouts
     public partial class frmCustomer : Form
     {
         private string uid;
+        ReturnResult result;
+        String msgStatus;
 
         public frmCustomer()
         {
@@ -24,8 +26,93 @@ namespace vellsPos.Forms.Layouts
 
         private void frmCustomer_Load(object sender, EventArgs e)
         {
-
+            uid = this.Tag.ToString();
+            if (String.IsNullOrEmpty(uid))
+            {
+                //
+            }
+            else
+            {
+                fillData();
+            }
         }
+
+        private void fillData()
+        {
+            Customer customer = Customer.getOneCustomer(Int32.Parse(uid));
+            txt_id.Text = uid;
+            txt_customerNumber.Text = customer.CustomerNumber;
+            txt_customerFirstName.Text = customer.CustomerFirstName;
+            txt_cusromerLastName.Text = customer.CustomerLastName;
+            dtp_dateOfBirth.Text = customer.DateOfBirth;
+            if(customer.Gender==1)
+            {
+                cmb_gender.Text = "Male";
+            }
+            else if(customer.Gender == 0)
+            {
+                cmb_gender.Text = "Female";
+            }
+            else
+            {
+                cmb_gender.Text = "Other";
+            }
+            txt_nic.Text = customer.Nic;
+            txt_Email.Text = customer.Email;
+            txt_phoneNumber.Text = customer.PhoneNumber;
+        }
+
+        //private void save()
+        //{
+            
+        //}
+
+        //private void update()
+        //{
+        //    ReturnResult nameResult = Validator.validateText(rtxt_description.Text, "Discount");
+
+        //    if (!nameResult.Status)
+        //    {
+        //        MessageBox.Show(nameResult.Msg, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //    }
+        //    else
+        //    {
+        //        Complain complain = new Complain();
+        //        complain.Id = Int32.Parse(this.Tag.ToString());
+        //        Console.WriteLine(Int32.Parse(this.Tag.ToString()));
+        //        complain.Date = dtp_date.Value.ToString("yyyy-MM-dd H:mm");
+        //        complain.Type = cmb_type.Text;
+        //        complain.Priority = cmb_priority.Text;
+        //        complain.Description = rtxt_description.Text;
+        //        complain.Status = 1;
+        //        User user = new User();
+        //        user.Id = 1;
+
+        //        complain.User = user;
+
+        //        ReturnResult result = Complain.update(complain);
+
+        //        if (result.Status)
+        //        {
+        //            //ActivityLog aL = new ActivityLog();
+        //            //aL.Date = DateTime.Now;
+        //            //User user = new User();
+        //            //String query = "SELECT id from user WHERE name = '" + Session.uname + "'";
+        //            //String id = DBTransactionService.getScalerData(query);
+        //            //user.Id = Int32.Parse(id);
+        //            //aL.User = user;
+        //            //aL.Description = "One New Transaction Added.[Date : " + dtp_dateFrom.Value + "Employee : " + txtname.Text + "Transaction Category : " + txttransaction.Text + "Invoice No : " + txtInvoiceNo.Text + "Amount : " + txtamount.Text + " Description :" + txtdescrib.Text + " Added by :" + Session.uname + "]";
+        //            //ActivityLog.store(aL);
+        //            MessageBox.Show("Complain has been Updated successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //            this.Close();
+        //        }
+        //        else
+        //        {
+        //            MessageBox.Show(result.Msg, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //        }
+        //        //}
+        //    }
+        //}
 
         private void btn_save_Click(object sender, EventArgs e)
         {
@@ -62,58 +149,25 @@ namespace vellsPos.Forms.Layouts
             }
             else
             {
-                //int pid = 0;
-                //int pid1 = 0;
-                //int pid2 = 0;
-
-                //if (txttransaction.SelectedIndex >= 0)
-                //{
-                //    pid2 = int.Parse(tran[txttransaction.SelectedIndex].Value);
-                //}
-
-                //TransactionCategory tc = new TransactionCategory();
-                //tc.Id = pid2;
-
-                //if (String.IsNullOrEmpty(txtId.Text))
-                //{
-                //    MessageBox.Show("Select Employee", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                //}
-                //else if (txtname.Text != "[ Select ]")
-                //{
-                //String dep = "select depatrment_id from employee where id='" + txtId.Text + "' ";
-                //String depID = DBTransactionService.getScalerData(dep);
-                //String dep1 = "select name from department where id='" + depID + "'";
-                //String depName = DBTransactionService.getScalerData(dep1);
-                //String prtyid = "select property_id from employee where id='" + txtId.Text + "' ";
-                //String prtyidID = DBTransactionService.getScalerData(prtyid);
-
-                //Property pty = new Property();
-                //pty.Id = Int32.Parse(prtyidID);
-                //Employee em = new Employee();
-                //em.Id = Int32.Parse(txtId.Text);
-                //Department dp = new Department();
-                //dp.Id = Int32.Parse(depID);
-
                 Customer customer = new Customer();
                 customer.CustomerNumber = txt_customerNumber.Text;
                 customer.CustomerFirstName = txt_customerFirstName.Text;
                 customer.CustomerLastName = txt_cusromerLastName.Text;
                 customer.DateOfBirth = dtp_dateOfBirth.Value.ToString("yyyy-MM-dd");
 
-                customer.Gender = 0;
-                if (cmb_gender.Text=="Nale")
+                if (cmb_gender.Text == "Male")
                 {
                     customer.Gender = 1;
                 }
-                else if(cmb_gender.Text == "Female")
-                {
-                    customer.Gender = 2;
-                }
-                else
+                else if (cmb_gender.Text == "Female")
                 {
                     customer.Gender = 0;
                 }
-               
+                else
+                {
+                    customer.Gender = 2;
+                }
+
                 customer.Nic = txt_nic.Text;
                 customer.Email = txt_Email.Text;
                 customer.PhoneNumber = txt_phoneNumber.Text;
@@ -123,7 +177,22 @@ namespace vellsPos.Forms.Layouts
 
                 customer.User = user;
 
-                ReturnResult result = Customer.store(customer);
+                //ReturnResult result = Customer.store(customer);
+
+                if (String.IsNullOrEmpty(txt_id.Text))
+                {
+                    //save();
+                    result = Customer.store(customer);
+                    msgStatus = "added";
+
+                }
+                else
+                {
+                    //update();
+                    customer.Id = Int32.Parse(this.Tag.ToString());
+                    result = Customer.update(customer);
+                    msgStatus = "updated";
+                }
 
                 if (result.Status)
                 {
@@ -136,7 +205,7 @@ namespace vellsPos.Forms.Layouts
                     //aL.User = user;
                     //aL.Description = "One New Transaction Added.[Date : " + dtp_dateFrom.Value + "Employee : " + txtname.Text + "Transaction Category : " + txttransaction.Text + "Invoice No : " + txtInvoiceNo.Text + "Amount : " + txtamount.Text + " Description :" + txtdescrib.Text + " Added by :" + Session.uname + "]";
                     //ActivityLog.store(aL);
-                    MessageBox.Show("Customer has been added successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Customer has been "+ msgStatus +" successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
                 }
                 else

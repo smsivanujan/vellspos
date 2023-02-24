@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using vellsPos.Forms.Layouts;
 using vellsPos.Services;
 
 namespace vellsPos.Entities.Masters
@@ -131,19 +132,31 @@ namespace vellsPos.Entities.Masters
             return result;
         }
 
-        //public static void showOnViewForm()
-        //{
-        //    DataViewParam dvParam = new DataViewParam();
-        //    dvParam.Title = "Job Roles";
-        //    dvParam.SelectSql = "SELECT id, code, tittle, description ";
-        //    dvParam.FromSql = "from job_role where tittle like @s1 or code like @s2 ORDER BY id DESC ";
-        //    dvParam.SearchParamCount = 2; //name and description
-        //    dvParam.TitleList = new List<string>() { "", "Code", "Job Role", "Description" }; //Column titles
-        //    dvParam.AddForm = new JobRoleManagement();
-        //    dvParam.ViewForm = new ViewSingleJobRole();
-        //    ViewData vData = new ViewData(dvParam);
-        //    vData.Show();
-        //}
+        public static void showOnViewForm(TextBox labelBox = null, TextBox idBox = null)
+        {
+            DataViewParam dvParam = new DataViewParam();
+            dvParam.Title = "Users";
+            dvParam.SelectSql = "SELECT u.id, u.date, b.branch_name, r.role_name, u.user_name ";
+            dvParam.FromSql = "FROM  users u " +
+                 "INNER JOIN branches b ON u.branch_id = b.id " +
+                  "INNER JOIN roles r ON u.role_id = r.id " +
+                "WHERE u.date like @s1 or b.branch_name like @s2 or r.role_name like @s3 or u.user_name like @s4 " +
+                "ORDER BY u.id DESC ";
+            dvParam.SearchParamCount = 3; //name and description
+            dvParam.TitleList = new List<string>() { "", "Date", "Branch", "Role", "User" }; //Column titles
+            dvParam.InvisibleColumnList = new List<int>() { 1 };
+            dvParam.NumericColumnList = new List<int>() { };
+            dvParam.AddForm = new frmUserRegister();
+            dvParam.ViewForm = new frmUserRegister();
+
+            frmView vData = null;
+
+            if (idBox == null && labelBox == null)
+                vData = new frmView(dvParam);
+            else
+                vData = new frmView(dvParam, idBox, labelBox);
+            vData.Show();
+        }
 
         public static User getOneUser(int id)
         {
@@ -153,14 +166,26 @@ namespace vellsPos.Entities.Masters
             Authentication authentication = new Authentication();
             try
             {
-                String query = "SELECT * FROM users where id = '" + id + "'";
+                String query = "SELECT " +
+                    "u.id, " +
+                    "u.date, " +
+                    "b.branch_name AS branch, " +
+                    "r.role_name AS role, " +
+                    "u.user_name, " +
+                    "u.password " +
+                    "FROM users u " +
+                    "INNER JOIN branches b ON u.branch_id = b.id " +
+                    "INNER JOIN roles r ON u.role_id = r.id " +
+                    "WHERE u.id = '" + id + "'";
                 Dictionary<String, String> dbData = DBTransactionService.getDataAsDictionary(query);
 
                 if (dbData != null)
                 {
                     user.date = Convert.ToDateTime(dbData["date"]);
                     user.userName = dbData["user_name"];
+                    branch.BranchName = dbData["branch"];
                     user.branch = branch;
+                    role.RoleName = dbData["role"];
                     user.role = role;
                     user.password = dbData["password"];
                     user.authentication = authentication;

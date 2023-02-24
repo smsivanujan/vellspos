@@ -9,11 +9,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Forms\Masters\Pos\**" />
+    <EmbeddedResource Remove="Forms\Masters\Pos\**" />
+    <None Remove="Forms\Masters\Pos\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Entities\Masters\Authentication.cs~RF446e7b7.TMP" />
     <None Remove="Forms\Masters\Sale\fReturn.Designer.cs~RF2c42dc3.TMP" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Forms\Masters\Pos\" />
     <Folder Include="Resources\images\" />
   </ItemGroup>
 

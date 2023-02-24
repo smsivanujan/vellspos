@@ -128,12 +128,13 @@ namespace vellsPos.Entities.Masters
         public static void showOnViewForm(TextBox labelBox = null, TextBox idBox = null)
         {
             DataViewParam dvParam = new DataViewParam();
-            dvParam.Title = "Product Return";
+            dvParam.Title = "Product Returns";
             dvParam.SelectSql = "SELECT pr.id, s.date, s.invoice_number, p.product_number, p.product_name, pr.qty, pr.amount  ";
             dvParam.FromSql = "FROM  product_returns pr " +
                 "INNER JOIN sales s ON pr.sale_id = s.id " +
                 "INNER JOIN products p ON pr.product_id = p.id  " +
-                "where p.product_number like @s1 or p.product_name like @s2 ORDER BY pr.id DESC ";
+                "WHERE p.product_number like @s1 or p.product_name like @s2 " +
+                "ORDER BY pr.id DESC ";
             dvParam.SearchParamCount = 2; //name and description
             dvParam.TitleList = new List<string>() { "", "Date", "Invoice Number", "Product Number", "Product Name", "Qty", "Amount" }; //Column titles
 

@@ -39,8 +39,6 @@
             this.pnl_body = new System.Windows.Forms.Panel();
             this.pnl_container = new System.Windows.Forms.Panel();
             this.txt_id = new System.Windows.Forms.TextBox();
-            this.cmb_payoutType = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.rtxt_description = new System.Windows.Forms.RichTextBox();
             this.ntxt_amount = new System.Windows.Forms.NumericUpDown();
@@ -165,8 +163,6 @@
             // pnl_container
             // 
             this.pnl_container.Controls.Add(this.txt_id);
-            this.pnl_container.Controls.Add(this.cmb_payoutType);
-            this.pnl_container.Controls.Add(this.label3);
             this.pnl_container.Controls.Add(this.label9);
             this.pnl_container.Controls.Add(this.rtxt_description);
             this.pnl_container.Controls.Add(this.ntxt_amount);
@@ -185,32 +181,11 @@
             this.txt_id.Size = new System.Drawing.Size(41, 23);
             this.txt_id.TabIndex = 89;
             // 
-            // cmb_payoutType
-            // 
-            this.cmb_payoutType.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.cmb_payoutType.FormattingEnabled = true;
-            this.cmb_payoutType.Items.AddRange(new object[] {
-            "Spot Payment"});
-            this.cmb_payoutType.Location = new System.Drawing.Point(7, 210);
-            this.cmb_payoutType.Name = "cmb_payoutType";
-            this.cmb_payoutType.Size = new System.Drawing.Size(221, 33);
-            this.cmb_payoutType.TabIndex = 83;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI Historic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(7, 177);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(127, 30);
-            this.label3.TabIndex = 82;
-            this.label3.Text = "Payout Type";
-            // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Segoe UI Historic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label9.Location = new System.Drawing.Point(7, 246);
+            this.label9.Location = new System.Drawing.Point(7, 181);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(118, 30);
             this.label9.TabIndex = 81;
@@ -219,7 +194,7 @@
             // rtxt_description
             // 
             this.rtxt_description.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.rtxt_description.Location = new System.Drawing.Point(7, 290);
+            this.rtxt_description.Location = new System.Drawing.Point(7, 225);
             this.rtxt_description.Name = "rtxt_description";
             this.rtxt_description.Size = new System.Drawing.Size(221, 62);
             this.rtxt_description.TabIndex = 80;
@@ -303,8 +278,6 @@
         private Button btn_cancel;
         private Button btn_save;
         private Panel pnl_container;
-        private ComboBox cmb_payoutType;
-        private Label label3;
         private Label label9;
         private RichTextBox rtxt_description;
         private NumericUpDown ntxt_amount;

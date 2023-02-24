@@ -45,7 +45,7 @@
             this.cb_ageVerify = new System.Windows.Forms.CheckBox();
             this.lbl_imagePath = new System.Windows.Forms.Label();
             this.btn_uploadImage = new System.Windows.Forms.Button();
-            this.pb_categoryImage = new System.Windows.Forms.PictureBox();
+            this.pb_productImage = new System.Windows.Forms.PictureBox();
             this.label7 = new System.Windows.Forms.Label();
             this.cmb_subCoCategory = new System.Windows.Forms.ComboBox();
             this.txt_productNumber = new System.Windows.Forms.TextBox();
@@ -61,7 +61,7 @@
             this.pnl_root.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ntxt_salePrice)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pb_categoryImage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_productImage)).BeginInit();
             this.SuspendLayout();
             // 
             // pnl_head
@@ -175,7 +175,7 @@
             this.panel1.Controls.Add(this.cb_ageVerify);
             this.panel1.Controls.Add(this.lbl_imagePath);
             this.panel1.Controls.Add(this.btn_uploadImage);
-            this.panel1.Controls.Add(this.pb_categoryImage);
+            this.panel1.Controls.Add(this.pb_productImage);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.cmb_subCoCategory);
             this.panel1.Controls.Add(this.txt_productNumber);
@@ -213,7 +213,7 @@
             // ntxt_salePrice
             // 
             this.ntxt_salePrice.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.ntxt_salePrice.Location = new System.Drawing.Point(15, 293);
+            this.ntxt_salePrice.Location = new System.Drawing.Point(15, 298);
             this.ntxt_salePrice.Maximum = new decimal(new int[] {
             100000,
             0,
@@ -229,7 +229,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI Historic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(15, 260);
+            this.label4.Location = new System.Drawing.Point(15, 265);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(102, 30);
             this.label4.TabIndex = 106;
@@ -248,7 +248,7 @@
             // 
             this.cb_ageVerify.AutoSize = true;
             this.cb_ageVerify.Font = new System.Drawing.Font("Segoe UI Historic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.cb_ageVerify.Location = new System.Drawing.Point(15, 542);
+            this.cb_ageVerify.Location = new System.Drawing.Point(15, 544);
             this.cb_ageVerify.Name = "cb_ageVerify";
             this.cb_ageVerify.Size = new System.Drawing.Size(128, 34);
             this.cb_ageVerify.TabIndex = 102;
@@ -274,14 +274,14 @@
             this.btn_uploadImage.UseVisualStyleBackColor = true;
             this.btn_uploadImage.Click += new System.EventHandler(this.btn_uploadImage_Click);
             // 
-            // pb_categoryImage
+            // pb_productImage
             // 
-            this.pb_categoryImage.Location = new System.Drawing.Point(303, 48);
-            this.pb_categoryImage.Name = "pb_categoryImage";
-            this.pb_categoryImage.Size = new System.Drawing.Size(180, 180);
-            this.pb_categoryImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pb_categoryImage.TabIndex = 38;
-            this.pb_categoryImage.TabStop = false;
+            this.pb_productImage.Location = new System.Drawing.Point(303, 48);
+            this.pb_productImage.Name = "pb_productImage";
+            this.pb_productImage.Size = new System.Drawing.Size(180, 180);
+            this.pb_productImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pb_productImage.TabIndex = 38;
+            this.pb_productImage.TabStop = false;
             // 
             // label7
             // 
@@ -297,7 +297,7 @@
             // 
             this.cmb_subCoCategory.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.cmb_subCoCategory.FormattingEnabled = true;
-            this.cmb_subCoCategory.Location = new System.Drawing.Point(15, 377);
+            this.cmb_subCoCategory.Location = new System.Drawing.Point(15, 210);
             this.cmb_subCoCategory.Name = "cmb_subCoCategory";
             this.cmb_subCoCategory.Size = new System.Drawing.Size(221, 33);
             this.cmb_subCoCategory.TabIndex = 97;
@@ -305,7 +305,7 @@
             // txt_productNumber
             // 
             this.txt_productNumber.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.txt_productNumber.Location = new System.Drawing.Point(15, 134);
+            this.txt_productNumber.Location = new System.Drawing.Point(15, 52);
             this.txt_productNumber.MaxLength = 12;
             this.txt_productNumber.Multiline = true;
             this.txt_productNumber.Name = "txt_productNumber";
@@ -317,7 +317,7 @@
             // txt_productName
             // 
             this.txt_productName.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.txt_productName.Location = new System.Drawing.Point(15, 210);
+            this.txt_productName.Location = new System.Drawing.Point(15, 128);
             this.txt_productName.Multiline = true;
             this.txt_productName.Name = "txt_productName";
             this.txt_productName.PlaceholderText = "category";
@@ -327,7 +327,7 @@
             // rtxt_description
             // 
             this.rtxt_description.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.rtxt_description.Location = new System.Drawing.Point(15, 459);
+            this.rtxt_description.Location = new System.Drawing.Point(15, 461);
             this.rtxt_description.Name = "rtxt_description";
             this.rtxt_description.Size = new System.Drawing.Size(221, 62);
             this.rtxt_description.TabIndex = 90;
@@ -337,7 +337,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Historic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(15, 101);
+            this.label2.Location = new System.Drawing.Point(15, 19);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(167, 30);
             this.label2.TabIndex = 83;
@@ -347,7 +347,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Historic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(15, 177);
+            this.label1.Location = new System.Drawing.Point(15, 95);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(147, 30);
             this.label1.TabIndex = 85;
@@ -357,7 +357,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI Historic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(15, 344);
+            this.label3.Location = new System.Drawing.Point(15, 177);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(168, 30);
             this.label3.TabIndex = 87;
@@ -367,7 +367,7 @@
             // 
             this.dtp_date.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.dtp_date.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtp_date.Location = new System.Drawing.Point(15, 48);
+            this.dtp_date.Location = new System.Drawing.Point(15, 383);
             this.dtp_date.Name = "dtp_date";
             this.dtp_date.Size = new System.Drawing.Size(221, 33);
             this.dtp_date.TabIndex = 88;
@@ -377,7 +377,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Segoe UI Historic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label9.Location = new System.Drawing.Point(15, 426);
+            this.label9.Location = new System.Drawing.Point(15, 428);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(118, 30);
             this.label9.TabIndex = 91;
@@ -387,11 +387,11 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI Historic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(18, 17);
+            this.label6.Location = new System.Drawing.Point(15, 350);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(57, 30);
+            this.label6.Size = new System.Drawing.Size(121, 30);
             this.label6.TabIndex = 89;
-            this.label6.Text = "Date";
+            this.label6.Text = "Added date";
             // 
             // frmProduct
             // 
@@ -411,7 +411,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ntxt_salePrice)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pb_categoryImage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_productImage)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -440,7 +440,7 @@
         private Label lbl_imageStatus;
         private Label lbl_imagePath;
         private Button btn_uploadImage;
-        private PictureBox pb_categoryImage;
+        private PictureBox pb_productImage;
         private Label label7;
         private NumericUpDown ntxt_salePrice;
         private Label label4;

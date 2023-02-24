@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic.ApplicationServices;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,6 +17,9 @@ namespace vellsPos.Forms.Layouts
     public partial class frmCategory : Form
     {
         private string uid;
+        ReturnResult result;
+        String msgStatus;
+        string rootPath = @"c:\vellspos";
 
         public frmCategory()
         {
@@ -24,10 +28,78 @@ namespace vellsPos.Forms.Layouts
 
         private void frmCategory_Load(object sender, EventArgs e)
         {
-
+            uid = this.Tag.ToString();
+            if (String.IsNullOrEmpty(uid))
+            {
+                //
+            }
+            else
+            {
+                fillData();
+            }
         }
 
-       
+        private void fillData()
+        {
+            Category category = Category.getOneCategory(Int32.Parse(uid));
+            txt_id.Text = uid;
+            txt_category.Text = category.CategoryName;
+            rtxt_description.Text = category.Description;
+            pb_categoryImage.Image = Image.FromFile(category.Image);
+        } 
+
+        //private void save()
+        //{
+
+        //}
+
+        //private void update()
+        //{
+        //    ReturnResult nameResult = Validator.validateText(rtxt_description.Text, "Discount");
+
+        //    if (!nameResult.Status)
+        //    {
+        //        MessageBox.Show(nameResult.Msg, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //    }
+        //    else
+        //    {
+        //        Complain complain = new Complain();
+        //        complain.Id = Int32.Parse(this.Tag.ToString());
+        //        Console.WriteLine(Int32.Parse(this.Tag.ToString()));
+        //        complain.Date = dtp_date.Value.ToString("yyyy-MM-dd H:mm");
+        //        complain.Type = cmb_type.Text;
+        //        complain.Priority = cmb_priority.Text;
+        //        complain.Description = rtxt_description.Text;
+        //        complain.Status = 1;
+        //        User user = new User();
+        //        user.Id = 1;
+
+        //        complain.User = user;
+
+        //        ReturnResult result = Complain.update(complain);
+
+        //        if (result.Status)
+        //        {
+        //            //ActivityLog aL = new ActivityLog();
+        //            //aL.Date = DateTime.Now;
+        //            //User user = new User();
+        //            //String query = "SELECT id from user WHERE name = '" + Session.uname + "'";
+        //            //String id = DBTransactionService.getScalerData(query);
+        //            //user.Id = Int32.Parse(id);
+        //            //aL.User = user;
+        //            //aL.Description = "One New Transaction Added.[Date : " + dtp_dateFrom.Value + "Employee : " + txtname.Text + "Transaction Category : " + txttransaction.Text + "Invoice No : " + txtInvoiceNo.Text + "Amount : " + txtamount.Text + " Description :" + txtdescrib.Text + " Added by :" + Session.uname + "]";
+        //            //ActivityLog.store(aL);
+        //            MessageBox.Show("Complain has been Updated successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //            this.Close();
+        //        }
+        //        else
+        //        {
+        //            MessageBox.Show(result.Msg, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //        }
+        //        //}
+        //    }
+        //}
+
         private void btn_save_Click(object sender, EventArgs e)
         {
             ReturnResult nameResult = Validator.validateText(txt_category.Text, "Category");
@@ -38,7 +110,6 @@ namespace vellsPos.Forms.Layouts
             }
             else
             {
-                string rootPath = @"c:\vellspos";
                 String directoryPath = Path.Combine(rootPath, Path.GetFileName(lbl_imagePath.Text));
 
                 ImageUpload imageUpload = new ImageUpload();
@@ -53,10 +124,23 @@ namespace vellsPos.Forms.Layouts
                 category.Description = rtxt_description.Text;
                 category.Image = directoryPath;//root folder to save
                 ReturnResult result = Category.store(category);
-                
-                
 
-                if (result.Status )
+                if (String.IsNullOrEmpty(txt_id.Text))
+                {
+                    //save();
+                    result = Category.store(category);
+                    msgStatus = "added";
+
+                }
+                else
+                {
+                    //update();
+                    category.Id = Int32.Parse(this.Tag.ToString());
+                    result = Category.update(category);
+                    msgStatus = "updated";
+                }
+
+                if (result.Status)
                 {
                     //ActivityLog aL = new ActivityLog();
                     //aL.Date = DateTime.Now;
@@ -67,7 +151,7 @@ namespace vellsPos.Forms.Layouts
                     //aL.User = user;
                     //aL.Description = "One New Transaction Added.[Date : " + dtp_dateFrom.Value + "Employee : " + txtname.Text + "Transaction Category : " + txttransaction.Text + "Invoice No : " + txtInvoiceNo.Text + "Amount : " + txtamount.Text + " Description :" + txtdescrib.Text + " Added by :" + Session.uname + "]";
                     //ActivityLog.store(aL);
-                    MessageBox.Show("Category has been added successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Category has been "+ msgStatus +" successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
                 }
                 else

@@ -17,6 +17,9 @@ namespace vellsPos.Forms.Layouts
     {
         private List<ListItem> subCoCategories = new List<ListItem>();
         private string uid;
+        ReturnResult result;
+        String msgStatus;
+        string rootPath = @"c:\vellspos";
 
         public frmProduct()
         {
@@ -32,13 +35,97 @@ namespace vellsPos.Forms.Layouts
             {
                 cmb_subCoCategory.SelectedIndex = 0;
             }
+
+            uid = this.Tag.ToString();
+            if (String.IsNullOrEmpty(uid))
+            {
+                //
+            }
+            else
+            {
+                fillData();
+            }
         }
+
+        private void fillData()
+        {
+            Product product = Product.getOneProduct(Int32.Parse(uid));
+            txt_id.Text = uid;
+            txt_productNumber.Text = product.ProductNumber;
+            txt_productName.Text = product.ProductName;
+            cmb_subCoCategory.Text = product.SubCoCategory.SubCoCategoryName;
+            ntxt_salePrice.Value = product.SalePrice;
+            dtp_date.Value = product.AddedDate;
+            rtxt_description.Text = product.Description;       
+
+            if (product.AgeVerify==1)
+            {
+                cb_ageVerify.Text ="Age Restricted";
+            }
+            else
+            {
+                cb_ageVerify.Text = "For All Ages";
+            }
+            pb_productImage.Image = Image.FromFile(product.Image);
+        }
+
+        //private void save()
+        //{
+           
+        //}
+
+        //private void update()
+        //{
+        //    ReturnResult nameResult = Validator.validateText(rtxt_description.Text, "Discount");
+
+        //    if (!nameResult.Status)
+        //    {
+        //        MessageBox.Show(nameResult.Msg, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //    }
+        //    else
+        //    {
+        //        Complain complain = new Complain();
+        //        complain.Id = Int32.Parse(this.Tag.ToString());
+        //        Console.WriteLine(Int32.Parse(this.Tag.ToString()));
+        //        complain.Date = dtp_date.Value.ToString("yyyy-MM-dd H:mm");
+        //        complain.Type = cmb_type.Text;
+        //        complain.Priority = cmb_priority.Text;
+        //        complain.Description = rtxt_description.Text;
+        //        complain.Status = 1;
+        //        User user = new User();
+        //        user.Id = 1;
+
+        //        complain.User = user;
+
+        //        ReturnResult result = Complain.update(complain);
+
+        //        if (result.Status)
+        //        {
+        //            //ActivityLog aL = new ActivityLog();
+        //            //aL.Date = DateTime.Now;
+        //            //User user = new User();
+        //            //String query = "SELECT id from user WHERE name = '" + Session.uname + "'";
+        //            //String id = DBTransactionService.getScalerData(query);
+        //            //user.Id = Int32.Parse(id);
+        //            //aL.User = user;
+        //            //aL.Description = "One New Transaction Added.[Date : " + dtp_dateFrom.Value + "Employee : " + txtname.Text + "Transaction Category : " + txttransaction.Text + "Invoice No : " + txtInvoiceNo.Text + "Amount : " + txtamount.Text + " Description :" + txtdescrib.Text + " Added by :" + Session.uname + "]";
+        //            //ActivityLog.store(aL);
+        //            MessageBox.Show("Complain has been Updated successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //            this.Close();
+        //        }
+        //        else
+        //        {
+        //            MessageBox.Show(result.Msg, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //        }
+        //        //}
+        //    }
+        //}
 
         private void btn_save_Click(object sender, EventArgs e)
         {
             ReturnResult numberResult = Validator.validateText(txt_productNumber.Text, "ProductNumber");
             ReturnResult nameResult = Validator.validateText(txt_productName.Text, "ProductName");
-           
+
 
             if (!numberResult.Status)
             {
@@ -51,7 +138,7 @@ namespace vellsPos.Forms.Layouts
             else
             {
                 int subCoategoryId = 0;
-               
+
                 if (cmb_subCoCategory.SelectedIndex >= 0)
                 {
                     subCoategoryId = int.Parse(subCoCategories[cmb_subCoCategory.SelectedIndex].Value);
@@ -63,8 +150,6 @@ namespace vellsPos.Forms.Layouts
                 User user = new User();
                 user.Id = 1;
 
-
-                string rootPath = @"c:\vellspos";
                 String directoryPath = Path.Combine(rootPath, Path.GetFileName(lbl_imagePath.Text));
 
                 ImageUpload imageUpload = new ImageUpload();
@@ -101,7 +186,22 @@ namespace vellsPos.Forms.Layouts
                 product.Temp = 0;
                 product.Image = directoryPath;//root folder to save
                 product.User = user;
-                ReturnResult result = Product.store(product);
+                //ReturnResult result = Product.store(product);
+
+                if (String.IsNullOrEmpty(txt_id.Text))
+                {
+                    //save();
+                    result = Product.store(product);
+                    msgStatus = "added";
+
+                }
+                else
+                {
+                    //update();
+                    user.Id = Int32.Parse(this.Tag.ToString());
+                    result = Product.update(product);
+                    msgStatus = "updated";
+                }
 
 
                 if (result.Status)
@@ -115,7 +215,7 @@ namespace vellsPos.Forms.Layouts
                     //aL.User = user;
                     //aL.Description = "One New Transaction Added.[Date : " + dtp_dateFrom.Value + "Employee : " + txtname.Text + "Transaction Category : " + txttransaction.Text + "Invoice No : " + txtInvoiceNo.Text + "Amount : " + txtamount.Text + " Description :" + txtdescrib.Text + " Added by :" + Session.uname + "]";
                     //ActivityLog.store(aL);
-                    MessageBox.Show("Product has been added successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Product has been "+ msgStatus +" successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
                 }
                 else
@@ -146,7 +246,7 @@ namespace vellsPos.Forms.Layouts
             if (result == DialogResult.OK)
             {
                 lbl_imagePath.Text = ofd.FileName;
-                pb_categoryImage.Load(ofd.FileName);
+                pb_productImage.Load(ofd.FileName);
                 lbl_imageStatus.Text = "Image Uploded";
                 lbl_imageStatus.ForeColor = System.Drawing.Color.Green;
             }

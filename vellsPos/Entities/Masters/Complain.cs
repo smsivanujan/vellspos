@@ -136,10 +136,11 @@ namespace vellsPos.Entities.Masters
         public static void showOnViewForm(TextBox labelBox = null, TextBox idBox = null)
         {
             DataViewParam dvParam = new DataViewParam();
-            dvParam.Title = "Product Return";
+            dvParam.Title = "Complains";
             dvParam.SelectSql = "SELECT c.id, c.date, c.type, c.priority, c.description, c.status ";
             dvParam.FromSql = "FROM  complains c " +
-                "where c.date like @s1 or c.type like @s2 or c.priority like @s3 or c.status like @s4 ORDER BY c.id DESC ";
+                "WHERE c.date like @s1 or c.type like @s2 or c.priority like @s3 or c.status like @s4 " +
+                "ORDER BY c.id DESC ";
             dvParam.SearchParamCount = 3; //name and description
             dvParam.TitleList = new List<string>() { "", "Date", "Type", "Priority", "Description", "Status" }; //Column titles
             dvParam.InvisibleColumnList = new List<int>() { 1 };

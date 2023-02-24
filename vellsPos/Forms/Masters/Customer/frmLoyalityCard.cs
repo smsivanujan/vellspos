@@ -18,11 +18,106 @@ namespace vellsPos.Forms.Layouts
     {
         private List<ListItem> customers = new List<ListItem>();
         private string uid;
+        ReturnResult result;
+        String msgStatus;
 
         public frmLoyalityCard()
         {
             InitializeComponent();
         }
+
+        private void frmLoyalityCard_Load(object sender, EventArgs e)
+        {
+            String customerQuery = "SELECT id as value,concat(customer_number,' ',customer_first_name) as text FROM customers";
+            customers = DBTransactionService.getDataAsListItemsAndFillComboBox(customerQuery, cmb_customer);
+
+            if (customers.Count > 0)
+            {
+                cmb_customer.SelectedIndex = 0;
+            }
+
+            uid = this.Tag.ToString();
+            if (String.IsNullOrEmpty(uid))
+            {
+                //
+            }
+            else
+            {
+                fillData();
+            }
+        }
+
+        private void fillData()
+        {
+            LoyalityCard loyalityCard = LoyalityCard.getOneLoyalityCard(Int32.Parse(uid));
+            txt_id.Text = uid;
+            cmb_customer.Text = loyalityCard.Customer.CustomerFirstName;
+            txt_cardNumber.Text = loyalityCard.CardNumber;
+            cmb_cardType.Text = loyalityCard.CardType;
+            dtp_issuedDate.Text = loyalityCard.IssuedDate;
+            
+
+            if(loyalityCard.Status==1)
+            {
+                cb_status.Text = "Active";
+            }
+            else
+            {
+                cb_status.Text = "Inctive";
+            }
+        }
+
+        //private void save()
+        //{
+            
+        //}
+
+        //private void update()
+        //{
+        //    ReturnResult nameResult = Validator.validateText(rtxt_description.Text, "Discount");
+
+        //    if (!nameResult.Status)
+        //    {
+        //        MessageBox.Show(nameResult.Msg, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //    }
+        //    else
+        //    {
+        //        Complain complain = new Complain();
+        //        complain.Id = Int32.Parse(this.Tag.ToString());
+        //        Console.WriteLine(Int32.Parse(this.Tag.ToString()));
+        //        complain.Date = dtp_date.Value.ToString("yyyy-MM-dd H:mm");
+        //        complain.Type = cmb_type.Text;
+        //        complain.Priority = cmb_priority.Text;
+        //        complain.Description = rtxt_description.Text;
+        //        complain.Status = 1;
+        //        User user = new User();
+        //        user.Id = 1;
+
+        //        complain.User = user;
+
+        //        ReturnResult result = Complain.update(complain);
+
+        //        if (result.Status)
+        //        {
+        //            //ActivityLog aL = new ActivityLog();
+        //            //aL.Date = DateTime.Now;
+        //            //User user = new User();
+        //            //String query = "SELECT id from user WHERE name = '" + Session.uname + "'";
+        //            //String id = DBTransactionService.getScalerData(query);
+        //            //user.Id = Int32.Parse(id);
+        //            //aL.User = user;
+        //            //aL.Description = "One New Transaction Added.[Date : " + dtp_dateFrom.Value + "Employee : " + txtname.Text + "Transaction Category : " + txttransaction.Text + "Invoice No : " + txtInvoiceNo.Text + "Amount : " + txtamount.Text + " Description :" + txtdescrib.Text + " Added by :" + Session.uname + "]";
+        //            //ActivityLog.store(aL);
+        //            MessageBox.Show("Complain has been Updated successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //            this.Close();
+        //        }
+        //        else
+        //        {
+        //            MessageBox.Show(result.Msg, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //        }
+        //        //}
+        //    }
+        //}
 
         private void btn_save_Click(object sender, EventArgs e)
         {
@@ -48,7 +143,7 @@ namespace vellsPos.Forms.Layouts
                 LoyalityCard loyalityCard = new LoyalityCard();
                 loyalityCard.CardNumber = txt_cardNumber.Text;
                 loyalityCard.CardType = cmb_cardType.Text;
-                loyalityCard.IssuedDate=dtp_issuedDate.Value.ToString("yyyy-MM-dd");
+                loyalityCard.IssuedDate = dtp_issuedDate.Value.ToString("yyyy-MM-dd");
 
                 loyalityCard.Status = 0;
                 if (cb_status.Checked)
@@ -59,7 +154,22 @@ namespace vellsPos.Forms.Layouts
                 loyalityCard.Customer = customer;
                 loyalityCard.User = user;
 
-                ReturnResult result = LoyalityCard.store(loyalityCard);
+                //ReturnResult result = LoyalityCard.store(loyalityCard);
+
+                if (String.IsNullOrEmpty(txt_id.Text))
+                {
+                    //save();
+                    result = LoyalityCard.store(loyalityCard);
+                    msgStatus = "added";
+
+                }
+                else
+                {
+                    //update();
+                    loyalityCard.Id = Int32.Parse(this.Tag.ToString());
+                    result = LoyalityCard.update(loyalityCard);
+                    msgStatus = "updated";
+                }
 
                 if (result.Status)
                 {
@@ -72,7 +182,7 @@ namespace vellsPos.Forms.Layouts
                     //aL.User = user;
                     //aL.Description = "One New Transaction Added.[Date : " + dtp_dateFrom.Value + "Employee : " + txtname.Text + "Transaction Category : " + txttransaction.Text + "Invoice No : " + txtInvoiceNo.Text + "Amount : " + txtamount.Text + " Description :" + txtdescrib.Text + " Added by :" + Session.uname + "]";
                     //ActivityLog.store(aL);
-                    MessageBox.Show("Discount has been added successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Discount has been "+ msgStatus +" successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
                 }
                 else
@@ -91,17 +201,6 @@ namespace vellsPos.Forms.Layouts
         private void btn_close_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void frmLoyalityCard_Load(object sender, EventArgs e)
-        {
-            String customerQuery = "SELECT id as value,concat(customer_number,' ',customer_first_name) as text FROM customers";
-            customers = DBTransactionService.getDataAsListItemsAndFillComboBox(customerQuery, cmb_customer);
-
-            if (customers.Count > 0)
-            {
-                cmb_customer.SelectedIndex = 0;
-            }
         }
 
         private void button1_Click(object sender, EventArgs e)

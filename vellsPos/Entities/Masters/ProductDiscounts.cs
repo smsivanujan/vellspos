@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace vellsPos.Entities.Masters
 {
-    internal class Product_Discountscs
+    internal class ProductDiscounts
     {
         private Int32 id;
         private Product product;
         private Discount discount;
 
-        public Product_Discountscs(int id, Product product, Discount discount)
+        public ProductDiscounts(int id, Product product, Discount discount)
         {
             this.Id = id;
             this.Product = product;

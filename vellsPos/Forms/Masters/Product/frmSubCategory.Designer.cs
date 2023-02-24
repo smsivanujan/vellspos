@@ -50,6 +50,7 @@
             this.rtxt_description = new System.Windows.Forms.RichTextBox();
             this.txt_subCategory = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.pnl_head.SuspendLayout();
             this.pnl_root.SuspendLayout();
             this.pnl_body.SuspendLayout();
@@ -169,6 +170,7 @@
             // 
             // pnl_container
             // 
+            this.pnl_container.Controls.Add(this.richTextBox1);
             this.pnl_container.Controls.Add(this.txt_id);
             this.pnl_container.Controls.Add(this.lbl_imageStatus);
             this.pnl_container.Controls.Add(this.lbl_imagePath);
@@ -263,7 +265,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Historic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(14, 254);
+            this.label1.Location = new System.Drawing.Point(14, 181);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(118, 30);
             this.label1.TabIndex = 41;
@@ -272,7 +274,7 @@
             // rtxt_description
             // 
             this.rtxt_description.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.rtxt_description.Location = new System.Drawing.Point(14, 287);
+            this.rtxt_description.Location = new System.Drawing.Point(14, 214);
             this.rtxt_description.Name = "rtxt_description";
             this.rtxt_description.Size = new System.Drawing.Size(221, 62);
             this.rtxt_description.TabIndex = 40;
@@ -297,6 +299,15 @@
             this.label2.Size = new System.Drawing.Size(137, 30);
             this.label2.TabIndex = 38;
             this.label2.Text = "Sub Category";
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.richTextBox1.Location = new System.Drawing.Point(85, 412);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(221, 62);
+            this.richTextBox1.TabIndex = 90;
+            this.richTextBox1.Text = "";
             // 
             // frmSubCategory
             // 
@@ -344,5 +355,6 @@
         private PictureBox pb_subCategoryImage;
         private Label label3;
         private TextBox txt_id;
+        private RichTextBox richTextBox1;
     }
 }

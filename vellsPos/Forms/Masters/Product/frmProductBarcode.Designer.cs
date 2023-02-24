@@ -52,6 +52,7 @@
             this.label16 = new System.Windows.Forms.Label();
             this.cmb_barcodeType = new System.Windows.Forms.ComboBox();
             this.pb_barcodeImage = new System.Windows.Forms.PictureBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.pnl_head.SuspendLayout();
             this.pnl_root.SuspendLayout();
             this.pnl_body.SuspendLayout();
@@ -172,6 +173,7 @@
             // 
             // pnl_container
             // 
+            this.pnl_container.Controls.Add(this.textBox1);
             this.pnl_container.Controls.Add(this.txt_id);
             this.pnl_container.Controls.Add(this.lbl_imageStatus);
             this.pnl_container.Controls.Add(this.lbl_imagePath);
@@ -324,12 +326,19 @@
             // 
             // pb_barcodeImage
             // 
-            this.pb_barcodeImage.Location = new System.Drawing.Point(118, 439);
+            this.pb_barcodeImage.Location = new System.Drawing.Point(19, 428);
             this.pb_barcodeImage.Name = "pb_barcodeImage";
             this.pb_barcodeImage.Size = new System.Drawing.Size(198, 76);
             this.pb_barcodeImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pb_barcodeImage.TabIndex = 85;
             this.pb_barcodeImage.TabStop = false;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(304, 286);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 23);
+            this.textBox1.TabIndex = 122;
             // 
             // frmProductBarcode
             // 
@@ -380,5 +389,6 @@
         private Label lbl_imageStatus;
         private Label lbl_imagePath;
         private TextBox txt_id;
+        private TextBox textBox1;
     }
 }

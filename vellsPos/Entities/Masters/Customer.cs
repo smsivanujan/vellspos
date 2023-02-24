@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using vellsPos.Forms.Layouts;
 using vellsPos.Services;
 
 namespace vellsPos.Entities.Masters
@@ -150,19 +151,29 @@ namespace vellsPos.Entities.Masters
             return result;
         }
 
-        //public static void showOnViewForm()
-        //{
-        //    DataViewParam dvParam = new DataViewParam();
-        //    dvParam.Title = "Job Roles";
-        //    dvParam.SelectSql = "SELECT id, code, tittle, description ";
-        //    dvParam.FromSql = "from job_role where tittle like @s1 or code like @s2 ORDER BY id DESC ";
-        //    dvParam.SearchParamCount = 2; //name and description
-        //    dvParam.TitleList = new List<string>() { "", "Code", "Job Role", "Description" }; //Column titles
-        //    dvParam.AddForm = new JobRoleManagement();
-        //    dvParam.ViewForm = new ViewSingleJobRole();
-        //    ViewData vData = new ViewData(dvParam);
-        //    vData.Show();
-        //}
+        public static void showOnViewForm(TextBox labelBox = null, TextBox idBox = null)
+        {
+            DataViewParam dvParam = new DataViewParam();
+            dvParam.Title = "Customers";
+            dvParam.SelectSql = "SELECT c.id, c.customer_number, concat(c.customer_first_name +' '+ c.customer_last_name), c.nic, c.gender, c.phone_number, c.email ";
+            dvParam.FromSql = "FROM  customers c " +
+                "WHERE c.customer_number like @s1 or c.customer_first_name like @s2 or c.customer_last_name like @s3 or c.nic like @s4 or c.gender like @s5 or c.phone_number like @s6 " +
+                "ORDER BY c.id DESC ";
+            dvParam.SearchParamCount = 5; //name and description
+            dvParam.TitleList = new List<string>() { "", "Customer Number", "Customer", "NIC", "Gender", "Phone Number", "Email" }; //Column titles
+            dvParam.InvisibleColumnList = new List<int>() { 1 };
+            dvParam.NumericColumnList = new List<int>() { };
+            dvParam.AddForm = new frmCustomer();
+            dvParam.ViewForm = new frmCustomer();
+
+            frmView vData = null;
+
+            if (idBox == null && labelBox == null)
+                vData = new frmView(dvParam);
+            else
+                vData = new frmView(dvParam, idBox, labelBox);
+            vData.Show();
+        }
 
         public static Customer getOneCustomer(int id)
         {

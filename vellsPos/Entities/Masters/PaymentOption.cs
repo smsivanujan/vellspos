@@ -111,18 +111,29 @@ namespace vellsPos.Entities.Masters
             return result;
         }
 
-        //public static void showOnViewForm()
+        //public static void showOnViewForm(TextBox labelBox = null, TextBox idBox = null)
         //{
         //    DataViewParam dvParam = new DataViewParam();
-        //    dvParam.Title = "Job Roles";
-        //    dvParam.SelectSql = "SELECT id, code, tittle, description ";
-        //    dvParam.FromSql = "from job_role where tittle like @s1 or code like @s2 ORDER BY id DESC ";
+        //    dvParam.Title = "Payment Options";
+        //    dvParam.SelectSql = "SELECT po.id, p.date, b.branch_name, b.status ";
+        //    dvParam.FromSql = "FROM  payment_options po " +
+        //         "INNER JOIN payments p ON po.payment_id = p.id " +
+        //           "INNER JOIN payment_methods pm ON po.payment_method_id = pm.id " +
+        //        "where s.shop_name like @s1 or b.branch_name like @s2 or b.status like @s3 ORDER BY po.id DESC ";
         //    dvParam.SearchParamCount = 2; //name and description
-        //    dvParam.TitleList = new List<string>() { "", "Code", "Job Role", "Description" }; //Column titles
-        //    dvParam.AddForm = new JobRoleManagement();
-        //    dvParam.ViewForm = new ViewSingleJobRole();
-        //    ViewData vData = new ViewData(dvParam);
-        //    vData.Show();
+        //    dvParam.TitleList = new List<string>() { "", "Shop", "Branch", "Status" }; //Column titles
+        //    dvParam.InvisibleColumnList = new List<int>() { 1 };
+        //    dvParam.NumericColumnList = new List<int>() { };
+        //    //dvParam.AddForm = new frmComplain();
+        //    //dvParam.ViewForm = new frmComplain();
+
+        //    //frmView vData = null;
+
+        //    //if (idBox == null && labelBox == null)
+        //    //    vData = new frmView(dvParam);
+        //    //else
+        //    //    vData = new frmView(dvParam, idBox, labelBox);
+        //    //vData.Show();
         //}
 
         public static PaymentOption getOnePaymentOption(int id)

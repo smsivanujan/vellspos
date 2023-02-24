@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using vellsPos.Forms.Layouts;
 using vellsPos.Services;
 
 namespace vellsPos.Entities.Masters
@@ -133,19 +134,30 @@ namespace vellsPos.Entities.Masters
             return result;
         }
 
-        //public static void showOnViewForm()
-        //{
-        //    DataViewParam dvParam = new DataViewParam();
-        //    dvParam.Title = "Job Roles";
-        //    dvParam.SelectSql = "SELECT id, code, tittle, description ";
-        //    dvParam.FromSql = "from job_role where tittle like @s1 or code like @s2 ORDER BY id DESC ";
-        //    dvParam.SearchParamCount = 2; //name and description
-        //    dvParam.TitleList = new List<string>() { "", "Code", "Job Role", "Description" }; //Column titles
-        //    dvParam.AddForm = new JobRoleManagement();
-        //    dvParam.ViewForm = new ViewSingleJobRole();
-        //    ViewData vData = new ViewData(dvParam);
-        //    vData.Show();
-        //}
+        public static void showOnViewForm(TextBox labelBox = null, TextBox idBox = null)
+        {
+            DataViewParam dvParam = new DataViewParam();
+            dvParam.Title = "Product Barcodes";
+            dvParam.SelectSql = "SELECT pb.id, concat(p.product_number +' '+ p.product_name), pb.barcode_number, pb.barcode_type, pb.barcode_width, pb.barcode_height ";
+            dvParam.FromSql = "FROM  product_barcodes pb " +
+                 "INNER JOIN products p ON pb.product_id = p.id " +
+                "WHERE p.product_name like @s1 or pb.barcode_number like @s2 or pb.barcode_type like @s3 " +
+                "ORDER BY pb.id DESC ";
+            dvParam.SearchParamCount = 5; //name and description
+            dvParam.TitleList = new List<string>() { "", "Product", "Barcode Number", "Barcode type", "Barcode Width", "Barcode Height" }; //Column titles
+            dvParam.InvisibleColumnList = new List<int>() { 4, 5 };
+            dvParam.NumericColumnList = new List<int>() { };
+            dvParam.AddForm = new frmProductBarcode();
+            dvParam.ViewForm = new frmProductBarcode();
+
+            frmView vData = null;
+
+            if (idBox == null && labelBox == null)
+                vData = new frmView(dvParam);
+            else
+                vData = new frmView(dvParam, idBox, labelBox);
+            vData.Show();
+        }
 
         public static ProductBarcode getOneProductBarcode(int id)
         {

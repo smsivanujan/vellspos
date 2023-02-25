@@ -161,6 +161,7 @@ namespace vellsPos.Entities.Masters
                     "sc.id, " +
                     "c.category_name AS category, " +
                     "sc.sub_category_name, " +
+                     "sc.image, " +
                     "sc.description " +
                     "FROM sub_categories sc " +
                     "INNER JOIN categories c ON sc.category_id = c.id " +

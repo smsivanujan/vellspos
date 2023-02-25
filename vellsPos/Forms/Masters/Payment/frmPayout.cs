@@ -117,7 +117,6 @@ namespace vellsPos.Forms.Layouts
                 payout.Amount = ntxt_amount.Value;
                 payout.Description = rtxt_description.Text;
                 payout.User = user;//root folder to save
-                ReturnResult result = Payout.store(payout);
 
                 if (this.Tag is null)
                 {

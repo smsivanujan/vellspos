@@ -19,6 +19,7 @@ namespace vellsPos.Forms.Layouts
         private string uid;
         ReturnResult result;
         String msgStatus;
+        String directoryPath="";
         string rootPath = @"c:\vellspos";
 
         public frmProduct()
@@ -28,6 +29,9 @@ namespace vellsPos.Forms.Layouts
 
         private void frmProduct_Load(object sender, EventArgs e)
         {
+            txt_imagePath.Visible = false;
+            lbl_imageStatus.Visible = false;
+
             String subCoCategoryQuery = "SELECT id as value,sub_co_category_name as text FROM sub_co_categories";
             subCoCategories = DBTransactionService.getDataAsListItemsAndFillComboBox(subCoCategoryQuery, cmb_subCoCategory);
 
@@ -55,18 +59,42 @@ namespace vellsPos.Forms.Layouts
             txt_productName.Text = product.ProductName;
             cmb_subCoCategory.Text = product.SubCoCategory.SubCoCategoryName;
             ntxt_salePrice.Value = product.SalePrice;
-            dtp_date.Value = product.AddedDate;
+            dtp_date.Text = product.AddedDate;
             rtxt_description.Text = product.Description;       
 
             if (product.AgeVerify==1)
             {
-                cb_ageVerify.Text ="Age Restricted";
+                cb_ageVerify.Checked=true;
             }
             else
             {
-                cb_ageVerify.Text = "For All Ages";
+                cb_ageVerify.Checked = false;
             }
-            pb_productImage.Image = Image.FromFile(product.Image);
+
+            if (product.IsBarcode == 1)
+            {
+                cb_barcode.Checked = true;
+            }
+            else
+            {
+                cb_barcode.Checked = false;
+            }
+
+            if (product.Status == 1)
+            {
+                cb_active.Checked = true;
+            }
+            else
+            {
+                cb_active.Checked = false;
+            }
+
+            txt_imagePath.Text = product.Image;
+
+            if (!String.IsNullOrEmpty(txt_imagePath.Text))
+            {
+                pb_productImage.Image = Image.FromFile(product.Image);
+            }
         }
 
         //private void save()
@@ -137,6 +165,7 @@ namespace vellsPos.Forms.Layouts
             }
             else
             {
+                
                 int subCoategoryId = 0;
 
                 if (cmb_subCoCategory.SelectedIndex >= 0)
@@ -150,20 +179,12 @@ namespace vellsPos.Forms.Layouts
                 User user = new User();
                 user.Id = 1;
 
-                String directoryPath = Path.Combine(rootPath, Path.GetFileName(lbl_imagePath.Text));
-
-                ImageUpload imageUpload = new ImageUpload();
-                imageUpload.DirectoryPath = directoryPath;
-                imageUpload.RootPath = rootPath;//root folder from save
-                imageUpload.ImagePath = lbl_imagePath.Text;
-                ReturnResult resul2 = ImageUpload.store(imageUpload);
-
                 Product product = new Product();
-                product.AddedDate = dtp_date.Value;
                 product.ProductNumber = txt_productNumber.Text;
                 product.ProductName = txt_productName.Text;
-                product.SalePrice = ntxt_salePrice.Value;
                 product.SubCoCategory = subCoCategory;
+                product.SalePrice = ntxt_salePrice.Value;
+                product.AddedDate = dtp_date.Value.ToString("yyyy-MM-dd H:mm");
                 product.Description = rtxt_description.Text;
 
                 if (cb_barcode.Checked)
@@ -183,11 +204,31 @@ namespace vellsPos.Forms.Layouts
                 {
                     product.AgeVerify = 0;
                 }
-                product.Temp = 0;
-                product.Image = directoryPath;//root folder to save
-                product.User = user;
-                //ReturnResult result = Product.store(product);
 
+                if (cb_active.Checked)
+                {
+                    product.Status = 1;
+                }
+                else
+                {
+                    product.Status = 0;
+                }
+
+                product.Temp = 0;
+                product.User = user;
+
+                if (!String.IsNullOrEmpty(txt_imagePath.Text))
+                {
+                    directoryPath = Path.Combine(rootPath, Path.GetFileName(txt_imagePath.Text));
+                    ImageUpload imageUpload = new ImageUpload();
+                    imageUpload.DirectoryPath = directoryPath;
+                    imageUpload.RootPath = rootPath;//root folder from save
+                    imageUpload.ImagePath = txt_imagePath.Text;
+                    ReturnResult resul2 = ImageUpload.store(imageUpload);
+                }
+
+                product.Image = directoryPath;//root folder to save
+                
                 if (this.Tag is null)
                 {
                     //save();
@@ -198,7 +239,7 @@ namespace vellsPos.Forms.Layouts
                 else
                 {
                     //update();
-                    user.Id = Int32.Parse(this.Tag.ToString());
+                    product.Id = Int32.Parse(this.Tag.ToString());
                     result = Product.update(product);
                     msgStatus = "updated";
                 }
@@ -245,7 +286,10 @@ namespace vellsPos.Forms.Layouts
             DialogResult result = ofd.ShowDialog();
             if (result == DialogResult.OK)
             {
-                lbl_imagePath.Text = ofd.FileName;
+                txt_imagePath.Visible = true;
+                lbl_imageStatus.Visible = true;
+
+                txt_imagePath.Text = ofd.FileName;
                 pb_productImage.Load(ofd.FileName);
                 lbl_imageStatus.Text = "Image Uploded";
                 lbl_imageStatus.ForeColor = System.Drawing.Color.Green;

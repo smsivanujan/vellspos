@@ -53,14 +53,14 @@ namespace vellsPos.Entities.Masters
                 //store data
                 string sql = "INSERT INTO `complains` " +
                     "(`date`,`description`,`priority`,`type`,`status`,`user_id`) " +
-                    "VALUES (@date,@priority,@description,@type,@status,@user_id)";
+                    "VALUES (@date,@description,@priority,@type,@status,@user_id)";
                 List<QueryParameter> parameters = new List<QueryParameter>();
-                parameters.Add(new QueryParameter("date", MySqlDbType.String, complain.Date));
-                parameters.Add(new QueryParameter("description", MySqlDbType.String, complain.Description));
-                parameters.Add(new QueryParameter("priority", MySqlDbType.String, complain.Priority));
+                parameters.Add(new QueryParameter("date", MySqlDbType.String, complain.date));
+                parameters.Add(new QueryParameter("description", MySqlDbType.String, complain.description));
+                parameters.Add(new QueryParameter("priority", MySqlDbType.String, complain.priority));
                 parameters.Add(new QueryParameter("type", MySqlDbType.String, complain.type));
-                parameters.Add(new QueryParameter("status", MySqlDbType.Int32, complain.Status));
-                parameters.Add(new QueryParameter("user_id", MySqlDbType.Int32, complain.User.Id));
+                parameters.Add(new QueryParameter("status", MySqlDbType.Int32, complain.status));
+                parameters.Add(new QueryParameter("user_id", MySqlDbType.Int32, complain.user.Id));
 
                 commands.Add(new QueryCommand(sql, parameters));
                 result = DBTransactionService.executeNonQuery(commands);
@@ -90,13 +90,13 @@ namespace vellsPos.Entities.Masters
                     "`user_id` = @user_id " +
                     " WHERE `id` = @id ";
                 List<QueryParameter> parameters = new List<QueryParameter>();
-                parameters.Add(new QueryParameter("id", MySqlDbType.Int32, complain.Id));
-                parameters.Add(new QueryParameter("date", MySqlDbType.String, complain.Date));
-                parameters.Add(new QueryParameter("description", MySqlDbType.String, complain.Description));
-                parameters.Add(new QueryParameter("priority", MySqlDbType.String, complain.Priority));
+                parameters.Add(new QueryParameter("id", MySqlDbType.Int32, complain.id));
+                parameters.Add(new QueryParameter("date", MySqlDbType.String, complain.date));
+                parameters.Add(new QueryParameter("description", MySqlDbType.String, complain.description));
+                parameters.Add(new QueryParameter("priority", MySqlDbType.String, complain.priority));
                 parameters.Add(new QueryParameter("type", MySqlDbType.String, complain.type));
-                parameters.Add(new QueryParameter("status", MySqlDbType.Int32, complain.Status));
-                parameters.Add(new QueryParameter("user_id", MySqlDbType.Int32, complain.User.Id));
+                parameters.Add(new QueryParameter("status", MySqlDbType.Int32, complain.status));
+                parameters.Add(new QueryParameter("user_id", MySqlDbType.Int32, complain.user.Id));
 
                 commands.Add(new QueryCommand(sql, parameters));
                 result = DBTransactionService.executeNonQuery(commands);
@@ -143,7 +143,7 @@ namespace vellsPos.Entities.Masters
                 "c.type, " +
                 "c.priority, " +
                 "c.description, " +
-                "c.status ";
+                "IF(c.status=0,'Inactive','Active') ";
             dvParam.FromSql = "FROM  complains c " +
                 "WHERE c.date like @s1 or " +
                 "c.type like @s2 or " +

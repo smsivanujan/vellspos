@@ -143,7 +143,7 @@ namespace vellsPos.Entities.Masters
                 "date_format(d.date_to,'%Y-%m-%d %H:%i'), " +
                 "date_format(d.date_from,'%Y-%m-%d %H:%i'), " +
                 "d.description, " +
-                "d.status ";
+                "IF(d.status=0,'Inactive','Active') ";
             dvParam.FromSql = "FROM  discounts d " +
                 "WHERE " +
                 "d.discount_name like @s1 or " +

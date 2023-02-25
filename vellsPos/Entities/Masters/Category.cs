@@ -42,7 +42,14 @@ namespace vellsPos.Entities.Masters
             {
                 //store data
                 string sql = "INSERT INTO `categories` " +
-                    "(`category_name`,`image`,`description`) VALUES (@category_name,@image,@description)";
+                    "(" +
+                    "`category_name`," +
+                    "`image`," +
+                    "`description`) " +
+                    "VALUES (" +
+                    "@category_name," +
+                    "@image," +
+                    "@description)";
                 List<QueryParameter> parameters = new List<QueryParameter>();
                 parameters.Add(new QueryParameter("category_name", MySqlDbType.String, category.categoryName));
                 parameters.Add(new QueryParameter("image", MySqlDbType.String, category.image));
@@ -69,8 +76,8 @@ namespace vellsPos.Entities.Masters
             try
             {
                 string sql = "UPDATE `categories` SET " +
-                    "`key_name` = @key_name, " +
-                     "`key_value` = @key_value, " +
+                    "`category_name` = @category_name, " +
+                     "`image` = @image, " +
                     "`description` = @description " +
                     " WHERE `id` = @id ";
                 List<QueryParameter> parameters = new List<QueryParameter>();
@@ -149,7 +156,7 @@ namespace vellsPos.Entities.Masters
                 String query = "SELECT " +
                     "id, " +
                     "category_name, " +
-                    "image " +
+                    "image, " +
                     "description " +
                     "FROM categories " +
                     "WHERE id = '" + id + "'";

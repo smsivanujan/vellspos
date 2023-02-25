@@ -38,10 +38,10 @@
             this.btn_cancel = new System.Windows.Forms.Button();
             this.pnl_body = new System.Windows.Forms.Panel();
             this.pnl_container = new System.Windows.Forms.Panel();
+            this.txt_imagePath = new System.Windows.Forms.TextBox();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.txt_id = new System.Windows.Forms.TextBox();
             this.lbl_imageStatus = new System.Windows.Forms.Label();
-            this.lbl_imagePath = new System.Windows.Forms.Label();
             this.btn_uploadImage = new System.Windows.Forms.Button();
             this.pb_subCategoryImage = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -170,10 +170,10 @@
             // 
             // pnl_container
             // 
+            this.pnl_container.Controls.Add(this.txt_imagePath);
             this.pnl_container.Controls.Add(this.richTextBox1);
             this.pnl_container.Controls.Add(this.txt_id);
             this.pnl_container.Controls.Add(this.lbl_imageStatus);
-            this.pnl_container.Controls.Add(this.lbl_imagePath);
             this.pnl_container.Controls.Add(this.btn_uploadImage);
             this.pnl_container.Controls.Add(this.pb_subCategoryImage);
             this.pnl_container.Controls.Add(this.label3);
@@ -187,6 +187,13 @@
             this.pnl_container.Name = "pnl_container";
             this.pnl_container.Size = new System.Drawing.Size(520, 536);
             this.pnl_container.TabIndex = 0;
+            // 
+            // txt_imagePath
+            // 
+            this.txt_imagePath.Location = new System.Drawing.Point(284, 313);
+            this.txt_imagePath.Name = "txt_imagePath";
+            this.txt_imagePath.Size = new System.Drawing.Size(192, 23);
+            this.txt_imagePath.TabIndex = 91;
             // 
             // richTextBox1
             // 
@@ -209,18 +216,9 @@
             this.lbl_imageStatus.AutoSize = true;
             this.lbl_imageStatus.Location = new System.Drawing.Point(284, 339);
             this.lbl_imageStatus.Name = "lbl_imageStatus";
-            this.lbl_imageStatus.Size = new System.Drawing.Size(69, 15);
+            this.lbl_imageStatus.Size = new System.Drawing.Size(76, 15);
             this.lbl_imageStatus.TabIndex = 52;
-            this.lbl_imageStatus.Text = "image_path";
-            // 
-            // lbl_imagePath
-            // 
-            this.lbl_imagePath.AutoSize = true;
-            this.lbl_imagePath.Location = new System.Drawing.Point(282, 309);
-            this.lbl_imagePath.Name = "lbl_imagePath";
-            this.lbl_imagePath.Size = new System.Drawing.Size(69, 15);
-            this.lbl_imagePath.TabIndex = 51;
-            this.lbl_imagePath.Text = "image_path";
+            this.lbl_imageStatus.Text = "image_status";
             // 
             // btn_uploadImage
             // 
@@ -351,11 +349,11 @@
         private Label label2;
         private Button btn_delete;
         private Label lbl_imageStatus;
-        private Label lbl_imagePath;
         private Button btn_uploadImage;
         private PictureBox pb_subCategoryImage;
         private Label label3;
         private TextBox txt_id;
         private RichTextBox richTextBox1;
+        private TextBox txt_imagePath;
     }
 }

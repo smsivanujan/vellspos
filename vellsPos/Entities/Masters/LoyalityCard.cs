@@ -178,6 +178,7 @@ namespace vellsPos.Entities.Masters
                     "lc.id, " +
                     "date_format(lc.issued_date,'%Y-%m-%d %H:%i') AS date, " +
                     "lc.card_number, " +
+                    "c.id AS customerID, " +
                     "c.customer_number AS customerFN, " +
                     "c.customer_first_name AS customerLN, " +
                     "lc.card_type, " +
@@ -194,6 +195,7 @@ namespace vellsPos.Entities.Masters
                 {
                     loyalityCard.cardNumber = dbData["card_number"];
                     loyalityCard.cardType = dbData["card_type"];
+                    customer.Id = Convert.ToInt32(dbData["customerID"]);
                     customer.CustomerFirstName = dbData["customerFN"];
                     customer.CustomerLastName = dbData["customerLN"];
                     loyalityCard.customer = customer;

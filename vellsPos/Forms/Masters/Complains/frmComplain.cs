@@ -120,8 +120,6 @@ namespace vellsPos.Forms.Layouts
 
                 complain.User = user;
 
-                ReturnResult result = Complain.store(complain);
-
                 if (this.Tag is null)
                 {
                     //save();

@@ -178,6 +178,7 @@ namespace vellsPos.Entities.Masters
             {
                 String query = "SELECT " +
                     "pb.id, " +
+                     "p.id AS productID, " +
                     "p.product_number AS productNu, " +
                     "p.product_name AS productNa, " +
                     "pb.barcode_number, " +
@@ -192,6 +193,7 @@ namespace vellsPos.Entities.Masters
 
                 if (dbData != null)
                 {
+                    product.Id = Convert.ToInt32(dbData["productID"]);
                     product.ProductNumber = dbData["productNu"];
                     product.ProductName = dbData["productNa"];
                     productBarcode.product = product;

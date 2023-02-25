@@ -19,6 +19,7 @@ namespace vellsPos.Forms.Layouts
         private string uid;
         ReturnResult result;
         String msgStatus;
+        String directoryPath="";
         string rootPath = @"c:\vellspos";
 
         public frmCategory()
@@ -28,6 +29,8 @@ namespace vellsPos.Forms.Layouts
 
         private void frmCategory_Load(object sender, EventArgs e)
         {
+            txt_imagePath.Visible = false;
+            lbl_imageStatus.Visible = false;
             if (this.Tag is null)
             {
                 //
@@ -45,7 +48,13 @@ namespace vellsPos.Forms.Layouts
             txt_id.Text = uid;
             txt_category.Text = category.CategoryName;
             rtxt_description.Text = category.Description;
-            pb_categoryImage.Image = Image.FromFile(category.Image);
+            txt_imagePath.Text = category.Image;
+
+            if (!String.IsNullOrEmpty(txt_imagePath.Text))
+            {
+                pb_categoryImage.Image = Image.FromFile(category.Image);
+            }
+            
         } 
 
         //private void save()
@@ -110,21 +119,22 @@ namespace vellsPos.Forms.Layouts
             }
             else
             {
-                String directoryPath = Path.Combine(rootPath, Path.GetFileName(lbl_imagePath.Text));
-
-                ImageUpload imageUpload = new ImageUpload();
-                imageUpload.DirectoryPath = directoryPath;
-                imageUpload.RootPath = rootPath;//root folder from save
-                imageUpload.ImagePath = lbl_imagePath.Text;
-                ReturnResult resul2 = ImageUpload.store(imageUpload);
-
-
                 Category category = new Category();
                 category.CategoryName = txt_category.Text;
                 category.Description = rtxt_description.Text;
-                category.Image = directoryPath;//root folder to save
-                ReturnResult result = Category.store(category);
+                
 
+                if (!String.IsNullOrEmpty(txt_imagePath.Text))
+                {
+                    directoryPath = Path.Combine(rootPath, Path.GetFileName(txt_imagePath.Text));
+                    ImageUpload imageUpload = new ImageUpload();
+                    imageUpload.DirectoryPath = directoryPath;
+                    imageUpload.RootPath = rootPath;//root folder from save
+                    imageUpload.ImagePath = txt_imagePath.Text;
+                    ReturnResult resul2 = ImageUpload.store(imageUpload);
+                }
+
+                category.Image = directoryPath;//root folder to save
                 if (this.Tag is null)
                 {
                     //save();
@@ -188,7 +198,10 @@ namespace vellsPos.Forms.Layouts
             DialogResult result = ofd.ShowDialog();
             if (result == DialogResult.OK)
             {
-                lbl_imagePath.Text = ofd.FileName;
+                txt_imagePath.Visible = true;
+                lbl_imageStatus.Visible = true;
+
+                txt_imagePath.Text = ofd.FileName;
                 pb_categoryImage.Load(ofd.FileName);
                 lbl_imageStatus.Text = "Image Uploded";
                 lbl_imageStatus.ForeColor = System.Drawing.Color.Green;
@@ -198,7 +211,7 @@ namespace vellsPos.Forms.Layouts
         private void button1_Click_1(object sender, EventArgs e)
         {
             string rootPath = @"c:\vellspos";
-            String directoryPath = Path.Combine(rootPath, Path.GetFileName(lbl_imagePath.Text));
+            String directoryPath = Path.Combine(rootPath, Path.GetFileName(txt_imagePath.Text));
             Console.WriteLine(directoryPath);
         }
     }

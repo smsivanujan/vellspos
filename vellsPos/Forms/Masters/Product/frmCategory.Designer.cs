@@ -41,7 +41,6 @@
             this.txt_id = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.lbl_imageStatus = new System.Windows.Forms.Label();
-            this.lbl_imagePath = new System.Windows.Forms.Label();
             this.btn_uploadImage = new System.Windows.Forms.Button();
             this.pb_categoryImage = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -49,6 +48,7 @@
             this.rtxt_description = new System.Windows.Forms.RichTextBox();
             this.txt_category = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.txt_imagePath = new System.Windows.Forms.TextBox();
             this.pnl_head.SuspendLayout();
             this.pnl_root.SuspendLayout();
             this.pnl_body.SuspendLayout();
@@ -168,10 +168,10 @@
             // 
             // pnl_container
             // 
+            this.pnl_container.Controls.Add(this.txt_imagePath);
             this.pnl_container.Controls.Add(this.txt_id);
             this.pnl_container.Controls.Add(this.button1);
             this.pnl_container.Controls.Add(this.lbl_imageStatus);
-            this.pnl_container.Controls.Add(this.lbl_imagePath);
             this.pnl_container.Controls.Add(this.btn_uploadImage);
             this.pnl_container.Controls.Add(this.pb_categoryImage);
             this.pnl_container.Controls.Add(this.label3);
@@ -206,18 +206,9 @@
             this.lbl_imageStatus.AutoSize = true;
             this.lbl_imageStatus.Location = new System.Drawing.Point(202, 369);
             this.lbl_imageStatus.Name = "lbl_imageStatus";
-            this.lbl_imageStatus.Size = new System.Drawing.Size(69, 15);
+            this.lbl_imageStatus.Size = new System.Drawing.Size(76, 15);
             this.lbl_imageStatus.TabIndex = 36;
-            this.lbl_imageStatus.Text = "image_path";
-            // 
-            // lbl_imagePath
-            // 
-            this.lbl_imagePath.AutoSize = true;
-            this.lbl_imagePath.Location = new System.Drawing.Point(200, 339);
-            this.lbl_imagePath.Name = "lbl_imagePath";
-            this.lbl_imagePath.Size = new System.Drawing.Size(69, 15);
-            this.lbl_imagePath.TabIndex = 35;
-            this.lbl_imagePath.Text = "image_path";
+            this.lbl_imageStatus.Text = "image_status";
             // 
             // btn_uploadImage
             // 
@@ -287,6 +278,13 @@
             this.label2.TabIndex = 28;
             this.label2.Text = "Category";
             // 
+            // txt_imagePath
+            // 
+            this.txt_imagePath.Location = new System.Drawing.Point(200, 343);
+            this.txt_imagePath.Name = "txt_imagePath";
+            this.txt_imagePath.Size = new System.Drawing.Size(192, 23);
+            this.txt_imagePath.TabIndex = 90;
+            // 
             // frmCategory
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -320,7 +318,6 @@
         private Button btn_cancel;
         private Button btn_save;
         private Panel pnl_container;
-        private Label lbl_imagePath;
         private Button btn_uploadImage;
         private PictureBox pb_categoryImage;
         private Label label3;
@@ -332,5 +329,6 @@
         private Label lbl_imageStatus;
         private Button button1;
         private TextBox txt_id;
+        private TextBox txt_imagePath;
     }
 }

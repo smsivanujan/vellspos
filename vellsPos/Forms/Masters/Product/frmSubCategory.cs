@@ -20,6 +20,7 @@ namespace vellsPos.Forms.Layouts
         private string uid;
         ReturnResult result;
         String msgStatus;
+        String directoryPath="";
         string rootPath = @"c:\vellspos";
 
         public frmSubCategory()
@@ -29,6 +30,9 @@ namespace vellsPos.Forms.Layouts
 
         private void frmSubCategory_Load(object sender, EventArgs e)
         {
+            txt_imagePath.Visible = false;
+            lbl_imageStatus.Visible = false;
+
             String categoryQuery = "SELECT id as value,category_name as text FROM categories";
             categories = DBTransactionService.getDataAsListItemsAndFillComboBox(categoryQuery, cmb_category);
 
@@ -59,15 +63,16 @@ namespace vellsPos.Forms.Layouts
             //}
 
             SubCategory subCategory = SubCategory.getOneSubCategory(Int32.Parse(uid));
-            Console.WriteLine("xxxxxxxxxxxxxxx");
-            Console.WriteLine(subCategory.Category.CategoryName);
-            Console.WriteLine(subCategory.SubCategoryName);
-            Console.WriteLine("xxxxxxxxxxxxxxx");
             txt_id.Text = uid;
             cmb_category.Text = subCategory.Category.CategoryName;
             txt_subCategory.Text = subCategory.SubCategoryName;
             rtxt_description.Text = subCategory.Description;
-            pb_subCategoryImage.Image = Image.FromFile(subCategory.Image);
+            txt_imagePath.Text = subCategory.Image;
+
+            if (!String.IsNullOrEmpty(txt_imagePath.Text))
+            {
+                pb_subCategoryImage.Image = Image.FromFile(subCategory.Image);
+            }
         }
 
         //private void save()
@@ -143,6 +148,8 @@ namespace vellsPos.Forms.Layouts
             }
             else
             {
+               
+
                 int categoryId = 0;
                 if (cmb_category.SelectedIndex >= 0)
                 {
@@ -152,20 +159,22 @@ namespace vellsPos.Forms.Layouts
                 Category category = new Category();
                 category.Id = categoryId;
 
-                String directoryPath = Path.Combine(rootPath, Path.GetFileName(lbl_imagePath.Text));
-
-                ImageUpload imageUpload = new ImageUpload();
-                imageUpload.DirectoryPath = directoryPath;
-                imageUpload.RootPath = rootPath;//root folder from save
-                imageUpload.ImagePath = lbl_imagePath.Text;
-                ReturnResult resul2 = ImageUpload.store(imageUpload);
-
                 SubCategory subCategory = new SubCategory();
                 subCategory.SubCategoryName = txt_subCategory.Text;
                 subCategory.Category = category;
                 subCategory.Description = rtxt_description.Text;
+
+                if (!String.IsNullOrEmpty(txt_imagePath.Text))
+                {
+                    directoryPath = Path.Combine(rootPath, Path.GetFileName(txt_imagePath.Text));
+                    ImageUpload imageUpload = new ImageUpload();
+                    imageUpload.DirectoryPath = directoryPath;
+                    imageUpload.RootPath = rootPath;//root folder from save
+                    imageUpload.ImagePath = txt_imagePath.Text;
+                    ReturnResult resul2 = ImageUpload.store(imageUpload);
+                }
+
                 subCategory.Image = directoryPath;//root folder to save
-                //ReturnResult result = SubCategory.store(subCategory);
 
                 if (this.Tag is null)
                 {
@@ -231,7 +240,10 @@ namespace vellsPos.Forms.Layouts
             DialogResult result = ofd.ShowDialog();
             if (result == DialogResult.OK)
             {
-                lbl_imagePath.Text = ofd.FileName;
+                txt_imagePath.Visible = true;
+                lbl_imageStatus.Visible = true;
+
+                txt_imagePath.Text = ofd.FileName;
                 pb_subCategoryImage.Load(ofd.FileName);
                 lbl_imageStatus.Text = "Image Uploded";
                 lbl_imageStatus.ForeColor = System.Drawing.Color.Green;

@@ -23,6 +23,7 @@ namespace vellsPos.Forms.Layouts
         private string uid;
         ReturnResult result;
         String msgStatus;
+        String directoryPath="";
         string rootPath = @"c:\vellspos";
 
         public frmProductBarcode()
@@ -31,6 +32,9 @@ namespace vellsPos.Forms.Layouts
         }
         private void frmProductBarcode_Load(object sender, EventArgs e)
         {
+            txt_imagePath.Visible = false;
+            lbl_imageStatus.Visible = false;
+
             if (this.Tag is null)
             {
                 //
@@ -44,15 +48,20 @@ namespace vellsPos.Forms.Layouts
 
         private void fillData()
         {
-            Console.WriteLine("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
-            MessageBox.Show("Test");
             ProductBarcode productBarcode = ProductBarcode.getOneProductBarcode(Int32.Parse(uid));
             txt_id.Text = uid;
-            textBox1.Text = productBarcode.Product.ProductName;
+            txt_productID.Text = Convert.ToString(productBarcode.Product.Id);
+            txt_product.Text = productBarcode.Product.ProductName;
             txt_productNumber.Text = productBarcode.Product.ProductNumber;
             cmb_barcodeType.Text = productBarcode.BarcodeType;
             ntxt_height.Value = productBarcode.BarcodeHeight;
-            pb_barcodeImage.Image= Image.FromFile(productBarcode.BarcodeImage);
+            txt_imagePath.Text = productBarcode.BarcodeImage;
+            lbl_pbStatus.Text = "1";
+
+            if (!String.IsNullOrEmpty(txt_imagePath.Text))
+            {
+                pb_barcodeImage.Image = Image.FromFile(productBarcode.BarcodeImage);
+            }
         }
 
         //private void save()
@@ -116,26 +125,32 @@ namespace vellsPos.Forms.Layouts
             }
             else
             {
+
                 Product product = new Product();
                 product.Id = Convert.ToInt32(txt_productID.Text);
 
-                string fileName = txt_productNumber.Text + ".jpg";            
-                String directoryPath = Path.Combine(rootPath, Path.GetFileName(fileName));
-
-                ImageUpload imageUpload = new ImageUpload();
-                imageUpload.DirectoryPath = directoryPath;
-                imageUpload.RootPath = rootPath;//root folder from save
-                imageUpload.ImagePath = lbl_imagePath.Text;
-                ReturnResult resul2 = ImageUpload.store(imageUpload);
-
-                pb_barcodeImage.Image.Save(directoryPath, ImageFormat.Jpeg);
+                
                 ProductBarcode productBarcode = new ProductBarcode();
                 productBarcode.Product = product;
                 productBarcode.BarcodeNumber = txt_productNumber.Text;
                 productBarcode.BarcodeType = cmb_barcodeType.Text;
                 productBarcode.BarcodeHeight = ntxt_height.Value;
+
+                if (lbl_pbStatus.Text!="0")
+                {
+                    
+                    string fileName = txt_productNumber.Text + ".jpg";
+                    directoryPath = Path.Combine(rootPath, Path.GetFileName(fileName));
+                    ImageUpload imageUpload = new ImageUpload();
+                    imageUpload.DirectoryPath = directoryPath;
+                    imageUpload.RootPath = rootPath;//root folder from save
+                    imageUpload.ImagePath = txt_imagePath.Text;
+                    ReturnResult resul2 = ImageUpload.store(imageUpload);
+
+                    pb_barcodeImage.Image.Save(directoryPath, ImageFormat.Jpeg);
+                }
+
                 productBarcode.BarcodeImage = directoryPath;//root folder to save
- 
 
                 if (this.Tag is null)
                 {
@@ -196,12 +211,12 @@ namespace vellsPos.Forms.Layouts
             //pb_barcodeImage.Image = barcode.Draw(txt_productCode.Text, Convert.ToInt32(ntxt_height.Value));
             Zen.Barcode.CodeEan13BarcodeDraw barcode = Zen.Barcode.BarcodeDrawFactory.CodeEan13WithChecksum;
             pb_barcodeImage.Image = barcode.Draw(txt_productNumber.Text, Convert.ToInt32(ntxt_height.Value));
+            lbl_pbStatus.Text = "1";
         }
         
         private void txt_product_Click(object sender, EventArgs e)
         {
-            String isBarcode = "1";
-            Product.showOnViewFormProductWithoutBarcode(txt_product, txt_productID, isBarcode);
+            Product.showOnViewFormProductWithoutBarcode(txt_product, txt_productID);
         }
 
         private void txt_productID_TextChanged(object sender, EventArgs e)

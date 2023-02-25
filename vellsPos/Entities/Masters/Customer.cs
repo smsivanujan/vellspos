@@ -61,11 +61,28 @@ namespace vellsPos.Entities.Masters
             {
                 //store data
                 string sql = "INSERT INTO `customers` " +
-                    "(`customer_number`,`customer_first_name`,`customer_last_name`,`date_of_birth`,`gender`,`nic`,`phone_number`,`email`,`user_id`) " +
-                    "VALUES (@customer_number,@customer_first_name,@customer_last_name,@date_of_birth,@gender,@nic,@phone_number,@email,@user_id)";
+                    "(" +
+                    "`customer_number`," +
+                    "`customer_first_name`," +
+                    "`customer_last_name`," +
+                    "`date_of_birth`," +
+                    "`gender`,`" +
+                    "nic`," +
+                    "`phone_number`," +
+                    "`email`," +
+                    "`user_id`) " +
+                    "VALUES (" +
+                    "@customer_number," +
+                    "@customer_first_name," +
+                    "@customer_last_name," +
+                    "@date_of_birth," +
+                    "@gender,@nic," +
+                    "@phone_number," +
+                    "@email," +
+                    "@user_id)";
                 List<QueryParameter> parameters = new List<QueryParameter>();
                 parameters.Add(new QueryParameter("customer_number", MySqlDbType.String, customer.CustomerNumber));
-                parameters.Add(new QueryParameter("customer_first_name", MySqlDbType.String, customer.CustomerLastName));
+                parameters.Add(new QueryParameter("customer_first_name", MySqlDbType.String, customer.customerFirstName));
                 parameters.Add(new QueryParameter("customer_last_name", MySqlDbType.String, customer.CustomerLastName));
                 parameters.Add(new QueryParameter("date_of_birth", MySqlDbType.String, customer.dateOfBirth));
                 parameters.Add(new QueryParameter("gender", MySqlDbType.Int32, customer.gender));
@@ -107,7 +124,7 @@ namespace vellsPos.Entities.Masters
                     " WHERE `id` = @id ";
                 List<QueryParameter> parameters = new List<QueryParameter>();
                 parameters.Add(new QueryParameter("customer_number", MySqlDbType.String, customer.CustomerNumber));
-                parameters.Add(new QueryParameter("customer_first_name", MySqlDbType.String, customer.CustomerLastName));
+                parameters.Add(new QueryParameter("customer_first_name", MySqlDbType.String, customer.customerFirstName));
                 parameters.Add(new QueryParameter("customer_last_name", MySqlDbType.String, customer.CustomerLastName));
                 parameters.Add(new QueryParameter("date_of_birth", MySqlDbType.String, customer.dateOfBirth));
                 parameters.Add(new QueryParameter("gender", MySqlDbType.Int32, customer.gender));
@@ -160,7 +177,7 @@ namespace vellsPos.Entities.Masters
                 "c.id, " +
                 "c.customer_number, concat(c.customer_first_name,' ',c.customer_last_name), " +
                 "c.nic, " +
-                "c.gender, " +
+                "IF(c.gender=0,'Female','Male'), " +
                 "date_format(c.date_of_birth,'%Y-%m-%d'), " +
                 "c.phone_number, " +
                 "c.email ";

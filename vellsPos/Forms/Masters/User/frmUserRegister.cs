@@ -166,6 +166,8 @@ namespace vellsPos.Forms.Layouts
                 Authentication authentication = new Authentication();
                 authentication.Id = 1;
 
+                DateTime thisDay = DateTime.Today;
+
                 User user = new User();
                 user.UserName = txt_userName.Text;
                 user.Branch = branch;
@@ -176,6 +178,7 @@ namespace vellsPos.Forms.Layouts
                 if (this.Tag is null)
                 {
                     //save();
+                    user.Date = thisDay.ToString("yyyy-MM-dd");
                     result = User.store(user);
                     msgStatus = "added";
 

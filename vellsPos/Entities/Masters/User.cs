@@ -13,7 +13,7 @@ namespace vellsPos.Entities.Masters
     internal class User
     {
         private Int32 id;
-        private DateTime date;
+        private String date;
         private String userName;
         private Branch branch;
         private Role role;
@@ -25,7 +25,7 @@ namespace vellsPos.Entities.Masters
 
         }
 
-        public User(int id, DateTime date, string userName, Branch branch, Role role, string password, Authentication authentication)
+        public User(int id, string date, string userName, Branch branch, Role role, string password, Authentication authentication)
         {
             this.Id = id;
             this.Date = date;
@@ -37,7 +37,7 @@ namespace vellsPos.Entities.Masters
         }
 
         public int Id { get => id; set => id = value; }
-        public DateTime Date { get => date; set => date = value; }
+        public String Date { get => date; set => date = value; }
         public string UserName { get => userName; set => userName = value; }
         public string Password { get => password; set => password = value; }
         internal Branch Branch { get => branch; set => branch = value; }
@@ -52,9 +52,21 @@ namespace vellsPos.Entities.Masters
             {
                 //store data
                 string sql = "INSERT INTO `users` " +
-                    "(`date`,`user_name`,`branch_id`,`role_id`,`password`,`authentication_id`) VALUES (@date,@user_name,@branch_id,@role_id,@password,@authentication_id)";
+                    "(`date`," +
+                    "`user_name`," +
+                    "`branch_id`," +
+                    "`role_id`," +
+                    "`password`," +
+                    "`authentication_id`) " +
+                    "VALUES (" +
+                    "@date," +
+                    "@user_name," +
+                    "@branch_id," +
+                    "@role_id," +
+                    "@password," +
+                    "@authentication_id)";
                 List<QueryParameter> parameters = new List<QueryParameter>();
-                parameters.Add(new QueryParameter("date", MySqlDbType.DateTime, user.date));
+                parameters.Add(new QueryParameter("date", MySqlDbType.String, user.date));
                 parameters.Add(new QueryParameter("user_name", MySqlDbType.String, user.userName));
                 parameters.Add(new QueryParameter("branch_id", MySqlDbType.Int32, user.branch.Id));
                 parameters.Add(new QueryParameter("role_id", MySqlDbType.Int32, user.role.Id));
@@ -82,15 +94,15 @@ namespace vellsPos.Entities.Masters
             try
             {
                 string sql = "UPDATE `users` SET " +
-                    "`date` = @date, " +
+                    //"`date` = @date, " +
                      "`user_name` = @user_name, " +
-                    "`branch_id` = @branch_id " +
+                    "`branch_id` = @branch_id, " +
                     "`role_id` = @role_id, " +
                     "`password` = @password, " +
                     "`authentication_id` = @authentication_id " +
                     " WHERE `id` = @id ";
                 List<QueryParameter> parameters = new List<QueryParameter>();
-                parameters.Add(new QueryParameter("date", MySqlDbType.DateTime, user.date));
+                //parameters.Add(new QueryParameter("date", MySqlDbType.String, user.date));
                 parameters.Add(new QueryParameter("user_name", MySqlDbType.String, user.userName));
                 parameters.Add(new QueryParameter("branch_id", MySqlDbType.Int32, user.branch.Id));
                 parameters.Add(new QueryParameter("role_id", MySqlDbType.Int32, user.role.Id));
@@ -178,7 +190,7 @@ namespace vellsPos.Entities.Masters
             {
                 String query = "SELECT " +
                     "u.id, " +
-                    "date_format(u.date,'%Y-%m-%d %H:%i') AS date, " +
+                    "date_format(u.date,'%Y-%m-%d') AS date, " +// %H:%i
                     "b.branch_name AS branch, " +
                     "r.role_name AS role, " +
                     "u.user_name, " +
@@ -191,7 +203,7 @@ namespace vellsPos.Entities.Masters
 
                 if (dbData != null)
                 {
-                    user.date = Convert.ToDateTime(dbData["date"]);
+                    user.date = dbData["date"];
                     user.userName = dbData["user_name"];
                     branch.BranchName = dbData["branch"];
                     user.branch = branch;

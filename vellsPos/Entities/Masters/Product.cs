@@ -17,7 +17,7 @@ namespace vellsPos.Entities.Masters
         private String productName;
         private SubCoCategory subCoCategory;
         private Decimal salePrice;
-        private DateTime addedDate;
+        private String addedDate;
         private String image;
         private String description;
         private Int32 isBarcode;
@@ -31,7 +31,7 @@ namespace vellsPos.Entities.Masters
 
         }
 
-        public Product(int id, string productNumber, string productName, SubCoCategory subCoCategory, decimal salePrice, DateTime addedDate, string image, string description, int isBarcode, int ageVerify, int status, int temp, User user)
+        public Product(int id, string productNumber, string productName, SubCoCategory subCoCategory, decimal salePrice, string addedDate, string image, string description, int isBarcode, int ageVerify, int status, int temp, User user)
         {
             this.Id = id;
             this.ProductNumber = productNumber;
@@ -53,7 +53,7 @@ namespace vellsPos.Entities.Masters
         public string ProductName { get => productName; set => productName = value; }
         internal SubCoCategory SubCoCategory { get => subCoCategory; set => subCoCategory = value; }
         public decimal SalePrice { get => salePrice; set => salePrice = value; }
-        public DateTime AddedDate { get => addedDate; set => addedDate = value; }
+        public string AddedDate { get => addedDate; set => addedDate = value; }
         public string Image { get => image; set => image = value; }
         public string Description { get => description; set => description = value; }
         public int IsBarcode { get => isBarcode; set => isBarcode = value; }
@@ -70,22 +70,43 @@ namespace vellsPos.Entities.Masters
             {
                 //store data
                 string sql = "INSERT INTO `products` " +
-                    "(`product_number`,`product_name`,`sub_co_category_id`,`sale_price`,`added_date`,`image`,`description`,`is_barcode`,`age_verify`,`status`,`temp`,`user_id`) " +
-                    "VALUES (@product_number,@product_name,@sub_co_category_id,@sale_price,@added_date,@image,@description,@is_barcode,@age_verify,@status,@temp,@user_id)";
+                    "(" +
+                    "`product_number`," +
+                    "`product_name`," +
+                    "`sub_co_category_id`," +
+                    "`sale_price`," +
+                    "`added_date`," +
+                    "`image`,`description`," +
+                    "`is_barcode`," +
+                    "`age_verify`," +
+                    "`status`,`temp`," +
+                    "`user_id`) " +
+                    "VALUES (" +
+                    "@product_number," +
+                    "@product_name," +
+                    "@sub_co_category_id," +
+                    "@sale_price," +
+                    "@added_date," +
+                    "@image," +
+                    "@description," +
+                    "@is_barcode," +
+                    "@age_verify," +
+                    "@status," +
+                    "@temp," +
+                    "@user_id)";
                 List<QueryParameter> parameters = new List<QueryParameter>();
-                parameters.Add(new QueryParameter("product_number", MySqlDbType.String, product.ProductNumber));
+                parameters.Add(new QueryParameter("product_number", MySqlDbType.String, product.productNumber));
                 parameters.Add(new QueryParameter("product_name", MySqlDbType.String, product.ProductName));
-                parameters.Add(new QueryParameter("sub_co_category_id", MySqlDbType.Int32, product.SubCoCategory.Id));
-                parameters.Add(new QueryParameter("sale_price", MySqlDbType.Decimal, product.SalePrice));
-                parameters.Add(new QueryParameter("added_date", MySqlDbType.DateTime, product.AddedDate));
-                parameters.Add(new QueryParameter("image", MySqlDbType.String, product.Image));
-                parameters.Add(new QueryParameter("description", MySqlDbType.String, product.Description));
-                parameters.Add(new QueryParameter("is_barcode", MySqlDbType.Int32, product.AgeVerify));
-                parameters.Add(new QueryParameter("age_verify", MySqlDbType.Int32, product.AgeVerify));
-                parameters.Add(new QueryParameter("status", MySqlDbType.Int32, product.Status));
-                parameters.Add(new QueryParameter("temp", MySqlDbType.Int32, product.Temp));
-                parameters.Add(new QueryParameter("user_id", MySqlDbType.Int32, product.User.Id));
-                parameters.Add(new QueryParameter("id", MySqlDbType.Int32, product.Id));
+                parameters.Add(new QueryParameter("sub_co_category_id", MySqlDbType.Int32, product.subCoCategory.Id));
+                parameters.Add(new QueryParameter("sale_price", MySqlDbType.Decimal, product.salePrice));
+                parameters.Add(new QueryParameter("added_date", MySqlDbType.String, product.addedDate));
+                parameters.Add(new QueryParameter("image", MySqlDbType.String, product.image));
+                parameters.Add(new QueryParameter("description", MySqlDbType.String, product.description));
+                parameters.Add(new QueryParameter("is_barcode", MySqlDbType.Int32, product.isBarcode));
+                parameters.Add(new QueryParameter("age_verify", MySqlDbType.Int32, product.ageVerify));
+                parameters.Add(new QueryParameter("status", MySqlDbType.Int32, product.status));
+                parameters.Add(new QueryParameter("temp", MySqlDbType.Int32, product.temp));
+                parameters.Add(new QueryParameter("user_id", MySqlDbType.Int32, product.user.Id));
 
                 commands.Add(new QueryCommand(sql, parameters));
                 result = DBTransactionService.executeNonQuery(commands);
@@ -122,17 +143,19 @@ namespace vellsPos.Entities.Masters
                      "`user_id` = @user_id " +
                     " WHERE `id` = @id ";
                 List<QueryParameter> parameters = new List<QueryParameter>();
-                parameters.Add(new QueryParameter("product_number", MySqlDbType.String, product.ProductNumber));
+                parameters.Add(new QueryParameter("product_number", MySqlDbType.String, product.productNumber));
                 parameters.Add(new QueryParameter("product_name", MySqlDbType.String, product.ProductName));
-                parameters.Add(new QueryParameter("sub_co_category_id", MySqlDbType.Int32, product.SubCoCategory.Id));
-                parameters.Add(new QueryParameter("sale_price", MySqlDbType.Decimal, product.SalePrice));
-                parameters.Add(new QueryParameter("added_date", MySqlDbType.DateTime, product.AddedDate));
-                parameters.Add(new QueryParameter("image", MySqlDbType.String, product.Image));
-                parameters.Add(new QueryParameter("description", MySqlDbType.String, product.Description));
-                parameters.Add(new QueryParameter("age_verify", MySqlDbType.Int32, product.AgeVerify));
-                parameters.Add(new QueryParameter("status", MySqlDbType.Int32, product.Status));
-                parameters.Add(new QueryParameter("temp", MySqlDbType.Int32, product.Temp));
-                parameters.Add(new QueryParameter("user_id", MySqlDbType.Int32, product.User.Id));
+                parameters.Add(new QueryParameter("sub_co_category_id", MySqlDbType.Int32, product.subCoCategory.Id));
+                parameters.Add(new QueryParameter("sale_price", MySqlDbType.Decimal, product.salePrice));
+                parameters.Add(new QueryParameter("added_date", MySqlDbType.String, product.addedDate));
+                parameters.Add(new QueryParameter("image", MySqlDbType.String, product.image));
+                parameters.Add(new QueryParameter("description", MySqlDbType.String, product.description));
+                parameters.Add(new QueryParameter("is_barcode", MySqlDbType.Int32, product.isBarcode));
+                parameters.Add(new QueryParameter("age_verify", MySqlDbType.Int32, product.ageVerify));
+                parameters.Add(new QueryParameter("status", MySqlDbType.Int32, product.status));
+                parameters.Add(new QueryParameter("temp", MySqlDbType.Int32, product.temp));
+                parameters.Add(new QueryParameter("user_id", MySqlDbType.Int32, product.user.Id));
+                parameters.Add(new QueryParameter("id", MySqlDbType.Int32, product.id));
 
                 commands.Add(new QueryCommand(sql, parameters));
                 result = DBTransactionService.executeNonQuery(commands);
@@ -211,15 +234,15 @@ namespace vellsPos.Entities.Masters
             vData.Show();
         }
 
-        public static void showOnViewFormProductWithoutBarcode(TextBox labelBox = null, TextBox idBox = null, String id = null)
+        public static void showOnViewFormProductWithoutBarcode(TextBox labelBox = null, TextBox idBox = null)
         {
             DataViewParam dvParam = new DataViewParam();
             dvParam.Title = "Product Whithout Barcode";
             dvParam.TableName = "products";
             dvParam.SelectSql = "SELECT " +
                 "p.id, " +
-                "p.product_number, " +
                 "p.product_name, " +
+                "p.product_number, " +
                 "c.category_name, " +
                 "sc.sub_category_name, " +
                 "scc.sub_co_category_name ";
@@ -227,10 +250,10 @@ namespace vellsPos.Entities.Masters
                 "LEFT JOIN sub_co_categories scc ON p.sub_co_category_id=scc.id  " +
                 "LEFT JOIN sub_categories sc ON scc.sub_category_id=sc.id  " +
                 "LEFT JOIN categories c ON sc.category_id=c.id  " +
-                "WHERE p.id='" + id + "' " +
+                "WHERE p.is_barcode='1' AND  p.status='1' AND p.temp='0' " +
                 "ORDER BY p.id DESC ";
             dvParam.SearchParamCount = 0; //name and description //AND p.product_number like @s1 or p.product_name like @s2 or c.category_name like @s3 or sc.sub_category_name like @s4 or scc.sub_co_category_name like @s5 
-            dvParam.TitleList = new List<string>() { "", "Product Number", "Product Name", "Category", "Sub Category", "Sub Co Category" };
+            dvParam.TitleList = new List<string>() { "", "Product Name", "Product Number", "Category", "Sub Category", "Sub Co Category" };
             dvParam.InvisibleColumnList = new List<int>() { 1 };
             dvParam.NumericColumnList = new List<int>() { };//Column titles
             //dvParam.FixedColumnNumber = 3;
@@ -268,7 +291,12 @@ namespace vellsPos.Entities.Masters
                     "scc.sub_co_category_name AS subCoCategory, " +
                     "p.sale_price, " +
                     "date_format(p.added_date,'%Y-%m-%d %H:%i') AS added_date, " +
-                    "p.description " +
+                     "p.image, " +
+                    "p.description, " +
+                     "p.is_barcode, " +
+                      "p.age_verify, " +
+                       "p.temp, " +
+                       "p.status " +
                     "FROM products p " +
                     "INNER JOIN sub_co_categories scc ON p.sub_co_category_id = scc.id " +
                     "INNER JOIN sub_categories sc ON scc.sub_category_id = sc.id " +
@@ -280,12 +308,18 @@ namespace vellsPos.Entities.Masters
                 {
                     product.productNumber = dbData["product_number"];
                     product.productName = dbData["product_name"];
+
                     category.CategoryName = dbData["category"];
                     subCategory.Category = category;
+
                     subCategory.SubCategoryName = dbData["subCategory"];
+                    subCoCategory.SubCategory = subCategory;
+
+                    subCoCategory.SubCoCategoryName = dbData["subCoCategory"];
                     product.subCoCategory = subCoCategory;
-                    product.SalePrice = Convert.ToDecimal(dbData["sale_price"]);
-                    product.addedDate = Convert.ToDateTime(dbData["added_date"]);
+
+                    product.salePrice = Convert.ToDecimal(dbData["sale_price"]);
+                    product.addedDate = dbData["added_date"];
                     product.image = dbData["image"];
                     product.description = dbData["description"];
                     product.isBarcode= Convert.ToInt32(dbData["is_barcode"]);

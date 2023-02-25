@@ -212,7 +212,6 @@ namespace vellsPos.Forms.Layouts
                     productReturn.Qty = Convert.ToInt32(ntxt_qty.Value);
                     productReturn.Amount = ntxt_amount.Value;
                     productReturn.User = user;
-                    //ReturnResult result = ProductReturn.store(productReturn);
 
                     if (this.Tag is null)
                     {

@@ -52,6 +52,7 @@ namespace vellsPos.Forms.Layouts
             LoyalityCard loyalityCard = LoyalityCard.getOneLoyalityCard(Int32.Parse(uid));
             txt_id.Text = uid;
             txt_customer.Text = loyalityCard.Customer.CustomerFirstName;
+            txt_customerID.Text = Convert.ToString(loyalityCard.Customer.Id);
             txt_cardNumber.Text = loyalityCard.CardNumber;
             cmb_cardType.Text = loyalityCard.CardType;
             dtp_issuedDate.Text = loyalityCard.IssuedDate;
@@ -59,11 +60,11 @@ namespace vellsPos.Forms.Layouts
 
             if(loyalityCard.Status==1)
             {
-                cb_status.Text = "Active";
+                cb_status.Checked=true;
             }
             else
             {
-                cb_status.Text = "Inctive";
+                cb_status.Checked = false;
             }
         }
 
@@ -153,8 +154,6 @@ namespace vellsPos.Forms.Layouts
 
                 loyalityCard.Customer = customer;
                 loyalityCard.User = user;
-
-                //ReturnResult result = LoyalityCard.store(loyalityCard);
 
                 if (this.Tag is null)
                 {

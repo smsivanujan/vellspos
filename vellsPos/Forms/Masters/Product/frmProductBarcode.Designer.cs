@@ -38,9 +38,10 @@
             this.btn_cancel = new System.Windows.Forms.Button();
             this.pnl_body = new System.Windows.Forms.Panel();
             this.pnl_container = new System.Windows.Forms.Panel();
-            this.txt_id = new System.Windows.Forms.TextBox();
+            this.lbl_pbStatus = new System.Windows.Forms.Label();
+            this.txt_imagePath = new System.Windows.Forms.TextBox();
             this.lbl_imageStatus = new System.Windows.Forms.Label();
-            this.lbl_imagePath = new System.Windows.Forms.Label();
+            this.txt_id = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txt_productID = new System.Windows.Forms.TextBox();
             this.txt_product = new System.Windows.Forms.TextBox();
@@ -52,7 +53,6 @@
             this.label16 = new System.Windows.Forms.Label();
             this.cmb_barcodeType = new System.Windows.Forms.ComboBox();
             this.pb_barcodeImage = new System.Windows.Forms.PictureBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.pnl_head.SuspendLayout();
             this.pnl_root.SuspendLayout();
             this.pnl_body.SuspendLayout();
@@ -173,10 +173,10 @@
             // 
             // pnl_container
             // 
-            this.pnl_container.Controls.Add(this.textBox1);
-            this.pnl_container.Controls.Add(this.txt_id);
+            this.pnl_container.Controls.Add(this.lbl_pbStatus);
+            this.pnl_container.Controls.Add(this.txt_imagePath);
             this.pnl_container.Controls.Add(this.lbl_imageStatus);
-            this.pnl_container.Controls.Add(this.lbl_imagePath);
+            this.pnl_container.Controls.Add(this.txt_id);
             this.pnl_container.Controls.Add(this.label1);
             this.pnl_container.Controls.Add(this.txt_productID);
             this.pnl_container.Controls.Add(this.txt_product);
@@ -193,30 +193,37 @@
             this.pnl_container.Size = new System.Drawing.Size(448, 523);
             this.pnl_container.TabIndex = 0;
             // 
+            // lbl_pbStatus
+            // 
+            this.lbl_pbStatus.AutoSize = true;
+            this.lbl_pbStatus.Location = new System.Drawing.Point(232, 480);
+            this.lbl_pbStatus.Name = "lbl_pbStatus";
+            this.lbl_pbStatus.Size = new System.Drawing.Size(13, 15);
+            this.lbl_pbStatus.TabIndex = 124;
+            this.lbl_pbStatus.Text = "0";
+            // 
+            // txt_imagePath
+            // 
+            this.txt_imagePath.Location = new System.Drawing.Point(202, 310);
+            this.txt_imagePath.Name = "txt_imagePath";
+            this.txt_imagePath.Size = new System.Drawing.Size(192, 23);
+            this.txt_imagePath.TabIndex = 123;
+            // 
+            // lbl_imageStatus
+            // 
+            this.lbl_imageStatus.AutoSize = true;
+            this.lbl_imageStatus.Location = new System.Drawing.Point(204, 337);
+            this.lbl_imageStatus.Name = "lbl_imageStatus";
+            this.lbl_imageStatus.Size = new System.Drawing.Size(76, 15);
+            this.lbl_imageStatus.TabIndex = 122;
+            this.lbl_imageStatus.Text = "image_status";
+            // 
             // txt_id
             // 
             this.txt_id.Location = new System.Drawing.Point(243, 41);
             this.txt_id.Name = "txt_id";
             this.txt_id.Size = new System.Drawing.Size(41, 23);
             this.txt_id.TabIndex = 121;
-            // 
-            // lbl_imageStatus
-            // 
-            this.lbl_imageStatus.AutoSize = true;
-            this.lbl_imageStatus.Location = new System.Drawing.Point(281, 379);
-            this.lbl_imageStatus.Name = "lbl_imageStatus";
-            this.lbl_imageStatus.Size = new System.Drawing.Size(69, 15);
-            this.lbl_imageStatus.TabIndex = 120;
-            this.lbl_imageStatus.Text = "image_path";
-            // 
-            // lbl_imagePath
-            // 
-            this.lbl_imagePath.AutoSize = true;
-            this.lbl_imagePath.Location = new System.Drawing.Point(279, 349);
-            this.lbl_imagePath.Name = "lbl_imagePath";
-            this.lbl_imagePath.Size = new System.Drawing.Size(69, 15);
-            this.lbl_imagePath.TabIndex = 119;
-            this.lbl_imagePath.Text = "image_path";
             // 
             // label1
             // 
@@ -333,13 +340,6 @@
             this.pb_barcodeImage.TabIndex = 85;
             this.pb_barcodeImage.TabStop = false;
             // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(304, 286);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 23);
-            this.textBox1.TabIndex = 122;
-            // 
             // frmProductBarcode
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -386,9 +386,9 @@
         private Label label1;
         private Label label16;
         private ComboBox cmb_barcodeType;
-        private Label lbl_imageStatus;
-        private Label lbl_imagePath;
         private TextBox txt_id;
-        private TextBox textBox1;
+        private TextBox txt_imagePath;
+        private Label lbl_imageStatus;
+        private Label lbl_pbStatus;
     }
 }

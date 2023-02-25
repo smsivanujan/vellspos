@@ -121,7 +121,6 @@ namespace vellsPos.Forms.Layouts
             {
                 Discount discount = new Discount();
                 discount.DiscountName = txt_discountName.Text;
-                Console.WriteLine(dtp_dateFrom.Value.ToString("yyyy-MM-dd H:mm"));
                 discount.DateFrom = dtp_dateFrom.Value.ToString("yyyy-MM-dd H:mm");
                 discount.DateTo = dtp_dateTo.Value.ToString("yyyy-MM-dd H:mm");
                 discount.Description = rtxt_description.Text;

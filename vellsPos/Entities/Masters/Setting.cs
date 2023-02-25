@@ -47,8 +47,7 @@ namespace vellsPos.Entities.Masters
                 List<QueryParameter> parameters = new List<QueryParameter>();
                 parameters.Add(new QueryParameter("key_name", MySqlDbType.String, setting.keyName));
                 parameters.Add(new QueryParameter("key_value", MySqlDbType.String, setting.keyValue));
-                parameters.Add(new QueryParameter("description", MySqlDbType.String, setting.Description));
-                parameters.Add(new QueryParameter("id", MySqlDbType.Int32, setting.Id));
+                parameters.Add(new QueryParameter("description", MySqlDbType.String, setting.description));    
 
                 commands.Add(new QueryCommand(sql, parameters));
                 result = DBTransactionService.executeNonQuery(commands);
@@ -78,7 +77,8 @@ namespace vellsPos.Entities.Masters
                 List<QueryParameter> parameters = new List<QueryParameter>();
                 parameters.Add(new QueryParameter("key_name", MySqlDbType.String, setting.keyName));
                 parameters.Add(new QueryParameter("key_value", MySqlDbType.String, setting.keyValue));
-                parameters.Add(new QueryParameter("description", MySqlDbType.String, setting.Description));
+                parameters.Add(new QueryParameter("description", MySqlDbType.String, setting.description));
+                parameters.Add(new QueryParameter("id", MySqlDbType.Int32, setting.id));
 
                 commands.Add(new QueryCommand(sql, parameters));
                 result = DBTransactionService.executeNonQuery(commands);

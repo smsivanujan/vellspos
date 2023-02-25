@@ -37,13 +37,14 @@
             this.btn_save = new System.Windows.Forms.Button();
             this.btn_cancel = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.cb_active = new System.Windows.Forms.CheckBox();
+            this.txt_imagePath = new System.Windows.Forms.TextBox();
             this.txt_id = new System.Windows.Forms.TextBox();
             this.cb_barcode = new System.Windows.Forms.CheckBox();
             this.ntxt_salePrice = new System.Windows.Forms.NumericUpDown();
             this.label4 = new System.Windows.Forms.Label();
             this.lbl_imageStatus = new System.Windows.Forms.Label();
             this.cb_ageVerify = new System.Windows.Forms.CheckBox();
-            this.lbl_imagePath = new System.Windows.Forms.Label();
             this.btn_uploadImage = new System.Windows.Forms.Button();
             this.pb_productImage = new System.Windows.Forms.PictureBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -167,13 +168,14 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.cb_active);
+            this.panel1.Controls.Add(this.txt_imagePath);
             this.panel1.Controls.Add(this.txt_id);
             this.panel1.Controls.Add(this.cb_barcode);
             this.panel1.Controls.Add(this.ntxt_salePrice);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.lbl_imageStatus);
             this.panel1.Controls.Add(this.cb_ageVerify);
-            this.panel1.Controls.Add(this.lbl_imagePath);
             this.panel1.Controls.Add(this.btn_uploadImage);
             this.panel1.Controls.Add(this.pb_productImage);
             this.panel1.Controls.Add(this.label7);
@@ -191,6 +193,24 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(525, 731);
             this.panel1.TabIndex = 2;
+            // 
+            // cb_active
+            // 
+            this.cb_active.AutoSize = true;
+            this.cb_active.Font = new System.Drawing.Font("Segoe UI Historic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cb_active.Location = new System.Drawing.Point(15, 649);
+            this.cb_active.Name = "cb_active";
+            this.cb_active.Size = new System.Drawing.Size(89, 34);
+            this.cb_active.TabIndex = 111;
+            this.cb_active.Text = "Active";
+            this.cb_active.UseVisualStyleBackColor = true;
+            // 
+            // txt_imagePath
+            // 
+            this.txt_imagePath.Location = new System.Drawing.Point(303, 301);
+            this.txt_imagePath.Name = "txt_imagePath";
+            this.txt_imagePath.Size = new System.Drawing.Size(192, 23);
+            this.txt_imagePath.TabIndex = 110;
             // 
             // txt_id
             // 
@@ -240,9 +260,9 @@
             this.lbl_imageStatus.AutoSize = true;
             this.lbl_imageStatus.Location = new System.Drawing.Point(305, 328);
             this.lbl_imageStatus.Name = "lbl_imageStatus";
-            this.lbl_imageStatus.Size = new System.Drawing.Size(69, 15);
+            this.lbl_imageStatus.Size = new System.Drawing.Size(76, 15);
             this.lbl_imageStatus.TabIndex = 41;
-            this.lbl_imageStatus.Text = "image_path";
+            this.lbl_imageStatus.Text = "image_status";
             // 
             // cb_ageVerify
             // 
@@ -254,15 +274,6 @@
             this.cb_ageVerify.TabIndex = 102;
             this.cb_ageVerify.Text = "Age Verify";
             this.cb_ageVerify.UseVisualStyleBackColor = true;
-            // 
-            // lbl_imagePath
-            // 
-            this.lbl_imagePath.AutoSize = true;
-            this.lbl_imagePath.Location = new System.Drawing.Point(303, 298);
-            this.lbl_imagePath.Name = "lbl_imagePath";
-            this.lbl_imagePath.Size = new System.Drawing.Size(69, 15);
-            this.lbl_imagePath.TabIndex = 40;
-            this.lbl_imagePath.Text = "image_path";
             // 
             // btn_uploadImage
             // 
@@ -439,7 +450,6 @@
         private Label label6;
         private CheckBox cb_ageVerify;
         private Label lbl_imageStatus;
-        private Label lbl_imagePath;
         private Button btn_uploadImage;
         private PictureBox pb_productImage;
         private Label label7;
@@ -447,5 +457,7 @@
         private Label label4;
         private CheckBox cb_barcode;
         private TextBox txt_id;
+        private TextBox txt_imagePath;
+        private CheckBox cb_active;
     }
 }

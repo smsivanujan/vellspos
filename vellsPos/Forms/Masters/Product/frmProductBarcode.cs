@@ -26,9 +26,14 @@ namespace vellsPos.Forms.Layouts
         String directoryPath="";
         string rootPath = @"c:\vellspos";
 
+        private FormMovable formMove;
+
         public frmProductBarcode()
         {
             InitializeComponent();
+
+            formMove = new FormMovable(this);
+            formMove.SetMovable(pnl_head, lbl_title);
         }
         private void frmProductBarcode_Load(object sender, EventArgs e)
         {

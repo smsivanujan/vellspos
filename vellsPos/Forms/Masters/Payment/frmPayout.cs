@@ -19,9 +19,14 @@ namespace vellsPos.Forms.Layouts
         ReturnResult result;
         String msgStatus;
 
+        private FormMovable formMove;
+
         public frmPayout()
         {
             InitializeComponent();
+
+            formMove = new FormMovable(this);
+            formMove.SetMovable(pnl_head, lbl_title);
         }
 
         private void frmPayout_Load(object sender, EventArgs e)

@@ -29,40 +29,30 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPointOfSale));
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.pnl_head = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
-            this.button9 = new System.Windows.Forms.Button();
+            this.btn_exit = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.label7 = new System.Windows.Forms.Label();
+            this.lbl_title = new System.Windows.Forms.Label();
+            this.pb_titleImage = new System.Windows.Forms.PictureBox();
+            this.pnl_saleDetail = new System.Windows.Forms.Panel();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.panel7 = new System.Windows.Forms.Panel();
+            this.pnl_paymentDetail = new System.Windows.Forms.Panel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.panel6 = new System.Windows.Forms.Panel();
+            this.pnl_saleButton = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
-            this.panel5 = new System.Windows.Forms.Panel();
+            this.pnl_productPurchaseList = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button12 = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txt_category = new System.Windows.Forms.TextBox();
-            this.button8 = new System.Windows.Forms.Button();
-            this.btn_save = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -70,45 +60,55 @@
             this.clm_discount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clm_price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clm_remove = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.panel8 = new System.Windows.Forms.Panel();
-            this.panel9 = new System.Windows.Forms.Panel();
-            this.panel10 = new System.Windows.Forms.Panel();
-            this.panel11 = new System.Windows.Forms.Panel();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
+            this.pnl_shortCutButton = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button12 = new System.Windows.Forms.Button();
+            this.button11 = new System.Windows.Forms.Button();
+            this.button10 = new System.Windows.Forms.Button();
+            this.pnl_search = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txt_category = new System.Windows.Forms.TextBox();
+            this.btn_search = new System.Windows.Forms.Button();
+            this.btn_add = new System.Windows.Forms.Button();
+            this.pnl_category = new System.Windows.Forms.Panel();
             this.button13 = new System.Windows.Forms.Button();
-            this.panel1.SuspendLayout();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.pnl_subCategory = new System.Windows.Forms.Panel();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.pnl_subcocategory = new System.Windows.Forms.Panel();
+            this.pnl_product = new System.Windows.Forms.Panel();
+            this.pnl_head.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.panel2.SuspendLayout();
-            this.panel7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_titleImage)).BeginInit();
+            this.pnl_saleDetail.SuspendLayout();
+            this.pnl_paymentDetail.SuspendLayout();
             this.tabControl1.SuspendLayout();
-            this.panel6.SuspendLayout();
-            this.panel5.SuspendLayout();
+            this.pnl_saleButton.SuspendLayout();
+            this.pnl_productPurchaseList.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.panel3.SuspendLayout();
-            this.panel4.SuspendLayout();
-            this.panel8.SuspendLayout();
-            this.panel9.SuspendLayout();
+            this.pnl_shortCutButton.SuspendLayout();
+            this.pnl_search.SuspendLayout();
+            this.pnl_category.SuspendLayout();
+            this.pnl_subCategory.SuspendLayout();
             this.SuspendLayout();
             // 
-            // panel1
+            // pnl_head
             // 
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.button9);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.pictureBox2);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1300, 56);
-            this.panel1.TabIndex = 0;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            this.pnl_head.Controls.Add(this.label4);
+            this.pnl_head.Controls.Add(this.btn_exit);
+            this.pnl_head.Controls.Add(this.label3);
+            this.pnl_head.Controls.Add(this.pictureBox2);
+            this.pnl_head.Controls.Add(this.lbl_title);
+            this.pnl_head.Controls.Add(this.pb_titleImage);
+            this.pnl_head.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnl_head.Location = new System.Drawing.Point(0, 0);
+            this.pnl_head.Name = "pnl_head";
+            this.pnl_head.Size = new System.Drawing.Size(1300, 56);
+            this.pnl_head.TabIndex = 0;
+            this.pnl_head.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // label4
             // 
@@ -120,21 +120,22 @@
             this.label4.TabIndex = 33;
             this.label4.Text = "12-02-2022 12:15:25 AM";
             // 
-            // button9
+            // btn_exit
             // 
-            this.button9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button9.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button9.Image = ((System.Drawing.Image)(resources.GetObject("button9.Image")));
-            this.button9.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button9.Location = new System.Drawing.Point(1230, 6);
-            this.button9.Name = "button9";
-            this.button9.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button9.Size = new System.Drawing.Size(58, 41);
-            this.button9.TabIndex = 32;
-            this.button9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button9.UseVisualStyleBackColor = false;
+            this.btn_exit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_exit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.btn_exit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_exit.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_exit.Image = ((System.Drawing.Image)(resources.GetObject("btn_exit.Image")));
+            this.btn_exit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_exit.Location = new System.Drawing.Point(1230, 6);
+            this.btn_exit.Name = "btn_exit";
+            this.btn_exit.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btn_exit.Size = new System.Drawing.Size(58, 41);
+            this.btn_exit.TabIndex = 32;
+            this.btn_exit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_exit.UseVisualStyleBackColor = false;
+            this.btn_exit.Click += new System.EventHandler(this.btn_exit_Click);
             // 
             // label3
             // 
@@ -157,53 +158,55 @@
             this.pictureBox2.TabIndex = 4;
             this.pictureBox2.TabStop = false;
             // 
-            // label1
+            // lbl_title
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(64, 8);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(179, 45);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "VELLS POS";
+            this.lbl_title.AutoSize = true;
+            this.lbl_title.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lbl_title.Location = new System.Drawing.Point(64, 6);
+            this.lbl_title.Name = "lbl_title";
+            this.lbl_title.Size = new System.Drawing.Size(179, 45);
+            this.lbl_title.TabIndex = 3;
+            this.lbl_title.Text = "VELLS POS";
             // 
-            // pictureBox1
+            // pb_titleImage
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(12, 6);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(46, 46);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
+            this.pb_titleImage.Image = ((System.Drawing.Image)(resources.GetObject("pb_titleImage.Image")));
+            this.pb_titleImage.Location = new System.Drawing.Point(12, 6);
+            this.pb_titleImage.Name = "pb_titleImage";
+            this.pb_titleImage.Size = new System.Drawing.Size(46, 46);
+            this.pb_titleImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pb_titleImage.TabIndex = 2;
+            this.pb_titleImage.TabStop = false;
             // 
-            // panel2
+            // pnl_saleDetail
             // 
-            this.panel2.Controls.Add(this.comboBox1);
-            this.panel2.Controls.Add(this.textBox3);
-            this.panel2.Controls.Add(this.label7);
-            this.panel2.Controls.Add(this.label6);
-            this.panel2.Controls.Add(this.textBox2);
-            this.panel2.Controls.Add(this.label5);
-            this.panel2.Controls.Add(this.panel7);
-            this.panel2.Controls.Add(this.textBox1);
-            this.panel2.Controls.Add(this.panel6);
-            this.panel2.Controls.Add(this.panel5);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel2.Location = new System.Drawing.Point(687, 56);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(613, 664);
-            this.panel2.TabIndex = 1;
+            this.pnl_saleDetail.Controls.Add(this.comboBox1);
+            this.pnl_saleDetail.Controls.Add(this.textBox3);
+            this.pnl_saleDetail.Controls.Add(this.label7);
+            this.pnl_saleDetail.Controls.Add(this.label6);
+            this.pnl_saleDetail.Controls.Add(this.textBox2);
+            this.pnl_saleDetail.Controls.Add(this.label5);
+            this.pnl_saleDetail.Controls.Add(this.pnl_paymentDetail);
+            this.pnl_saleDetail.Controls.Add(this.textBox1);
+            this.pnl_saleDetail.Controls.Add(this.pnl_saleButton);
+            this.pnl_saleDetail.Controls.Add(this.pnl_productPurchaseList);
+            this.pnl_saleDetail.Dock = System.Windows.Forms.DockStyle.Right;
+            this.pnl_saleDetail.Location = new System.Drawing.Point(687, 56);
+            this.pnl_saleDetail.Name = "pnl_saleDetail";
+            this.pnl_saleDetail.Size = new System.Drawing.Size(613, 664);
+            this.pnl_saleDetail.TabIndex = 1;
             // 
-            // label7
+            // comboBox1
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Segoe UI Historic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label7.Location = new System.Drawing.Point(6, 524);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(102, 21);
-            this.label7.TabIndex = 36;
-            this.label7.Text = "Loyality Poits";
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "%",
+            "0"});
+            this.comboBox1.Location = new System.Drawing.Point(92, 475);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(38, 23);
+            this.comboBox1.TabIndex = 4;
             // 
             // textBox3
             // 
@@ -214,6 +217,16 @@
             this.textBox3.PlaceholderText = "category";
             this.textBox3.Size = new System.Drawing.Size(123, 29);
             this.textBox3.TabIndex = 35;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Segoe UI Historic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label7.Location = new System.Drawing.Point(6, 524);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(102, 21);
+            this.label7.TabIndex = 36;
+            this.label7.Text = "Loyality Poits";
             // 
             // label6
             // 
@@ -245,14 +258,14 @@
             this.label5.TabIndex = 32;
             this.label5.Text = "Payable";
             // 
-            // panel7
+            // pnl_paymentDetail
             // 
-            this.panel7.Controls.Add(this.tabControl1);
-            this.panel7.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel7.Location = new System.Drawing.Point(265, 354);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(348, 237);
-            this.panel7.TabIndex = 6;
+            this.pnl_paymentDetail.Controls.Add(this.tabControl1);
+            this.pnl_paymentDetail.Dock = System.Windows.Forms.DockStyle.Right;
+            this.pnl_paymentDetail.Location = new System.Drawing.Point(265, 354);
+            this.pnl_paymentDetail.Name = "pnl_paymentDetail";
+            this.pnl_paymentDetail.Size = new System.Drawing.Size(348, 237);
+            this.pnl_paymentDetail.TabIndex = 6;
             // 
             // tabControl1
             // 
@@ -307,15 +320,15 @@
             this.textBox1.TabIndex = 32;
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // panel6
+            // pnl_saleButton
             // 
-            this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel6.Controls.Add(this.button2);
-            this.panel6.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel6.Location = new System.Drawing.Point(0, 591);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(613, 73);
-            this.panel6.TabIndex = 5;
+            this.pnl_saleButton.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnl_saleButton.Controls.Add(this.button2);
+            this.pnl_saleButton.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnl_saleButton.Location = new System.Drawing.Point(0, 591);
+            this.pnl_saleButton.Name = "pnl_saleButton";
+            this.pnl_saleButton.Size = new System.Drawing.Size(613, 73);
+            this.pnl_saleButton.TabIndex = 5;
             // 
             // button2
             // 
@@ -334,14 +347,14 @@
             this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button2.UseVisualStyleBackColor = false;
             // 
-            // panel5
+            // pnl_productPurchaseList
             // 
-            this.panel5.Controls.Add(this.dataGridView1);
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel5.Location = new System.Drawing.Point(0, 0);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(613, 354);
-            this.panel5.TabIndex = 4;
+            this.pnl_productPurchaseList.Controls.Add(this.dataGridView1);
+            this.pnl_productPurchaseList.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnl_productPurchaseList.Location = new System.Drawing.Point(0, 0);
+            this.pnl_productPurchaseList.Name = "pnl_productPurchaseList";
+            this.pnl_productPurchaseList.Size = new System.Drawing.Size(613, 354);
+            this.pnl_productPurchaseList.TabIndex = 4;
             // 
             // dataGridView1
             // 
@@ -362,18 +375,62 @@
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // panel3
+            // Column1
             // 
-            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.Controls.Add(this.button1);
-            this.panel3.Controls.Add(this.button12);
-            this.panel3.Controls.Add(this.button11);
-            this.panel3.Controls.Add(this.button10);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 647);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(687, 73);
-            this.panel3.TabIndex = 2;
+            this.Column1.HeaderText = "No";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 30;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Product No";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 200;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Unit Price";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            // 
+            // clm_qty
+            // 
+            this.clm_qty.HeaderText = "Qty";
+            this.clm_qty.Name = "clm_qty";
+            this.clm_qty.Width = 30;
+            // 
+            // clm_discount
+            // 
+            this.clm_discount.HeaderText = "Dis.";
+            this.clm_discount.Name = "clm_discount";
+            this.clm_discount.ReadOnly = true;
+            this.clm_discount.Width = 30;
+            // 
+            // clm_price
+            // 
+            this.clm_price.HeaderText = "Price";
+            this.clm_price.Name = "clm_price";
+            // 
+            // clm_remove
+            // 
+            this.clm_remove.HeaderText = "Remove";
+            this.clm_remove.Name = "clm_remove";
+            this.clm_remove.Width = 50;
+            // 
+            // pnl_shortCutButton
+            // 
+            this.pnl_shortCutButton.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnl_shortCutButton.Controls.Add(this.button1);
+            this.pnl_shortCutButton.Controls.Add(this.button12);
+            this.pnl_shortCutButton.Controls.Add(this.button11);
+            this.pnl_shortCutButton.Controls.Add(this.button10);
+            this.pnl_shortCutButton.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnl_shortCutButton.Location = new System.Drawing.Point(0, 647);
+            this.pnl_shortCutButton.Name = "pnl_shortCutButton";
+            this.pnl_shortCutButton.Size = new System.Drawing.Size(687, 73);
+            this.pnl_shortCutButton.TabIndex = 2;
             // 
             // button1
             // 
@@ -439,18 +496,18 @@
             this.button10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button10.UseVisualStyleBackColor = false;
             // 
-            // panel4
+            // pnl_search
             // 
-            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel4.Controls.Add(this.label2);
-            this.panel4.Controls.Add(this.txt_category);
-            this.panel4.Controls.Add(this.button8);
-            this.panel4.Controls.Add(this.btn_save);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel4.Location = new System.Drawing.Point(0, 56);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(687, 73);
-            this.panel4.TabIndex = 3;
+            this.pnl_search.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnl_search.Controls.Add(this.label2);
+            this.pnl_search.Controls.Add(this.txt_category);
+            this.pnl_search.Controls.Add(this.btn_search);
+            this.pnl_search.Controls.Add(this.btn_add);
+            this.pnl_search.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnl_search.Location = new System.Drawing.Point(0, 56);
+            this.pnl_search.Name = "pnl_search";
+            this.pnl_search.Size = new System.Drawing.Size(687, 73);
+            this.pnl_search.TabIndex = 3;
             // 
             // label2
             // 
@@ -464,189 +521,57 @@
             // 
             // txt_category
             // 
-            this.txt_category.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.txt_category.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txt_category.Location = new System.Drawing.Point(80, 13);
             this.txt_category.Multiline = true;
             this.txt_category.Name = "txt_category";
             this.txt_category.PlaceholderText = "category";
-            this.txt_category.Size = new System.Drawing.Size(221, 51);
+            this.txt_category.Size = new System.Drawing.Size(283, 51);
             this.txt_category.TabIndex = 30;
             // 
-            // button8
+            // btn_search
             // 
-            this.button8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button8.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button8.Image = ((System.Drawing.Image)(resources.GetObject("button8.Image")));
-            this.button8.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button8.Location = new System.Drawing.Point(300, 13);
-            this.button8.Name = "button8";
-            this.button8.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button8.Size = new System.Drawing.Size(56, 51);
-            this.button8.TabIndex = 3;
-            this.button8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button8.UseVisualStyleBackColor = false;
+            this.btn_search.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.btn_search.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_search.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_search.Image = ((System.Drawing.Image)(resources.GetObject("btn_search.Image")));
+            this.btn_search.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_search.Location = new System.Drawing.Point(369, 13);
+            this.btn_search.Name = "btn_search";
+            this.btn_search.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btn_search.Size = new System.Drawing.Size(56, 51);
+            this.btn_search.TabIndex = 3;
+            this.btn_search.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_search.UseVisualStyleBackColor = false;
             // 
-            // btn_save
+            // btn_add
             // 
-            this.btn_save.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_save.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.btn_save.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_save.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn_save.Image = ((System.Drawing.Image)(resources.GetObject("btn_save.Image")));
-            this.btn_save.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_save.Location = new System.Drawing.Point(571, 13);
-            this.btn_save.Name = "btn_save";
-            this.btn_save.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btn_save.Size = new System.Drawing.Size(108, 51);
-            this.btn_save.TabIndex = 2;
-            this.btn_save.Text = " ADD";
-            this.btn_save.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btn_save.UseVisualStyleBackColor = false;
+            this.btn_add.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_add.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.btn_add.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_add.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_add.Image = ((System.Drawing.Image)(resources.GetObject("btn_add.Image")));
+            this.btn_add.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_add.Location = new System.Drawing.Point(571, 13);
+            this.btn_add.Name = "btn_add";
+            this.btn_add.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btn_add.Size = new System.Drawing.Size(108, 51);
+            this.btn_add.TabIndex = 2;
+            this.btn_add.Text = " ADD";
+            this.btn_add.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_add.UseVisualStyleBackColor = false;
             // 
-            // comboBox1
+            // pnl_category
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "%",
-            "0"});
-            this.comboBox1.Location = new System.Drawing.Point(92, 475);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(38, 23);
-            this.comboBox1.TabIndex = 4;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "No";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 30;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Product No";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Width = 200;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Unit Price";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            // 
-            // clm_qty
-            // 
-            this.clm_qty.HeaderText = "Qty";
-            this.clm_qty.Name = "clm_qty";
-            this.clm_qty.Width = 30;
-            // 
-            // clm_discount
-            // 
-            this.clm_discount.HeaderText = "Dis.";
-            this.clm_discount.Name = "clm_discount";
-            this.clm_discount.ReadOnly = true;
-            this.clm_discount.Width = 30;
-            // 
-            // clm_price
-            // 
-            this.clm_price.HeaderText = "Price";
-            this.clm_price.Name = "clm_price";
-            // 
-            // clm_remove
-            // 
-            this.clm_remove.HeaderText = "Remove";
-            this.clm_remove.Name = "clm_remove";
-            this.clm_remove.Width = 50;
-            // 
-            // panel8
-            // 
-            this.panel8.Controls.Add(this.button13);
-            this.panel8.Controls.Add(this.button7);
-            this.panel8.Controls.Add(this.button6);
-            this.panel8.Controls.Add(this.button3);
-            this.panel8.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel8.Location = new System.Drawing.Point(0, 129);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(131, 518);
-            this.panel8.TabIndex = 4;
-            // 
-            // panel9
-            // 
-            this.panel9.Controls.Add(this.button5);
-            this.panel9.Controls.Add(this.button4);
-            this.panel9.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel9.Location = new System.Drawing.Point(131, 129);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(136, 518);
-            this.panel9.TabIndex = 5;
-            // 
-            // panel10
-            // 
-            this.panel10.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel10.Location = new System.Drawing.Point(267, 129);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(141, 518);
-            this.panel10.TabIndex = 6;
-            // 
-            // panel11
-            // 
-            this.panel11.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel11.Location = new System.Drawing.Point(408, 129);
-            this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(200, 518);
-            this.panel11.TabIndex = 7;
-            // 
-            // button3
-            // 
-            this.button3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button3.Location = new System.Drawing.Point(6, 6);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(119, 53);
-            this.button3.TabIndex = 0;
-            this.button3.Text = "Fruits ";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            this.button4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button4.Location = new System.Drawing.Point(6, 6);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(119, 35);
-            this.button4.TabIndex = 1;
-            this.button4.Text = "Vegitable";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // button5
-            // 
-            this.button5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button5.Location = new System.Drawing.Point(6, 47);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(119, 35);
-            this.button5.TabIndex = 2;
-            this.button5.Text = "Fruits";
-            this.button5.UseVisualStyleBackColor = true;
-            // 
-            // button6
-            // 
-            this.button6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button6.Location = new System.Drawing.Point(6, 183);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(119, 53);
-            this.button6.TabIndex = 1;
-            this.button6.Text = "Meat ";
-            this.button6.UseVisualStyleBackColor = true;
-            // 
-            // button7
-            // 
-            this.button7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button7.Location = new System.Drawing.Point(6, 124);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(119, 53);
-            this.button7.TabIndex = 2;
-            this.button7.Text = "Canned Good";
-            this.button7.UseVisualStyleBackColor = true;
+            this.pnl_category.Controls.Add(this.button13);
+            this.pnl_category.Controls.Add(this.button7);
+            this.pnl_category.Controls.Add(this.button6);
+            this.pnl_category.Controls.Add(this.button3);
+            this.pnl_category.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pnl_category.Location = new System.Drawing.Point(0, 129);
+            this.pnl_category.Name = "pnl_category";
+            this.pnl_category.Size = new System.Drawing.Size(131, 518);
+            this.pnl_category.TabIndex = 4;
             // 
             // button13
             // 
@@ -658,66 +583,142 @@
             this.button13.Text = "Vegetables ";
             this.button13.UseVisualStyleBackColor = true;
             // 
+            // button7
+            // 
+            this.button7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.button7.Location = new System.Drawing.Point(6, 124);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(119, 53);
+            this.button7.TabIndex = 2;
+            this.button7.Text = "Canned Good";
+            this.button7.UseVisualStyleBackColor = true;
+            // 
+            // button6
+            // 
+            this.button6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.button6.Location = new System.Drawing.Point(6, 183);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(119, 53);
+            this.button6.TabIndex = 1;
+            this.button6.Text = "Meat ";
+            this.button6.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.button3.Location = new System.Drawing.Point(6, 6);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(119, 53);
+            this.button3.TabIndex = 0;
+            this.button3.Text = "Fruits ";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // pnl_subCategory
+            // 
+            this.pnl_subCategory.Controls.Add(this.button5);
+            this.pnl_subCategory.Controls.Add(this.button4);
+            this.pnl_subCategory.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pnl_subCategory.Location = new System.Drawing.Point(131, 129);
+            this.pnl_subCategory.Name = "pnl_subCategory";
+            this.pnl_subCategory.Size = new System.Drawing.Size(136, 518);
+            this.pnl_subCategory.TabIndex = 5;
+            // 
+            // button5
+            // 
+            this.button5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.button5.Location = new System.Drawing.Point(6, 47);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(119, 35);
+            this.button5.TabIndex = 2;
+            this.button5.Text = "Fruits";
+            this.button5.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            this.button4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.button4.Location = new System.Drawing.Point(6, 6);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(119, 35);
+            this.button4.TabIndex = 1;
+            this.button4.Text = "Vegitable";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // pnl_subcocategory
+            // 
+            this.pnl_subcocategory.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pnl_subcocategory.Location = new System.Drawing.Point(267, 129);
+            this.pnl_subcocategory.Name = "pnl_subcocategory";
+            this.pnl_subcocategory.Size = new System.Drawing.Size(141, 518);
+            this.pnl_subcocategory.TabIndex = 6;
+            // 
+            // pnl_product
+            // 
+            this.pnl_product.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pnl_product.Location = new System.Drawing.Point(408, 129);
+            this.pnl_product.Name = "pnl_product";
+            this.pnl_product.Size = new System.Drawing.Size(200, 518);
+            this.pnl_product.TabIndex = 7;
+            // 
             // frmPointOfSale
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1300, 720);
-            this.Controls.Add(this.panel11);
-            this.Controls.Add(this.panel10);
-            this.Controls.Add(this.panel9);
-            this.Controls.Add(this.panel8);
-            this.Controls.Add(this.panel4);
-            this.Controls.Add(this.panel3);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.pnl_product);
+            this.Controls.Add(this.pnl_subcocategory);
+            this.Controls.Add(this.pnl_subCategory);
+            this.Controls.Add(this.pnl_category);
+            this.Controls.Add(this.pnl_search);
+            this.Controls.Add(this.pnl_shortCutButton);
+            this.Controls.Add(this.pnl_saleDetail);
+            this.Controls.Add(this.pnl_head);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmPointOfSale";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "POS";
             this.Load += new System.EventHandler(this.frmPointOfSale_Load);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.pnl_head.ResumeLayout(false);
+            this.pnl_head.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            this.panel7.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pb_titleImage)).EndInit();
+            this.pnl_saleDetail.ResumeLayout(false);
+            this.pnl_saleDetail.PerformLayout();
+            this.pnl_paymentDetail.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
-            this.panel6.ResumeLayout(false);
-            this.panel5.ResumeLayout(false);
+            this.pnl_saleButton.ResumeLayout(false);
+            this.pnl_productPurchaseList.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.panel3.ResumeLayout(false);
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
-            this.panel8.ResumeLayout(false);
-            this.panel9.ResumeLayout(false);
+            this.pnl_shortCutButton.ResumeLayout(false);
+            this.pnl_search.ResumeLayout(false);
+            this.pnl_search.PerformLayout();
+            this.pnl_category.ResumeLayout(false);
+            this.pnl_subCategory.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private Panel panel1;
-        private Panel panel2;
-        private Panel panel3;
-        private Panel panel4;
-        private Panel panel5;
-        private Button button8;
-        private Button btn_save;
+        private Panel pnl_head;
+        private Panel pnl_saleDetail;
+        private Panel pnl_shortCutButton;
+        private Panel pnl_search;
+        private Panel pnl_productPurchaseList;
+        private Button btn_search;
+        private Button btn_add;
         private TextBox txt_category;
         private Label label2;
         private Label label4;
-        private Button button9;
+        private Button btn_exit;
         private Label label3;
         private PictureBox pictureBox2;
-        private Label label1;
-        private PictureBox pictureBox1;
+        private Label lbl_title;
+        private PictureBox pb_titleImage;
         private Button button1;
         private Button button12;
         private Button button11;
         private Button button10;
-        private Panel panel6;
+        private Panel pnl_saleButton;
         private TabControl tabControl1;
         private TabPage tabPage1;
         private TabPage tabPage2;
@@ -728,7 +729,7 @@
         private Label label6;
         private TextBox textBox2;
         private Label label5;
-        private Panel panel7;
+        private Panel pnl_paymentDetail;
         private TextBox textBox1;
         private Button button2;
         private ComboBox comboBox1;
@@ -739,15 +740,15 @@
         private DataGridViewTextBoxColumn clm_discount;
         private DataGridViewTextBoxColumn clm_price;
         private DataGridViewButtonColumn clm_remove;
-        private Panel panel8;
+        private Panel pnl_category;
         private Button button13;
         private Button button7;
         private Button button6;
         private Button button3;
-        private Panel panel9;
+        private Panel pnl_subCategory;
         private Button button5;
         private Button button4;
-        private Panel panel10;
-        private Panel panel11;
+        private Panel pnl_subcocategory;
+        private Panel pnl_product;
     }
 }

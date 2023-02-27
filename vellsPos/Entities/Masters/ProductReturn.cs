@@ -156,7 +156,7 @@ namespace vellsPos.Entities.Masters
                 vData = new frmView(dvParam);
             else
                 vData = new frmView(dvParam, idBox, labelBox);
-            vData.Show();
+            vData.ShowDialog();
         }
 
         //public static void showOnViewFormSaleProduct(TextBox labelBox = null, TextBox idBox = null)

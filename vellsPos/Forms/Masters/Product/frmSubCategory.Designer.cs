@@ -75,9 +75,9 @@
             this.lbl_title.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lbl_title.Location = new System.Drawing.Point(12, 11);
             this.lbl_title.Name = "lbl_title";
-            this.lbl_title.Size = new System.Drawing.Size(64, 32);
+            this.lbl_title.Size = new System.Drawing.Size(175, 32);
             this.lbl_title.TabIndex = 5;
-            this.lbl_title.Text = "Title";
+            this.lbl_title.Text = "Sub Category ";
             // 
             // btn_close
             // 
@@ -318,7 +318,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmSubCategory";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FrmForm";
+            this.Text = "Sub Category ";
             this.Load += new System.EventHandler(this.frmSubCategory_Load);
             this.pnl_head.ResumeLayout(false);
             this.pnl_head.PerformLayout();

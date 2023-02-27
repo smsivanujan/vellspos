@@ -42,13 +42,21 @@
             this.btn_barcode = new System.Windows.Forms.Button();
             this.btn_return = new System.Windows.Forms.Button();
             this.btn_productBarcode = new System.Windows.Forms.Button();
+            this.btn_home = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // btndiscount
             // 
-            this.btndiscount.Location = new System.Drawing.Point(3, 12);
+            this.btndiscount.Location = new System.Drawing.Point(26, 412);
             this.btndiscount.Name = "btndiscount";
-            this.btndiscount.Size = new System.Drawing.Size(147, 75);
+            this.btndiscount.Size = new System.Drawing.Size(187, 75);
             this.btndiscount.TabIndex = 0;
             this.btndiscount.Text = "Discount";
             this.btndiscount.UseVisualStyleBackColor = true;
@@ -56,39 +64,42 @@
             // 
             // btn_complain
             // 
-            this.btn_complain.Location = new System.Drawing.Point(156, 12);
+            this.btn_complain.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btn_complain.Location = new System.Drawing.Point(10, 88);
             this.btn_complain.Name = "btn_complain";
             this.btn_complain.Size = new System.Drawing.Size(147, 75);
             this.btn_complain.TabIndex = 1;
             this.btn_complain.Text = "Complain";
-            this.btn_complain.UseVisualStyleBackColor = true;
+            this.btn_complain.UseVisualStyleBackColor = false;
             this.btn_complain.Click += new System.EventHandler(this.btn_complain_Click);
             // 
             // btn_customer
             // 
-            this.btn_customer.Location = new System.Drawing.Point(309, 12);
+            this.btn_customer.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btn_customer.Location = new System.Drawing.Point(165, 24);
             this.btn_customer.Name = "btn_customer";
             this.btn_customer.Size = new System.Drawing.Size(147, 75);
             this.btn_customer.TabIndex = 2;
             this.btn_customer.Text = "Customer";
-            this.btn_customer.UseVisualStyleBackColor = true;
+            this.btn_customer.UseVisualStyleBackColor = false;
             this.btn_customer.Click += new System.EventHandler(this.btn_customer_Click);
             // 
             // btn_loyalityCard
             // 
-            this.btn_loyalityCard.Location = new System.Drawing.Point(462, 12);
+            this.btn_loyalityCard.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btn_loyalityCard.Location = new System.Drawing.Point(165, 105);
             this.btn_loyalityCard.Name = "btn_loyalityCard";
             this.btn_loyalityCard.Size = new System.Drawing.Size(147, 75);
             this.btn_loyalityCard.TabIndex = 3;
             this.btn_loyalityCard.Text = "Loyality card";
-            this.btn_loyalityCard.UseVisualStyleBackColor = true;
+            this.btn_loyalityCard.UseVisualStyleBackColor = false;
             this.btn_loyalityCard.Click += new System.EventHandler(this.btn_loyalityCard_Click);
             // 
             // btn_category
             // 
-            this.btn_category.Location = new System.Drawing.Point(615, 12);
+            this.btn_category.Location = new System.Drawing.Point(26, 7);
             this.btn_category.Name = "btn_category";
-            this.btn_category.Size = new System.Drawing.Size(147, 75);
+            this.btn_category.Size = new System.Drawing.Size(187, 75);
             this.btn_category.TabIndex = 4;
             this.btn_category.Text = "Category";
             this.btn_category.UseVisualStyleBackColor = true;
@@ -96,9 +107,9 @@
             // 
             // btn_subCategory
             // 
-            this.btn_subCategory.Location = new System.Drawing.Point(3, 93);
+            this.btn_subCategory.Location = new System.Drawing.Point(26, 88);
             this.btn_subCategory.Name = "btn_subCategory";
-            this.btn_subCategory.Size = new System.Drawing.Size(147, 75);
+            this.btn_subCategory.Size = new System.Drawing.Size(187, 75);
             this.btn_subCategory.TabIndex = 5;
             this.btn_subCategory.Text = "Sub category";
             this.btn_subCategory.UseVisualStyleBackColor = true;
@@ -106,9 +117,9 @@
             // 
             // btn_subCoCategory
             // 
-            this.btn_subCoCategory.Location = new System.Drawing.Point(156, 93);
+            this.btn_subCoCategory.Location = new System.Drawing.Point(26, 169);
             this.btn_subCoCategory.Name = "btn_subCoCategory";
-            this.btn_subCoCategory.Size = new System.Drawing.Size(147, 75);
+            this.btn_subCoCategory.Size = new System.Drawing.Size(187, 75);
             this.btn_subCoCategory.TabIndex = 6;
             this.btn_subCoCategory.Text = "Sub Co Category";
             this.btn_subCoCategory.UseVisualStyleBackColor = true;
@@ -116,7 +127,7 @@
             // 
             // btn_payout
             // 
-            this.btn_payout.Location = new System.Drawing.Point(309, 93);
+            this.btn_payout.Location = new System.Drawing.Point(12, 24);
             this.btn_payout.Name = "btn_payout";
             this.btn_payout.Size = new System.Drawing.Size(147, 75);
             this.btn_payout.TabIndex = 7;
@@ -126,17 +137,18 @@
             // 
             // btn_user
             // 
-            this.btn_user.Location = new System.Drawing.Point(462, 93);
+            this.btn_user.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btn_user.Location = new System.Drawing.Point(10, 7);
             this.btn_user.Name = "btn_user";
             this.btn_user.Size = new System.Drawing.Size(147, 75);
             this.btn_user.TabIndex = 8;
             this.btn_user.Text = "User";
-            this.btn_user.UseVisualStyleBackColor = true;
+            this.btn_user.UseVisualStyleBackColor = false;
             this.btn_user.Click += new System.EventHandler(this.btn_user_Click);
             // 
             // btn_pos
             // 
-            this.btn_pos.Location = new System.Drawing.Point(12, 394);
+            this.btn_pos.Location = new System.Drawing.Point(22, 444);
             this.btn_pos.Name = "btn_pos";
             this.btn_pos.Size = new System.Drawing.Size(147, 44);
             this.btn_pos.TabIndex = 9;
@@ -146,17 +158,18 @@
             // 
             // btn_product
             // 
-            this.btn_product.Location = new System.Drawing.Point(615, 93);
+            this.btn_product.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btn_product.Location = new System.Drawing.Point(26, 250);
             this.btn_product.Name = "btn_product";
-            this.btn_product.Size = new System.Drawing.Size(147, 75);
+            this.btn_product.Size = new System.Drawing.Size(187, 75);
             this.btn_product.TabIndex = 10;
             this.btn_product.Text = "Product";
-            this.btn_product.UseVisualStyleBackColor = true;
+            this.btn_product.UseVisualStyleBackColor = false;
             this.btn_product.Click += new System.EventHandler(this.btn_product_Click);
             // 
             // btn_barcode
             // 
-            this.btn_barcode.Location = new System.Drawing.Point(165, 394);
+            this.btn_barcode.Location = new System.Drawing.Point(175, 444);
             this.btn_barcode.Name = "btn_barcode";
             this.btn_barcode.Size = new System.Drawing.Size(147, 44);
             this.btn_barcode.TabIndex = 11;
@@ -166,7 +179,7 @@
             // 
             // btn_return
             // 
-            this.btn_return.Location = new System.Drawing.Point(3, 174);
+            this.btn_return.Location = new System.Drawing.Point(12, 105);
             this.btn_return.Name = "btn_return";
             this.btn_return.Size = new System.Drawing.Size(147, 75);
             this.btn_return.TabIndex = 12;
@@ -176,35 +189,84 @@
             // 
             // btn_productBarcode
             // 
-            this.btn_productBarcode.Location = new System.Drawing.Point(156, 174);
+            this.btn_productBarcode.Location = new System.Drawing.Point(26, 331);
             this.btn_productBarcode.Name = "btn_productBarcode";
-            this.btn_productBarcode.Size = new System.Drawing.Size(147, 75);
+            this.btn_productBarcode.Size = new System.Drawing.Size(187, 75);
             this.btn_productBarcode.TabIndex = 13;
             this.btn_productBarcode.Text = "Product Barcode";
             this.btn_productBarcode.UseVisualStyleBackColor = true;
             this.btn_productBarcode.Click += new System.EventHandler(this.btn_productBarcode_Click);
             // 
+            // btn_home
+            // 
+            this.btn_home.Location = new System.Drawing.Point(22, 394);
+            this.btn_home.Name = "btn_home";
+            this.btn_home.Size = new System.Drawing.Size(147, 44);
+            this.btn_home.TabIndex = 14;
+            this.btn_home.Text = "Home";
+            this.btn_home.UseVisualStyleBackColor = true;
+            this.btn_home.Click += new System.EventHandler(this.btn_home_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.btndiscount);
+            this.panel1.Controls.Add(this.btn_productBarcode);
+            this.panel1.Controls.Add(this.btn_product);
+            this.panel1.Controls.Add(this.btn_subCoCategory);
+            this.panel1.Controls.Add(this.btn_subCategory);
+            this.panel1.Controls.Add(this.btn_category);
+            this.panel1.Location = new System.Drawing.Point(557, 5);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(231, 508);
+            this.panel1.TabIndex = 16;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.btn_return);
+            this.panel2.Controls.Add(this.btn_payout);
+            this.panel2.Controls.Add(this.btn_loyalityCard);
+            this.panel2.Controls.Add(this.btn_customer);
+            this.panel2.Location = new System.Drawing.Point(207, 27);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(322, 211);
+            this.panel2.TabIndex = 17;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.btn_user);
+            this.panel3.Controls.Add(this.btn_complain);
+            this.panel3.Location = new System.Drawing.Point(12, 27);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(175, 185);
+            this.panel3.TabIndex = 18;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Location = new System.Drawing.Point(59, 255);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(439, 122);
+            this.groupBox1.TabIndex = 19;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "groupBox1";
+            // 
             // frmTestForms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.btn_productBarcode);
-            this.Controls.Add(this.btn_return);
+            this.ClientSize = new System.Drawing.Size(800, 580);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.btn_home);
             this.Controls.Add(this.btn_barcode);
-            this.Controls.Add(this.btn_product);
             this.Controls.Add(this.btn_pos);
-            this.Controls.Add(this.btn_user);
-            this.Controls.Add(this.btn_payout);
-            this.Controls.Add(this.btn_subCoCategory);
-            this.Controls.Add(this.btn_subCategory);
-            this.Controls.Add(this.btn_category);
-            this.Controls.Add(this.btn_loyalityCard);
-            this.Controls.Add(this.btn_customer);
-            this.Controls.Add(this.btn_complain);
-            this.Controls.Add(this.btndiscount);
             this.Name = "frmTestForms";
             this.Text = "frmTestForms";
+            this.Load += new System.EventHandler(this.frmTestForms_Load);
+            this.panel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -225,5 +287,10 @@
         private Button btn_barcode;
         private Button btn_return;
         private Button btn_productBarcode;
+        private Button btn_home;
+        private Panel panel1;
+        private Panel panel2;
+        private Panel panel3;
+        private GroupBox groupBox1;
     }
 }

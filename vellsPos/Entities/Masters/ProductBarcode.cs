@@ -166,7 +166,11 @@ namespace vellsPos.Entities.Masters
                 vData = new frmView(dvParam);
             else
                 vData = new frmView(dvParam, idBox, labelBox);
-            vData.Show();
+            vData.ShowDialog();
+
+            //frmHome g = new frmHome();
+            //g.AddNewTab(vData);
+            
         }
 
         public static ProductBarcode getOneProductBarcode(int id)

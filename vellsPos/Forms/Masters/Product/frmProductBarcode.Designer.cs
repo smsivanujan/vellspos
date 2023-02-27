@@ -350,7 +350,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmProductBarcode";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FrmForm";
+            this.Text = "Product Barcode ";
             this.Load += new System.EventHandler(this.frmProductBarcode_Load);
             this.pnl_head.ResumeLayout(false);
             this.pnl_head.PerformLayout();

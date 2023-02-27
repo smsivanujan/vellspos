@@ -6,6 +6,15 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
+    <SupportedOSPlatformVersion>7.0</SupportedOSPlatformVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <Optimize>True</Optimize>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <Optimize>False</Optimize>
   </PropertyGroup>
 
   <ItemGroup>
@@ -16,7 +25,10 @@
 
   <ItemGroup>
     <None Remove="Entities\Masters\Authentication.cs~RF446e7b7.TMP" />
+    <None Remove="Forms\Layouts\2zab3h0v.ey1~" />
+    <None Remove="Forms\Layouts\frmHome.Designer.cs~RF718b23.TMP" />
     <None Remove="Forms\Masters\Sale\fReturn.Designer.cs~RF2c42dc3.TMP" />
+    <None Remove="Forms\Masters\User\frmUserRegister.Designer.cs~RF606a5f.TMP" />
   </ItemGroup>
 
   <ItemGroup>
@@ -29,6 +41,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Forms\Layouts\frmViewButton.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\Masters\Complains\frmComplain.cs">
       <SubType>Form</SubType>
     </Compile>

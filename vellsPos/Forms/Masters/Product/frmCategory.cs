@@ -22,9 +22,14 @@ namespace vellsPos.Forms.Layouts
         String directoryPath="";
         string rootPath = @"c:\vellspos";
 
+        private FormMovable formMove;
+
         public frmCategory()
         {
             InitializeComponent();
+
+            formMove = new FormMovable(this);
+            formMove.SetMovable(pnl_head, lbl_title);
         }
 
         private void frmCategory_Load(object sender, EventArgs e)

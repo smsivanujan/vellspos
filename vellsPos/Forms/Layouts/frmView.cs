@@ -1,7 +1,9 @@
 ﻿using MySql.Data.MySqlClient;
 using System.Data;
 using System.Drawing;
+using System.Runtime.CompilerServices;
 using vellsPos.Entities.Layouts;
+using vellsPos.Entities.Masters;
 using vellsPos.Services;
 
 namespace vellsPos.Forms.Layouts
@@ -18,6 +20,11 @@ namespace vellsPos.Forms.Layouts
         private bool isThisForSelection = false;
 
         private FormMovable formMove ;
+
+        public frmView()
+        {
+            InitializeComponent();
+        }
 
         public frmView(DataViewParam dvParam)
         {
@@ -139,14 +146,14 @@ namespace vellsPos.Forms.Layouts
 
         private void populateGrid()
         {
-            //try
-            //{
+            try
+            {
                 BindingSource bsource = new BindingSource();
 
 
                 string sql = dvParam.SelectSql + dvParam.FromSql + dvParam.GroupSql;
 
-            Console.WriteLine(sql);
+                Console.WriteLine(sql);
 
                 List<QueryParameter> qpList = new List<QueryParameter>();
                 for (int x = 0; x < dvParam.SearchParamCount; x++)
@@ -172,7 +179,7 @@ namespace vellsPos.Forms.Layouts
                 //updating texts on paging box
                 int ul = 0;
                 string countSql = "SELECT COUNT(*) as tc " + dvParam.FromSql;
-            Console.WriteLine(countSql);
+                Console.WriteLine(countSql);
                 QueryCommand totalQCommand = new QueryCommand(countSql, qpList);
                 string cs = DBTransactionService.getScalerData(totalQCommand);
                 totalData = int.Parse(cs);
@@ -184,11 +191,11 @@ namespace vellsPos.Forms.Layouts
 
                 lbl_sortStatus.Text = " Showing " + (currentLowerLimit + 1) + " to " + ul + " of " + totalData;
                 if (!String.IsNullOrEmpty(txt_search.Text)) lbl_sortStatus.Text = "Total Results : " + totalData;
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message);
-            //}
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         //public void cellClick(int id)
@@ -226,6 +233,7 @@ namespace vellsPos.Forms.Layouts
         //        MessageBox.Show("No image", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         //    }
         //}
+        
         private void dataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dvParam.ShowImage == "show")
@@ -276,7 +284,7 @@ namespace vellsPos.Forms.Layouts
                     Type thisType = dvParam.ViewForm.GetType();
                     Form instance = (Form)Activator.CreateInstance(thisType);
                     instance.Tag = uid;
-                    instance.Show();
+                    instance.ShowDialog();
                 }
                 else if (!isThisForSelection)
                 {
@@ -327,7 +335,7 @@ namespace vellsPos.Forms.Layouts
         {
             Type thisType = dvParam.AddForm.GetType();
             Form instance = (Form)Activator.CreateInstance(thisType);
-            instance.Show();
+            instance.ShowDialog();
         }
     }
 }

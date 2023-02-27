@@ -1,10 +1,17 @@
-﻿namespace vellsPos.Forms.Layouts
+﻿using vellsPos.Entities.Layouts;
+
+namespace vellsPos.Forms.Layouts
 {
     public partial class frmTestBarcode : Form
     {
+        //private FormMovable formMove;
+
         public frmTestBarcode()
         {
             InitializeComponent();
+
+            //formMove = new FormMovable(this);
+            //formMove.SetMovable(pnl_head, lbl_title);
         }
 
         private void btn_encode_Click(object sender, EventArgs e)

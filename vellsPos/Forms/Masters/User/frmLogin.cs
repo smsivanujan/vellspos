@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using vellsPos.Entities.Layouts;
 using vellsPos.Forms.Layouts;
 using vellsPos.Services;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
@@ -16,9 +17,15 @@ namespace vellsPos.Forms.Masters.user
 {
     public partial class frmLogin : Form
     {
+        //private FormMovable formMove;
+
         public frmLogin()
         {
             InitializeComponent();
+
+            //formMove = new FormMovable(this);
+            //formMove.SetMovable(pnl_head, lbl_title);
+
             txt_username.Focus();
 
         }
@@ -80,7 +87,7 @@ namespace vellsPos.Forms.Masters.user
                 frmHome home = new frmHome();
                 this.Hide();
                 Session.uname = userName;
-                home.Show();
+                home.ShowDialog();
             }
             else
             {

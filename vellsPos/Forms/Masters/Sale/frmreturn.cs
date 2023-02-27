@@ -13,6 +13,7 @@ using vellsPos.Services;
 using Microsoft.VisualBasic;
 using vellsPos.Entities.Masters;
 using System.Transactions;
+using vellsPos.Entities.Layouts;
 
 namespace vellsPos.Forms.Layouts
 {
@@ -22,9 +23,14 @@ namespace vellsPos.Forms.Layouts
         ReturnResult result;
         String msgStatus;
 
+        private FormMovable formMove;
+
         public frmReturn()
         {
             InitializeComponent();
+
+            formMove = new FormMovable(this);
+            formMove.SetMovable(pnl_head, lbl_title);
         }
 
         private void frmReturn_Load(object sender, EventArgs e)

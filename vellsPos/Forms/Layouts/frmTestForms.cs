@@ -7,15 +7,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using vellsPos.Entities.Layouts;
 using vellsPos.Entities.Masters;
 
 namespace vellsPos.Forms.Layouts
 {
     public partial class frmTestForms : Form
     {
+        //private FormMovable formMove;
+
         public frmTestForms()
         {
             InitializeComponent();
+
+            //formMove = new FormMovable(this);
+            //formMove.SetMovable(pnl_head, lbl_title);
         }
 
         private void btndiscount_Click(object sender, EventArgs e)
@@ -84,7 +90,7 @@ namespace vellsPos.Forms.Layouts
         private void btn_pos_Click(object sender, EventArgs e)
         {
             frmPointOfSale frmPointOfSale = new frmPointOfSale();
-            frmPointOfSale.Show();
+            frmPointOfSale.ShowDialog();
         }
 
         private void btn_product_Click(object sender, EventArgs e)
@@ -97,7 +103,7 @@ namespace vellsPos.Forms.Layouts
         private void btn_barcode_Click(object sender, EventArgs e)
         {
             frmTestBarcode ftb = new frmTestBarcode();
-            ftb.Show();
+            ftb.ShowDialog();
         }
 
         private void btn_return_Click(object sender, EventArgs e)
@@ -112,6 +118,23 @@ namespace vellsPos.Forms.Layouts
             ProductBarcode.showOnViewForm();
             //frmProductBarcode fpb = new frmProductBarcode();
             //fpb.Show();
+        }
+
+        private void btn_home_Click(object sender, EventArgs e)
+        {
+            frmHome fhome = new frmHome();
+            fhome.ShowDialog();
+        }
+
+        private void btn_display_Click(object sender, EventArgs e)
+        {
+            //frmDisplayView fd = new frmDisplayView();
+            //fd.Show();
+        }
+
+        private void frmTestForms_Load(object sender, EventArgs e)
+        {
+            btn_category.Hide();
         }
     }
 }

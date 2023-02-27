@@ -164,7 +164,7 @@ namespace vellsPos.Entities.Masters
                 vData = new frmView(dvParam);
             else
                 vData = new frmView(dvParam, idBox, labelBox);
-            vData.Show();
+            vData.ShowDialog();
         }
 
         public static Discount getOneDiscount(int id)

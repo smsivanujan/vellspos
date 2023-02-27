@@ -7,14 +7,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using vellsPos.Entities.Layouts;
 
 namespace vellsPos.Forms.Layouts
 {
-    public partial class FrmForm : Form
+    public partial class frmForm : Form
     {
-        public FrmForm()
+        private FormMovable formMove;
+
+        public frmForm()
         {
             InitializeComponent();
+
+            formMove = new FormMovable(this);
+            formMove.SetMovable(pnl_head, lbl_title);
         }
 
         private void btn_close_Click(object sender, EventArgs e)

@@ -4,7 +4,7 @@
     <Compile Update="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\Layouts\FrmForm.cs">
+    <Compile Update="Forms\Layouts\frmForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\Layouts\frmHome.cs">

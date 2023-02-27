@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Transactions;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using vellsPos.Entities.Layouts;
 using vellsPos.Entities.Masters;
 using vellsPos.Services;
 
@@ -20,9 +21,14 @@ namespace vellsPos.Forms.Layouts
         ReturnResult result;
         String msgStatus;
 
+        private FormMovable formMove;
+
         public frmDiscount()
         {
             InitializeComponent();
+
+            formMove = new FormMovable(this);
+            formMove.SetMovable(pnl_head, lbl_title);
         }
 
         private void frmDiscount_Load(object sender, EventArgs e)

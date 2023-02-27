@@ -38,6 +38,7 @@
             this.btn_cancel = new System.Windows.Forms.Button();
             this.pnl_body = new System.Windows.Forms.Panel();
             this.pnl_container = new System.Windows.Forms.Panel();
+            this.txt_imagePath = new System.Windows.Forms.TextBox();
             this.txt_id = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.lbl_imageStatus = new System.Windows.Forms.Label();
@@ -48,7 +49,6 @@
             this.rtxt_description = new System.Windows.Forms.RichTextBox();
             this.txt_category = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.txt_imagePath = new System.Windows.Forms.TextBox();
             this.pnl_head.SuspendLayout();
             this.pnl_root.SuspendLayout();
             this.pnl_body.SuspendLayout();
@@ -73,9 +73,9 @@
             this.lbl_title.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lbl_title.Location = new System.Drawing.Point(12, 11);
             this.lbl_title.Name = "lbl_title";
-            this.lbl_title.Size = new System.Drawing.Size(64, 32);
+            this.lbl_title.Size = new System.Drawing.Size(118, 32);
             this.lbl_title.TabIndex = 5;
-            this.lbl_title.Text = "Title";
+            this.lbl_title.Text = "Category";
             // 
             // btn_close
             // 
@@ -184,6 +184,13 @@
             this.pnl_container.Size = new System.Drawing.Size(403, 464);
             this.pnl_container.TabIndex = 0;
             // 
+            // txt_imagePath
+            // 
+            this.txt_imagePath.Location = new System.Drawing.Point(200, 343);
+            this.txt_imagePath.Name = "txt_imagePath";
+            this.txt_imagePath.Size = new System.Drawing.Size(192, 23);
+            this.txt_imagePath.TabIndex = 90;
+            // 
             // txt_id
             // 
             this.txt_id.Location = new System.Drawing.Point(241, 51);
@@ -278,13 +285,6 @@
             this.label2.TabIndex = 28;
             this.label2.Text = "Category";
             // 
-            // txt_imagePath
-            // 
-            this.txt_imagePath.Location = new System.Drawing.Point(200, 343);
-            this.txt_imagePath.Name = "txt_imagePath";
-            this.txt_imagePath.Size = new System.Drawing.Size(192, 23);
-            this.txt_imagePath.TabIndex = 90;
-            // 
             // frmCategory
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -295,7 +295,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmCategory";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FrmForm";
+            this.Text = "Category   ";
             this.Load += new System.EventHandler(this.frmCategory_Load);
             this.pnl_head.ResumeLayout(false);
             this.pnl_head.PerformLayout();

@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using vellsPos.Forms.Layouts;
 using vellsPos.Services;
 
@@ -192,7 +193,7 @@ namespace vellsPos.Entities.Masters
             return result;
         }
 
-        public static void showOnViewForm(TextBox labelBox = null, TextBox idBox = null)
+        public static void showOnViewForm()
         {
             DataViewParam dvParam = new DataViewParam();
             dvParam.Title = "Products";
@@ -226,12 +227,30 @@ namespace vellsPos.Entities.Masters
             dvParam.ViewForm = new frmProduct();
 
             frmView vData = null;
+            TextBox labelBox = null;
+            TextBox idBox = null;
 
             if (idBox == null && labelBox == null)
                 vData = new frmView(dvParam);
             else
                 vData = new frmView(dvParam, idBox, labelBox);
-            vData.Show();
+            vData.ShowDialog();
+
+            //frmHome v = new frmHome();
+            //v.AddNewTab(vData);
+
+            //frmHome vData = null;
+
+            //if (idBox == null && labelBox == null)
+            //    vData = new frmHome(dvParam);
+            //else
+            //    vData = new frmHome(dvParam, idBox, labelBox);
+            //vData.Show();
+
+
+
+            //All PASs TO frmview
+
         }
 
         public static void showOnViewFormProductWithoutBarcode(TextBox labelBox = null, TextBox idBox = null)
@@ -263,14 +282,13 @@ namespace vellsPos.Entities.Masters
             dvParam.AddForm = new frmProduct();
             dvParam.ViewForm = new frmProduct();
 
-
             frmView vData = null;
 
             if (idBox == null && labelBox == null)
                 vData = new frmView(dvParam);
             else
                 vData = new frmView(dvParam, idBox, labelBox);
-            vData.Show();
+            vData.ShowDialog();
         }
 
         public static Product getOneProduct(int id)

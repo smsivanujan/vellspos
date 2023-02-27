@@ -21,9 +21,14 @@ namespace vellsPos.Forms.Layouts
         ReturnResult result;
         String msgStatus;
 
+        private FormMovable formMove;
+
         public frmUserRegister()
         {
             InitializeComponent();
+
+            formMove = new FormMovable(this);
+            formMove.SetMovable(pnl_head, lbl_title);
         }
 
         private void frmUserRegister_Load(object sender, EventArgs e)

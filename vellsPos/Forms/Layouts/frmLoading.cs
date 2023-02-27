@@ -13,9 +13,14 @@ namespace vellsPos.Forms.Layouts
 {
     public partial class frmLoading : Form
     {
+        //private FormMovable formMove;
+
         public frmLoading()
         {
             InitializeComponent();
+
+            //formMove = new FormMovable(this);
+            //formMove.SetMovable(pnl_head, lbl_title);
 
             timer1.Interval = 10000; //10 seconds
             timer1.Start();
@@ -25,7 +30,7 @@ namespace vellsPos.Forms.Layouts
         {
             timer1.Stop();
             frmLogin fh = new frmLogin();
-            fh.Show();
+            fh.ShowDialog();
             this.Hide();
         }
 

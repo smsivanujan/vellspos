@@ -25,9 +25,14 @@ namespace vellsPos.Forms.Layouts
         String directoryPath="";
         string rootPath = @"c:\vellspos";
 
+        private FormMovable formMove;
+
         public frmSubCoCategory()
         {
             InitializeComponent();
+
+            formMove = new FormMovable(this);
+            formMove.SetMovable(pnl_head, lbl_title);
         }
 
         private void frmSubCoCategory_Load(object sender, EventArgs e)
@@ -287,6 +292,11 @@ namespace vellsPos.Forms.Layouts
             //    comboBox4.Items.Add("None");
             //    comboBox4.SelectedIndex = comboBox4.Items.Count - 1;
             //}
+        }
+
+        private void pnl_container_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

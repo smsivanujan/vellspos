@@ -1,6 +1,6 @@
 ﻿namespace vellsPos.Forms.Layouts
 {
-    partial class FrmForm
+    partial class frmForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmForm));
             this.pnl_head = new System.Windows.Forms.Panel();
             this.lbl_title = new System.Windows.Forms.Label();
             this.btn_close = new System.Windows.Forms.Button();

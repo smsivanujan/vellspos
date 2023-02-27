@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using vellsPos.Entities.Layouts;
 using vellsPos.Entities.Masters;
 using vellsPos.Services;
 
@@ -18,9 +19,14 @@ namespace vellsPos.Forms.Layouts
         ReturnResult result;
         String msgStatus;
 
+        private FormMovable formMove;
+
         public frmComplain()
         {
             InitializeComponent();
+
+            formMove = new FormMovable(this);
+            formMove.SetMovable(pnl_head, lbl_title);
         }
 
         private void frmComplain_Load(object sender, EventArgs e)

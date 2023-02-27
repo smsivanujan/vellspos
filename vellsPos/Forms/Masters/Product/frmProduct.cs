@@ -15,6 +15,8 @@ namespace vellsPos.Forms.Layouts
 {
     public partial class frmProduct : Form
     {
+        private List<ListItem> categories = new List<ListItem>();
+        private List<ListItem> subCategories = new List<ListItem>();
         private List<ListItem> subCoCategories = new List<ListItem>();
         private string uid;
         ReturnResult result;
@@ -22,9 +24,14 @@ namespace vellsPos.Forms.Layouts
         String directoryPath="";
         string rootPath = @"c:\vellspos";
 
+        private FormMovable formMove;
+
         public frmProduct()
         {
             InitializeComponent();
+
+            formMove = new FormMovable(this);
+            formMove.SetMovable(pnl_head, lbl_title);
         }
 
         private void frmProduct_Load(object sender, EventArgs e)
@@ -32,12 +39,12 @@ namespace vellsPos.Forms.Layouts
             txt_imagePath.Visible = false;
             lbl_imageStatus.Visible = false;
 
-            String subCoCategoryQuery = "SELECT id as value,sub_co_category_name as text FROM sub_co_categories";
-            subCoCategories = DBTransactionService.getDataAsListItemsAndFillComboBox(subCoCategoryQuery, cmb_subCoCategory);
+            String categoryQuery = "SELECT id as value,category_name as text FROM categories";
+            categories = DBTransactionService.getDataAsListItemsAndFillComboBox(categoryQuery, cmb_category);
 
-            if (subCoCategories.Count > 0)
+            if (categories.Count > 0)
             {
-                cmb_subCoCategory.SelectedIndex = 0;
+                cmb_category.SelectedIndex = 0;
             }
 
             if (this.Tag is null)
@@ -165,16 +172,26 @@ namespace vellsPos.Forms.Layouts
             }
             else
             {
-                
-                int subCoategoryId = 0;
+
+                int categoryId = 0; int subCategoryId = 0;  int subCocategoryId = 0;
+
+                if (cmb_category.SelectedIndex >= 0)
+                {
+                    categoryId = int.Parse(categories[cmb_subCoCategory.SelectedIndex].Value);
+                }
+
+                if (cmb_subCategory.SelectedIndex >= 0)
+                {
+                    subCategoryId = int.Parse(subCategories[cmb_subCategory.SelectedIndex].Value);
+                }
 
                 if (cmb_subCoCategory.SelectedIndex >= 0)
                 {
-                    subCoategoryId = int.Parse(subCoCategories[cmb_subCoCategory.SelectedIndex].Value);
+                    subCocategoryId = int.Parse(subCoCategories[cmb_subCoCategory.SelectedIndex].Value);
                 }
 
                 SubCoCategory subCoCategory = new SubCoCategory();
-                subCoCategory.Id = subCoategoryId;
+                subCoCategory.Id = subCocategoryId;
 
                 User user = new User();
                 user.Id = 1;
@@ -324,6 +341,38 @@ namespace vellsPos.Forms.Layouts
         private void statusStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
 
+        }
+
+        private void cmb_Category_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            String categoryID = "Select id from categories where category_name='" + cmb_category.Text + "' ";
+            String cid = DBTransactionService.getScalerData(categoryID);
+
+            String subCategoryQuery = "SELECT sc.id as value, sc.sub_category_name as text" +
+                " FROM sub_categories sc" +
+                " LEFT JOIN categories c ON sc.category_id = c.id " +
+                " WHERE sc.category_id = '" + cid + "' ";
+            subCategories = DBTransactionService.getDataAsListItemsAndFillComboBox(subCategoryQuery, cmb_subCategory);
+            if (subCategories.Count > 0)
+            {
+                cmb_subCategory.SelectedIndex = 0;
+            }
+        }
+
+        private void cmb_subCategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            String subCategoryID = "Select id from sub_categories where sub_category_name='" + cmb_subCategory.Text + "' ";
+            String subCid = DBTransactionService.getScalerData(subCategoryID);
+
+            String subCoCategoryQuery = "SELECT scc.id as value, scc.sub_co_category_name as text" +
+                " FROM sub_co_categories scc" +
+                " LEFT JOIN categories c ON scc.sub_category_id = c.id " +
+                " WHERE scc.sub_category_id = '" + subCid + "' ";
+            subCategories = DBTransactionService.getDataAsListItemsAndFillComboBox(subCoCategoryQuery, cmb_subCoCategory);
+            if (subCategories.Count > 0)
+            {
+                cmb_subCoCategory.SelectedIndex = 0;
+            }
         }
     }
 }

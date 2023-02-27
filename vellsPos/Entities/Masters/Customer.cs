@@ -202,7 +202,7 @@ namespace vellsPos.Entities.Masters
                 vData = new frmView(dvParam);
             else
                 vData = new frmView(dvParam, idBox, labelBox);
-            vData.Show();
+            vData.ShowDialog();
         }
 
         public static void showOnViewFormCustomer(TextBox labelBox = null, TextBox idBox = null)
@@ -241,7 +241,7 @@ namespace vellsPos.Entities.Masters
                 vData = new frmView(dvParam);
             else
                 vData = new frmView(dvParam, idBox, labelBox);
-            vData.Show();
+            vData.ShowDialog();
         }
         public static Customer getOneCustomer(int id)
         {

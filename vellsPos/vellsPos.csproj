@@ -28,6 +28,8 @@
     <None Remove="Forms\Layouts\2zab3h0v.ey1~" />
     <None Remove="Forms\Layouts\frmHome.Designer.cs~RF718b23.TMP" />
     <None Remove="Forms\Masters\Sale\fReturn.Designer.cs~RF2c42dc3.TMP" />
+    <None Remove="Forms\Masters\Setting\frmActivationInfo.resx~RFd0b3ea.TMP" />
+    <None Remove="Forms\Masters\User\frmUserRegister.cs~RF12e2d9a.TMP" />
     <None Remove="Forms\Masters\User\frmUserRegister.Designer.cs~RF606a5f.TMP" />
   </ItemGroup>
 
@@ -37,20 +39,30 @@
 
   <ItemGroup>
     <PackageReference Include="MySql.Data" Version="8.0.32" />
+    <PackageReference Include="System.Management" Version="7.0.0" />
     <PackageReference Include="Zen.Barcode.Rendering.Framework" Version="3.1.10729.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="FoxLearn.License">
+      <HintPath>C:\Users\smsiv\Desktop\FoxLearn.License.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <ItemGroup>
     <Compile Update="Forms\Layouts\frmViewButton.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\Masters\Complains\frmComplain.cs">
+    <Compile Update="Forms\Masters\Complain\frmComplain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\Masters\Customer\frmCustomer.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\Masters\Customer\frmLoyalityCard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Masters\Drawer\frmDrawer.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\Masters\Payment\frmPayout.cs">
@@ -75,6 +87,12 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\Masters\Sale\frmReturn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Masters\Setting\frmActivationInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Masters\Setting\frmSetting.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\Masters\User\frmUserRegister.cs">

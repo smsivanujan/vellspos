@@ -34,6 +34,9 @@
             this.btn_close = new System.Windows.Forms.Button();
             this.pnl_root = new System.Windows.Forms.Panel();
             this.pnl_body = new System.Windows.Forms.Panel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btn_loginLog = new System.Windows.Forms.Button();
+            this.btn_activityLog = new System.Windows.Forms.Button();
             this.gb_crm = new System.Windows.Forms.GroupBox();
             this.btn_loyalityCard = new System.Windows.Forms.Button();
             this.btn_customer = new System.Windows.Forms.Button();
@@ -45,6 +48,7 @@
             this.btn_category = new System.Windows.Forms.Button();
             this.pnl_head.SuspendLayout();
             this.pnl_body.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.gb_crm.SuspendLayout();
             this.gb_product.SuspendLayout();
             this.SuspendLayout();
@@ -88,20 +92,68 @@
             // 
             this.pnl_root.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.pnl_root.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnl_root.Location = new System.Drawing.Point(0, 387);
+            this.pnl_root.Location = new System.Drawing.Point(0, 514);
             this.pnl_root.Name = "pnl_root";
             this.pnl_root.Size = new System.Drawing.Size(710, 53);
             this.pnl_root.TabIndex = 1;
             // 
             // pnl_body
             // 
+            this.pnl_body.Controls.Add(this.groupBox1);
             this.pnl_body.Controls.Add(this.gb_crm);
             this.pnl_body.Controls.Add(this.gb_product);
             this.pnl_body.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnl_body.Location = new System.Drawing.Point(0, 53);
             this.pnl_body.Name = "pnl_body";
-            this.pnl_body.Size = new System.Drawing.Size(710, 334);
+            this.pnl_body.Size = new System.Drawing.Size(710, 461);
             this.pnl_body.TabIndex = 2;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.btn_loginLog);
+            this.groupBox1.Controls.Add(this.btn_activityLog);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.groupBox1.Location = new System.Drawing.Point(0, 323);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(710, 120);
+            this.groupBox1.TabIndex = 22;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Logs";
+            // 
+            // btn_loginLog
+            // 
+            this.btn_loginLog.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.btn_loginLog.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_loginLog.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_loginLog.Image = ((System.Drawing.Image)(resources.GetObject("btn_loginLog.Image")));
+            this.btn_loginLog.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_loginLog.Location = new System.Drawing.Point(231, 22);
+            this.btn_loginLog.Name = "btn_loginLog";
+            this.btn_loginLog.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btn_loginLog.Size = new System.Drawing.Size(214, 75);
+            this.btn_loginLog.TabIndex = 14;
+            this.btn_loginLog.Text = "Login Log";
+            this.btn_loginLog.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_loginLog.UseVisualStyleBackColor = false;
+            this.btn_loginLog.Click += new System.EventHandler(this.btn_loginLog_Click);
+            // 
+            // btn_activityLog
+            // 
+            this.btn_activityLog.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.btn_activityLog.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_activityLog.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_activityLog.Image = ((System.Drawing.Image)(resources.GetObject("btn_activityLog.Image")));
+            this.btn_activityLog.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_activityLog.Location = new System.Drawing.Point(6, 22);
+            this.btn_activityLog.Name = "btn_activityLog";
+            this.btn_activityLog.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btn_activityLog.Size = new System.Drawing.Size(214, 75);
+            this.btn_activityLog.TabIndex = 13;
+            this.btn_activityLog.Text = "Activity log";
+            this.btn_activityLog.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_activityLog.UseVisualStyleBackColor = false;
+            this.btn_activityLog.Click += new System.EventHandler(this.btn_activityLog_Click);
             // 
             // gb_crm
             // 
@@ -120,7 +172,7 @@
             // 
             this.btn_loyalityCard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.btn_loyalityCard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_loyalityCard.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_loyalityCard.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_loyalityCard.Image = ((System.Drawing.Image)(resources.GetObject("btn_loyalityCard.Image")));
             this.btn_loyalityCard.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_loyalityCard.Location = new System.Drawing.Point(231, 22);
@@ -137,7 +189,7 @@
             // 
             this.btn_customer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.btn_customer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_customer.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_customer.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_customer.Image = ((System.Drawing.Image)(resources.GetObject("btn_customer.Image")));
             this.btn_customer.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_customer.Location = new System.Drawing.Point(6, 22);
@@ -164,13 +216,13 @@
             this.gb_product.Size = new System.Drawing.Size(710, 203);
             this.gb_product.TabIndex = 20;
             this.gb_product.TabStop = false;
-            this.gb_product.Text = "Product Group";
+            this.gb_product.Text = "Products";
             // 
             // btn_subCoCategory
             // 
             this.btn_subCoCategory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.btn_subCoCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_subCoCategory.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_subCoCategory.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_subCoCategory.Image = ((System.Drawing.Image)(resources.GetObject("btn_subCoCategory.Image")));
             this.btn_subCoCategory.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_subCoCategory.Location = new System.Drawing.Point(456, 22);
@@ -187,7 +239,7 @@
             // 
             this.btn_productBarcode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.btn_productBarcode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_productBarcode.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_productBarcode.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_productBarcode.Image = ((System.Drawing.Image)(resources.GetObject("btn_productBarcode.Image")));
             this.btn_productBarcode.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_productBarcode.Location = new System.Drawing.Point(231, 113);
@@ -195,7 +247,7 @@
             this.btn_productBarcode.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.btn_productBarcode.Size = new System.Drawing.Size(214, 75);
             this.btn_productBarcode.TabIndex = 16;
-            this.btn_productBarcode.Text = "Product Barcode";
+            this.btn_productBarcode.Text = "Barcode";
             this.btn_productBarcode.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btn_productBarcode.UseVisualStyleBackColor = false;
             this.btn_productBarcode.Click += new System.EventHandler(this.btn_productBarcode_Click);
@@ -204,7 +256,7 @@
             // 
             this.btn_product.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.btn_product.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_product.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_product.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_product.Image = ((System.Drawing.Image)(resources.GetObject("btn_product.Image")));
             this.btn_product.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_product.Location = new System.Drawing.Point(6, 113);
@@ -221,7 +273,7 @@
             // 
             this.btn_subCategory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.btn_subCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_subCategory.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_subCategory.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_subCategory.Image = ((System.Drawing.Image)(resources.GetObject("btn_subCategory.Image")));
             this.btn_subCategory.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_subCategory.Location = new System.Drawing.Point(231, 22);
@@ -238,7 +290,7 @@
             // 
             this.btn_category.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.btn_category.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_category.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_category.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_category.Image = ((System.Drawing.Image)(resources.GetObject("btn_category.Image")));
             this.btn_category.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_category.Location = new System.Drawing.Point(6, 22);
@@ -254,7 +306,7 @@
             // frmViewButton
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(710, 440);
+            this.ClientSize = new System.Drawing.Size(710, 567);
             this.ControlBox = false;
             this.Controls.Add(this.pnl_body);
             this.Controls.Add(this.pnl_root);
@@ -267,6 +319,7 @@
             this.pnl_head.ResumeLayout(false);
             this.pnl_head.PerformLayout();
             this.pnl_body.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
             this.gb_crm.ResumeLayout(false);
             this.gb_product.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -289,5 +342,8 @@
         private Button btn_product;
         private Button btn_subCategory;
         private Button btn_category;
+        private GroupBox groupBox1;
+        private Button btn_loginLog;
+        private Button btn_activityLog;
     }
 }

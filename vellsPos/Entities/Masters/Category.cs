@@ -179,5 +179,81 @@ namespace vellsPos.Entities.Masters
             }
             return category;
         }
+
+        //public List<Category> getcategories(int id, string data)
+        //{
+        //    MySqlConnection connection = DBTransactionService.conn;
+        //    MySqlCommand cmd = null;
+        //    MySqlDataReader mdr = null;
+
+        //    List<Category> list = new List<Category>();
+        //    try
+        //    {
+        //        string sql = "SELECT " +
+        //        "sp.id as id, " +
+        //        "sp.name as name, " +
+        //        "esp.amount as amount " +
+        //        "FROM emp_salary_part esp " +
+        //        "LEFT JOIN salary_part sp on esp.salary_part_id=sp.id  " +
+        //        "WHERE esp.employee_id='" + id + "' AND  sp.type='" + data + "' ";
+        //        connection.Close();
+        //        connection.Open();
+        //        cmd = new MySqlCommand(sql, connection);
+        //        mdr = cmd.ExecuteReader();
+
+        //        while (mdr.Read())
+        //        {
+        //            SalaryPart sp = new SalaryPart();
+        //            EmployeeSalaryPart es = new EmployeeSalaryPart();
+        //            sp.Name = mdr.GetString("name");
+        //            sp.Id = mdr.GetInt32("id");
+        //            es.SalaryPart = sp;
+        //            es.Amount = mdr.GetDecimal("amount");
+        //            list.Add(es);
+        //        }
+        //        connection.Close();
+        //        mdr.Close();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine(ex.Message.ToString());
+        //    }
+        //    finally
+        //    {
+        //        connection.Close();
+        //        mdr.Close();
+        //    }
+        //    return list;
+        //}
+
+        //public static Category getMultipleCategory()
+        //{
+        //    Category category = new Category();
+        //    try
+        //    {
+        //        String query = "SELECT " +
+        //            "id, " +
+        //            "category_name, " +
+        //            "image " +
+        //            "FROM categories ";
+        //        Dictionary<String, String> dbData = DBTransactionService.getDataAsDictionary(query);
+
+        //        if (dbData != null)
+        //        {
+        //            category.id = Convert.ToInt32(dbData["id"]);
+        //            category.categoryName = dbData["category_name"];
+        //            category.image = dbData["image"];
+        //        }
+        //        else
+        //        {
+        //            //
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.ToString());
+        //    }
+        //    return category;
+        //}
     }
 }

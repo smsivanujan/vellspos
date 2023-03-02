@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using vellsPos.Entities.Layouts;
 using vellsPos.Entities.Masters;
+using vellsPos.Forms.Masters.Setting;
 
 namespace vellsPos.Forms.Layouts
 {
@@ -126,15 +127,27 @@ namespace vellsPos.Forms.Layouts
             fhome.ShowDialog();
         }
 
-        private void btn_display_Click(object sender, EventArgs e)
-        {
-            //frmDisplayView fd = new frmDisplayView();
-            //fd.Show();
-        }
-
         private void frmTestForms_Load(object sender, EventArgs e)
         {
             btn_category.Hide();
+        }
+
+        private void btn_activation_Click(object sender, EventArgs e)
+        {
+            frmActivation frmActivation = new frmActivation();
+            frmActivation.ShowDialog();
+        }
+
+        private void btn_drawer_Click(object sender, EventArgs e)
+        {
+            frmDrawer frmDrawer = new frmDrawer();
+            frmDrawer.ShowDialog();
+        }
+
+        private void btn_setting_Click(object sender, EventArgs e)
+        {
+            frmSetting frmSetting = new frmSetting();
+            frmSetting.ShowDialog();
         }
     }
 }

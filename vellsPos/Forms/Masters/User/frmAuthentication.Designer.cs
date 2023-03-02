@@ -28,33 +28,37 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.pnl_tabBar = new System.Windows.Forms.Panel();
+            this.tb_authentication = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.panel1.SuspendLayout();
-            this.tabControl1.SuspendLayout();
+            this.tb = new System.Windows.Forms.TabPage();
+            this.checkedListBox2 = new System.Windows.Forms.CheckedListBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.pnl_tabBar.SuspendLayout();
+            this.tb_authentication.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.tb.SuspendLayout();
             this.SuspendLayout();
             // 
-            // panel1
+            // pnl_tabBar
             // 
-            this.panel1.Controls.Add(this.tabControl1);
-            this.panel1.Location = new System.Drawing.Point(12, 12);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(776, 426);
-            this.panel1.TabIndex = 0;
+            this.pnl_tabBar.Controls.Add(this.tb_authentication);
+            this.pnl_tabBar.Location = new System.Drawing.Point(12, 140);
+            this.pnl_tabBar.Name = "pnl_tabBar";
+            this.pnl_tabBar.Size = new System.Drawing.Size(966, 448);
+            this.pnl_tabBar.TabIndex = 0;
             // 
-            // tabControl1
+            // tb_authentication
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(3, 17);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(770, 406);
-            this.tabControl1.TabIndex = 0;
+            this.tb_authentication.Controls.Add(this.tabPage1);
+            this.tb_authentication.Controls.Add(this.tb);
+            this.tb_authentication.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tb_authentication.Location = new System.Drawing.Point(0, 0);
+            this.tb_authentication.Name = "tb_authentication";
+            this.tb_authentication.SelectedIndex = 0;
+            this.tb_authentication.Size = new System.Drawing.Size(966, 448);
+            this.tb_authentication.TabIndex = 0;
             // 
             // tabPage1
             // 
@@ -62,51 +66,73 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 24);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(762, 378);
+            this.tabPage1.Size = new System.Drawing.Size(958, 420);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // checkedListBox1
             // 
+            this.checkedListBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Location = new System.Drawing.Point(6, 6);
+            this.checkedListBox1.Location = new System.Drawing.Point(3, 3);
             this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(750, 364);
+            this.checkedListBox1.Size = new System.Drawing.Size(952, 414);
             this.checkedListBox1.TabIndex = 0;
             // 
-            // tabPage2
+            // tb
             // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 24);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(762, 378);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.tb.Controls.Add(this.checkedListBox2);
+            this.tb.Location = new System.Drawing.Point(4, 24);
+            this.tb.Name = "tb";
+            this.tb.Padding = new System.Windows.Forms.Padding(3);
+            this.tb.Size = new System.Drawing.Size(958, 420);
+            this.tb.TabIndex = 1;
+            this.tb.Text = "tabPage2";
+            this.tb.UseVisualStyleBackColor = true;
+            // 
+            // checkedListBox2
+            // 
+            this.checkedListBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.checkedListBox2.FormattingEnabled = true;
+            this.checkedListBox2.Location = new System.Drawing.Point(3, 3);
+            this.checkedListBox2.Name = "checkedListBox2";
+            this.checkedListBox2.Size = new System.Drawing.Size(952, 414);
+            this.checkedListBox2.TabIndex = 1;
+            // 
+            // panel1
+            // 
+            this.panel1.Location = new System.Drawing.Point(12, 12);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(966, 122);
+            this.panel1.TabIndex = 1;
             // 
             // frmAuthentication
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(990, 600);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.pnl_tabBar);
             this.Name = "frmAuthentication";
             this.Text = "Authentication  ";
             this.Load += new System.EventHandler(this.frmAuthentication_Load);
-            this.panel1.ResumeLayout(false);
-            this.tabControl1.ResumeLayout(false);
+            this.pnl_tabBar.ResumeLayout(false);
+            this.tb_authentication.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            this.tb.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private Panel panel1;
-        private TabControl tabControl1;
+        private Panel pnl_tabBar;
+        private TabControl tb_authentication;
         private TabPage tabPage1;
         private CheckedListBox checkedListBox1;
-        private TabPage tabPage2;
+        private TabPage tb;
+        private CheckedListBox checkedListBox2;
+        private Panel panel1;
     }
 }

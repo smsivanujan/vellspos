@@ -8,6 +8,6 @@ namespace vellsPos.Services
 {
     internal class SystemInfo
     {
-        public const string ORG_NAME = "JEGAN PHARMACY";
+        public const string ORG_NAME = "Vells Soft";
     }
 }

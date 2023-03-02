@@ -228,6 +228,38 @@ namespace vellsPos.Services
             }
         }
 
+        public static List<ListItem> getDataAsListItems(String sql)
+        {
+            try
+            {
+                List<ListItem> itm = new List<ListItem>();
+                conn.Close();
+                conn.Open();
+                MySqlCommand command = conn.CreateCommand();
+                command.CommandText = sql;
+                MySqlDataReader reader = command.ExecuteReader();
+                int x = 0;
+                while (reader.Read())
+                {
+                    string value = reader["value"].ToString();
+                    string text = reader["text"].ToString();
+
+                    ListItem it = new ListItem(x, value, text);
+                    itm.Add(it);
+                    x++;
+                }
+                conn.Close();
+                reader.Close();
+                Console.WriteLine("Master Function " + itm.Count);
+                return itm;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                conn.Close();
+                return null;
+            }
+        }
         //get a scaler or single data
         public static string getScalerData(string sql)
         {

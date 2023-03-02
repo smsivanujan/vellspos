@@ -65,10 +65,7 @@ namespace vellsPos.Forms.Layouts
             txt_id.Text = uid;
             //Int32 subCategoryId = subCoCategory.SubCategory.Id;
 
-            //String categorySQL = "SELECT c.category_name FROM sub_categories sc " +
-            //    "LEFT JOIN categories c On sc.category_id=c.id " +
-            //    "WHERE category_id='" + subCategoryId + "' ";
-            //String category = DBTransactionService.getScalerData(categorySQL);
+            
 
             cmb_category.Text = subCoCategory.SubCategory.Category.CategoryName;
             cmb_subCategory.Text = subCoCategory.SubCategory.SubCategoryName;
@@ -81,77 +78,6 @@ namespace vellsPos.Forms.Layouts
                 pb_subCoCategoryImage.Image = Image.FromFile(subCoCategory.Image);
             }
         }
-
-        //private void save()
-        //{
-            
-        //}
-
-        //private void update()
-        //{
-        //    ReturnResult nameResult = Validator.validateText(txt_subCoCategory.Text, "SubCOCategory");
-
-        //    if (!nameResult.Status)
-        //    {
-        //        MessageBox.Show(nameResult.Msg, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //    }
-        //    else
-        //    {
-        //        int categoryId = 0; int subCategoryId = 0;
-        //        if (cmb_category.SelectedIndex >= 0)
-        //        {
-        //            categoryId = int.Parse(categories[cmb_category.SelectedIndex].Value);
-        //        }
-
-        //        if (cmb_subCategory.SelectedIndex >= 0)
-        //        {
-        //            subCategoryId = int.Parse(subCategories[cmb_subCategory.SelectedIndex].Value);
-        //        }
-
-        //        //Category category = new Category();
-        //        //category.Id = categoryId;
-
-        //        SubCategory subCategory = new SubCategory();
-        //        subCategory.Id = subCategoryId;
-
-        //        string rootPath = @"c:\vellspos";
-        //        String directoryPath = Path.Combine(rootPath, Path.GetFileName(lbl_imagePath.Text));
-
-        //        ImageUpload imageUpload = new ImageUpload();
-        //        imageUpload.DirectoryPath = directoryPath;
-        //        imageUpload.RootPath = rootPath;//root folder from save
-        //        imageUpload.ImagePath = lbl_imagePath.Text;
-        //        ReturnResult resul2 = ImageUpload.store(imageUpload);
-
-        //        SubCoCategory subCoCategory = new SubCoCategory();
-        //        subCoCategory.SubCoCategoryName = txt_subCoCategory.Text;
-        //        subCoCategory.SubCategory = subCategory;
-        //        subCoCategory.Description = rtxt_description.Text;
-        //        subCoCategory.Image = directoryPath;//root folder to save
-        //        ReturnResult result = SubCoCategory.store(subCoCategory);
-
-
-        //        if (result.Status)
-        //        {
-        //            //ActivityLog aL = new ActivityLog();
-        //            //aL.Date = DateTime.Now;
-        //            //User user = new User();
-        //            //String query = "SELECT id from user WHERE name = '" + Session.uname + "'";
-        //            //String id = DBTransactionService.getScalerData(query);
-        //            //user.Id = Int32.Parse(id);
-        //            //aL.User = user;
-        //            //aL.Description = "One New Transaction Added.[Date : " + dtp_dateFrom.Value + "Employee : " + txtname.Text + "Transaction Category : " + txttransaction.Text + "Invoice No : " + txtInvoiceNo.Text + "Amount : " + txtamount.Text + " Description :" + txtdescrib.Text + " Added by :" + Session.uname + "]";
-        //            //ActivityLog.store(aL);
-        //            MessageBox.Show("Sub Co Category has been added successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //            this.Close();
-        //        }
-        //        else
-        //        {
-        //            MessageBox.Show(result.Msg, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //        }
-        //        //}
-        //    }
-        //}
 
         private void btn_save_Click(object sender, EventArgs e)
         {

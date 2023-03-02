@@ -11,7 +11,7 @@ namespace vellsPos.Entities.Masters
     internal class Drawer
     {
         private Int32 id;
-        private DateTime date;
+        private String date;
         private Decimal initialAmount;
         private User user;
 
@@ -20,7 +20,7 @@ namespace vellsPos.Entities.Masters
 
         }
 
-        public Drawer(int id, DateTime date, decimal initialAmount, User user)
+        public Drawer(int id, String date, decimal initialAmount, User user)
         {
             this.Id = id;
             this.Date = date;
@@ -29,7 +29,7 @@ namespace vellsPos.Entities.Masters
         }
 
         public int Id { get => id; set => id = value; }
-        public DateTime Date { get => date; set => date = value; }
+        public string Date { get => date; set => date = value; }
         public decimal InitialAmount { get => initialAmount; set => initialAmount = value; }
         internal User User { get => user; set => user = value; }
 
@@ -43,7 +43,7 @@ namespace vellsPos.Entities.Masters
                 string sql = "INSERT INTO `drawers` " +
                     "(`date`,`initial_amount`,`user_id`) VALUES (@date,@initial_amount,@user_id)";
                 List<QueryParameter> parameters = new List<QueryParameter>();
-                parameters.Add(new QueryParameter("date", MySqlDbType.DateTime, drawer.Date));
+                parameters.Add(new QueryParameter("date", MySqlDbType.String, drawer.Date));
                 parameters.Add(new QueryParameter("initial_amount", MySqlDbType.Decimal, drawer.initialAmount));
                 parameters.Add(new QueryParameter("user_id", MySqlDbType.Int32, drawer.user.Id));
 
@@ -61,57 +61,57 @@ namespace vellsPos.Entities.Masters
             return result;
         }
 
-        public static ReturnResult update(Drawer drawer)
-        {
-            ReturnResult result = new ReturnResult(false, "Error");
-            List<QueryCommand> commands = new List<QueryCommand>();
-            try
-            {
-                string sql = "UPDATE `drawers` SET " +
-                    "`date` = @date, " +
-                     "`initial_amount` = @initial_amount, " +
-                    "`user_id` = @user_id " +
-                    " WHERE `id` = @id ";
-                List<QueryParameter> parameters = new List<QueryParameter>();
-                parameters.Add(new QueryParameter("date", MySqlDbType.DateTime, drawer.Date));
-                parameters.Add(new QueryParameter("initial_amount", MySqlDbType.Decimal, drawer.initialAmount));
-                parameters.Add(new QueryParameter("user_id", MySqlDbType.Int32, drawer.user.Id));
-                parameters.Add(new QueryParameter("id", MySqlDbType.Int32, drawer.Id));
+        //public static ReturnResult update(Drawer drawer)
+        //{
+        //    ReturnResult result = new ReturnResult(false, "Error");
+        //    List<QueryCommand> commands = new List<QueryCommand>();
+        //    try
+        //    {
+        //        string sql = "UPDATE `drawers` SET " +
+        //            "`date` = @date, " +
+        //             "`initial_amount` = @initial_amount, " +
+        //            "`user_id` = @user_id " +
+        //            " WHERE `id` = @id ";
+        //        List<QueryParameter> parameters = new List<QueryParameter>();
+        //        parameters.Add(new QueryParameter("date", MySqlDbType.String, drawer.Date));
+        //        parameters.Add(new QueryParameter("initial_amount", MySqlDbType.Decimal, drawer.initialAmount));
+        //        parameters.Add(new QueryParameter("user_id", MySqlDbType.Int32, drawer.user.Id));
+        //        parameters.Add(new QueryParameter("id", MySqlDbType.Int32, drawer.Id));
 
-                commands.Add(new QueryCommand(sql, parameters));
-                result = DBTransactionService.executeNonQuery(commands);
-                if (result.Status)
-                    result.Msg = Constants.MSG_UPDATE_SUCCESS;
-            }
-            catch (Exception e)
-            {
-                result = new ReturnResult(false, Constants.MSG_ERROR, e.Message, e);
-                // MessageBox.Show(result);
-            }
-            return result;
-        }
+        //        commands.Add(new QueryCommand(sql, parameters));
+        //        result = DBTransactionService.executeNonQuery(commands);
+        //        if (result.Status)
+        //            result.Msg = Constants.MSG_UPDATE_SUCCESS;
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        result = new ReturnResult(false, Constants.MSG_ERROR, e.Message, e);
+        //        // MessageBox.Show(result);
+        //    }
+        //    return result;
+        //}
 
-        public static ReturnResult delete(int id)
-        {
-            ReturnResult result = new ReturnResult(false, "Error");
-            List<QueryCommand> commands = new List<QueryCommand>();
-            try
-            {
-                string query = "DELETE FROM `drawers` WHERE id = @id";
-                List<QueryParameter> parameters = new List<QueryParameter>();
-                parameters.Add(new QueryParameter("id", MySqlDbType.Int32, id));
-                commands.Add(new QueryCommand(query, parameters));
-                result = DBTransactionService.executeNonQuery(commands);
-                if (result.Status)
-                    result.Msg = Constants.MSG_DELETE_SUCCESS;
-            }
-            catch (Exception e)
-            {
-                result = new ReturnResult(false, Constants.MSG_ERROR, e.Message, e);
-                // MessageBox.Show(result);
-            }
-            return result;
-        }
+        //public static ReturnResult delete(int id)
+        //{
+        //    ReturnResult result = new ReturnResult(false, "Error");
+        //    List<QueryCommand> commands = new List<QueryCommand>();
+        //    try
+        //    {
+        //        string query = "DELETE FROM `drawers` WHERE id = @id";
+        //        List<QueryParameter> parameters = new List<QueryParameter>();
+        //        parameters.Add(new QueryParameter("id", MySqlDbType.Int32, id));
+        //        commands.Add(new QueryCommand(query, parameters));
+        //        result = DBTransactionService.executeNonQuery(commands);
+        //        if (result.Status)
+        //            result.Msg = Constants.MSG_DELETE_SUCCESS;
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        result = new ReturnResult(false, Constants.MSG_ERROR, e.Message, e);
+        //        // MessageBox.Show(result);
+        //    }
+        //    return result;
+        //}
 
         public static void showOnViewForm(TextBox labelBox = null, TextBox idBox = null)
         {
@@ -161,7 +161,7 @@ namespace vellsPos.Entities.Masters
 
                 if (dbData != null)
                 {
-                    drawer.date = Convert.ToDateTime(dbData["date"]);
+                    drawer.date = dbData["date"];
                     drawer.initialAmount = Convert.ToDecimal(dbData["initial_amount"]);
                     user.UserName = dbData["user"];
                     drawer.user = user;

@@ -145,7 +145,13 @@ namespace vellsPos.Forms.Layouts
         private void btn_user_Click(object sender, EventArgs e)
         {
             frmUserRegister userRegister = new frmUserRegister();
-            userRegister.Show();
+            userRegister.ShowDialog();
+        }
+
+        private void btn_setting_Click(object sender, EventArgs e)
+        {
+            frmSetting frmSetting = new frmSetting();
+            frmSetting.ShowDialog();
         }
     }
 }

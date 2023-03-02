@@ -81,5 +81,15 @@ namespace vellsPos.Forms.Layouts
         {
             LoyalityCard.showOnViewForm();
         }
+
+        private void btn_activityLog_Click(object sender, EventArgs e)
+        {
+            ActivityLog.showOnViewForm();
+        }
+
+        private void btn_loginLog_Click(object sender, EventArgs e)
+        {
+            LoginLog.showOnViewForm();
+        }
     }
 }

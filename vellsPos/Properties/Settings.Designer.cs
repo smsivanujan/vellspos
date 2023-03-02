@@ -130,5 +130,17 @@ namespace vellsPos.Properties {
                 this["SMTPpassword"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Vells Soft")]
+        public string ProductName {
+            get {
+                return ((string)(this["ProductName"]));
+            }
+            set {
+                this["ProductName"] = value;
+            }
+        }
     }
 }

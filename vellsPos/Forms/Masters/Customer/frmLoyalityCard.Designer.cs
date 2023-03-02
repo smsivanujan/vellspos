@@ -58,19 +58,20 @@
             // 
             // pnl_head
             // 
-            this.pnl_head.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.pnl_head.BackColor = System.Drawing.Color.CornflowerBlue;
             this.pnl_head.Controls.Add(this.lbl_title);
             this.pnl_head.Controls.Add(this.btn_close);
             this.pnl_head.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnl_head.Location = new System.Drawing.Point(0, 0);
             this.pnl_head.Name = "pnl_head";
-            this.pnl_head.Size = new System.Drawing.Size(722, 53);
+            this.pnl_head.Size = new System.Drawing.Size(394, 53);
             this.pnl_head.TabIndex = 0;
             // 
             // lbl_title
             // 
             this.lbl_title.AutoSize = true;
             this.lbl_title.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lbl_title.ForeColor = System.Drawing.Color.White;
             this.lbl_title.Location = new System.Drawing.Point(12, 11);
             this.lbl_title.Name = "lbl_title";
             this.lbl_title.Size = new System.Drawing.Size(163, 32);
@@ -80,12 +81,12 @@
             // btn_close
             // 
             this.btn_close.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_close.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.btn_close.BackColor = System.Drawing.Color.Transparent;
             this.btn_close.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btn_close.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_close.ForeColor = System.Drawing.Color.Transparent;
             this.btn_close.Image = ((System.Drawing.Image)(resources.GetObject("btn_close.Image")));
-            this.btn_close.Location = new System.Drawing.Point(683, 11);
+            this.btn_close.Location = new System.Drawing.Point(355, 11);
             this.btn_close.Name = "btn_close";
             this.btn_close.Size = new System.Drawing.Size(31, 30);
             this.btn_close.TabIndex = 4;
@@ -94,14 +95,14 @@
             // 
             // pnl_root
             // 
-            this.pnl_root.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.pnl_root.BackColor = System.Drawing.Color.CornflowerBlue;
             this.pnl_root.Controls.Add(this.btn_delete);
             this.pnl_root.Controls.Add(this.btn_save);
             this.pnl_root.Controls.Add(this.btn_cancel);
             this.pnl_root.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnl_root.Location = new System.Drawing.Point(0, 529);
+            this.pnl_root.Location = new System.Drawing.Point(0, 557);
             this.pnl_root.Name = "pnl_root";
-            this.pnl_root.Size = new System.Drawing.Size(722, 75);
+            this.pnl_root.Size = new System.Drawing.Size(394, 75);
             this.pnl_root.TabIndex = 1;
             // 
             // btn_delete
@@ -112,7 +113,7 @@
             this.btn_delete.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_delete.Image = ((System.Drawing.Image)(resources.GetObject("btn_delete.Image")));
             this.btn_delete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_delete.Location = new System.Drawing.Point(355, 12);
+            this.btn_delete.Location = new System.Drawing.Point(27, 12);
             this.btn_delete.Name = "btn_delete";
             this.btn_delete.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.btn_delete.Size = new System.Drawing.Size(108, 51);
@@ -124,12 +125,12 @@
             // btn_save
             // 
             this.btn_save.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_save.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.btn_save.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(218)))), ((int)(((byte)(81)))));
             this.btn_save.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_save.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_save.Image = ((System.Drawing.Image)(resources.GetObject("btn_save.Image")));
             this.btn_save.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_save.Location = new System.Drawing.Point(583, 12);
+            this.btn_save.Location = new System.Drawing.Point(255, 12);
             this.btn_save.Name = "btn_save";
             this.btn_save.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.btn_save.Size = new System.Drawing.Size(108, 51);
@@ -142,12 +143,12 @@
             // btn_cancel
             // 
             this.btn_cancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_cancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.btn_cancel.BackColor = System.Drawing.Color.Transparent;
             this.btn_cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_cancel.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_cancel.Image = ((System.Drawing.Image)(resources.GetObject("btn_cancel.Image")));
             this.btn_cancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_cancel.Location = new System.Drawing.Point(469, 12);
+            this.btn_cancel.Location = new System.Drawing.Point(141, 12);
             this.btn_cancel.Name = "btn_cancel";
             this.btn_cancel.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.btn_cancel.Size = new System.Drawing.Size(108, 51);
@@ -163,11 +164,12 @@
             this.pnl_body.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnl_body.Location = new System.Drawing.Point(0, 53);
             this.pnl_body.Name = "pnl_body";
-            this.pnl_body.Size = new System.Drawing.Size(722, 476);
+            this.pnl_body.Size = new System.Drawing.Size(394, 504);
             this.pnl_body.TabIndex = 2;
             // 
             // pnl_container
             // 
+            this.pnl_container.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(32)))), ((int)(((byte)(42)))));
             this.pnl_container.Controls.Add(this.txt_customerID);
             this.pnl_container.Controls.Add(this.txt_customer);
             this.pnl_container.Controls.Add(this.txt_id);
@@ -180,73 +182,78 @@
             this.pnl_container.Controls.Add(this.cmb_cardType);
             this.pnl_container.Controls.Add(this.label3);
             this.pnl_container.Controls.Add(this.label5);
-            this.pnl_container.Location = new System.Drawing.Point(12, 6);
+            this.pnl_container.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnl_container.Location = new System.Drawing.Point(0, 0);
             this.pnl_container.Name = "pnl_container";
-            this.pnl_container.Size = new System.Drawing.Size(667, 464);
+            this.pnl_container.Size = new System.Drawing.Size(394, 504);
             this.pnl_container.TabIndex = 0;
             // 
             // txt_customerID
             // 
-            this.txt_customerID.Location = new System.Drawing.Point(247, 73);
+            this.txt_customerID.Location = new System.Drawing.Point(48, 438);
+            this.txt_customerID.Multiline = true;
             this.txt_customerID.Name = "txt_customerID";
-            this.txt_customerID.Size = new System.Drawing.Size(38, 23);
+            this.txt_customerID.Size = new System.Drawing.Size(41, 51);
             this.txt_customerID.TabIndex = 119;
             this.txt_customerID.TextChanged += new System.EventHandler(this.txt_customerID_TextChanged);
             // 
             // txt_customer
             // 
             this.txt_customer.BackColor = System.Drawing.SystemColors.Control;
-            this.txt_customer.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.txt_customer.Location = new System.Drawing.Point(20, 53);
+            this.txt_customer.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.txt_customer.Location = new System.Drawing.Point(48, 47);
             this.txt_customer.Multiline = true;
             this.txt_customer.Name = "txt_customer";
             this.txt_customer.PlaceholderText = "[ Select ]";
-            this.txt_customer.Size = new System.Drawing.Size(221, 43);
+            this.txt_customer.Size = new System.Drawing.Size(287, 40);
             this.txt_customer.TabIndex = 118;
             this.txt_customer.Click += new System.EventHandler(this.txt_customer_Click);
             // 
             // txt_id
             // 
-            this.txt_id.Location = new System.Drawing.Point(247, 44);
+            this.txt_id.Location = new System.Drawing.Point(95, 438);
+            this.txt_id.Multiline = true;
             this.txt_id.Name = "txt_id";
-            this.txt_id.Size = new System.Drawing.Size(41, 23);
+            this.txt_id.Size = new System.Drawing.Size(41, 51);
             this.txt_id.TabIndex = 89;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Historic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(20, 20);
+            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(48, 14);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(102, 30);
+            this.label1.Size = new System.Drawing.Size(106, 30);
             this.label1.TabIndex = 72;
             this.label1.Text = "Customer";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI Historic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(20, 280);
+            this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(48, 337);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(119, 30);
+            this.label4.Size = new System.Drawing.Size(122, 30);
             this.label4.TabIndex = 71;
             this.label4.Text = "Issued date";
             // 
             // dtp_issuedDate
             // 
             this.dtp_issuedDate.CustomFormat = "yyyy-MM-dd";
-            this.dtp_issuedDate.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.dtp_issuedDate.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.dtp_issuedDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtp_issuedDate.Location = new System.Drawing.Point(20, 313);
+            this.dtp_issuedDate.Location = new System.Drawing.Point(48, 370);
             this.dtp_issuedDate.Name = "dtp_issuedDate";
-            this.dtp_issuedDate.Size = new System.Drawing.Size(221, 33);
+            this.dtp_issuedDate.Size = new System.Drawing.Size(287, 39);
             this.dtp_issuedDate.TabIndex = 70;
             this.dtp_issuedDate.Value = new System.DateTime(2023, 2, 8, 19, 27, 14, 0);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(358, 431);
+            this.label2.Location = new System.Drawing.Point(221, 474);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(13, 15);
             this.label2.TabIndex = 69;
@@ -254,63 +261,67 @@
             // 
             // cb_status
             // 
+            this.cb_status.Appearance = System.Windows.Forms.Appearance.Button;
             this.cb_status.AutoSize = true;
-            this.cb_status.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.cb_status.Location = new System.Drawing.Point(20, 378);
+            this.cb_status.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cb_status.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.cb_status.Location = new System.Drawing.Point(240, 447);
             this.cb_status.Name = "cb_status";
-            this.cb_status.Size = new System.Drawing.Size(85, 29);
+            this.cb_status.Size = new System.Drawing.Size(95, 42);
             this.cb_status.TabIndex = 68;
             this.cb_status.Text = "Active";
             this.cb_status.UseVisualStyleBackColor = true;
             // 
             // txt_cardNumber
             // 
-            this.txt_cardNumber.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.txt_cardNumber.Location = new System.Drawing.Point(20, 133);
+            this.txt_cardNumber.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.txt_cardNumber.Location = new System.Drawing.Point(48, 155);
             this.txt_cardNumber.Multiline = true;
             this.txt_cardNumber.Name = "txt_cardNumber";
             this.txt_cardNumber.PlaceholderText = "CX123456789";
-            this.txt_cardNumber.Size = new System.Drawing.Size(221, 34);
+            this.txt_cardNumber.Size = new System.Drawing.Size(287, 40);
             this.txt_cardNumber.TabIndex = 65;
             // 
             // cmb_cardType
             // 
-            this.cmb_cardType.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.cmb_cardType.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.cmb_cardType.FormattingEnabled = true;
             this.cmb_cardType.Items.AddRange(new object[] {
             "Brownce",
             "Silver",
             "Gold",
             "Plattinum"});
-            this.cmb_cardType.Location = new System.Drawing.Point(20, 231);
+            this.cmb_cardType.Location = new System.Drawing.Point(48, 270);
             this.cmb_cardType.Name = "cmb_cardType";
-            this.cmb_cardType.Size = new System.Drawing.Size(221, 33);
+            this.cmb_cardType.Size = new System.Drawing.Size(287, 40);
             this.cmb_cardType.TabIndex = 64;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI Historic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(20, 198);
+            this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(48, 237);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(106, 30);
+            this.label3.Size = new System.Drawing.Size(110, 30);
             this.label3.TabIndex = 63;
             this.label3.Text = "Card Type";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI Historic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(20, 100);
+            this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(48, 122);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(138, 30);
+            this.label5.Size = new System.Drawing.Size(143, 30);
             this.label5.TabIndex = 62;
             this.label5.Text = "Card Number";
             // 
             // frmLoyalityCard
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(722, 604);
+            this.ClientSize = new System.Drawing.Size(394, 632);
             this.Controls.Add(this.pnl_body);
             this.Controls.Add(this.pnl_root);
             this.Controls.Add(this.pnl_head);

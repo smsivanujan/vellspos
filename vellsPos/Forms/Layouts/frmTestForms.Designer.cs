@@ -46,7 +46,9 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btn_activation = new System.Windows.Forms.Button();
+            this.btn_drawer = new System.Windows.Forms.Button();
+            this.btn_setting = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -148,7 +150,7 @@
             // 
             // btn_pos
             // 
-            this.btn_pos.Location = new System.Drawing.Point(22, 444);
+            this.btn_pos.Location = new System.Drawing.Point(12, 524);
             this.btn_pos.Name = "btn_pos";
             this.btn_pos.Size = new System.Drawing.Size(147, 44);
             this.btn_pos.TabIndex = 9;
@@ -169,7 +171,7 @@
             // 
             // btn_barcode
             // 
-            this.btn_barcode.Location = new System.Drawing.Point(175, 444);
+            this.btn_barcode.Location = new System.Drawing.Point(165, 524);
             this.btn_barcode.Name = "btn_barcode";
             this.btn_barcode.Size = new System.Drawing.Size(147, 44);
             this.btn_barcode.TabIndex = 11;
@@ -199,7 +201,7 @@
             // 
             // btn_home
             // 
-            this.btn_home.Location = new System.Drawing.Point(22, 394);
+            this.btn_home.Location = new System.Drawing.Point(12, 474);
             this.btn_home.Name = "btn_home";
             this.btn_home.Size = new System.Drawing.Size(147, 44);
             this.btn_home.TabIndex = 14;
@@ -240,21 +242,44 @@
             this.panel3.Size = new System.Drawing.Size(175, 185);
             this.panel3.TabIndex = 18;
             // 
-            // groupBox1
+            // btn_activation
             // 
-            this.groupBox1.Location = new System.Drawing.Point(59, 255);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(439, 122);
-            this.groupBox1.TabIndex = 19;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
+            this.btn_activation.Location = new System.Drawing.Point(12, 280);
+            this.btn_activation.Name = "btn_activation";
+            this.btn_activation.Size = new System.Drawing.Size(187, 75);
+            this.btn_activation.TabIndex = 14;
+            this.btn_activation.Text = "Activation";
+            this.btn_activation.UseVisualStyleBackColor = true;
+            this.btn_activation.Click += new System.EventHandler(this.btn_activation_Click);
+            // 
+            // btn_drawer
+            // 
+            this.btn_drawer.Location = new System.Drawing.Point(219, 280);
+            this.btn_drawer.Name = "btn_drawer";
+            this.btn_drawer.Size = new System.Drawing.Size(187, 75);
+            this.btn_drawer.TabIndex = 19;
+            this.btn_drawer.Text = "Drawer";
+            this.btn_drawer.UseVisualStyleBackColor = true;
+            this.btn_drawer.Click += new System.EventHandler(this.btn_drawer_Click);
+            // 
+            // btn_setting
+            // 
+            this.btn_setting.Location = new System.Drawing.Point(219, 361);
+            this.btn_setting.Name = "btn_setting";
+            this.btn_setting.Size = new System.Drawing.Size(187, 75);
+            this.btn_setting.TabIndex = 20;
+            this.btn_setting.Text = "Setting";
+            this.btn_setting.UseVisualStyleBackColor = true;
+            this.btn_setting.Click += new System.EventHandler(this.btn_setting_Click);
             // 
             // frmTestForms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 580);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.btn_setting);
+            this.Controls.Add(this.btn_drawer);
+            this.Controls.Add(this.btn_activation);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -291,6 +316,8 @@
         private Panel panel1;
         private Panel panel2;
         private Panel panel3;
-        private GroupBox groupBox1;
+        private Button btn_activation;
+        private Button btn_drawer;
+        private Button btn_setting;
     }
 }

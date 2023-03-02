@@ -64,7 +64,7 @@ namespace vellsPos.Forms.Layouts
                 cmb_gender.Text = "Other";
             }
             txt_nic.Text = customer.Nic;
-            txt_Email.Text = customer.Email;
+            txt_email.Text = customer.Email;
             txt_phoneNumber.Text = customer.PhoneNumber;
         }
 
@@ -125,7 +125,7 @@ namespace vellsPos.Forms.Layouts
             ReturnResult numberResult = Validator.validateText(txt_customerNumber.Text, "Number");
             ReturnResult fNameResult = Validator.validateText(txt_customerFirstName.Text, "First Name");
             ReturnResult lNameResult = Validator.validateText(txt_customerLastName.Text, "Last Name");
-            ReturnResult emailResult = Validator.validateText(txt_Email.Text, "Email");
+            ReturnResult emailResult = Validator.validateText(txt_email.Text, "Email");
             ReturnResult identyResult = Validator.validateText(txt_nic.Text, "Identy Card");
             ReturnResult pnumberResult = Validator.validateText(txt_phoneNumber.Text, "Phone Number");
 
@@ -175,7 +175,7 @@ namespace vellsPos.Forms.Layouts
                 }
 
                 customer.Nic = txt_nic.Text;
-                customer.Email = txt_Email.Text;
+                customer.Email = txt_email.Text;
                 customer.PhoneNumber = txt_phoneNumber.Text;
 
                 User user = new User();

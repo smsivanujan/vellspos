@@ -139,8 +139,8 @@ namespace vellsPos.Entities.Masters
             dvParam.TitleList = new List<string>() { "", "Acitivation Date", "Expiry Date", "Status" }; //Column titles
             dvParam.InvisibleColumnList = new List<int>() { 1 };
             dvParam.NumericColumnList = new List<int>() { };
-            dvParam.AddForm = new frmActivations();
-            dvParam.ViewForm = new frmActivations();
+            dvParam.AddForm = new frmActivation();
+            dvParam.ViewForm = new frmActivation();
 
             frmView vData = null;
 

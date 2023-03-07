@@ -15,7 +15,7 @@ namespace vellsPos.Forms.Layouts
 {
     public partial class frmDrawer : Form
     {
-        private string uid;
+        //private string uid;
         ReturnResult result;
         String msgStatus;
 

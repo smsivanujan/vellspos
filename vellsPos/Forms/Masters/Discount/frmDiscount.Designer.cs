@@ -1,6 +1,6 @@
 ﻿namespace vellsPos.Forms.Layouts
 {
-    partial class frmComplain
+    partial class frmDiscount
     {
         /// <summary>
         /// Required designer variable.
@@ -28,30 +28,38 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmComplain));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDiscount));
             this.pnl_head = new System.Windows.Forms.Panel();
             this.lbl_title = new System.Windows.Forms.Label();
             this.btn_close = new System.Windows.Forms.Button();
             this.pnl_root = new System.Windows.Forms.Panel();
             this.btn_delete = new System.Windows.Forms.Button();
+            this.lb_user = new System.Windows.Forms.Label();
             this.btn_save = new System.Windows.Forms.Button();
             this.btn_cancel = new System.Windows.Forms.Button();
-            this.lb_user = new System.Windows.Forms.Label();
-            this.txt_id = new System.Windows.Forms.TextBox();
             this.pnl_body = new System.Windows.Forms.Panel();
             this.pnl_container = new System.Windows.Forms.Panel();
-            this.cmb_type = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.rb_amount = new System.Windows.Forms.RadioButton();
+            this.rb_percentage = new System.Windows.Forms.RadioButton();
+            this.txt_id = new System.Windows.Forms.TextBox();
+            this.cb_status = new System.Windows.Forms.CheckBox();
+            this.dtp_dateTo = new System.Windows.Forms.DateTimePicker();
+            this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.dtp_date = new System.Windows.Forms.DateTimePicker();
-            this.cmb_priority = new System.Windows.Forms.ComboBox();
+            this.dtp_dateFrom = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.rtxt_description = new System.Windows.Forms.RichTextBox();
+            this.txt_discountName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.ntxt_value = new System.Windows.Forms.NumericUpDown();
+            this.label7 = new System.Windows.Forms.Label();
             this.pnl_head.SuspendLayout();
             this.pnl_root.SuspendLayout();
             this.pnl_body.SuspendLayout();
             this.pnl_container.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ntxt_value)).BeginInit();
             this.SuspendLayout();
             // 
             // pnl_head
@@ -62,19 +70,19 @@
             this.pnl_head.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnl_head.Location = new System.Drawing.Point(0, 0);
             this.pnl_head.Name = "pnl_head";
-            this.pnl_head.Size = new System.Drawing.Size(364, 53);
+            this.pnl_head.Size = new System.Drawing.Size(669, 53);
             this.pnl_head.TabIndex = 0;
             // 
             // lbl_title
             // 
             this.lbl_title.AutoSize = true;
             this.lbl_title.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbl_title.ForeColor = System.Drawing.Color.White;
+            this.lbl_title.ForeColor = System.Drawing.Color.Transparent;
             this.lbl_title.Location = new System.Drawing.Point(12, 11);
             this.lbl_title.Name = "lbl_title";
-            this.lbl_title.Size = new System.Drawing.Size(123, 32);
+            this.lbl_title.Size = new System.Drawing.Size(116, 32);
             this.lbl_title.TabIndex = 5;
-            this.lbl_title.Text = "Complain";
+            this.lbl_title.Text = "Discount";
             // 
             // btn_close
             // 
@@ -85,7 +93,7 @@
             this.btn_close.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_close.ForeColor = System.Drawing.Color.Transparent;
             this.btn_close.Image = ((System.Drawing.Image)(resources.GetObject("btn_close.Image")));
-            this.btn_close.Location = new System.Drawing.Point(321, 13);
+            this.btn_close.Location = new System.Drawing.Point(630, 11);
             this.btn_close.Name = "btn_close";
             this.btn_close.Size = new System.Drawing.Size(31, 30);
             this.btn_close.TabIndex = 4;
@@ -96,12 +104,13 @@
             // 
             this.pnl_root.BackColor = System.Drawing.Color.CornflowerBlue;
             this.pnl_root.Controls.Add(this.btn_delete);
+            this.pnl_root.Controls.Add(this.lb_user);
             this.pnl_root.Controls.Add(this.btn_save);
             this.pnl_root.Controls.Add(this.btn_cancel);
             this.pnl_root.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnl_root.Location = new System.Drawing.Point(0, 556);
+            this.pnl_root.Location = new System.Drawing.Point(0, 581);
             this.pnl_root.Name = "pnl_root";
-            this.pnl_root.Size = new System.Drawing.Size(364, 75);
+            this.pnl_root.Size = new System.Drawing.Size(669, 75);
             this.pnl_root.TabIndex = 1;
             // 
             // btn_delete
@@ -112,15 +121,23 @@
             this.btn_delete.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_delete.Image = ((System.Drawing.Image)(resources.GetObject("btn_delete.Image")));
             this.btn_delete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_delete.Location = new System.Drawing.Point(16, 12);
+            this.btn_delete.Location = new System.Drawing.Point(321, 12);
             this.btn_delete.Name = "btn_delete";
             this.btn_delete.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.btn_delete.Size = new System.Drawing.Size(108, 51);
-            this.btn_delete.TabIndex = 4;
+            this.btn_delete.TabIndex = 5;
             this.btn_delete.Text = "Delete";
             this.btn_delete.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btn_delete.UseVisualStyleBackColor = false;
-            this.btn_delete.Click += new System.EventHandler(this.btn_delete_Click);
+            // 
+            // lb_user
+            // 
+            this.lb_user.AutoSize = true;
+            this.lb_user.Location = new System.Drawing.Point(302, 48);
+            this.lb_user.Name = "lb_user";
+            this.lb_user.Size = new System.Drawing.Size(13, 15);
+            this.lb_user.TabIndex = 68;
+            this.lb_user.Text = "1";
             // 
             // btn_save
             // 
@@ -130,7 +147,7 @@
             this.btn_save.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_save.Image = ((System.Drawing.Image)(resources.GetObject("btn_save.Image")));
             this.btn_save.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_save.Location = new System.Drawing.Point(244, 12);
+            this.btn_save.Location = new System.Drawing.Point(549, 12);
             this.btn_save.Name = "btn_save";
             this.btn_save.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.btn_save.Size = new System.Drawing.Size(108, 51);
@@ -148,7 +165,7 @@
             this.btn_cancel.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_cancel.Image = ((System.Drawing.Image)(resources.GetObject("btn_cancel.Image")));
             this.btn_cancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_cancel.Location = new System.Drawing.Point(130, 12);
+            this.btn_cancel.Location = new System.Drawing.Point(435, 12);
             this.btn_cancel.Name = "btn_cancel";
             this.btn_cancel.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.btn_cancel.Size = new System.Drawing.Size(108, 51);
@@ -158,163 +175,241 @@
             this.btn_cancel.UseVisualStyleBackColor = false;
             this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
             // 
-            // lb_user
-            // 
-            this.lb_user.AutoSize = true;
-            this.lb_user.Location = new System.Drawing.Point(339, 485);
-            this.lb_user.Name = "lb_user";
-            this.lb_user.Size = new System.Drawing.Size(13, 15);
-            this.lb_user.TabIndex = 69;
-            this.lb_user.Text = "1";
-            // 
-            // txt_id
-            // 
-            this.txt_id.Location = new System.Drawing.Point(283, 107);
-            this.txt_id.Multiline = true;
-            this.txt_id.Name = "txt_id";
-            this.txt_id.Size = new System.Drawing.Size(41, 51);
-            this.txt_id.TabIndex = 89;
-            // 
             // pnl_body
             // 
             this.pnl_body.Controls.Add(this.pnl_container);
             this.pnl_body.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnl_body.Location = new System.Drawing.Point(0, 53);
             this.pnl_body.Name = "pnl_body";
-            this.pnl_body.Size = new System.Drawing.Size(364, 503);
+            this.pnl_body.Size = new System.Drawing.Size(669, 528);
             this.pnl_body.TabIndex = 2;
             // 
             // pnl_container
             // 
             this.pnl_container.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(32)))), ((int)(((byte)(42)))));
-            this.pnl_container.Controls.Add(this.lb_user);
-            this.pnl_container.Controls.Add(this.cmb_type);
-            this.pnl_container.Controls.Add(this.txt_id);
+            this.pnl_container.Controls.Add(this.ntxt_value);
+            this.pnl_container.Controls.Add(this.label7);
+            this.pnl_container.Controls.Add(this.label6);
             this.pnl_container.Controls.Add(this.label3);
+            this.pnl_container.Controls.Add(this.rb_amount);
+            this.pnl_container.Controls.Add(this.rb_percentage);
+            this.pnl_container.Controls.Add(this.txt_id);
+            this.pnl_container.Controls.Add(this.cb_status);
+            this.pnl_container.Controls.Add(this.dtp_dateTo);
+            this.pnl_container.Controls.Add(this.label5);
             this.pnl_container.Controls.Add(this.label4);
-            this.pnl_container.Controls.Add(this.dtp_date);
-            this.pnl_container.Controls.Add(this.cmb_priority);
+            this.pnl_container.Controls.Add(this.dtp_dateFrom);
             this.pnl_container.Controls.Add(this.label1);
             this.pnl_container.Controls.Add(this.rtxt_description);
+            this.pnl_container.Controls.Add(this.txt_discountName);
             this.pnl_container.Controls.Add(this.label2);
             this.pnl_container.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnl_container.Location = new System.Drawing.Point(0, 0);
             this.pnl_container.Name = "pnl_container";
-            this.pnl_container.Size = new System.Drawing.Size(364, 503);
+            this.pnl_container.Size = new System.Drawing.Size(669, 528);
             this.pnl_container.TabIndex = 0;
             // 
-            // cmb_type
+            // label6
             // 
-            this.cmb_type.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmb_type.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.cmb_type.FormattingEnabled = true;
-            this.cmb_type.Items.AddRange(new object[] {
-            "System Faults",
-            "Software Faults",
-            "Network Faults",
-            "Hardware Faults",
-            "Other Faults"});
-            this.cmb_type.Location = new System.Drawing.Point(36, 173);
-            this.cmb_type.Name = "cmb_type";
-            this.cmb_type.Size = new System.Drawing.Size(287, 40);
-            this.cmb_type.TabIndex = 68;
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(364, 256);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(71, 30);
+            this.label6.TabIndex = 93;
+            this.label6.Text = "Status";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(36, 140);
+            this.label3.Location = new System.Drawing.Point(360, 133);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(185, 30);
-            this.label3.TabIndex = 67;
-            this.label3.Text = "Type Of Complain";
+            this.label3.Size = new System.Drawing.Size(59, 30);
+            this.label3.TabIndex = 92;
+            this.label3.Text = "Type";
+            // 
+            // rb_amount
+            // 
+            this.rb_amount.Appearance = System.Windows.Forms.Appearance.Button;
+            this.rb_amount.AutoSize = true;
+            this.rb_amount.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.rb_amount.Location = new System.Drawing.Point(527, 168);
+            this.rb_amount.Name = "rb_amount";
+            this.rb_amount.Size = new System.Drawing.Size(117, 42);
+            this.rb_amount.TabIndex = 91;
+            this.rb_amount.TabStop = true;
+            this.rb_amount.Text = "Amount";
+            this.rb_amount.UseVisualStyleBackColor = true;
+            // 
+            // rb_percentage
+            // 
+            this.rb_percentage.Appearance = System.Windows.Forms.Appearance.Button;
+            this.rb_percentage.AutoSize = true;
+            this.rb_percentage.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.rb_percentage.Location = new System.Drawing.Point(357, 168);
+            this.rb_percentage.Name = "rb_percentage";
+            this.rb_percentage.Size = new System.Drawing.Size(150, 42);
+            this.rb_percentage.TabIndex = 90;
+            this.rb_percentage.TabStop = true;
+            this.rb_percentage.Text = "Persentage";
+            this.rb_percentage.UseVisualStyleBackColor = true;
+            // 
+            // txt_id
+            // 
+            this.txt_id.Location = new System.Drawing.Point(616, 482);
+            this.txt_id.Multiline = true;
+            this.txt_id.Name = "txt_id";
+            this.txt_id.Size = new System.Drawing.Size(41, 40);
+            this.txt_id.TabIndex = 89;
+            // 
+            // cb_status
+            // 
+            this.cb_status.Appearance = System.Windows.Forms.Appearance.Button;
+            this.cb_status.AutoSize = true;
+            this.cb_status.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cb_status.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.cb_status.ForeColor = System.Drawing.Color.White;
+            this.cb_status.Location = new System.Drawing.Point(364, 291);
+            this.cb_status.Name = "cb_status";
+            this.cb_status.Size = new System.Drawing.Size(95, 42);
+            this.cb_status.TabIndex = 67;
+            this.cb_status.Text = "Active";
+            this.cb_status.UseVisualStyleBackColor = true;
+            // 
+            // dtp_dateTo
+            // 
+            this.dtp_dateTo.CustomFormat = "yyyy-MM-dd";
+            this.dtp_dateTo.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.dtp_dateTo.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtp_dateTo.Location = new System.Drawing.Point(28, 166);
+            this.dtp_dateTo.Name = "dtp_dateTo";
+            this.dtp_dateTo.Size = new System.Drawing.Size(287, 39);
+            this.dtp_dateTo.TabIndex = 66;
+            this.dtp_dateTo.Value = new System.DateTime(2023, 2, 8, 19, 27, 14, 0);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(30, 133);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(87, 30);
+            this.label5.TabIndex = 65;
+            this.label5.Text = "Date To";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(36, 21);
+            this.label4.Location = new System.Drawing.Point(362, 22);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(58, 30);
-            this.label4.TabIndex = 66;
-            this.label4.Text = "Date";
+            this.label4.Size = new System.Drawing.Size(115, 30);
+            this.label4.TabIndex = 64;
+            this.label4.Text = "Date From";
             // 
-            // dtp_date
+            // dtp_dateFrom
             // 
-            this.dtp_date.CustomFormat = "yyyy-MM-dd";
-            this.dtp_date.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.dtp_date.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtp_date.Location = new System.Drawing.Point(36, 54);
-            this.dtp_date.Name = "dtp_date";
-            this.dtp_date.Size = new System.Drawing.Size(287, 39);
-            this.dtp_date.TabIndex = 65;
-            this.dtp_date.Value = new System.DateTime(2023, 2, 8, 19, 27, 14, 0);
-            // 
-            // cmb_priority
-            // 
-            this.cmb_priority.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmb_priority.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.cmb_priority.FormattingEnabled = true;
-            this.cmb_priority.Items.AddRange(new object[] {
-            "Low",
-            "Medium",
-            "Heigh"});
-            this.cmb_priority.Location = new System.Drawing.Point(36, 282);
-            this.cmb_priority.Name = "cmb_priority";
-            this.cmb_priority.Size = new System.Drawing.Size(287, 40);
-            this.cmb_priority.TabIndex = 49;
+            this.dtp_dateFrom.CustomFormat = "yyyy-MM-dd";
+            this.dtp_dateFrom.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.dtp_dateFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtp_dateFrom.Location = new System.Drawing.Point(360, 55);
+            this.dtp_dateFrom.Name = "dtp_dateFrom";
+            this.dtp_dateFrom.Size = new System.Drawing.Size(287, 39);
+            this.dtp_dateFrom.TabIndex = 63;
+            this.dtp_dateFrom.Value = new System.DateTime(2023, 2, 8, 19, 27, 14, 0);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(36, 359);
+            this.label1.Location = new System.Drawing.Point(28, 376);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(122, 30);
-            this.label1.TabIndex = 47;
+            this.label1.TabIndex = 62;
             this.label1.Text = "Description";
             // 
             // rtxt_description
             // 
             this.rtxt_description.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.rtxt_description.Location = new System.Drawing.Point(36, 392);
+            this.rtxt_description.Location = new System.Drawing.Point(28, 409);
             this.rtxt_description.Name = "rtxt_description";
-            this.rtxt_description.Size = new System.Drawing.Size(288, 87);
-            this.rtxt_description.TabIndex = 46;
+            this.rtxt_description.Size = new System.Drawing.Size(284, 87);
+            this.rtxt_description.TabIndex = 61;
             this.rtxt_description.Text = "";
+            // 
+            // txt_discountName
+            // 
+            this.txt_discountName.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.txt_discountName.Location = new System.Drawing.Point(30, 55);
+            this.txt_discountName.Multiline = true;
+            this.txt_discountName.Name = "txt_discountName";
+            this.txt_discountName.PlaceholderText = "discount";
+            this.txt_discountName.Size = new System.Drawing.Size(287, 40);
+            this.txt_discountName.TabIndex = 60;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(36, 249);
+            this.label2.Location = new System.Drawing.Point(30, 22);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(83, 30);
-            this.label2.TabIndex = 44;
-            this.label2.Text = "Priority";
+            this.label2.Size = new System.Drawing.Size(160, 30);
+            this.label2.TabIndex = 59;
+            this.label2.Text = "Discount Name";
             // 
-            // frmComplain
+            // ntxt_value
+            // 
+            this.ntxt_value.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.ntxt_value.Location = new System.Drawing.Point(28, 289);
+            this.ntxt_value.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.ntxt_value.Name = "ntxt_value";
+            this.ntxt_value.Size = new System.Drawing.Size(287, 39);
+            this.ntxt_value.TabIndex = 109;
+            this.ntxt_value.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.ntxt_value.ThousandsSeparator = true;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.Location = new System.Drawing.Point(28, 256);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(63, 30);
+            this.label7.TabIndex = 108;
+            this.label7.Text = "Value";
+            // 
+            // frmDiscount
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(364, 631);
+            this.ClientSize = new System.Drawing.Size(669, 656);
             this.Controls.Add(this.pnl_body);
             this.Controls.Add(this.pnl_root);
             this.Controls.Add(this.pnl_head);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "frmComplain";
+            this.Name = "frmDiscount";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Complain ";
-            this.Load += new System.EventHandler(this.frmComplain_Load);
+            this.Text = "Discount   ";
+            this.Load += new System.EventHandler(this.frmDiscount_Load);
             this.pnl_head.ResumeLayout(false);
             this.pnl_head.PerformLayout();
             this.pnl_root.ResumeLayout(false);
+            this.pnl_root.PerformLayout();
             this.pnl_body.ResumeLayout(false);
             this.pnl_container.ResumeLayout(false);
             this.pnl_container.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ntxt_value)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -329,16 +424,23 @@
         private Button btn_cancel;
         private Button btn_save;
         private Panel pnl_container;
-        private Button btn_delete;
-        private ComboBox cmb_priority;
+        private DateTimePicker dtp_dateTo;
+        private Label label5;
+        private Label label4;
+        private DateTimePicker dtp_dateFrom;
         private Label label1;
         private RichTextBox rtxt_description;
+        private TextBox txt_discountName;
         private Label label2;
-        private ComboBox cmb_type;
-        private Label label3;
-        private Label label4;
-        private DateTimePicker dtp_date;
         private Label lb_user;
+        private CheckBox cb_status;
+        private Button btn_delete;
         private TextBox txt_id;
+        private Label label6;
+        private Label label3;
+        private RadioButton rb_amount;
+        private RadioButton rb_percentage;
+        private NumericUpDown ntxt_value;
+        private Label label7;
     }
 }

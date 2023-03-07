@@ -222,10 +222,10 @@ namespace vellsPos.Forms.Layouts
 
         private void txt_customerID_TextChanged(object sender, EventArgs e)
         {
-            String customerNameQuery = "SELECT concat(customer_first_name,' ',customer_last_name)  FROM customers WHERE id='" + txt_customerID.Text + "' ";
-            String customerName = DBTransactionService.getScalerData(customerNameQuery);
+            //String customerNameQuery = "SELECT concat(customer_first_name,' ',customer_last_name)  FROM customers WHERE id='" + txt_customerID.Text + "' ";
+            //String customerName = DBTransactionService.getScalerData(customerNameQuery);
 
-            txt_customer.Text = customerName;
+            //txt_customer.Text = customerName;
         }
     }
 }

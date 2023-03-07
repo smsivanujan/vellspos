@@ -226,10 +226,10 @@ namespace vellsPos.Forms.Layouts
 
         private void txt_productID_TextChanged(object sender, EventArgs e)
         {
-            String productCodeQuery = "SELECT product_number  FROM products WHERE id='"+txt_productID.Text+"' ";
-            String productCode = DBTransactionService.getScalerData(productCodeQuery);
+            //String productCodeQuery = "SELECT product_number  FROM products WHERE id='"+txt_productID.Text+"' ";
+            //String productCode = DBTransactionService.getScalerData(productCodeQuery);
 
-            txt_productNumber.Text = productCode;
+            //txt_productNumber.Text = productCode;
         }
     }
 }

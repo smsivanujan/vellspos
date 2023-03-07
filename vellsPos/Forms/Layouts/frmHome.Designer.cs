@@ -130,6 +130,7 @@
             this.btn_maximize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_maximize.BackColor = System.Drawing.Color.Transparent;
             this.btn_maximize.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_maximize.FlatAppearance.BorderSize = 0;
             this.btn_maximize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_maximize.ForeColor = System.Drawing.Color.Transparent;
             this.btn_maximize.Image = ((System.Drawing.Image)(resources.GetObject("btn_maximize.Image")));
@@ -144,6 +145,7 @@
             // 
             this.btn_minimize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_minimize.BackColor = System.Drawing.Color.Transparent;
+            this.btn_minimize.FlatAppearance.BorderSize = 0;
             this.btn_minimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_minimize.ForeColor = System.Drawing.Color.Transparent;
             this.btn_minimize.Image = ((System.Drawing.Image)(resources.GetObject("btn_minimize.Image")));
@@ -160,6 +162,7 @@
             this.btn_close.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_close.BackColor = System.Drawing.Color.Red;
             this.btn_close.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_close.FlatAppearance.BorderSize = 0;
             this.btn_close.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_close.ForeColor = System.Drawing.Color.Transparent;
             this.btn_close.Image = ((System.Drawing.Image)(resources.GetObject("btn_close.Image")));

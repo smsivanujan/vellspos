@@ -177,7 +177,6 @@ namespace vellsPos.Entities.Masters
         {
             ProductBarcode productBarcode = new ProductBarcode();
             Product product = new Product();
-            Discount discount = new Discount();
             try
             {
                 String query = "SELECT " +

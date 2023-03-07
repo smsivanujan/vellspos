@@ -62,6 +62,9 @@
     <Compile Update="Forms\Masters\Customer\frmLoyalityCard.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\Masters\Discount\frmDiscountProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\Masters\Drawer\frmDrawer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -71,7 +74,7 @@
     <Compile Update="Forms\Masters\Product\frmCategory.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\Masters\Product\frmDiscount.cs">
+    <Compile Update="Forms\Masters\Discount\frmDiscount.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\Masters\Product\frmProductBarcode.cs">

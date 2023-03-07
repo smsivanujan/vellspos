@@ -135,7 +135,7 @@
             // 
             // pnl_title
             // 
-            this.pnl_title.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.pnl_title.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(32)))), ((int)(((byte)(42)))));
             this.pnl_title.Controls.Add(this.pb_img);
             this.pnl_title.Controls.Add(this.lbl_title);
             this.pnl_title.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -156,6 +156,7 @@
             // 
             this.lbl_title.AutoSize = true;
             this.lbl_title.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lbl_title.ForeColor = System.Drawing.Color.White;
             this.lbl_title.Location = new System.Drawing.Point(17, 15);
             this.lbl_title.Name = "lbl_title";
             this.lbl_title.Size = new System.Drawing.Size(68, 30);
@@ -164,7 +165,7 @@
             // 
             // pnl_add
             // 
-            this.pnl_add.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.pnl_add.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(32)))), ((int)(((byte)(42)))));
             this.pnl_add.Controls.Add(this.btn_add);
             this.pnl_add.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnl_add.Location = new System.Drawing.Point(379, 3);
@@ -175,7 +176,7 @@
             // btn_add
             // 
             this.btn_add.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_add.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.btn_add.BackColor = System.Drawing.Color.Blue;
             this.btn_add.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_add.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_add.Image = ((System.Drawing.Image)(resources.GetObject("btn_add.Image")));
@@ -191,7 +192,7 @@
             // 
             // pnl_search
             // 
-            this.pnl_search.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.pnl_search.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(32)))), ((int)(((byte)(42)))));
             this.pnl_search.Controls.Add(this.pb_search);
             this.pnl_search.Controls.Add(this.txt_search);
             this.pnl_search.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -202,8 +203,9 @@
             // 
             // pb_search
             // 
+            this.pb_search.BackColor = System.Drawing.Color.White;
             this.pb_search.Image = ((System.Drawing.Image)(resources.GetObject("pb_search.Image")));
-            this.pb_search.Location = new System.Drawing.Point(6, 8);
+            this.pb_search.Location = new System.Drawing.Point(3, 8);
             this.pb_search.Name = "pb_search";
             this.pb_search.Size = new System.Drawing.Size(53, 49);
             this.pb_search.TabIndex = 2;
@@ -211,7 +213,7 @@
             // 
             // txt_search
             // 
-            this.txt_search.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.txt_search.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.txt_search.Location = new System.Drawing.Point(62, 8);
             this.txt_search.Multiline = true;
             this.txt_search.Name = "txt_search";
@@ -231,7 +233,7 @@
             // 
             // tbl_layoutFooter
             // 
-            this.tbl_layoutFooter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.tbl_layoutFooter.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.tbl_layoutFooter.ColumnCount = 3;
             this.tbl_layoutFooter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tbl_layoutFooter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 375F));
@@ -260,16 +262,18 @@
             // lbl_sortStatus
             // 
             this.lbl_sortStatus.AutoSize = true;
-            this.lbl_sortStatus.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbl_sortStatus.Location = new System.Drawing.Point(101, 11);
+            this.lbl_sortStatus.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lbl_sortStatus.ForeColor = System.Drawing.Color.White;
+            this.lbl_sortStatus.Location = new System.Drawing.Point(95, 12);
             this.lbl_sortStatus.Name = "lbl_sortStatus";
-            this.lbl_sortStatus.Size = new System.Drawing.Size(173, 21);
+            this.lbl_sortStatus.Size = new System.Drawing.Size(183, 21);
             this.lbl_sortStatus.TabIndex = 0;
             this.lbl_sortStatus.Text = "Showing 1 to 40 of 105";
             this.lbl_sortStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btn_next
             // 
+            this.btn_next.BackColor = System.Drawing.Color.Yellow;
             this.btn_next.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_next.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btn_next.Image = ((System.Drawing.Image)(resources.GetObject("btn_next.Image")));
@@ -278,11 +282,12 @@
             this.btn_next.Size = new System.Drawing.Size(75, 33);
             this.btn_next.TabIndex = 1;
             this.btn_next.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btn_next.UseVisualStyleBackColor = true;
+            this.btn_next.UseVisualStyleBackColor = false;
             this.btn_next.Click += new System.EventHandler(this.btn_next_Click);
             // 
             // btn_previous
             // 
+            this.btn_previous.BackColor = System.Drawing.Color.Yellow;
             this.btn_previous.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_previous.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btn_previous.Image = ((System.Drawing.Image)(resources.GetObject("btn_previous.Image")));
@@ -291,7 +296,7 @@
             this.btn_previous.Size = new System.Drawing.Size(75, 33);
             this.btn_previous.TabIndex = 2;
             this.btn_previous.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btn_previous.UseVisualStyleBackColor = true;
+            this.btn_previous.UseVisualStyleBackColor = false;
             this.btn_previous.Click += new System.EventHandler(this.btn_previous_Click);
             // 
             // pnl_body
@@ -318,7 +323,7 @@
             // 
             // pnl_head
             // 
-            this.pnl_head.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.pnl_head.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.pnl_head.Controls.Add(this.btn_close);
             this.pnl_head.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnl_head.Location = new System.Drawing.Point(0, 0);

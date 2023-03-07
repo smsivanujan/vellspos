@@ -77,6 +77,7 @@
             this.btn_close.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_close.BackColor = System.Drawing.Color.Transparent;
             this.btn_close.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_close.FlatAppearance.BorderSize = 0;
             this.btn_close.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_close.ForeColor = System.Drawing.Color.Transparent;
             this.btn_close.Image = ((System.Drawing.Image)(resources.GetObject("btn_close.Image")));
@@ -103,7 +104,7 @@
             this.btn_save.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_save.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(218)))), ((int)(((byte)(81)))));
             this.btn_save.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_save.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_save.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_save.Image = ((System.Drawing.Image)(resources.GetObject("btn_save.Image")));
             this.btn_save.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_save.Location = new System.Drawing.Point(246, 12);
@@ -121,13 +122,13 @@
             this.btn_cancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_cancel.BackColor = System.Drawing.Color.Transparent;
             this.btn_cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_cancel.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_cancel.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_cancel.Image = ((System.Drawing.Image)(resources.GetObject("btn_cancel.Image")));
             this.btn_cancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_cancel.Location = new System.Drawing.Point(132, 12);
+            this.btn_cancel.Location = new System.Drawing.Point(113, 12);
             this.btn_cancel.Name = "btn_cancel";
             this.btn_cancel.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btn_cancel.Size = new System.Drawing.Size(108, 51);
+            this.btn_cancel.Size = new System.Drawing.Size(127, 51);
             this.btn_cancel.TabIndex = 2;
             this.btn_cancel.Text = "Cancel";
             this.btn_cancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;

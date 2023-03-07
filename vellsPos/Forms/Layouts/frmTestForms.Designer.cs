@@ -49,6 +49,7 @@
             this.btn_activation = new System.Windows.Forms.Button();
             this.btn_drawer = new System.Windows.Forms.Button();
             this.btn_setting = new System.Windows.Forms.Button();
+            this.btn_productDiscount = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -272,11 +273,22 @@
             this.btn_setting.UseVisualStyleBackColor = true;
             this.btn_setting.Click += new System.EventHandler(this.btn_setting_Click);
             // 
+            // btn_productDiscount
+            // 
+            this.btn_productDiscount.Location = new System.Drawing.Point(364, 443);
+            this.btn_productDiscount.Name = "btn_productDiscount";
+            this.btn_productDiscount.Size = new System.Drawing.Size(187, 75);
+            this.btn_productDiscount.TabIndex = 14;
+            this.btn_productDiscount.Text = "Product Discount";
+            this.btn_productDiscount.UseVisualStyleBackColor = true;
+            this.btn_productDiscount.Click += new System.EventHandler(this.btn_productDiscount_Click);
+            // 
             // frmTestForms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 580);
+            this.Controls.Add(this.btn_productDiscount);
             this.Controls.Add(this.btn_setting);
             this.Controls.Add(this.btn_drawer);
             this.Controls.Add(this.btn_activation);
@@ -319,5 +331,6 @@
         private Button btn_activation;
         private Button btn_drawer;
         private Button btn_setting;
+        private Button btn_productDiscount;
     }
 }

@@ -90,7 +90,7 @@ namespace vellsPos.Forms.Layouts
 
         private void btn_pos_Click(object sender, EventArgs e)
         {
-            frmPointOfSale frmPointOfSale = new frmPointOfSale();
+            frmPOS frmPointOfSale = new frmPOS();
             frmPointOfSale.ShowDialog();
         }
 
@@ -148,6 +148,12 @@ namespace vellsPos.Forms.Layouts
         {
             frmSetting frmSetting = new frmSetting();
             frmSetting.ShowDialog();
+        }
+
+        private void btn_productDiscount_Click(object sender, EventArgs e)
+        {
+            frmDiscountProduct f = new frmDiscountProduct();
+            f.ShowDialog();
         }
     }
 }

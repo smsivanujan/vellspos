@@ -13,7 +13,10 @@
     <Compile Update="Forms\Layouts\frmLoading.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\Layouts\frmPointOfSale.cs">
+    <Compile Update="Forms\Layouts\frmPOS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Layouts\frmProductList.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\Layouts\frmReference.cs">

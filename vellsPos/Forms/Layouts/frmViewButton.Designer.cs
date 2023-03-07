@@ -55,7 +55,7 @@
             // 
             // pnl_head
             // 
-            this.pnl_head.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.pnl_head.BackColor = System.Drawing.Color.Yellow;
             this.pnl_head.Controls.Add(this.lbl_title);
             this.pnl_head.Controls.Add(this.btn_close);
             this.pnl_head.Dock = System.Windows.Forms.DockStyle.Top;
@@ -76,8 +76,9 @@
             // btn_close
             // 
             this.btn_close.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_close.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.btn_close.BackColor = System.Drawing.Color.Transparent;
             this.btn_close.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_close.FlatAppearance.BorderSize = 0;
             this.btn_close.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_close.ForeColor = System.Drawing.Color.Transparent;
             this.btn_close.Image = ((System.Drawing.Image)(resources.GetObject("btn_close.Image")));
@@ -90,7 +91,7 @@
             // 
             // pnl_root
             // 
-            this.pnl_root.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.pnl_root.BackColor = System.Drawing.Color.Yellow;
             this.pnl_root.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pnl_root.Location = new System.Drawing.Point(0, 514);
             this.pnl_root.Name = "pnl_root";
@@ -110,10 +111,12 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(32)))), ((int)(((byte)(42)))));
             this.groupBox1.Controls.Add(this.btn_loginLog);
             this.groupBox1.Controls.Add(this.btn_activityLog);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.groupBox1.ForeColor = System.Drawing.Color.White;
             this.groupBox1.Location = new System.Drawing.Point(0, 323);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(710, 120);
@@ -126,6 +129,7 @@
             this.btn_loginLog.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.btn_loginLog.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_loginLog.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_loginLog.ForeColor = System.Drawing.Color.Black;
             this.btn_loginLog.Image = ((System.Drawing.Image)(resources.GetObject("btn_loginLog.Image")));
             this.btn_loginLog.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_loginLog.Location = new System.Drawing.Point(231, 22);
@@ -143,6 +147,7 @@
             this.btn_activityLog.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.btn_activityLog.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_activityLog.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_activityLog.ForeColor = System.Drawing.Color.Black;
             this.btn_activityLog.Image = ((System.Drawing.Image)(resources.GetObject("btn_activityLog.Image")));
             this.btn_activityLog.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_activityLog.Location = new System.Drawing.Point(6, 22);
@@ -157,10 +162,12 @@
             // 
             // gb_crm
             // 
+            this.gb_crm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(32)))), ((int)(((byte)(42)))));
             this.gb_crm.Controls.Add(this.btn_loyalityCard);
             this.gb_crm.Controls.Add(this.btn_customer);
             this.gb_crm.Dock = System.Windows.Forms.DockStyle.Top;
             this.gb_crm.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.gb_crm.ForeColor = System.Drawing.Color.White;
             this.gb_crm.Location = new System.Drawing.Point(0, 203);
             this.gb_crm.Name = "gb_crm";
             this.gb_crm.Size = new System.Drawing.Size(710, 120);
@@ -173,6 +180,7 @@
             this.btn_loyalityCard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.btn_loyalityCard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_loyalityCard.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_loyalityCard.ForeColor = System.Drawing.Color.Black;
             this.btn_loyalityCard.Image = ((System.Drawing.Image)(resources.GetObject("btn_loyalityCard.Image")));
             this.btn_loyalityCard.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_loyalityCard.Location = new System.Drawing.Point(231, 22);
@@ -190,6 +198,7 @@
             this.btn_customer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.btn_customer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_customer.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_customer.ForeColor = System.Drawing.Color.Black;
             this.btn_customer.Image = ((System.Drawing.Image)(resources.GetObject("btn_customer.Image")));
             this.btn_customer.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_customer.Location = new System.Drawing.Point(6, 22);
@@ -204,6 +213,7 @@
             // 
             // gb_product
             // 
+            this.gb_product.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(32)))), ((int)(((byte)(42)))));
             this.gb_product.Controls.Add(this.btn_subCoCategory);
             this.gb_product.Controls.Add(this.btn_productBarcode);
             this.gb_product.Controls.Add(this.btn_product);
@@ -211,6 +221,7 @@
             this.gb_product.Controls.Add(this.btn_category);
             this.gb_product.Dock = System.Windows.Forms.DockStyle.Top;
             this.gb_product.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.gb_product.ForeColor = System.Drawing.Color.White;
             this.gb_product.Location = new System.Drawing.Point(0, 0);
             this.gb_product.Name = "gb_product";
             this.gb_product.Size = new System.Drawing.Size(710, 203);
@@ -223,6 +234,7 @@
             this.btn_subCoCategory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.btn_subCoCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_subCoCategory.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_subCoCategory.ForeColor = System.Drawing.Color.Black;
             this.btn_subCoCategory.Image = ((System.Drawing.Image)(resources.GetObject("btn_subCoCategory.Image")));
             this.btn_subCoCategory.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_subCoCategory.Location = new System.Drawing.Point(456, 22);
@@ -240,6 +252,7 @@
             this.btn_productBarcode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.btn_productBarcode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_productBarcode.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_productBarcode.ForeColor = System.Drawing.Color.Black;
             this.btn_productBarcode.Image = ((System.Drawing.Image)(resources.GetObject("btn_productBarcode.Image")));
             this.btn_productBarcode.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_productBarcode.Location = new System.Drawing.Point(231, 113);
@@ -257,6 +270,7 @@
             this.btn_product.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.btn_product.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_product.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_product.ForeColor = System.Drawing.Color.Black;
             this.btn_product.Image = ((System.Drawing.Image)(resources.GetObject("btn_product.Image")));
             this.btn_product.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_product.Location = new System.Drawing.Point(6, 113);
@@ -274,6 +288,7 @@
             this.btn_subCategory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.btn_subCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_subCategory.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_subCategory.ForeColor = System.Drawing.Color.Black;
             this.btn_subCategory.Image = ((System.Drawing.Image)(resources.GetObject("btn_subCategory.Image")));
             this.btn_subCategory.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_subCategory.Location = new System.Drawing.Point(231, 22);
@@ -291,6 +306,7 @@
             this.btn_category.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.btn_category.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_category.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_category.ForeColor = System.Drawing.Color.Black;
             this.btn_category.Image = ((System.Drawing.Image)(resources.GetObject("btn_category.Image")));
             this.btn_category.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_category.Location = new System.Drawing.Point(6, 22);

@@ -80,69 +80,6 @@ namespace vellsPos.Forms.Layouts
             }
         }
 
-        //private void save()
-        //{
-            
-        //}
-
-        //private void update()
-        //{
-        //    ReturnResult nameResult = Validator.validateText(txt_subCategory.Text, "SubCategory");
-
-        //    if (!nameResult.Status)
-        //    {
-        //        MessageBox.Show(nameResult.Msg, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //    }
-        //    else
-        //    {
-        //        int categoryId = 0;
-        //        if (cmb_category.SelectedIndex >= 0)
-        //        {
-        //            categoryId = int.Parse(categories[cmb_category.SelectedIndex].Value);
-        //        }
-
-        //        Category category = new Category();
-        //        category.Id = categoryId;
-
-        //        string rootPath = @"c:\vellspos";
-        //        String directoryPath = Path.Combine(rootPath, Path.GetFileName(lbl_imagePath.Text));
-
-        //        ImageUpload imageUpload = new ImageUpload();
-        //        imageUpload.DirectoryPath = directoryPath;
-        //        imageUpload.RootPath = rootPath;//root folder from save
-        //        imageUpload.ImagePath = lbl_imagePath.Text;
-        //        ReturnResult resul2 = ImageUpload.store(imageUpload);
-
-        //        SubCategory subCategory = new SubCategory();
-        //        subCategory.SubCategoryName = txt_subCategory.Text;
-        //        subCategory.Category = category;
-        //        subCategory.Description = rtxt_description.Text;
-        //        subCategory.Image = directoryPath;//root folder to save
-        //        ReturnResult result = SubCategory.store(subCategory);
-
-
-        //        if (result.Status)
-        //        {
-        //            //ActivityLog aL = new ActivityLog();
-        //            //aL.Date = DateTime.Now;
-        //            //User user = new User();
-        //            //String query = "SELECT id from user WHERE name = '" + Session.uname + "'";
-        //            //String id = DBTransactionService.getScalerData(query);
-        //            //user.Id = Int32.Parse(id);
-        //            //aL.User = user;
-        //            //aL.Description = "One New Transaction Added.[Date : " + dtp_dateFrom.Value + "Employee : " + txtname.Text + "Transaction Category : " + txttransaction.Text + "Invoice No : " + txtInvoiceNo.Text + "Amount : " + txtamount.Text + " Description :" + txtdescrib.Text + " Added by :" + Session.uname + "]";
-        //            //ActivityLog.store(aL);
-        //            MessageBox.Show("Sub Category has been added successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //            this.Close();
-        //        }
-        //        else
-        //        {
-        //            MessageBox.Show(result.Msg, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //        }
-        //        //}
-        //    }
-        //}
-
         private void btn_save_Click(object sender, EventArgs e)
         {
             ReturnResult nameResult = Validator.validateText(txt_subCategory.Text, "SubCategory");

@@ -232,7 +232,7 @@ namespace vellsPos.Entities.Masters
 
 
             dvParam.AddForm = new frmProduct();
-            //dvParam.ViewForm = new frmProduct();
+            dvParam.ViewForm = new frmProduct();
 
 
             frmView vData = null;

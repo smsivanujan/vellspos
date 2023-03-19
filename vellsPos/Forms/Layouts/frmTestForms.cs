@@ -16,6 +16,11 @@ namespace vellsPos.Forms.Layouts
     public partial class frmTestForms : Form
     {
         //private FormMovable formMove;
+        private float fontScale = 1;
+        private Rectangle originalFormRect;
+        private Rectangle originalButtonRect;
+        private Rectangle originalPanelRect;
+        private float originalButtonFontSize;
 
         public frmTestForms()
         {
@@ -129,7 +134,42 @@ namespace vellsPos.Forms.Layouts
 
         private void frmTestForms_Load(object sender, EventArgs e)
         {
-            btn_category.Hide();
+            originalFormRect = new Rectangle(this.Location, this.Size);
+            originalButtonRect = new Rectangle(btn_category.Location, btn_category.Size);
+            originalPanelRect = new Rectangle(panel1.Location, panel1.Size);
+            originalButtonFontSize = panel1.Font.Size;
+        }
+
+        private void resizeChildrenControls()
+        {
+            resizeControl(originalButtonRect, btn_category , originalButtonFontSize);
+            resizeControl(originalPanelRect, panel1, originalButtonFontSize);
+        }
+
+        private void resizeControl(Rectangle r, Control c, float ofs)
+        {
+            float xRatio = (float)(this.ClientRectangle.Width) / (float)(originalFormRect.Width);
+            float yRatio = (float)(this.ClientRectangle.Height) / (float)(originalFormRect.Height);
+
+            float newX = r.Location.X * xRatio;
+            float newY = r.Location.Y * yRatio;
+
+            c.Location = new Point((int)newX, (int)newY);
+            c.Width = (int)(r.Width * xRatio);
+            c.Height = (int)(r.Height * yRatio);
+
+            float ratio = xRatio;
+
+            if (xRatio >= yRatio)
+            {
+                ratio = yRatio;
+            }
+
+            
+            float newFontSize = ofs * ratio;
+            Font newFont = new Font(c.Font.FontFamily, newFontSize);
+            c.Font = newFont;
+
         }
 
         private void btn_activation_Click(object sender, EventArgs e)
@@ -154,6 +194,11 @@ namespace vellsPos.Forms.Layouts
         {
             frmDiscountProduct f = new frmDiscountProduct();
             f.ShowDialog();
+        }
+
+        private void frmTestForms_Resize(object sender, EventArgs e)
+        {
+            resizeChildrenControls();
         }
     }
 }

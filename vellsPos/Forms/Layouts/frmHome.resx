@@ -58,7 +58,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="pictureBox2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="pb_user.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABGdBTUEAALGPC/xhBQAAA0dJREFUaEPt
         mbmq1VAUho8iDjjhUChaiIj4AiJ2Vj6Ahb7CVUGxUQtFsNDKUp9CKwXxAWwVr72iwm3uRXDAARH9P0hg
@@ -78,28 +78,14 @@
         AAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="btn_maximize.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btn_exit.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABGdBTUEAALGPC/xhBQAAAKVJREFUaEPt
-        zaENADEQA8H03/Q/j46cBjjAI5muT1XVs77HtjZFklubIsmtTZHk1jiA+J8DiP85gPifA4j/OYD4nwOI
-        /zmA+J8DiP85gPifA4j/OYD4nwOI/zmA+J8DiP85gPifA4j/OYD4nwOI/zmA+J8DiP85gPifA4j/OYD4
-        nwOI/zmA+J8DiP85gPifA4j/70B6a1MkubUpktzaFEmuquo55/wT1f4QDBB6nwAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="btn_minimize.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABGdBTUEAALGPC/xhBQAAAEFJREFUaEPt
-        0bEKgFAIQFH/vP68eNAUEg0+cTgH7qTgYAAAAACMdzZX7mquXHZkZ+WOp+zdq/fsa/dPAAAAAGNF3KWx
-        U8WchXXSAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="btn_close.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABGdBTUEAALGPC/xhBQAAAOBJREFUaEPt
-        mEEKwzAMBA19Y79Y6Bt7aL2FhRxsk8SSLcEO6OAEVrPJzUUIIYQQiXjUedV5/k+2IBPZ2OECgt91vnU+
-        dSxLIAuZyMYOlxL4OljAsSpxlOdglzmtRbMlPDKHWC5cLk8sFm+TJzMC2+XJHZEw8uSKUDh5ckYsrDwZ
-        CYaXJz3RFPKkVeI4oeVJr0QKeZC6QE+eE7pESx7n1rNwJXryeD56F4IzgmFLXBELV+KOUJgSMyLbS1gI
-        bCthuXh5CY+FS0ukv1ZJf7EFEIyv4/GLkYlsN3khhBBC2FLKDytqCuxaie4YAAAAAElFTkSuQmCC
+        iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABGdBTUEAALGPC/xhBQAAAPJJREFUaEPt
+        mUsKwkAQRHMPr+HnZIIb9TQeTVdCvIFWg4FQBMJMutIZ6AdvN3RXhWQz6ZIkSTbNDj7gC34rDcPCv+FU
+        qBLDsCc/FajUMJ5wKlCpYWwmSC1ZIJosEE0WKOD+15W1CljwYYdriXF4U8EF8h63EjxYwR72kHe5lOCh
+        Kg5QUoIHKjnCD+Sdi0rwsDn4vJfVJXjQHHze06oSPGQOPu9p0wVWe4WWcILhH3EtkvAGD1QgC2/wUAVn
+        yHtcwhs8WMUVDjvcwhvj8KaSG3QNb6xZQEIWiCYLRNN8geYvd5u/Xm/+B4fR9C+mJEkSNV33A0uchsiv
+        oyvUAAAAAElFTkSuQmCC
 </value>
   </data>
   <data name="pb_titleImage.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -259,7 +245,7 @@
         UVAwooooAKKKKACiiigAooooA//Z
 </value>
   </data>
-  <data name="button1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btn_logs.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABGdBTUEAALGPC/xhBQAAAVFJREFUaEPt
         kNFpA0EMRO/LTcQuMWkhZbmE5NO1OAXEEmRBDLcMsjTnj+yDIccI3qyzLRaLNJ9/fyPeqfs2fi1R6N/e
@@ -429,16 +415,6 @@
         8vH5Zj6hKlpT9jAKDpNfqIrWlD2MGmylg8t6q6TOhzQPtqHB1dfaaOp8SPNg20NVaE7ZUxFzDa6cxYNt
         zsGVs2iw5QbXnE4ebI0aqI9uSWZRL1qSWWruQK0W7Uxr7kCtFu1Ma+1ArZp2ppE7UKttZ9poJOm6f3WA
         0yjqs58iAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="btn_exit.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABGdBTUEAALGPC/xhBQAAAPJJREFUaEPt
-        mUsKwkAQRHMPr+HnZIIb9TQeTVdCvIFWg4FQBMJMutIZ6AdvN3RXhWQz6ZIkSTbNDj7gC34rDcPCv+FU
-        qBLDsCc/FajUMJ5wKlCpYWwmSC1ZIJosEE0WKOD+15W1CljwYYdriXF4U8EF8h63EjxYwR72kHe5lOCh
-        Kg5QUoIHKjnCD+Sdi0rwsDn4vJfVJXjQHHze06oSPGQOPu9p0wVWe4WWcILhH3EtkvAGD1QgC2/wUAVn
-        yHtcwhs8WMUVDjvcwhvj8KaSG3QNb6xZQEIWiCYLRNN8geYvd5u/Xm/+B4fR9C+mJEkSNV33A0uchsiv
-        oyvUAAAAAElFTkSuQmCC
 </value>
   </data>
 </root>

@@ -40,6 +40,7 @@
             this.btn_close = new System.Windows.Forms.Button();
             this.pnl_head = new System.Windows.Forms.Panel();
             this.lbl_title = new System.Windows.Forms.Label();
+            this.gb_category = new System.Windows.Forms.GroupBox();
             this.pnl_container.SuspendLayout();
             this.pnl_product.SuspendLayout();
             this.pnl_productList.SuspendLayout();
@@ -55,7 +56,7 @@
             this.pnl_container.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnl_container.Location = new System.Drawing.Point(0, 0);
             this.pnl_container.Name = "pnl_container";
-            this.pnl_container.Size = new System.Drawing.Size(494, 563);
+            this.pnl_container.Size = new System.Drawing.Size(702, 563);
             this.pnl_container.TabIndex = 0;
             // 
             // pnl_product
@@ -65,25 +66,26 @@
             this.pnl_product.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnl_product.Location = new System.Drawing.Point(0, 0);
             this.pnl_product.Name = "pnl_product";
-            this.pnl_product.Size = new System.Drawing.Size(494, 563);
+            this.pnl_product.Size = new System.Drawing.Size(702, 563);
             this.pnl_product.TabIndex = 70;
             // 
             // pnl_productList
             // 
             this.pnl_productList.BackColor = System.Drawing.Color.SteelBlue;
+            this.pnl_productList.Controls.Add(this.gb_category);
             this.pnl_productList.Controls.Add(this.gb_product);
             this.pnl_productList.Controls.Add(this.gb_subCoCategory);
             this.pnl_productList.Controls.Add(this.gb_subCategory);
             this.pnl_productList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnl_productList.Location = new System.Drawing.Point(0, 0);
             this.pnl_productList.Name = "pnl_productList";
-            this.pnl_productList.Size = new System.Drawing.Size(494, 563);
+            this.pnl_productList.Size = new System.Drawing.Size(702, 563);
             this.pnl_productList.TabIndex = 16;
             // 
             // gb_product
             // 
             this.gb_product.BackColor = System.Drawing.Color.SteelBlue;
-            this.gb_product.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gb_product.Dock = System.Windows.Forms.DockStyle.Left;
             this.gb_product.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.gb_product.ForeColor = System.Drawing.Color.White;
             this.gb_product.Location = new System.Drawing.Point(290, 0);
@@ -134,7 +136,7 @@
             this.pnl_body.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnl_body.Location = new System.Drawing.Point(0, 53);
             this.pnl_body.Name = "pnl_body";
-            this.pnl_body.Size = new System.Drawing.Size(494, 563);
+            this.pnl_body.Size = new System.Drawing.Size(702, 563);
             this.pnl_body.TabIndex = 5;
             // 
             // btn_close
@@ -146,7 +148,7 @@
             this.btn_close.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_close.ForeColor = System.Drawing.Color.Transparent;
             this.btn_close.Image = ((System.Drawing.Image)(resources.GetObject("btn_close.Image")));
-            this.btn_close.Location = new System.Drawing.Point(451, 13);
+            this.btn_close.Location = new System.Drawing.Point(659, 13);
             this.btn_close.Name = "btn_close";
             this.btn_close.Size = new System.Drawing.Size(31, 30);
             this.btn_close.TabIndex = 4;
@@ -161,7 +163,7 @@
             this.pnl_head.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnl_head.Location = new System.Drawing.Point(0, 0);
             this.pnl_head.Name = "pnl_head";
-            this.pnl_head.Size = new System.Drawing.Size(494, 53);
+            this.pnl_head.Size = new System.Drawing.Size(702, 53);
             this.pnl_head.TabIndex = 3;
             // 
             // lbl_title
@@ -175,11 +177,24 @@
             this.lbl_title.TabIndex = 5;
             this.lbl_title.Text = "Product List";
             // 
+            // gb_category
+            // 
+            this.gb_category.BackColor = System.Drawing.Color.SteelBlue;
+            this.gb_category.Dock = System.Windows.Forms.DockStyle.Left;
+            this.gb_category.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.gb_category.ForeColor = System.Drawing.Color.White;
+            this.gb_category.Location = new System.Drawing.Point(494, 0);
+            this.gb_category.Name = "gb_category";
+            this.gb_category.Size = new System.Drawing.Size(205, 563);
+            this.gb_category.TabIndex = 14;
+            this.gb_category.TabStop = false;
+            this.gb_category.Text = "Categories";
+            // 
             // frmProductList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(494, 616);
+            this.ClientSize = new System.Drawing.Size(702, 616);
             this.Controls.Add(this.pnl_body);
             this.Controls.Add(this.pnl_head);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -211,5 +226,6 @@
         private GroupBox gb_product;
         private GroupBox gb_subCoCategory;
         private GroupBox gb_subCategory;
+        private GroupBox gb_category;
     }
 }

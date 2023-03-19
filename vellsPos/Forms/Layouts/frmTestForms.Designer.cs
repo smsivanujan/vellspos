@@ -218,7 +218,7 @@
             this.panel1.Controls.Add(this.btn_subCoCategory);
             this.panel1.Controls.Add(this.btn_subCategory);
             this.panel1.Controls.Add(this.btn_category);
-            this.panel1.Location = new System.Drawing.Point(557, 5);
+            this.panel1.Location = new System.Drawing.Point(665, 10);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(231, 508);
             this.panel1.TabIndex = 16;
@@ -275,7 +275,7 @@
             // 
             // btn_productDiscount
             // 
-            this.btn_productDiscount.Location = new System.Drawing.Point(364, 443);
+            this.btn_productDiscount.Location = new System.Drawing.Point(219, 438);
             this.btn_productDiscount.Name = "btn_productDiscount";
             this.btn_productDiscount.Size = new System.Drawing.Size(187, 75);
             this.btn_productDiscount.TabIndex = 14;
@@ -287,7 +287,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 580);
+            this.ClientSize = new System.Drawing.Size(917, 580);
             this.Controls.Add(this.btn_productDiscount);
             this.Controls.Add(this.btn_setting);
             this.Controls.Add(this.btn_drawer);
@@ -298,9 +298,12 @@
             this.Controls.Add(this.btn_home);
             this.Controls.Add(this.btn_barcode);
             this.Controls.Add(this.btn_pos);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmTestForms";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmTestForms";
             this.Load += new System.EventHandler(this.frmTestForms_Load);
+            this.Resize += new System.EventHandler(this.frmTestForms_Resize);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);

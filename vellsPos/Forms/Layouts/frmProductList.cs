@@ -15,7 +15,8 @@ namespace vellsPos.Forms.Layouts
 {
     public partial class frmProductList : Form
     {
-        frmPOS formPOS;
+        //frmPOS formPOS;
+        private List<ListItem> categories = new List<ListItem>();
         private List<ListItem> subCategories = new List<ListItem>();
         private List<ListItem> subCoategories = new List<ListItem>();
         private List<ListItem> products = new List<ListItem>();
@@ -23,10 +24,18 @@ namespace vellsPos.Forms.Layouts
         public static string productIDStatus = "";
         private FormMovable formMove;
 
-        public frmProductList(frmPOS frmPos)
+        //public frmProductList(frmPOS frmPos)
+        //{
+        //    InitializeComponent();
+        //    formPOS = frmPos;
+
+        //    formMove = new FormMovable(this);
+        //    formMove.SetMovable(pnl_head, lbl_title);
+        //}
+
+        public frmProductList()
         {
             InitializeComponent();
-            formPOS = frmPos;
 
             formMove = new FormMovable(this);
             formMove.SetMovable(pnl_head, lbl_title);
@@ -34,10 +43,42 @@ namespace vellsPos.Forms.Layouts
 
         private void frmProductList_Load(object sender, EventArgs e)
         {
-            showSubCategory(frmPOS.categoryID);
+            showCategory();
+            //showSubCategory(frmPOS.categoryID);
         }
 
-        private void showSubCategory(String categoryId)
+        private void showCategory()
+        {
+            String catId;
+            String catName;
+            int pointX1 = 35;
+            int pointY1 = 50;
+            gb_category.Controls.Clear();
+
+            String categoryQuery = "SELECT id as value,category_name as text FROM categories ";
+            categories = DBTransactionService.getDataAsListItems(categoryQuery);
+
+            foreach (ListItem catList in categories)
+            {
+                catId = catList.Value;
+                catName = catList.Text;
+
+                Button btnCategory = new Button();
+                btnCategory.Text = catName.ToString();
+                btnCategory.Tag = catId;
+                btnCategory.BackColor = Color.LightPink;
+                btnCategory.Size = new System.Drawing.Size(196, 38);
+                btnCategory.ForeColor = Color.Black;
+                //btnCategory.Font = new Font(btnCategory.Font.FontFamily,18);
+                btnCategory.Location = new Point(pointX1, pointY1);
+                gb_category.Controls.Add(btnCategory);
+                gb_category.Show();
+                pointY1 += 45;
+                btnCategory.Click += BtnCategory_Click;
+            }
+        }
+
+        private void BtnCategory_Click(object? sender, EventArgs e)
         {
             String subCatId;
             String subCatName;
@@ -47,6 +88,8 @@ namespace vellsPos.Forms.Layouts
             gb_subCoCategory.Controls.Clear();
             gb_product.Controls.Clear();
 
+            Button btnCategory = (Button)sender;
+            String categoryId = Convert.ToString(btnCategory.Tag);
 
             String subCategoryQuery = "SELECT sc.id as value, sc.sub_category_name as text " +
                 "FROM sub_categories sc " +

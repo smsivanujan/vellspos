@@ -1,9 +1,11 @@
-﻿using System;
+﻿using Mysqlx.Crud;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -12,18 +14,23 @@ using vellsPos.Entities.Layouts;
 using vellsPos.Entities.Masters;
 using vellsPos.Properties;
 using vellsPos.Services;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace vellsPos.Forms.Layouts
 {
     public partial class frmPOS : Form
     {
         public static frmPOS frmposInstance;
-        public TextBox tbx;
+        //public TextBox tbx;
         
         public static string categoryID = "";
         public int RowIndex = 0;
         private FormMovable formMove;
         public static string productID;
+        private Decimal discount=0;
+        private Decimal lpoint = 0;
+        Decimal txtgrossAmount = 0;
+        Decimal txtdiscount = 0;
 
         //ReSize
         //form
@@ -40,14 +47,6 @@ namespace vellsPos.Forms.Layouts
         private Rectangle rzpnl_customerSearch;
         private Rectangle rzpnl_balance;
         private Rectangle rzpnl_bottom;
-        private Rectangle pnl_foot;
-        private Rectangle pnl_body;
-        private Rectangle pnl_graph;
-        private Rectangle pnl_total_customer;
-        private Rectangle pnl_newCustomer;
-        private Rectangle pnl_discount;
-        private Rectangle pnl_earning;
-        private Rectangle pnl_invoice;
 
         private float rzpnl_buttonFontSize;
         private float rzpnl_holdFontSize;
@@ -138,6 +137,7 @@ namespace vellsPos.Forms.Layouts
         private Rectangle rzlbl_netAmount;
         private Rectangle rzlbl_grossAmount;
         private Rectangle rzlbl_txtholdBill;
+        private Rectangle rzlbl_balanceLoyalityPoint;
 
         private float rzlbl_txtbalanceFontSize;
         private float rzlbl_txtnetAmountFontSize;
@@ -154,42 +154,45 @@ namespace vellsPos.Forms.Layouts
         private float rzlbl_netAmountFontSize;
         private float rzlbl_grossAmountFontSize;
         private float rzlbl_txtholdBillFontSize;
+        private float rzlbl_balanceLoyalityPointFontSize;
         //text
-        private Rectangle rztxt_balanceLoyalityPoint;
         private Rectangle rztxt_customerID;
         private Rectangle rztxt_customer;
         private Rectangle rztxt_product;
         private Rectangle rztxt_productID;
         private Rectangle rztxt_qty;
-        private Rectangle rztxt_loyalityPoint;
-        private Rectangle rztxt_discount;
+        private Rectangle rzntxt_loyalityPoint;
+        private Rectangle rzntxt_discount;
         private Rectangle rzntxt_pay;
         private Rectangle rzntxt_useLoyalityPoint;
-
-        private float rztxt_balanceLoyalityPointFontSize;
+        
         private float rztxt_customerIDFontSize;
         private float rztxt_customerFontSize;
         private float rztxt_productFontSize;
         private float rztxt_productIDFontSize;
         private float rztxt_qtyFontSize;
-        private float rztxt_loyalityPointFontSize;
-        private float rztxt_discountFontSize;
+        private float rzntxt_loyalityPointFontSize;
+        private float rzntxt_discountFontSize;
         private float rzntxt_payFontSize;
         private float rzntxt_useLoyalityPointFontSize;
         //other
         private Rectangle rzdataGridView1;
         private Rectangle rzcb_drawerOpen;
         private Rectangle rzcmb_discountIcon;
-
+        private Rectangle rzrb_discountCash;
+        private Rectangle rzrb_discountPersentage;
+        
         private float rzdataGridView1FontSize;
         private float rzcb_drawerOpenFontSize;
         private float rzcmb_discountIconFontSize;
+        private float rzrb_discountCashFontSize;
+        private float rzrb_discountPersentageFontSize;
 
         public frmPOS()
         {
             InitializeComponent();
             frmposInstance = this;
-            tbx = txt_productID;
+            //tbx = txt_productID;
 
             formMove = new FormMovable(this);
             formMove.SetMovable(pnl_head, lbl_title);
@@ -198,6 +201,8 @@ namespace vellsPos.Forms.Layouts
 
         private void frmPOS_Load(object sender, EventArgs e)
         {
+            rb_discountCash.Checked=true;
+
             resize();
         }
 
@@ -265,20 +270,21 @@ namespace vellsPos.Forms.Layouts
             rzlbl_grossAmount = new Rectangle(lbl_grossAmount.Location, lbl_grossAmount.Size);
             rzlbl_txtholdBill = new Rectangle(lbl_txtholdBill.Location, lbl_txtholdBill.Size);
 
-            rztxt_balanceLoyalityPoint = new Rectangle(txt_balanceLoyalityPoint.Location, txt_balanceLoyalityPoint.Size);
+            rzlbl_balanceLoyalityPoint = new Rectangle(lbl_balanceLoyalityPoint.Location, lbl_balanceLoyalityPoint.Size);
             rztxt_customerID = new Rectangle(txt_customerID.Location, txt_customerID.Size);
             rztxt_customer = new Rectangle(txt_customer.Location, txt_customer.Size);
             rztxt_product = new Rectangle(txt_product.Location, txt_product.Size);
             rztxt_productID = new Rectangle(txt_productID.Location, txt_productID.Size);
             rztxt_qty = new Rectangle(txt_qty.Location, txt_qty.Size);
-            rztxt_loyalityPoint = new Rectangle(txt_loyalityPoint.Location, txt_loyalityPoint.Size);
-            rztxt_discount = new Rectangle(txt_discount.Location, txt_discount.Size);
+            rzntxt_loyalityPoint = new Rectangle(ntxt_loyalityPoint.Location, ntxt_loyalityPoint.Size);
+            rzntxt_discount = new Rectangle(ntxt_discount.Location, ntxt_discount.Size);
             rzntxt_pay = new Rectangle(ntxt_pay.Location, ntxt_pay.Size);
             rzntxt_useLoyalityPoint = new Rectangle(ntxt_useLoyalityPoint.Location, ntxt_useLoyalityPoint.Size);
 
             rzdataGridView1 = new Rectangle(dataGridView1.Location, dataGridView1.Size);
             rzcb_drawerOpen = new Rectangle(cb_drawerOpen.Location, cb_drawerOpen.Size);
-            rzcmb_discountIcon = new Rectangle(cmb_discountIcon.Location, cmb_discountIcon.Size);
+            rzrb_discountCash = new Rectangle(rb_discountCash.Location, rb_discountCash.Size);
+            rzrb_discountPersentage = new Rectangle(rb_discountPersentage.Location, rb_discountPersentage.Size);
 
             //navigation elements fonts
             rzpnl_buttonFontSize = pnl_button.Font.Size;
@@ -340,20 +346,21 @@ namespace vellsPos.Forms.Layouts
             rzlbl_grossAmountFontSize = lbl_grossAmount.Font.Size;
             rzlbl_txtholdBillFontSize = lbl_txtholdBill.Font.Size;
 
-            rztxt_balanceLoyalityPointFontSize = txt_balanceLoyalityPoint.Font.Size;
+            rzlbl_balanceLoyalityPointFontSize = lbl_balanceLoyalityPoint.Font.Size;
             rztxt_customerIDFontSize = txt_customerID.Font.Size;
             rztxt_customerFontSize = txt_customer.Font.Size;
             rztxt_productFontSize = txt_product.Font.Size;
             rztxt_productIDFontSize = txt_productID.Font.Size;
             rztxt_qtyFontSize = txt_qty.Font.Size;
-            rztxt_loyalityPointFontSize = txt_loyalityPoint.Font.Size;
-            rztxt_discountFontSize = txt_discount.Font.Size;
+            rzntxt_loyalityPointFontSize = ntxt_loyalityPoint.Font.Size;
+            rzntxt_discountFontSize = ntxt_discount.Font.Size;
             rzntxt_payFontSize = ntxt_pay.Font.Size;
             rzntxt_useLoyalityPointFontSize = ntxt_useLoyalityPoint.Font.Size;
 
             rzdataGridView1FontSize = dataGridView1.Font.Size;
             rzcb_drawerOpenFontSize = cb_drawerOpen.Font.Size;
-            rzcmb_discountIconFontSize = cmb_discountIcon.Font.Size;
+            rzrb_discountCashFontSize = rb_discountCash.Font.Size;
+            rzrb_discountPersentageFontSize = rb_discountPersentage.Font.Size;
         }
 
         private void resizeChildrenControls()
@@ -417,20 +424,21 @@ namespace vellsPos.Forms.Layouts
             resizeControl(rzlbl_grossAmount, lbl_grossAmount, rzlbl_grossAmountFontSize);
             resizeControl(rzlbl_txtholdBill, lbl_txtholdBill, rzlbl_txtholdBillFontSize);
 
-            resizeControl(rztxt_balanceLoyalityPoint, txt_balanceLoyalityPoint, rztxt_balanceLoyalityPointFontSize);
+            resizeControl(rzlbl_balanceLoyalityPoint, lbl_balanceLoyalityPoint, rzlbl_balanceLoyalityPointFontSize);
             resizeControl(rztxt_customerID, txt_customerID, rztxt_customerIDFontSize);
             resizeControl(rztxt_customer, txt_customer, rztxt_customerFontSize);
             resizeControl(rztxt_product, txt_product, rztxt_productFontSize);
             resizeControl(rztxt_productID, txt_productID, rztxt_productIDFontSize);
             resizeControl(rztxt_qty, txt_qty, rztxt_qtyFontSize);
-            resizeControl(rztxt_loyalityPoint, txt_loyalityPoint, rztxt_loyalityPointFontSize);
-            resizeControl(rztxt_discount, txt_discount, rztxt_discountFontSize);
+            resizeControl(rzntxt_loyalityPoint, ntxt_loyalityPoint, rzntxt_loyalityPointFontSize);
+            resizeControl(rzntxt_discount, ntxt_discount, rzntxt_discountFontSize);
             resizeControl(rzntxt_pay, ntxt_pay, rzntxt_payFontSize);
             resizeControl(rzntxt_useLoyalityPoint, ntxt_useLoyalityPoint, rzntxt_useLoyalityPointFontSize);
 
             resizeControl(rzdataGridView1, dataGridView1, rzdataGridView1FontSize);
             resizeControl(rzcb_drawerOpen, cb_drawerOpen, rzcb_drawerOpenFontSize);
-            resizeControl(rzcmb_discountIcon, cmb_discountIcon, rzcmb_discountIconFontSize);
+            resizeControl(rzrb_discountCash, rb_discountCash, rzrb_discountCashFontSize);
+            resizeControl(rzrb_discountPersentage, rb_discountPersentage, rzrb_discountPersentageFontSize);
         }
 
         private void frmPOS_Resize(object sender, EventArgs e)
@@ -475,17 +483,6 @@ namespace vellsPos.Forms.Layouts
 
         }
 
-
-        private void btn_minimize_Click(object sender, EventArgs e)
-        {
-            WindowState = FormWindowState.Minimized;
-        }
-
-        private void txt_customer_Click(object sender, EventArgs e)
-        {
-            Customer.showOnViewFormCustomer(txt_customer, txt_customerID);
-        }
-
         private void txt_customerID_TextChanged(object sender, EventArgs e)
         {
             String loyalityPointCodeQuery = "SELECT " +
@@ -493,9 +490,19 @@ namespace vellsPos.Forms.Layouts
                     "FROM loyality_points " +
                     "WHERE customer_id = '" + txt_customerID.Text + "' ";
             String loyalityPoint = DBTransactionService.getScalerData(loyalityPointCodeQuery);
-            Console.WriteLine(loyalityPointCodeQuery);
-            Console.WriteLine(loyalityPoint);
-            txt_balanceLoyalityPoint.Text = loyalityPoint;
+            
+            lbl_balanceLoyalityPoint.Text = loyalityPoint;
+            lpoint = Convert.ToDecimal(loyalityPoint);
+
+            ntxt_useLoyalityPoint.Maximum = Convert.ToDecimal(loyalityPoint);
+
+            if (ntxt_useLoyalityPoint.Value >= Convert.ToDecimal(loyalityPoint))
+            {
+                MessageBox.Show("Out Of Value");
+                ntxt_useLoyalityPoint.Value = Convert.ToDecimal(loyalityPoint);
+                //ntxt_useLoyalityPoint.ReadOnly = true;
+                ntxt_useLoyalityPoint.Increment = 0;
+            }
         }
 
         private void txt_product_Click(object sender, EventArgs e)
@@ -531,7 +538,7 @@ namespace vellsPos.Forms.Layouts
             dataGridView1.Rows[RowIndex].Cells["clm_price"].Value = TotalPrice;
             txt_productID.Clear();
             txt_product.Clear();
-            lbl_grossAmount.Text = calculateTotalBill(dataGridView1).ToString();
+            lbl_grossAmount.Text = Math.Round(calculateTotalBill(dataGridView1), 2).ToString();
 
 
         }
@@ -625,11 +632,6 @@ namespace vellsPos.Forms.Layouts
             //}
         }
 
-        private void btn_close_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void timer1_Tick(object sender, EventArgs e)
         {
             lbl_currentDateTime.Text = DateTime.Now.ToString("dddd, dd-MMMM-yyyy  HH:mm:ss tt");
@@ -646,20 +648,133 @@ namespace vellsPos.Forms.Layouts
         }
 
         private void btn_loyalityPointUse_Click(object sender, EventArgs e)
-        {   
-            
-            txt_loyalityPoint.Text = ntxt_useLoyalityPoint.Text;
+        {
+            Console.WriteLine(lpoint);
+            ntxt_loyalityPoint.Value = ntxt_useLoyalityPoint.Value;
+        }
+
+        private void btn_productList_Click_1(object sender, EventArgs e)
+        {
+            frmProductList frmProductList = new frmProductList();
+            frmProductList.Show();
+        }
+
+        private void txt_customer_Click(object sender, EventArgs e)
+        {
+            Customer.showOnViewFormCustomer(txt_customer, txt_customerID);
         }
 
         private void ntxt_useLoyalityPoint_ValueChanged(object sender, EventArgs e)
         {
+            Console.WriteLine("------------");
+            Console.WriteLine(lpoint);
+            if (ntxt_useLoyalityPoint.Value >= lpoint)
+            {
+                MessageBox.Show("Out Of Value");
+                ntxt_useLoyalityPoint.Value = lpoint;
+                //ntxt_useLoyalityPoint.ReadOnly = true;
+                ntxt_useLoyalityPoint.Increment = 0;
+            }
+        }
+
+        private void lbl_grossAmount_TextChanged(object sender, EventArgs e)
+        {
+            Decimal minusTotal = ntxt_loyalityPoint.Value + discount;
+            Decimal netAmount = Convert.ToDecimal(lbl_grossAmount.Text) - minusTotal;
+            lbl_netAmount.Text = Math.Round(netAmount, 2).ToString();
+        }
+
+        private void ntxt_discount_ValueChanged(object sender, EventArgs e)
+        {
+            if(rb_discountCash.Checked == true)
+            {
+                discount= ntxt_discount.Value;
+                Console.WriteLine("C"+ discount);
+            }
+            else if(rb_discountPersentage.Checked == true)
+            {
+                discount = txtgrossAmount * (ntxt_discount.Value / (decimal)100);
+                Console.WriteLine("%" + discount);
+            }
+
+            Decimal minusTotal = ntxt_loyalityPoint.Value + discount;
+            Decimal netAmount = Convert.ToDecimal(lbl_grossAmount.Text) - minusTotal;
+            lbl_netAmount.Text = Math.Round(netAmount, 2).ToString();
+        }     
+
+        private void rb_discountCash_CheckedChanged(object sender, EventArgs e)
+        {
+            txtgrossAmount = Convert.ToDecimal(lbl_grossAmount.Text);
+            txtdiscount = ntxt_discount.Value;
+
+            if (rb_discountCash.Checked == true)
+            {
+                lbl_discountStatus.Text = "0";
+                if (txtdiscount <= 0)
+                {
+                    //
+                }
+                else
+                {
+                    ntxt_discount.Maximum = 100000;
+                    ntxt_discount.Minimum = 0;
+                    lbl_discountStatus.Text = "0";
+
+                    ntxt_discount.Value = txtgrossAmount * (txtdiscount / (decimal)100);//125
+                }
+            }
+        }
+
+        private void rb_discountPersentage_CheckedChanged(object sender, EventArgs e)
+        {
+            txtgrossAmount = Convert.ToDecimal(lbl_grossAmount.Text);
+            txtdiscount = ntxt_discount.Value;
+
+            if (rb_discountPersentage.Checked == true)
+            {
+                lbl_discountStatus.Text = "1";
+                if (txtdiscount <= 0)
+                { 
+                    //
+                }
+                else
+                {
+                    ntxt_discount.Maximum = 100;
+                    ntxt_discount.Minimum = 0;
+                    ntxt_discount.Value = (txtdiscount / txtgrossAmount) * (decimal)100;//50
+                }
+            }
+        }
+
+        private void ntxt_pay_ValueChanged(object sender, EventArgs e)
+        {
+            Console.WriteLine(lbl_netAmount.Text);
+            Console.WriteLine(ntxt_pay.Value);
+            Decimal balance = ntxt_pay.Value - Convert.ToDecimal(lbl_netAmount.Text);
+            Console.WriteLine(balance);
+            lbl_balance.Text = Math.Round(balance, 2).ToString();
 
         }
 
-        private void btn_productList_Click(object sender, EventArgs e)
+        private void ntxt_loyalityPoint_ValueChanged(object sender, EventArgs e)
         {
-            frmProductList frmProductList = new frmProductList();
-            frmProductList.Show();
+            Decimal minusTotal = ntxt_loyalityPoint.Value + discount;
+            Decimal netAmount = Convert.ToDecimal(lbl_grossAmount.Text) - minusTotal;
+            lbl_netAmount.Text = Math.Round(netAmount, 2).ToString();
+        }
+
+        private void btn_cash_Click(object sender, EventArgs e)
+        {
+            Invoice tkt = new Invoice();
+            tkt.TicketNo = 12112;
+            tkt.TicketDate = "12-12-2022";
+            tkt.Source = "fdfdf";
+            tkt.Destination = "dfdfd";
+            tkt.Amount = ntxt_pay.Value;
+            tkt.DrawnBy = "vcvcv";
+
+            tkt.print();
+            MessageBox.Show("Ticket Printed Successfully");
         }
     }
 }

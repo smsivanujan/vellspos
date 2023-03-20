@@ -1136,34 +1136,6 @@
   <metadata name="clm_remove.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="btn_card.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABGdBTUEAALGPC/xhBQAAAgFJREFUaEPt
-        mU0uBEEYhofYSIiEpdiJK0isnII7cAE7O07AKexYiGNwAxIkHIAV75NMJ28qJd1VU4Mv6Sd5kslMfT/T
-        f1XdPRkZGWnCgtyVJ/JK3stn+TWVz3zHb4xhLDF/zqY8l0+ya3aoxBBLjl9nXV7ID5lrrkRykIucv8KB
-        fJe5ZmaRnOSeG0vyUuaK46e8k8dyX27Llal85jt+YwxjczmQGtRqyrK8lrmCr5LGVuVQGEsMsbmc1KJm
-        E9gaNzItwrF7KtnCtRBLjty5RM0meyJ32LDl9mQryJXbG9SeiUOZJn2QW7I15CR3Wo8eqtiQb9KTsZXm
-        0XwHudM9QQ/0UgzXZk/EcVpy2HgsDoUa6TlBL0UwO6ZJONlK8FgsgVoeSy9FM/aZ9AQvsvRq4/FYArWo
-        6fH0NIhF+Sg9+EiW4vFYCjU9np7orRdWih7IrLkmS/EcWAo10xmb3nphuetBt7IGz4E1UNtz0FsvrNk9
-        iCm/Bs+BNVDbc9BbL+lkwiKsBs+BNVDbc9BbL+nktSNz+JgW5qC2j6G3XtLr/0+rTB/TwhzU9jH01kv4
-        PxD+EAp/Eoe/jIafyMIvJcIv5iD0chrC39BA6FtKCH9TD6Efq3SEfrAF4R8tQuiHux1sjdzh1Mms+W8f
-        rzthX3A4oV8xOcyOIV/ypYR9zToyEpvJ5BsFS1VzumAn0QAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="btn_cash.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABGdBTUEAALGPC/xhBQAAAgFJREFUaEPt
-        mU0uBEEYhofYSIiEpdiJK0isnII7cAE7O07AKexYiGNwAxIkHIAV75NMJ28qJd1VU4Mv6Sd5kslMfT/T
-        f1XdPRkZGWnCgtyVJ/JK3stn+TWVz3zHb4xhLDF/zqY8l0+ya3aoxBBLjl9nXV7ID5lrrkRykIucv8KB
-        fJe5ZmaRnOSeG0vyUuaK46e8k8dyX27Llal85jt+YwxjczmQGtRqyrK8lrmCr5LGVuVQGEsMsbmc1KJm
-        E9gaNzItwrF7KtnCtRBLjty5RM0meyJ32LDl9mQryJXbG9SeiUOZJn2QW7I15CR3Wo8eqtiQb9KTsZXm
-        0XwHudM9QQ/0UgzXZk/EcVpy2HgsDoUa6TlBL0UwO6ZJONlK8FgsgVoeSy9FM/aZ9AQvsvRq4/FYArWo
-        6fH0NIhF+Sg9+EiW4vFYCjU9np7orRdWih7IrLkmS/EcWAo10xmb3nphuetBt7IGz4E1UNtz0FsvrNk9
-        iCm/Bs+BNVDbc9BbL+lkwiKsBs+BNVDbc9BbL+nktSNz+JgW5qC2j6G3XtLr/0+rTB/TwhzU9jH01kv4
-        PxD+EAp/Eoe/jIafyMIvJcIv5iD0chrC39BA6FtKCH9TD6Efq3SEfrAF4R8tQuiHux1sjdzh1Mms+W8f
-        rzthX3A4oV8xOcyOIV/ypYR9zToyEpvJ5BsFS1VzumAn0QAAAABJRU5ErkJggg==
-</value>
-  </data>
   <metadata name="timer1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
@@ -1181,4 +1153,7 @@
         rzthX3A4oV8xOcyOIV/ypYR9zToyEpvJ5BsFS1VzumAn0QAAAABJRU5ErkJggg==
 </value>
   </data>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>25</value>
+  </metadata>
 </root>

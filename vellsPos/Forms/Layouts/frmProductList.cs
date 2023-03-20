@@ -200,7 +200,7 @@ namespace vellsPos.Forms.Layouts
             String product_Id = Convert.ToString(btnProduct.Tag);
             productID = product_Id;
 
-            frmPOS.frmposInstance.tbx.Text = product_Id;
+            //frmPOS.frmposInstance.tbx.Text = product_Id;
             this.Close();
         }
 

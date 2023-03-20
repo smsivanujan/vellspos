@@ -284,7 +284,7 @@
             this.ntxt_height.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.ntxt_height.Location = new System.Drawing.Point(102, 377);
             this.ntxt_height.Name = "ntxt_height";
-            this.ntxt_height.Size = new System.Drawing.Size(57, 39);
+            this.ntxt_height.Size = new System.Drawing.Size(73, 39);
             this.ntxt_height.TabIndex = 55;
             this.ntxt_height.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.ntxt_height.Value = new decimal(new int[] {

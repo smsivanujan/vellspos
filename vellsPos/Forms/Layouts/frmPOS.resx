@@ -1139,6 +1139,14 @@
   <metadata name="timer1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="btn_backSpace.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABGdBTUEAALGPC/xhBQAAAH1JREFUaEPt
+        18EJgDAQRNGUaifaiXZoCbqLHiR4i2Z3wn8wsMcZyCUFAIAfTZb1OvV4+eOO3Ihnec9mkUH5KJSPQvko
+        lI9C+ShDld8tc6c0q8v3TjP5Ae7tCS2d8pl6hORPixFZMCILRmTBiCwYkcVwI/yW5MVlywMAsivlBN/b
+        yCdd5jAaAAAAAElFTkSuQmCC
+</value>
+  </data>
   <data name="btn_productList.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABGdBTUEAALGPC/xhBQAAAgFJREFUaEPt

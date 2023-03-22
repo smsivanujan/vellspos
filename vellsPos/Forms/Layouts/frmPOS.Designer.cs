@@ -30,8 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPOS));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnl_head = new System.Windows.Forms.Panel();
             this.pb_user = new System.Windows.Forms.PictureBox();
             this.lbl_userName = new System.Windows.Forms.Label();
@@ -53,11 +53,11 @@
             this.btn_return = new System.Windows.Forms.Button();
             this.btn_payout = new System.Windows.Forms.Button();
             this.pnl_amount = new System.Windows.Forms.Panel();
+            this.ntxt_discount = new System.Windows.Forms.TextBox();
+            this.ntxt_pay = new System.Windows.Forms.TextBox();
             this.rb_discountCash = new System.Windows.Forms.RadioButton();
             this.rb_discountPersentage = new System.Windows.Forms.RadioButton();
-            this.ntxt_pay = new System.Windows.Forms.NumericUpDown();
             this.lbl_netAmount = new System.Windows.Forms.Label();
-            this.ntxt_discount = new System.Windows.Forms.NumericUpDown();
             this.ntxt_loyalityPoint = new System.Windows.Forms.NumericUpDown();
             this.lbl_grossAmount = new System.Windows.Forms.Label();
             this.lbl_txtgrossAmount = new System.Windows.Forms.Label();
@@ -66,12 +66,6 @@
             this.lbl_txtpayment = new System.Windows.Forms.Label();
             this.lbl_txtloyalityPoint = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.clm_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clm_product = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clm_unitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clm_qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clm_price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clm_remove = new System.Windows.Forms.DataGridViewButtonColumn();
             this.pnl_productSearch = new System.Windows.Forms.Panel();
             this.btn_add = new System.Windows.Forms.Button();
             this.lbl_txtqty = new System.Windows.Forms.Label();
@@ -81,9 +75,9 @@
             this.btn_changeQtyDatagridviw = new System.Windows.Forms.Button();
             this.txt_productID = new System.Windows.Forms.TextBox();
             this.pnl_customerSearch = new System.Windows.Forms.Panel();
+            this.ntxt_useLoyalityPoint = new System.Windows.Forms.TextBox();
             this.lbl_balanceLoyalityPoint = new System.Windows.Forms.Label();
             this.txt_customer = new System.Windows.Forms.TextBox();
-            this.ntxt_useLoyalityPoint = new System.Windows.Forms.NumericUpDown();
             this.lbl_txtpoints = new System.Windows.Forms.Label();
             this.btn_loyalityPointUse = new System.Windows.Forms.Button();
             this.lbl_txtuseInBill = new System.Windows.Forms.Label();
@@ -93,15 +87,16 @@
             this.btn_cash = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.pnl_numberKeyPad = new System.Windows.Forms.Panel();
+            this.btn_backSpace = new System.Windows.Forms.Button();
             this.btn_numDouble0 = new System.Windows.Forms.Button();
             this.btn_num0 = new System.Windows.Forms.Button();
             this.btn_numDot = new System.Windows.Forms.Button();
+            this.btn_num4 = new System.Windows.Forms.Button();
             this.btn_numDot3 = new System.Windows.Forms.Button();
             this.btn_num2 = new System.Windows.Forms.Button();
             this.btn_num1 = new System.Windows.Forms.Button();
             this.btn_num6 = new System.Windows.Forms.Button();
             this.btn_num5 = new System.Windows.Forms.Button();
-            this.btn_num4 = new System.Windows.Forms.Button();
             this.btn_num10 = new System.Windows.Forms.Button();
             this.btn_num8 = new System.Windows.Forms.Button();
             this.btn_num7 = new System.Windows.Forms.Button();
@@ -117,6 +112,12 @@
             this.btn_productList = new System.Windows.Forms.Button();
             this.pnl_foots = new System.Windows.Forms.Panel();
             this.lbl_discountStatus = new System.Windows.Forms.Label();
+            this.clm_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clm_product = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clm_unitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clm_qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clm_price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clm_remove = new System.Windows.Forms.DataGridViewButtonColumn();
             this.pnl_head.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_user)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_titleImage)).BeginInit();
@@ -125,13 +126,10 @@
             this.pnl_button.SuspendLayout();
             this.pnl_hold.SuspendLayout();
             this.pnl_amount.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ntxt_pay)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ntxt_discount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ntxt_loyalityPoint)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.pnl_productSearch.SuspendLayout();
             this.pnl_customerSearch.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ntxt_useLoyalityPoint)).BeginInit();
             this.pnl_numberKeyPad.SuspendLayout();
             this.pnl_sortMoney.SuspendLayout();
             this.pnl_numbers.SuspendLayout();
@@ -232,7 +230,7 @@
             this.pnl_bottom.Controls.Add(this.pnl_button);
             this.pnl_bottom.Controls.Add(this.pnl_hold);
             this.pnl_bottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnl_bottom.Location = new System.Drawing.Point(0, 610);
+            this.pnl_bottom.Location = new System.Drawing.Point(0, 646);
             this.pnl_bottom.Name = "pnl_bottom";
             this.pnl_bottom.Size = new System.Drawing.Size(1264, 53);
             this.pnl_bottom.TabIndex = 1;
@@ -314,9 +312,9 @@
             this.lbl_txtholdBill.ForeColor = System.Drawing.Color.White;
             this.lbl_txtholdBill.Location = new System.Drawing.Point(258, 14);
             this.lbl_txtholdBill.Name = "lbl_txtholdBill";
-            this.lbl_txtholdBill.Size = new System.Drawing.Size(50, 25);
+            this.lbl_txtholdBill.Size = new System.Drawing.Size(42, 25);
             this.lbl_txtholdBill.TabIndex = 132;
-            this.lbl_txtholdBill.Text = "5/10";
+            this.lbl_txtholdBill.Text = "0/0";
             // 
             // btn_previousBill
             // 
@@ -403,11 +401,11 @@
             // pnl_amount
             // 
             this.pnl_amount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(32)))), ((int)(((byte)(42)))));
+            this.pnl_amount.Controls.Add(this.ntxt_discount);
+            this.pnl_amount.Controls.Add(this.ntxt_pay);
             this.pnl_amount.Controls.Add(this.rb_discountCash);
             this.pnl_amount.Controls.Add(this.rb_discountPersentage);
-            this.pnl_amount.Controls.Add(this.ntxt_pay);
             this.pnl_amount.Controls.Add(this.lbl_netAmount);
-            this.pnl_amount.Controls.Add(this.ntxt_discount);
             this.pnl_amount.Controls.Add(this.ntxt_loyalityPoint);
             this.pnl_amount.Controls.Add(this.lbl_grossAmount);
             this.pnl_amount.Controls.Add(this.lbl_txtgrossAmount);
@@ -416,80 +414,81 @@
             this.pnl_amount.Controls.Add(this.lbl_txtpayment);
             this.pnl_amount.Controls.Add(this.lbl_txtloyalityPoint);
             this.pnl_amount.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnl_amount.Location = new System.Drawing.Point(0, 500);
+            this.pnl_amount.Location = new System.Drawing.Point(0, 536);
             this.pnl_amount.Name = "pnl_amount";
             this.pnl_amount.Size = new System.Drawing.Size(841, 110);
             this.pnl_amount.TabIndex = 0;
             // 
+            // ntxt_discount
+            // 
+            this.ntxt_discount.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.ntxt_discount.Location = new System.Drawing.Point(320, 59);
+            this.ntxt_discount.Multiline = true;
+            this.ntxt_discount.Name = "ntxt_discount";
+            this.ntxt_discount.PlaceholderText = "0";
+            this.ntxt_discount.Size = new System.Drawing.Size(108, 36);
+            this.ntxt_discount.TabIndex = 132;
+            this.ntxt_discount.Text = "0";
+            this.ntxt_discount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ntxt_discount.TextChanged += new System.EventHandler(this.ntxt_discount_TextChanged);
+            this.ntxt_discount.Enter += new System.EventHandler(this.txt_qty_Enter);
+            this.ntxt_discount.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ntxt_discount_KeyUp);
+            // 
+            // ntxt_pay
+            // 
+            this.ntxt_pay.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.ntxt_pay.Location = new System.Drawing.Point(620, 45);
+            this.ntxt_pay.Multiline = true;
+            this.ntxt_pay.Name = "ntxt_pay";
+            this.ntxt_pay.PlaceholderText = "0";
+            this.ntxt_pay.Size = new System.Drawing.Size(194, 45);
+            this.ntxt_pay.TabIndex = 127;
+            this.ntxt_pay.Text = "0";
+            this.ntxt_pay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ntxt_pay.TextChanged += new System.EventHandler(this.ntxt_pay_TextChanged);
+            this.ntxt_pay.Enter += new System.EventHandler(this.ntxt_pay_Enter);
+            this.ntxt_pay.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ntxt_pay_KeyPress);
+            this.ntxt_pay.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ntxt_pay_KeyUp);
+            // 
             // rb_discountCash
             // 
             this.rb_discountCash.Appearance = System.Windows.Forms.Appearance.Button;
+            this.rb_discountCash.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.rb_discountCash.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.rb_discountCash.Location = new System.Drawing.Point(262, 58);
+            this.rb_discountCash.Location = new System.Drawing.Point(230, 59);
             this.rb_discountCash.Name = "rb_discountCash";
             this.rb_discountCash.Size = new System.Drawing.Size(39, 36);
             this.rb_discountCash.TabIndex = 73;
             this.rb_discountCash.TabStop = true;
             this.rb_discountCash.Text = "C";
-            this.rb_discountCash.UseVisualStyleBackColor = true;
+            this.rb_discountCash.UseVisualStyleBackColor = false;
             this.rb_discountCash.CheckedChanged += new System.EventHandler(this.rb_discountCash_CheckedChanged);
             // 
             // rb_discountPersentage
             // 
             this.rb_discountPersentage.Appearance = System.Windows.Forms.Appearance.Button;
+            this.rb_discountPersentage.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.rb_discountPersentage.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.rb_discountPersentage.Location = new System.Drawing.Point(307, 58);
+            this.rb_discountPersentage.Location = new System.Drawing.Point(275, 59);
             this.rb_discountPersentage.Name = "rb_discountPersentage";
             this.rb_discountPersentage.Size = new System.Drawing.Size(39, 36);
             this.rb_discountPersentage.TabIndex = 74;
             this.rb_discountPersentage.TabStop = true;
             this.rb_discountPersentage.Text = "%";
-            this.rb_discountPersentage.UseVisualStyleBackColor = true;
+            this.rb_discountPersentage.UseVisualStyleBackColor = false;
             this.rb_discountPersentage.CheckedChanged += new System.EventHandler(this.rb_discountPersentage_CheckedChanged);
-            // 
-            // ntxt_pay
-            // 
-            this.ntxt_pay.DecimalPlaces = 2;
-            this.ntxt_pay.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.ntxt_pay.Location = new System.Drawing.Point(641, 42);
-            this.ntxt_pay.Maximum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
-            this.ntxt_pay.Name = "ntxt_pay";
-            this.ntxt_pay.Size = new System.Drawing.Size(187, 50);
-            this.ntxt_pay.TabIndex = 73;
-            this.ntxt_pay.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.ntxt_pay.ValueChanged += new System.EventHandler(this.ntxt_pay_ValueChanged);
             // 
             // lbl_netAmount
             // 
             this.lbl_netAmount.AutoSize = true;
             this.lbl_netAmount.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lbl_netAmount.ForeColor = System.Drawing.Color.Lime;
-            this.lbl_netAmount.Location = new System.Drawing.Point(494, 45);
+            this.lbl_netAmount.Location = new System.Drawing.Point(463, 44);
             this.lbl_netAmount.Name = "lbl_netAmount";
             this.lbl_netAmount.Size = new System.Drawing.Size(83, 45);
             this.lbl_netAmount.TabIndex = 131;
             this.lbl_netAmount.Text = "0.00";
             this.lbl_netAmount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // ntxt_discount
-            // 
-            this.ntxt_discount.DecimalPlaces = 2;
-            this.ntxt_discount.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.ntxt_discount.Location = new System.Drawing.Point(352, 58);
-            this.ntxt_discount.Maximum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
-            this.ntxt_discount.Name = "ntxt_discount";
-            this.ntxt_discount.Size = new System.Drawing.Size(108, 36);
-            this.ntxt_discount.TabIndex = 76;
-            this.ntxt_discount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.ntxt_discount.ValueChanged += new System.EventHandler(this.ntxt_discount_ValueChanged);
             // 
             // ntxt_loyalityPoint
             // 
@@ -500,7 +499,7 @@
             0,
             0,
             0});
-            this.ntxt_loyalityPoint.Location = new System.Drawing.Point(262, 16);
+            this.ntxt_loyalityPoint.Location = new System.Drawing.Point(230, 17);
             this.ntxt_loyalityPoint.Maximum = new decimal(new int[] {
             1000000,
             0,
@@ -542,7 +541,7 @@
             this.lbl_txtdiscount.AutoSize = true;
             this.lbl_txtdiscount.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lbl_txtdiscount.ForeColor = System.Drawing.Color.White;
-            this.lbl_txtdiscount.Location = new System.Drawing.Point(219, 67);
+            this.lbl_txtdiscount.Location = new System.Drawing.Point(187, 68);
             this.lbl_txtdiscount.Name = "lbl_txtdiscount";
             this.lbl_txtdiscount.Size = new System.Drawing.Size(28, 25);
             this.lbl_txtdiscount.TabIndex = 42;
@@ -553,7 +552,7 @@
             this.lbl_txtnetAmount.AutoSize = true;
             this.lbl_txtnetAmount.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lbl_txtnetAmount.ForeColor = System.Drawing.Color.White;
-            this.lbl_txtnetAmount.Location = new System.Drawing.Point(494, 17);
+            this.lbl_txtnetAmount.Location = new System.Drawing.Point(463, 16);
             this.lbl_txtnetAmount.Name = "lbl_txtnetAmount";
             this.lbl_txtnetAmount.Size = new System.Drawing.Size(119, 25);
             this.lbl_txtnetAmount.TabIndex = 40;
@@ -564,7 +563,7 @@
             this.lbl_txtpayment.AutoSize = true;
             this.lbl_txtpayment.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lbl_txtpayment.ForeColor = System.Drawing.Color.White;
-            this.lbl_txtpayment.Location = new System.Drawing.Point(690, 16);
+            this.lbl_txtpayment.Location = new System.Drawing.Point(669, 16);
             this.lbl_txtpayment.Name = "lbl_txtpayment";
             this.lbl_txtpayment.Size = new System.Drawing.Size(87, 25);
             this.lbl_txtpayment.TabIndex = 49;
@@ -575,7 +574,7 @@
             this.lbl_txtloyalityPoint.AutoSize = true;
             this.lbl_txtloyalityPoint.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lbl_txtloyalityPoint.ForeColor = System.Drawing.Color.White;
-            this.lbl_txtloyalityPoint.Location = new System.Drawing.Point(219, 23);
+            this.lbl_txtloyalityPoint.Location = new System.Drawing.Point(187, 24);
             this.lbl_txtloyalityPoint.Name = "lbl_txtloyalityPoint";
             this.lbl_txtloyalityPoint.Size = new System.Drawing.Size(37, 25);
             this.lbl_txtloyalityPoint.TabIndex = 43;
@@ -587,14 +586,14 @@
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clm_id,
@@ -603,63 +602,22 @@
             this.clm_qty,
             this.clm_price,
             this.clm_remove});
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 101);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(841, 353);
+            this.dataGridView1.Size = new System.Drawing.Size(841, 389);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // clm_id
-            // 
-            this.clm_id.HeaderText = "ID";
-            this.clm_id.Name = "clm_id";
-            this.clm_id.ReadOnly = true;
-            this.clm_id.Visible = false;
-            // 
-            // clm_product
-            // 
-            this.clm_product.HeaderText = "Product";
-            this.clm_product.Name = "clm_product";
-            this.clm_product.ReadOnly = true;
-            this.clm_product.Width = 350;
-            // 
-            // clm_unitPrice
-            // 
-            this.clm_unitPrice.HeaderText = "Unit Price";
-            this.clm_unitPrice.Name = "clm_unitPrice";
-            this.clm_unitPrice.ReadOnly = true;
-            this.clm_unitPrice.Width = 130;
-            // 
-            // clm_qty
-            // 
-            this.clm_qty.HeaderText = "Qty";
-            this.clm_qty.Name = "clm_qty";
-            this.clm_qty.ReadOnly = true;
-            // 
-            // clm_price
-            // 
-            this.clm_price.HeaderText = "Price";
-            this.clm_price.Name = "clm_price";
-            this.clm_price.ReadOnly = true;
-            this.clm_price.Width = 150;
-            // 
-            // clm_remove
-            // 
-            this.clm_remove.HeaderText = "X";
-            this.clm_remove.Name = "clm_remove";
-            this.clm_remove.ReadOnly = true;
-            this.clm_remove.Width = 50;
             // 
             // pnl_productSearch
             // 
@@ -703,13 +661,16 @@
             // 
             // txt_qty
             // 
-            this.txt_qty.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.txt_qty.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.txt_qty.Location = new System.Drawing.Point(446, 9);
             this.txt_qty.Multiline = true;
             this.txt_qty.Name = "txt_qty";
             this.txt_qty.Size = new System.Drawing.Size(79, 30);
             this.txt_qty.TabIndex = 125;
             this.txt_qty.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txt_qty.TextChanged += new System.EventHandler(this.txt_qty_TextChanged);
+            this.txt_qty.Enter += new System.EventHandler(this.txt_qty_Enter);
+            this.txt_qty.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_qty_KeyPress);
             // 
             // lbl_txtbcn
             // 
@@ -762,25 +723,40 @@
             // pnl_customerSearch
             // 
             this.pnl_customerSearch.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.pnl_customerSearch.Controls.Add(this.ntxt_useLoyalityPoint);
             this.pnl_customerSearch.Controls.Add(this.lbl_balanceLoyalityPoint);
             this.pnl_customerSearch.Controls.Add(this.txt_customer);
-            this.pnl_customerSearch.Controls.Add(this.ntxt_useLoyalityPoint);
             this.pnl_customerSearch.Controls.Add(this.lbl_txtpoints);
             this.pnl_customerSearch.Controls.Add(this.btn_loyalityPointUse);
             this.pnl_customerSearch.Controls.Add(this.lbl_txtuseInBill);
             this.pnl_customerSearch.Controls.Add(this.lbl_txtcustomer);
             this.pnl_customerSearch.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnl_customerSearch.Location = new System.Drawing.Point(0, 454);
+            this.pnl_customerSearch.Location = new System.Drawing.Point(0, 490);
             this.pnl_customerSearch.Name = "pnl_customerSearch";
             this.pnl_customerSearch.Size = new System.Drawing.Size(841, 46);
             this.pnl_customerSearch.TabIndex = 127;
+            // 
+            // ntxt_useLoyalityPoint
+            // 
+            this.ntxt_useLoyalityPoint.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.ntxt_useLoyalityPoint.Location = new System.Drawing.Point(641, 6);
+            this.ntxt_useLoyalityPoint.Multiline = true;
+            this.ntxt_useLoyalityPoint.Name = "ntxt_useLoyalityPoint";
+            this.ntxt_useLoyalityPoint.PlaceholderText = "0";
+            this.ntxt_useLoyalityPoint.Size = new System.Drawing.Size(99, 36);
+            this.ntxt_useLoyalityPoint.TabIndex = 133;
+            this.ntxt_useLoyalityPoint.Text = "0";
+            this.ntxt_useLoyalityPoint.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ntxt_useLoyalityPoint.TextChanged += new System.EventHandler(this.ntxt_useLoyalityPoint_TextChanged);
+            this.ntxt_useLoyalityPoint.Enter += new System.EventHandler(this.txt_qty_Enter);
+            this.ntxt_useLoyalityPoint.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ntxt_useLoyalityPoint_KeyPress);
             // 
             // lbl_balanceLoyalityPoint
             // 
             this.lbl_balanceLoyalityPoint.AutoSize = true;
             this.lbl_balanceLoyalityPoint.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lbl_balanceLoyalityPoint.ForeColor = System.Drawing.Color.White;
-            this.lbl_balanceLoyalityPoint.Location = new System.Drawing.Point(436, 12);
+            this.lbl_balanceLoyalityPoint.Location = new System.Drawing.Point(446, 12);
             this.lbl_balanceLoyalityPoint.Name = "lbl_balanceLoyalityPoint";
             this.lbl_balanceLoyalityPoint.Size = new System.Drawing.Size(50, 25);
             this.lbl_balanceLoyalityPoint.TabIndex = 132;
@@ -798,22 +774,6 @@
             this.txt_customer.Size = new System.Drawing.Size(253, 30);
             this.txt_customer.TabIndex = 127;
             this.txt_customer.Click += new System.EventHandler(this.txt_customer_Click);
-            // 
-            // ntxt_useLoyalityPoint
-            // 
-            this.ntxt_useLoyalityPoint.DecimalPlaces = 2;
-            this.ntxt_useLoyalityPoint.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.ntxt_useLoyalityPoint.Location = new System.Drawing.Point(641, 6);
-            this.ntxt_useLoyalityPoint.Maximum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
-            this.ntxt_useLoyalityPoint.Name = "ntxt_useLoyalityPoint";
-            this.ntxt_useLoyalityPoint.Size = new System.Drawing.Size(99, 36);
-            this.ntxt_useLoyalityPoint.TabIndex = 74;
-            this.ntxt_useLoyalityPoint.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.ntxt_useLoyalityPoint.ValueChanged += new System.EventHandler(this.ntxt_useLoyalityPoint_ValueChanged);
             // 
             // lbl_txtpoints
             // 
@@ -879,7 +839,7 @@
             this.btn_card.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_card.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_card.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_card.Location = new System.Drawing.Point(0, 514);
+            this.btn_card.Location = new System.Drawing.Point(0, 550);
             this.btn_card.Name = "btn_card";
             this.btn_card.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.btn_card.Size = new System.Drawing.Size(235, 43);
@@ -895,10 +855,10 @@
             this.btn_cash.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_cash.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_cash.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_cash.Location = new System.Drawing.Point(0, 311);
+            this.btn_cash.Location = new System.Drawing.Point(0, 351);
             this.btn_cash.Name = "btn_cash";
             this.btn_cash.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btn_cash.Size = new System.Drawing.Size(235, 52);
+            this.btn_cash.Size = new System.Drawing.Size(235, 50);
             this.btn_cash.TabIndex = 73;
             this.btn_cash.Text = "Cash";
             this.btn_cash.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -914,156 +874,180 @@
             // pnl_numberKeyPad
             // 
             this.pnl_numberKeyPad.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.pnl_numberKeyPad.Controls.Add(this.btn_backSpace);
             this.pnl_numberKeyPad.Controls.Add(this.btn_numDouble0);
             this.pnl_numberKeyPad.Controls.Add(this.btn_num0);
             this.pnl_numberKeyPad.Controls.Add(this.btn_numDot);
+            this.pnl_numberKeyPad.Controls.Add(this.btn_num4);
             this.pnl_numberKeyPad.Controls.Add(this.btn_numDot3);
             this.pnl_numberKeyPad.Controls.Add(this.btn_num2);
             this.pnl_numberKeyPad.Controls.Add(this.btn_num1);
             this.pnl_numberKeyPad.Controls.Add(this.btn_num6);
             this.pnl_numberKeyPad.Controls.Add(this.btn_num5);
-            this.pnl_numberKeyPad.Controls.Add(this.btn_num4);
             this.pnl_numberKeyPad.Controls.Add(this.btn_num10);
             this.pnl_numberKeyPad.Controls.Add(this.btn_num8);
             this.pnl_numberKeyPad.Controls.Add(this.btn_num7);
             this.pnl_numberKeyPad.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnl_numberKeyPad.Location = new System.Drawing.Point(0, 0);
             this.pnl_numberKeyPad.Name = "pnl_numberKeyPad";
-            this.pnl_numberKeyPad.Size = new System.Drawing.Size(235, 311);
+            this.pnl_numberKeyPad.Size = new System.Drawing.Size(235, 351);
             this.pnl_numberKeyPad.TabIndex = 3;
+            // 
+            // btn_backSpace
+            // 
+            this.btn_backSpace.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btn_backSpace.Font = new System.Drawing.Font("Segoe UI", 28F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_backSpace.Image = ((System.Drawing.Image)(resources.GetObject("btn_backSpace.Image")));
+            this.btn_backSpace.Location = new System.Drawing.Point(14, 289);
+            this.btn_backSpace.Name = "btn_backSpace";
+            this.btn_backSpace.Size = new System.Drawing.Size(207, 56);
+            this.btn_backSpace.TabIndex = 12;
+            this.btn_backSpace.UseVisualStyleBackColor = false;
+            this.btn_backSpace.Click += new System.EventHandler(this.btn_backSpace_Click);
             // 
             // btn_numDouble0
             // 
             this.btn_numDouble0.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.btn_numDouble0.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn_numDouble0.Location = new System.Drawing.Point(160, 233);
+            this.btn_numDouble0.Font = new System.Drawing.Font("Segoe UI", 28F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_numDouble0.Location = new System.Drawing.Point(156, 218);
             this.btn_numDouble0.Name = "btn_numDouble0";
-            this.btn_numDouble0.Size = new System.Drawing.Size(69, 69);
+            this.btn_numDouble0.Size = new System.Drawing.Size(65, 65);
             this.btn_numDouble0.TabIndex = 11;
             this.btn_numDouble0.Text = "00";
             this.btn_numDouble0.UseVisualStyleBackColor = false;
+            this.btn_numDouble0.Click += new System.EventHandler(this.btn_num0_Click);
             // 
             // btn_num0
             // 
             this.btn_num0.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.btn_num0.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn_num0.Location = new System.Drawing.Point(85, 233);
+            this.btn_num0.Font = new System.Drawing.Font("Segoe UI", 28F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_num0.Location = new System.Drawing.Point(85, 218);
             this.btn_num0.Name = "btn_num0";
-            this.btn_num0.Size = new System.Drawing.Size(69, 69);
+            this.btn_num0.Size = new System.Drawing.Size(65, 65);
             this.btn_num0.TabIndex = 10;
             this.btn_num0.Text = "0";
             this.btn_num0.UseVisualStyleBackColor = false;
+            this.btn_num0.Click += new System.EventHandler(this.btn_num0_Click);
             // 
             // btn_numDot
             // 
             this.btn_numDot.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.btn_numDot.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn_numDot.Location = new System.Drawing.Point(10, 233);
+            this.btn_numDot.Font = new System.Drawing.Font("Segoe UI", 28F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_numDot.Location = new System.Drawing.Point(14, 218);
             this.btn_numDot.Name = "btn_numDot";
-            this.btn_numDot.Size = new System.Drawing.Size(69, 69);
+            this.btn_numDot.Size = new System.Drawing.Size(65, 65);
             this.btn_numDot.TabIndex = 9;
             this.btn_numDot.Text = ".";
-            this.btn_numDot.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btn_numDot.UseVisualStyleBackColor = false;
-            // 
-            // btn_numDot3
-            // 
-            this.btn_numDot3.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.btn_numDot3.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn_numDot3.Location = new System.Drawing.Point(160, 158);
-            this.btn_numDot3.Name = "btn_numDot3";
-            this.btn_numDot3.Size = new System.Drawing.Size(69, 69);
-            this.btn_numDot3.TabIndex = 8;
-            this.btn_numDot3.Text = "3";
-            this.btn_numDot3.UseVisualStyleBackColor = false;
-            // 
-            // btn_num2
-            // 
-            this.btn_num2.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.btn_num2.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn_num2.Location = new System.Drawing.Point(85, 158);
-            this.btn_num2.Name = "btn_num2";
-            this.btn_num2.Size = new System.Drawing.Size(69, 69);
-            this.btn_num2.TabIndex = 7;
-            this.btn_num2.Text = "2";
-            this.btn_num2.UseVisualStyleBackColor = false;
-            // 
-            // btn_num1
-            // 
-            this.btn_num1.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.btn_num1.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn_num1.Location = new System.Drawing.Point(10, 158);
-            this.btn_num1.Name = "btn_num1";
-            this.btn_num1.Size = new System.Drawing.Size(69, 69);
-            this.btn_num1.TabIndex = 1;
-            this.btn_num1.Text = "1";
-            this.btn_num1.UseVisualStyleBackColor = false;
-            // 
-            // btn_num6
-            // 
-            this.btn_num6.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.btn_num6.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn_num6.Location = new System.Drawing.Point(159, 83);
-            this.btn_num6.Name = "btn_num6";
-            this.btn_num6.Size = new System.Drawing.Size(69, 69);
-            this.btn_num6.TabIndex = 5;
-            this.btn_num6.Text = "6";
-            this.btn_num6.UseVisualStyleBackColor = false;
-            // 
-            // btn_num5
-            // 
-            this.btn_num5.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.btn_num5.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn_num5.Location = new System.Drawing.Point(85, 83);
-            this.btn_num5.Name = "btn_num5";
-            this.btn_num5.Size = new System.Drawing.Size(69, 69);
-            this.btn_num5.TabIndex = 4;
-            this.btn_num5.Text = "5";
-            this.btn_num5.UseVisualStyleBackColor = false;
+            this.btn_numDot.Click += new System.EventHandler(this.btn_num0_Click);
             // 
             // btn_num4
             // 
             this.btn_num4.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.btn_num4.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn_num4.Location = new System.Drawing.Point(85, 8);
+            this.btn_num4.Font = new System.Drawing.Font("Segoe UI", 28F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_num4.Location = new System.Drawing.Point(14, 76);
             this.btn_num4.Name = "btn_num4";
-            this.btn_num4.Size = new System.Drawing.Size(69, 69);
+            this.btn_num4.Size = new System.Drawing.Size(65, 65);
             this.btn_num4.TabIndex = 3;
             this.btn_num4.Text = "4";
             this.btn_num4.UseVisualStyleBackColor = false;
+            this.btn_num4.Click += new System.EventHandler(this.btn_num0_Click);
+            // 
+            // btn_numDot3
+            // 
+            this.btn_numDot3.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btn_numDot3.Font = new System.Drawing.Font("Segoe UI", 28F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_numDot3.Location = new System.Drawing.Point(156, 147);
+            this.btn_numDot3.Name = "btn_numDot3";
+            this.btn_numDot3.Size = new System.Drawing.Size(65, 65);
+            this.btn_numDot3.TabIndex = 8;
+            this.btn_numDot3.Text = "3";
+            this.btn_numDot3.UseVisualStyleBackColor = false;
+            this.btn_numDot3.Click += new System.EventHandler(this.btn_num0_Click);
+            // 
+            // btn_num2
+            // 
+            this.btn_num2.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btn_num2.Font = new System.Drawing.Font("Segoe UI", 28F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_num2.Location = new System.Drawing.Point(85, 147);
+            this.btn_num2.Name = "btn_num2";
+            this.btn_num2.Size = new System.Drawing.Size(65, 65);
+            this.btn_num2.TabIndex = 7;
+            this.btn_num2.Text = "2";
+            this.btn_num2.UseVisualStyleBackColor = false;
+            this.btn_num2.Click += new System.EventHandler(this.btn_num0_Click);
+            // 
+            // btn_num1
+            // 
+            this.btn_num1.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btn_num1.Font = new System.Drawing.Font("Segoe UI", 28F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_num1.Location = new System.Drawing.Point(14, 147);
+            this.btn_num1.Name = "btn_num1";
+            this.btn_num1.Size = new System.Drawing.Size(65, 65);
+            this.btn_num1.TabIndex = 1;
+            this.btn_num1.Text = "1";
+            this.btn_num1.UseVisualStyleBackColor = false;
+            this.btn_num1.Click += new System.EventHandler(this.btn_num0_Click);
+            // 
+            // btn_num6
+            // 
+            this.btn_num6.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btn_num6.Font = new System.Drawing.Font("Segoe UI", 28F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_num6.Location = new System.Drawing.Point(156, 76);
+            this.btn_num6.Name = "btn_num6";
+            this.btn_num6.Size = new System.Drawing.Size(65, 65);
+            this.btn_num6.TabIndex = 5;
+            this.btn_num6.Text = "6";
+            this.btn_num6.UseVisualStyleBackColor = false;
+            this.btn_num6.Click += new System.EventHandler(this.btn_num0_Click);
+            // 
+            // btn_num5
+            // 
+            this.btn_num5.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btn_num5.Font = new System.Drawing.Font("Segoe UI", 28F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_num5.Location = new System.Drawing.Point(85, 76);
+            this.btn_num5.Name = "btn_num5";
+            this.btn_num5.Size = new System.Drawing.Size(65, 65);
+            this.btn_num5.TabIndex = 4;
+            this.btn_num5.Text = "5";
+            this.btn_num5.UseVisualStyleBackColor = false;
+            this.btn_num5.Click += new System.EventHandler(this.btn_num0_Click);
             // 
             // btn_num10
             // 
             this.btn_num10.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.btn_num10.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn_num10.Location = new System.Drawing.Point(160, 8);
+            this.btn_num10.Font = new System.Drawing.Font("Segoe UI", 28F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_num10.Location = new System.Drawing.Point(156, 7);
             this.btn_num10.Name = "btn_num10";
-            this.btn_num10.Size = new System.Drawing.Size(69, 69);
+            this.btn_num10.Size = new System.Drawing.Size(65, 63);
             this.btn_num10.TabIndex = 2;
             this.btn_num10.Text = "9";
             this.btn_num10.UseVisualStyleBackColor = false;
+            this.btn_num10.Click += new System.EventHandler(this.btn_num0_Click);
             // 
             // btn_num8
             // 
             this.btn_num8.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.btn_num8.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn_num8.Location = new System.Drawing.Point(10, 83);
+            this.btn_num8.Font = new System.Drawing.Font("Segoe UI", 28F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_num8.Location = new System.Drawing.Point(85, 5);
             this.btn_num8.Name = "btn_num8";
-            this.btn_num8.Size = new System.Drawing.Size(69, 69);
+            this.btn_num8.Size = new System.Drawing.Size(65, 65);
             this.btn_num8.TabIndex = 1;
             this.btn_num8.Text = "8";
             this.btn_num8.UseVisualStyleBackColor = false;
+            this.btn_num8.Click += new System.EventHandler(this.btn_num0_Click);
             // 
             // btn_num7
             // 
             this.btn_num7.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.btn_num7.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn_num7.Location = new System.Drawing.Point(10, 8);
+            this.btn_num7.Font = new System.Drawing.Font("Segoe UI", 28F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_num7.Location = new System.Drawing.Point(14, 5);
             this.btn_num7.Name = "btn_num7";
-            this.btn_num7.Size = new System.Drawing.Size(69, 69);
+            this.btn_num7.Size = new System.Drawing.Size(65, 65);
             this.btn_num7.TabIndex = 0;
             this.btn_num7.Text = "7";
             this.btn_num7.UseVisualStyleBackColor = false;
+            this.btn_num7.Click += new System.EventHandler(this.btn_num0_Click);
             // 
             // pnl_sortMoney
             // 
@@ -1075,76 +1059,82 @@
             this.pnl_sortMoney.Controls.Add(this.btn_money2);
             this.pnl_sortMoney.Controls.Add(this.btn_money1);
             this.pnl_sortMoney.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnl_sortMoney.Location = new System.Drawing.Point(0, 363);
+            this.pnl_sortMoney.Location = new System.Drawing.Point(0, 401);
             this.pnl_sortMoney.Name = "pnl_sortMoney";
-            this.pnl_sortMoney.Size = new System.Drawing.Size(235, 151);
+            this.pnl_sortMoney.Size = new System.Drawing.Size(235, 149);
             this.pnl_sortMoney.TabIndex = 12;
             // 
             // btn_money50
             // 
             this.btn_money50.BackColor = System.Drawing.Color.Gold;
             this.btn_money50.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn_money50.Location = new System.Drawing.Point(159, 80);
+            this.btn_money50.Location = new System.Drawing.Point(156, 81);
             this.btn_money50.Name = "btn_money50";
-            this.btn_money50.Size = new System.Drawing.Size(69, 68);
+            this.btn_money50.Size = new System.Drawing.Size(65, 65);
             this.btn_money50.TabIndex = 8;
             this.btn_money50.Text = "50";
             this.btn_money50.UseVisualStyleBackColor = false;
+            this.btn_money50.Click += new System.EventHandler(this.btn_money1_Click);
             // 
             // btn_money20
             // 
             this.btn_money20.BackColor = System.Drawing.Color.Gold;
             this.btn_money20.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn_money20.Location = new System.Drawing.Point(85, 79);
+            this.btn_money20.Location = new System.Drawing.Point(85, 81);
             this.btn_money20.Name = "btn_money20";
-            this.btn_money20.Size = new System.Drawing.Size(69, 69);
+            this.btn_money20.Size = new System.Drawing.Size(65, 65);
             this.btn_money20.TabIndex = 7;
             this.btn_money20.Text = "20";
             this.btn_money20.UseVisualStyleBackColor = false;
+            this.btn_money20.Click += new System.EventHandler(this.btn_money1_Click);
             // 
             // btn_money10
             // 
             this.btn_money10.BackColor = System.Drawing.Color.Gold;
             this.btn_money10.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn_money10.Location = new System.Drawing.Point(10, 79);
+            this.btn_money10.Location = new System.Drawing.Point(14, 81);
             this.btn_money10.Name = "btn_money10";
-            this.btn_money10.Size = new System.Drawing.Size(69, 69);
+            this.btn_money10.Size = new System.Drawing.Size(65, 65);
             this.btn_money10.TabIndex = 1;
             this.btn_money10.Text = "10";
             this.btn_money10.UseVisualStyleBackColor = false;
+            this.btn_money10.Click += new System.EventHandler(this.btn_money1_Click);
             // 
             // btn_money3
             // 
             this.btn_money3.BackColor = System.Drawing.Color.Gold;
-            this.btn_money3.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn_money3.Location = new System.Drawing.Point(160, 6);
+            this.btn_money3.Font = new System.Drawing.Font("Segoe UI", 28F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_money3.Location = new System.Drawing.Point(156, 13);
             this.btn_money3.Name = "btn_money3";
-            this.btn_money3.Size = new System.Drawing.Size(69, 69);
+            this.btn_money3.Size = new System.Drawing.Size(65, 65);
             this.btn_money3.TabIndex = 5;
             this.btn_money3.Text = "5";
             this.btn_money3.UseVisualStyleBackColor = false;
+            this.btn_money3.Click += new System.EventHandler(this.btn_money1_Click);
             // 
             // btn_money2
             // 
             this.btn_money2.BackColor = System.Drawing.Color.Gold;
-            this.btn_money2.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn_money2.Location = new System.Drawing.Point(85, 6);
+            this.btn_money2.Font = new System.Drawing.Font("Segoe UI", 28F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_money2.Location = new System.Drawing.Point(85, 12);
             this.btn_money2.Name = "btn_money2";
-            this.btn_money2.Size = new System.Drawing.Size(69, 69);
+            this.btn_money2.Size = new System.Drawing.Size(65, 65);
             this.btn_money2.TabIndex = 4;
             this.btn_money2.Text = "2";
             this.btn_money2.UseVisualStyleBackColor = false;
+            this.btn_money2.Click += new System.EventHandler(this.btn_money1_Click);
             // 
             // btn_money1
             // 
             this.btn_money1.BackColor = System.Drawing.Color.Gold;
-            this.btn_money1.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn_money1.Location = new System.Drawing.Point(10, 6);
+            this.btn_money1.Font = new System.Drawing.Font("Segoe UI", 28F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_money1.Location = new System.Drawing.Point(14, 12);
             this.btn_money1.Name = "btn_money1";
-            this.btn_money1.Size = new System.Drawing.Size(69, 69);
+            this.btn_money1.Size = new System.Drawing.Size(65, 65);
             this.btn_money1.TabIndex = 3;
             this.btn_money1.Text = "1";
             this.btn_money1.UseVisualStyleBackColor = false;
+            this.btn_money1.Click += new System.EventHandler(this.btn_money1_Click);
             // 
             // pnl_numbers
             // 
@@ -1155,7 +1145,7 @@
             this.pnl_numbers.Dock = System.Windows.Forms.DockStyle.Right;
             this.pnl_numbers.Location = new System.Drawing.Point(1029, 53);
             this.pnl_numbers.Name = "pnl_numbers";
-            this.pnl_numbers.Size = new System.Drawing.Size(235, 557);
+            this.pnl_numbers.Size = new System.Drawing.Size(235, 593);
             this.pnl_numbers.TabIndex = 14;
             // 
             // pnl_shortcut
@@ -1167,7 +1157,7 @@
             this.pnl_shortcut.Dock = System.Windows.Forms.DockStyle.Right;
             this.pnl_shortcut.Location = new System.Drawing.Point(841, 53);
             this.pnl_shortcut.Name = "pnl_shortcut";
-            this.pnl_shortcut.Size = new System.Drawing.Size(188, 557);
+            this.pnl_shortcut.Size = new System.Drawing.Size(188, 593);
             this.pnl_shortcut.TabIndex = 15;
             // 
             // btn_productList
@@ -1194,7 +1184,7 @@
             this.pnl_foots.Controls.Add(this.txt_customerID);
             this.pnl_foots.Controls.Add(this.txt_productID);
             this.pnl_foots.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnl_foots.Location = new System.Drawing.Point(0, 663);
+            this.pnl_foots.Location = new System.Drawing.Point(0, 699);
             this.pnl_foots.Name = "pnl_foots";
             this.pnl_foots.Size = new System.Drawing.Size(1264, 18);
             this.pnl_foots.TabIndex = 2;
@@ -1209,11 +1199,59 @@
             this.lbl_discountStatus.TabIndex = 132;
             this.lbl_discountStatus.Text = "0";
             // 
+            // clm_id
+            // 
+            this.clm_id.HeaderText = "ID";
+            this.clm_id.Name = "clm_id";
+            this.clm_id.ReadOnly = true;
+            this.clm_id.Visible = false;
+            this.clm_id.Width = 50;
+            // 
+            // clm_product
+            // 
+            this.clm_product.FillWeight = 13.69863F;
+            this.clm_product.HeaderText = "Product";
+            this.clm_product.Name = "clm_product";
+            this.clm_product.ReadOnly = true;
+            this.clm_product.Width = 450;
+            // 
+            // clm_unitPrice
+            // 
+            this.clm_unitPrice.FillWeight = 30.51351F;
+            this.clm_unitPrice.HeaderText = "Unit Price";
+            this.clm_unitPrice.Name = "clm_unitPrice";
+            this.clm_unitPrice.ReadOnly = true;
+            this.clm_unitPrice.Width = 125;
+            // 
+            // clm_qty
+            // 
+            this.clm_qty.HeaderText = "Qty";
+            this.clm_qty.Name = "clm_qty";
+            this.clm_qty.ReadOnly = true;
+            this.clm_qty.Width = 50;
+            // 
+            // clm_price
+            // 
+            this.clm_price.FillWeight = 180.9915F;
+            this.clm_price.HeaderText = "Price";
+            this.clm_price.Name = "clm_price";
+            this.clm_price.ReadOnly = true;
+            this.clm_price.Width = 125;
+            // 
+            // clm_remove
+            // 
+            this.clm_remove.FillWeight = 174.7962F;
+            this.clm_remove.HeaderText = "X";
+            this.clm_remove.Name = "clm_remove";
+            this.clm_remove.ReadOnly = true;
+            this.clm_remove.Text = "X";
+            this.clm_remove.Width = 50;
+            // 
             // frmPOS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.ClientSize = new System.Drawing.Size(1264, 717);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.pnl_customerSearch);
             this.Controls.Add(this.pnl_amount);
@@ -1227,7 +1265,6 @@
             this.Name = "frmPOS";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmPOS";
-            this.Activated += new System.EventHandler(this.frmPOS_Activated);
             this.Load += new System.EventHandler(this.frmPOS_Load);
             this.Resize += new System.EventHandler(this.frmPOS_Resize);
             this.pnl_head.ResumeLayout(false);
@@ -1243,15 +1280,12 @@
             this.pnl_hold.PerformLayout();
             this.pnl_amount.ResumeLayout(false);
             this.pnl_amount.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ntxt_pay)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ntxt_discount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ntxt_loyalityPoint)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.pnl_productSearch.ResumeLayout(false);
             this.pnl_productSearch.PerformLayout();
             this.pnl_customerSearch.ResumeLayout(false);
             this.pnl_customerSearch.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ntxt_useLoyalityPoint)).EndInit();
             this.pnl_numberKeyPad.ResumeLayout(false);
             this.pnl_sortMoney.ResumeLayout(false);
             this.pnl_numbers.ResumeLayout(false);
@@ -1332,23 +1366,24 @@
         private Panel pnl_balance;
         private Label lbl_txtholdBill;
         private Panel pnl_foots;
+        private PictureBox pb_user;
+        private Label lbl_userName;
+        private TextBox txt_customer;
+        private Label lbl_balanceLoyalityPoint;
+        private NumericUpDown ntxt_loyalityPoint;
+        private Label lbl_discountStatus;
+        private RadioButton rb_discountCash;
+        private RadioButton rb_discountPersentage;
+        private Button btn_productList;
+        private TextBox ntxt_discount;
+        private TextBox ntxt_pay;
+        private TextBox ntxt_useLoyalityPoint;
+        private Button btn_backSpace;
         private DataGridViewTextBoxColumn clm_id;
         private DataGridViewTextBoxColumn clm_product;
         private DataGridViewTextBoxColumn clm_unitPrice;
         private DataGridViewTextBoxColumn clm_qty;
         private DataGridViewTextBoxColumn clm_price;
         private DataGridViewButtonColumn clm_remove;
-        private PictureBox pb_user;
-        private Label lbl_userName;
-        private TextBox txt_customer;
-        private Label lbl_balanceLoyalityPoint;
-        private NumericUpDown ntxt_useLoyalityPoint;
-        private NumericUpDown ntxt_discount;
-        private NumericUpDown ntxt_loyalityPoint;
-        private NumericUpDown ntxt_pay;
-        private Label lbl_discountStatus;
-        private RadioButton rb_discountCash;
-        private RadioButton rb_discountPersentage;
-        private Button btn_productList;
     }
 }

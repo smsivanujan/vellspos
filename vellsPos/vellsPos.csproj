@@ -34,10 +34,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Reports\ReportForms\" />
     <Folder Include="Resources\images\" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.Report.Viewer" Version="11.0.0" />
     <PackageReference Include="MySql.Data" Version="8.0.32" />
     <PackageReference Include="System.Management" Version="7.0.0" />
     <PackageReference Include="Zen.Barcode.Rendering.Framework" Version="3.1.10729.1" />
@@ -114,6 +116,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Update="Reports\DataSets\InvoiceDataSet.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>InvoiceDataSet.xsd</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -127,6 +134,14 @@
     <None Update="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Reports\DataSets\InvoiceDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>InvoiceDataSet.Designer.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Reports\RDLC\InvoiceRDLC.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 

@@ -6,5 +6,7 @@ namespace vellsPos
         {
             InitializeComponent();
         }
+
+        public object LabelText { get; internal set; }
     }
 }

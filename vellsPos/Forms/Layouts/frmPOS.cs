@@ -554,18 +554,18 @@ namespace vellsPos.Forms.Layouts
 
         public void autoIncrementQuantity()
         {
-            int Quantity = Convert.ToInt32(dataGridView1.Rows[RowIndex].Cells["clm_qty"].Value);
-            decimal Price = Convert.ToInt32(dataGridView1.Rows[RowIndex].Cells["clm_unitPrice"].Value);
+            int Quantity = Convert.ToInt32(dataGridView2.Rows[RowIndex].Cells["clm_qty"].Value);
+            decimal Price = Convert.ToInt32(dataGridView2.Rows[RowIndex].Cells["clm_price"].Value);
 
             Quantity++;
 
             double TotalPrice = Convert.ToDouble(Quantity * Price);
 
-            dataGridView1.Rows[RowIndex].Cells["clm_qty"].Value = Quantity;
-            dataGridView1.Rows[RowIndex].Cells["clm_price"].Value = TotalPrice;
+            dataGridView2.Rows[RowIndex].Cells["clm_qty"].Value = Quantity;
+            dataGridView2.Rows[RowIndex].Cells["clm_total"].Value = TotalPrice;
             txt_productID.Clear();
             txt_product.Clear();
-            lbl_grossAmount.Text = Math.Round(calculateTotalBill(dataGridView1), 2).ToString();
+            lbl_grossAmount.Text = Math.Round(calculateTotalBill(dataGridView2), 2).ToString();
 
 
         }
@@ -589,32 +589,32 @@ namespace vellsPos.Forms.Layouts
                 }
                 else
                 {
-                    dataGridView1.Rows.Add(productID, x.ProductName, x.SalePrice, 1, x.SalePrice);
+                    dataGridView2.Rows.Add(productID, x.ProductName, x.SalePrice, 1, x.SalePrice);
                     txt_productID.Clear();
                     txt_product.Clear();
                     //dataGridView1.Rows.Add(It_ID, ProductDetails.Name, ProductDetails.Price, 1, ProductDetails.Price * 1);
 
-                    lbl_grossAmount.Text = calculateTotalBill(dataGridView1).ToString();
+                    lbl_grossAmount.Text = calculateTotalBill(dataGridView2).ToString();
                 }
             } 
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            txt_qty.Text = Convert.ToString(dataGridView1.Rows[RowIndex].Cells["clm_qty"].Value);
+            txt_qty.Text = Convert.ToString(dataGridView2.Rows[RowIndex].Cells["clm_qty"].Value);
             if (e.RowIndex >= 0)
             {
-                if (dataGridView1.Columns[e.ColumnIndex].Name == "clm_remove")
+                if (dataGridView2.Columns[e.ColumnIndex].Name == "clm_remove")
                 {
                     if (MessageBox.Show("Are You Sure You Want to Remove this Product", "Warning", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
-                        decimal DeletedProductTotal = Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells["clm_price"].Value);
+                        decimal DeletedProductTotal = Convert.ToDecimal(dataGridView2.Rows[e.RowIndex].Cells["clm_total"].Value);
 
                         decimal CurrentTotalBill = Convert.ToDecimal(lbl_grossAmount.Text);
 
                         CurrentTotalBill = CurrentTotalBill - DeletedProductTotal;
 
-                        dataGridView1.Rows.RemoveAt(e.RowIndex);
+                        dataGridView2.Rows.RemoveAt(e.RowIndex);
                         lbl_grossAmount.Text = CurrentTotalBill.ToString();
 
                     }
@@ -624,7 +624,7 @@ namespace vellsPos.Forms.Layouts
 
         public bool CheckProductAlreadyAdded(string It_ID)
         {
-            foreach (DataGridViewRow Row in dataGridView1.Rows)
+            foreach (DataGridViewRow Row in dataGridView2.Rows)
             {
                 if (Convert.ToString(Row.Cells["clm_id"].Value) == It_ID)
                 {
@@ -638,7 +638,7 @@ namespace vellsPos.Forms.Layouts
         private void btn_changeQtyDatagridviw_Click(object sender, EventArgs e)
         {
             Int32 qty = Int32.Parse(txt_qty.Text) - 1;
-            dataGridView1.Rows[RowIndex].Cells["clm_qty"].Value = qty;
+            dataGridView2.Rows[RowIndex].Cells["clm_qty"].Value = qty;
             autoIncrementQuantity();
             txt_qty.Clear();
         }
@@ -759,7 +759,6 @@ namespace vellsPos.Forms.Layouts
             //MessageBox.Show("Ticket Printed Successfully");
         }
 
-
         private void ntxt_discount_TextChanged(object sender, EventArgs e)
         {
             var box = (TextBox)sender;
@@ -879,12 +878,6 @@ namespace vellsPos.Forms.Layouts
         {
             backSpacePadControl.Focus();
             SendKeys.Send("{BACKSPACE}");
-        }
-
-        private void btn_clear_Click(object sender, EventArgs e)
-        {
-
-
         }
 
         private void txt_qty_Enter(object sender, EventArgs e)

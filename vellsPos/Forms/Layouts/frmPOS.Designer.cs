@@ -31,7 +31,12 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPOS));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnl_head = new System.Windows.Forms.Panel();
             this.pb_user = new System.Windows.Forms.PictureBox();
             this.lbl_userName = new System.Windows.Forms.Label();
@@ -65,7 +70,6 @@
             this.lbl_txtnetAmount = new System.Windows.Forms.Label();
             this.lbl_txtpayment = new System.Windows.Forms.Label();
             this.lbl_txtloyalityPoint = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.pnl_productSearch = new System.Windows.Forms.Panel();
             this.btn_add = new System.Windows.Forms.Button();
             this.lbl_txtqty = new System.Windows.Forms.Label();
@@ -112,11 +116,12 @@
             this.btn_productList = new System.Windows.Forms.Button();
             this.pnl_foots = new System.Windows.Forms.Panel();
             this.lbl_discountStatus = new System.Windows.Forms.Label();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.clm_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clm_product = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clm_unitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clm_qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clm_price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clm_qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clm_total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clm_remove = new System.Windows.Forms.DataGridViewButtonColumn();
             this.pnl_head.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_user)).BeginInit();
@@ -127,7 +132,6 @@
             this.pnl_hold.SuspendLayout();
             this.pnl_amount.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ntxt_loyalityPoint)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.pnl_productSearch.SuspendLayout();
             this.pnl_customerSearch.SuspendLayout();
             this.pnl_numberKeyPad.SuspendLayout();
@@ -135,6 +139,7 @@
             this.pnl_numbers.SuspendLayout();
             this.pnl_shortcut.SuspendLayout();
             this.pnl_foots.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // pnl_head
@@ -262,7 +267,7 @@
             this.lbl_balance.AutoSize = true;
             this.lbl_balance.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lbl_balance.ForeColor = System.Drawing.Color.Yellow;
-            this.lbl_balance.Location = new System.Drawing.Point(91, 3);
+            this.lbl_balance.Location = new System.Drawing.Point(114, 3);
             this.lbl_balance.Name = "lbl_balance";
             this.lbl_balance.Size = new System.Drawing.Size(83, 45);
             this.lbl_balance.TabIndex = 132;
@@ -426,7 +431,7 @@
             this.ntxt_discount.Multiline = true;
             this.ntxt_discount.Name = "ntxt_discount";
             this.ntxt_discount.PlaceholderText = "0";
-            this.ntxt_discount.Size = new System.Drawing.Size(108, 36);
+            this.ntxt_discount.Size = new System.Drawing.Size(64, 36);
             this.ntxt_discount.TabIndex = 132;
             this.ntxt_discount.Text = "0";
             this.ntxt_discount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -437,7 +442,7 @@
             // ntxt_pay
             // 
             this.ntxt_pay.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.ntxt_pay.Location = new System.Drawing.Point(620, 45);
+            this.ntxt_pay.Location = new System.Drawing.Point(566, 45);
             this.ntxt_pay.Multiline = true;
             this.ntxt_pay.Name = "ntxt_pay";
             this.ntxt_pay.PlaceholderText = "0";
@@ -507,7 +512,7 @@
             0});
             this.ntxt_loyalityPoint.Name = "ntxt_loyalityPoint";
             this.ntxt_loyalityPoint.ReadOnly = true;
-            this.ntxt_loyalityPoint.Size = new System.Drawing.Size(198, 36);
+            this.ntxt_loyalityPoint.Size = new System.Drawing.Size(154, 36);
             this.ntxt_loyalityPoint.TabIndex = 75;
             this.ntxt_loyalityPoint.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.ntxt_loyalityPoint.ValueChanged += new System.EventHandler(this.ntxt_loyalityPoint_ValueChanged);
@@ -563,7 +568,7 @@
             this.lbl_txtpayment.AutoSize = true;
             this.lbl_txtpayment.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lbl_txtpayment.ForeColor = System.Drawing.Color.White;
-            this.lbl_txtpayment.Location = new System.Drawing.Point(669, 16);
+            this.lbl_txtpayment.Location = new System.Drawing.Point(615, 16);
             this.lbl_txtpayment.Name = "lbl_txtpayment";
             this.lbl_txtpayment.Size = new System.Drawing.Size(87, 25);
             this.lbl_txtpayment.TabIndex = 49;
@@ -579,45 +584,6 @@
             this.lbl_txtloyalityPoint.Size = new System.Drawing.Size(37, 25);
             this.lbl_txtloyalityPoint.TabIndex = 43;
             this.lbl_txtloyalityPoint.Text = "L.P";
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.clm_id,
-            this.clm_product,
-            this.clm_unitPrice,
-            this.clm_qty,
-            this.clm_price,
-            this.clm_remove});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 101);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(841, 389);
-            this.dataGridView1.TabIndex = 1;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // pnl_productSearch
             // 
@@ -640,10 +606,10 @@
             this.btn_add.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_add.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_add.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_add.Location = new System.Drawing.Point(756, 5);
+            this.btn_add.Location = new System.Drawing.Point(756, 9);
             this.btn_add.Name = "btn_add";
             this.btn_add.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btn_add.Size = new System.Drawing.Size(79, 37);
+            this.btn_add.Size = new System.Drawing.Size(79, 30);
             this.btn_add.TabIndex = 35;
             this.btn_add.Text = "ADD";
             this.btn_add.UseVisualStyleBackColor = false;
@@ -665,7 +631,7 @@
             this.txt_qty.Location = new System.Drawing.Point(446, 9);
             this.txt_qty.Multiline = true;
             this.txt_qty.Name = "txt_qty";
-            this.txt_qty.Size = new System.Drawing.Size(79, 30);
+            this.txt_qty.Size = new System.Drawing.Size(114, 29);
             this.txt_qty.TabIndex = 125;
             this.txt_qty.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txt_qty.TextChanged += new System.EventHandler(this.txt_qty_TextChanged);
@@ -702,10 +668,10 @@
             this.btn_changeQtyDatagridviw.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_changeQtyDatagridviw.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_changeQtyDatagridviw.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_changeQtyDatagridviw.Location = new System.Drawing.Point(539, 8);
+            this.btn_changeQtyDatagridviw.Location = new System.Drawing.Point(566, 8);
             this.btn_changeQtyDatagridviw.Name = "btn_changeQtyDatagridviw";
             this.btn_changeQtyDatagridviw.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btn_changeQtyDatagridviw.Size = new System.Drawing.Size(96, 30);
+            this.btn_changeQtyDatagridviw.Size = new System.Drawing.Size(163, 30);
             this.btn_changeQtyDatagridviw.TabIndex = 35;
             this.btn_changeQtyDatagridviw.Text = "CHANGE";
             this.btn_changeQtyDatagridviw.UseVisualStyleBackColor = false;
@@ -738,12 +704,12 @@
             // 
             // ntxt_useLoyalityPoint
             // 
-            this.ntxt_useLoyalityPoint.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.ntxt_useLoyalityPoint.Location = new System.Drawing.Point(641, 6);
+            this.ntxt_useLoyalityPoint.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.ntxt_useLoyalityPoint.Location = new System.Drawing.Point(548, 9);
             this.ntxt_useLoyalityPoint.Multiline = true;
             this.ntxt_useLoyalityPoint.Name = "ntxt_useLoyalityPoint";
             this.ntxt_useLoyalityPoint.PlaceholderText = "0";
-            this.ntxt_useLoyalityPoint.Size = new System.Drawing.Size(99, 36);
+            this.ntxt_useLoyalityPoint.Size = new System.Drawing.Size(99, 30);
             this.ntxt_useLoyalityPoint.TabIndex = 133;
             this.ntxt_useLoyalityPoint.Text = "0";
             this.ntxt_useLoyalityPoint.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -756,7 +722,7 @@
             this.lbl_balanceLoyalityPoint.AutoSize = true;
             this.lbl_balanceLoyalityPoint.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lbl_balanceLoyalityPoint.ForeColor = System.Drawing.Color.White;
-            this.lbl_balanceLoyalityPoint.Location = new System.Drawing.Point(446, 12);
+            this.lbl_balanceLoyalityPoint.Location = new System.Drawing.Point(372, 10);
             this.lbl_balanceLoyalityPoint.Name = "lbl_balanceLoyalityPoint";
             this.lbl_balanceLoyalityPoint.Size = new System.Drawing.Size(50, 25);
             this.lbl_balanceLoyalityPoint.TabIndex = 132;
@@ -771,7 +737,7 @@
             this.txt_customer.Multiline = true;
             this.txt_customer.Name = "txt_customer";
             this.txt_customer.PlaceholderText = "search here";
-            this.txt_customer.Size = new System.Drawing.Size(253, 30);
+            this.txt_customer.Size = new System.Drawing.Size(189, 30);
             this.txt_customer.TabIndex = 127;
             this.txt_customer.Click += new System.EventHandler(this.txt_customer_Click);
             // 
@@ -780,7 +746,7 @@
             this.lbl_txtpoints.AutoSize = true;
             this.lbl_txtpoints.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lbl_txtpoints.ForeColor = System.Drawing.Color.White;
-            this.lbl_txtpoints.Location = new System.Drawing.Point(366, 12);
+            this.lbl_txtpoints.Location = new System.Drawing.Point(302, 10);
             this.lbl_txtpoints.Name = "lbl_txtpoints";
             this.lbl_txtpoints.Size = new System.Drawing.Size(64, 25);
             this.lbl_txtpoints.TabIndex = 46;
@@ -792,10 +758,10 @@
             this.btn_loyalityPointUse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_loyalityPointUse.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_loyalityPointUse.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_loyalityPointUse.Location = new System.Drawing.Point(756, 6);
+            this.btn_loyalityPointUse.Location = new System.Drawing.Point(687, 10);
             this.btn_loyalityPointUse.Name = "btn_loyalityPointUse";
             this.btn_loyalityPointUse.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btn_loyalityPointUse.Size = new System.Drawing.Size(79, 36);
+            this.btn_loyalityPointUse.Size = new System.Drawing.Size(148, 30);
             this.btn_loyalityPointUse.TabIndex = 127;
             this.btn_loyalityPointUse.Text = "USE";
             this.btn_loyalityPointUse.UseVisualStyleBackColor = false;
@@ -806,7 +772,7 @@
             this.lbl_txtuseInBill.AutoSize = true;
             this.lbl_txtuseInBill.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lbl_txtuseInBill.ForeColor = System.Drawing.Color.White;
-            this.lbl_txtuseInBill.Location = new System.Drawing.Point(530, 12);
+            this.lbl_txtuseInBill.Location = new System.Drawing.Point(446, 10);
             this.lbl_txtuseInBill.Name = "lbl_txtuseInBill";
             this.lbl_txtuseInBill.Size = new System.Drawing.Size(96, 25);
             this.lbl_txtuseInBill.TabIndex = 125;
@@ -837,12 +803,13 @@
             this.btn_card.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btn_card.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btn_card.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_card.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_card.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_card.Image = ((System.Drawing.Image)(resources.GetObject("btn_card.Image")));
             this.btn_card.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_card.Location = new System.Drawing.Point(0, 550);
             this.btn_card.Name = "btn_card";
             this.btn_card.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btn_card.Size = new System.Drawing.Size(235, 43);
+            this.btn_card.Size = new System.Drawing.Size(236, 43);
             this.btn_card.TabIndex = 74;
             this.btn_card.Text = "Card";
             this.btn_card.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -851,14 +818,15 @@
             // btn_cash
             // 
             this.btn_cash.BackColor = System.Drawing.Color.Lime;
-            this.btn_cash.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_cash.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_cash.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_cash.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_cash.Font = new System.Drawing.Font("Segoe UI", 22F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_cash.Image = ((System.Drawing.Image)(resources.GetObject("btn_cash.Image")));
             this.btn_cash.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_cash.Location = new System.Drawing.Point(0, 351);
             this.btn_cash.Name = "btn_cash";
             this.btn_cash.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btn_cash.Size = new System.Drawing.Size(235, 50);
+            this.btn_cash.Size = new System.Drawing.Size(236, 50);
             this.btn_cash.TabIndex = 73;
             this.btn_cash.Text = "Cash";
             this.btn_cash.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -890,7 +858,7 @@
             this.pnl_numberKeyPad.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnl_numberKeyPad.Location = new System.Drawing.Point(0, 0);
             this.pnl_numberKeyPad.Name = "pnl_numberKeyPad";
-            this.pnl_numberKeyPad.Size = new System.Drawing.Size(235, 351);
+            this.pnl_numberKeyPad.Size = new System.Drawing.Size(236, 351);
             this.pnl_numberKeyPad.TabIndex = 3;
             // 
             // btn_backSpace
@@ -1058,17 +1026,17 @@
             this.pnl_sortMoney.Controls.Add(this.btn_money3);
             this.pnl_sortMoney.Controls.Add(this.btn_money2);
             this.pnl_sortMoney.Controls.Add(this.btn_money1);
-            this.pnl_sortMoney.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnl_sortMoney.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pnl_sortMoney.Location = new System.Drawing.Point(0, 401);
             this.pnl_sortMoney.Name = "pnl_sortMoney";
-            this.pnl_sortMoney.Size = new System.Drawing.Size(235, 149);
+            this.pnl_sortMoney.Size = new System.Drawing.Size(236, 149);
             this.pnl_sortMoney.TabIndex = 12;
             // 
             // btn_money50
             // 
             this.btn_money50.BackColor = System.Drawing.Color.Gold;
             this.btn_money50.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn_money50.Location = new System.Drawing.Point(156, 81);
+            this.btn_money50.Location = new System.Drawing.Point(156, 79);
             this.btn_money50.Name = "btn_money50";
             this.btn_money50.Size = new System.Drawing.Size(65, 65);
             this.btn_money50.TabIndex = 8;
@@ -1080,7 +1048,7 @@
             // 
             this.btn_money20.BackColor = System.Drawing.Color.Gold;
             this.btn_money20.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn_money20.Location = new System.Drawing.Point(85, 81);
+            this.btn_money20.Location = new System.Drawing.Point(85, 79);
             this.btn_money20.Name = "btn_money20";
             this.btn_money20.Size = new System.Drawing.Size(65, 65);
             this.btn_money20.TabIndex = 7;
@@ -1092,7 +1060,7 @@
             // 
             this.btn_money10.BackColor = System.Drawing.Color.Gold;
             this.btn_money10.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn_money10.Location = new System.Drawing.Point(14, 81);
+            this.btn_money10.Location = new System.Drawing.Point(14, 79);
             this.btn_money10.Name = "btn_money10";
             this.btn_money10.Size = new System.Drawing.Size(65, 65);
             this.btn_money10.TabIndex = 1;
@@ -1104,7 +1072,7 @@
             // 
             this.btn_money3.BackColor = System.Drawing.Color.Gold;
             this.btn_money3.Font = new System.Drawing.Font("Segoe UI", 28F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn_money3.Location = new System.Drawing.Point(156, 13);
+            this.btn_money3.Location = new System.Drawing.Point(156, 11);
             this.btn_money3.Name = "btn_money3";
             this.btn_money3.Size = new System.Drawing.Size(65, 65);
             this.btn_money3.TabIndex = 5;
@@ -1116,7 +1084,7 @@
             // 
             this.btn_money2.BackColor = System.Drawing.Color.Gold;
             this.btn_money2.Font = new System.Drawing.Font("Segoe UI", 28F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn_money2.Location = new System.Drawing.Point(85, 12);
+            this.btn_money2.Location = new System.Drawing.Point(85, 10);
             this.btn_money2.Name = "btn_money2";
             this.btn_money2.Size = new System.Drawing.Size(65, 65);
             this.btn_money2.TabIndex = 4;
@@ -1128,7 +1096,7 @@
             // 
             this.btn_money1.BackColor = System.Drawing.Color.Gold;
             this.btn_money1.Font = new System.Drawing.Font("Segoe UI", 28F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn_money1.Location = new System.Drawing.Point(14, 12);
+            this.btn_money1.Location = new System.Drawing.Point(14, 10);
             this.btn_money1.Name = "btn_money1";
             this.btn_money1.Size = new System.Drawing.Size(65, 65);
             this.btn_money1.TabIndex = 3;
@@ -1138,14 +1106,14 @@
             // 
             // pnl_numbers
             // 
-            this.pnl_numbers.Controls.Add(this.pnl_sortMoney);
             this.pnl_numbers.Controls.Add(this.btn_cash);
+            this.pnl_numbers.Controls.Add(this.pnl_sortMoney);
             this.pnl_numbers.Controls.Add(this.btn_card);
             this.pnl_numbers.Controls.Add(this.pnl_numberKeyPad);
             this.pnl_numbers.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnl_numbers.Location = new System.Drawing.Point(1029, 53);
+            this.pnl_numbers.Location = new System.Drawing.Point(1028, 53);
             this.pnl_numbers.Name = "pnl_numbers";
-            this.pnl_numbers.Size = new System.Drawing.Size(235, 593);
+            this.pnl_numbers.Size = new System.Drawing.Size(236, 593);
             this.pnl_numbers.TabIndex = 14;
             // 
             // pnl_shortcut
@@ -1157,7 +1125,7 @@
             this.pnl_shortcut.Dock = System.Windows.Forms.DockStyle.Right;
             this.pnl_shortcut.Location = new System.Drawing.Point(841, 53);
             this.pnl_shortcut.Name = "pnl_shortcut";
-            this.pnl_shortcut.Size = new System.Drawing.Size(188, 593);
+            this.pnl_shortcut.Size = new System.Drawing.Size(187, 593);
             this.pnl_shortcut.TabIndex = 15;
             // 
             // btn_productList
@@ -1199,60 +1167,103 @@
             this.lbl_discountStatus.TabIndex = 132;
             this.lbl_discountStatus.Text = "0";
             // 
+            // dataGridView2
+            // 
+            this.dataGridView2.AllowUserToAddRows = false;
+            this.dataGridView2.AllowUserToDeleteRows = false;
+            this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView2.BackgroundColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.clm_id,
+            this.clm_product,
+            this.clm_price,
+            this.clm_qty,
+            this.clm_total,
+            this.clm_remove});
+            this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView2.EnableHeadersVisualStyles = false;
+            this.dataGridView2.GridColor = System.Drawing.Color.White;
+            this.dataGridView2.Location = new System.Drawing.Point(0, 101);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.ReadOnly = true;
+            this.dataGridView2.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Red;
+            this.dataGridView2.RowsDefaultCellStyle = dataGridViewCellStyle7;
+            this.dataGridView2.RowTemplate.Height = 25;
+            this.dataGridView2.Size = new System.Drawing.Size(841, 389);
+            this.dataGridView2.TabIndex = 128;
+            this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
+            // 
             // clm_id
             // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.clm_id.DefaultCellStyle = dataGridViewCellStyle2;
             this.clm_id.HeaderText = "ID";
             this.clm_id.Name = "clm_id";
             this.clm_id.ReadOnly = true;
             this.clm_id.Visible = false;
-            this.clm_id.Width = 50;
             // 
             // clm_product
             // 
-            this.clm_product.FillWeight = 13.69863F;
             this.clm_product.HeaderText = "Product";
             this.clm_product.Name = "clm_product";
             this.clm_product.ReadOnly = true;
-            this.clm_product.Width = 450;
-            // 
-            // clm_unitPrice
-            // 
-            this.clm_unitPrice.FillWeight = 30.51351F;
-            this.clm_unitPrice.HeaderText = "Unit Price";
-            this.clm_unitPrice.Name = "clm_unitPrice";
-            this.clm_unitPrice.ReadOnly = true;
-            this.clm_unitPrice.Width = 125;
-            // 
-            // clm_qty
-            // 
-            this.clm_qty.HeaderText = "Qty";
-            this.clm_qty.Name = "clm_qty";
-            this.clm_qty.ReadOnly = true;
-            this.clm_qty.Width = 50;
             // 
             // clm_price
             // 
-            this.clm_price.FillWeight = 180.9915F;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle3.Format = "N2";
+            dataGridViewCellStyle3.NullValue = null;
+            this.clm_price.DefaultCellStyle = dataGridViewCellStyle3;
             this.clm_price.HeaderText = "Price";
             this.clm_price.Name = "clm_price";
             this.clm_price.ReadOnly = true;
-            this.clm_price.Width = 125;
+            // 
+            // clm_qty
+            // 
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.Format = "N0";
+            dataGridViewCellStyle4.NullValue = null;
+            this.clm_qty.DefaultCellStyle = dataGridViewCellStyle4;
+            this.clm_qty.HeaderText = "QTY";
+            this.clm_qty.Name = "clm_qty";
+            this.clm_qty.ReadOnly = true;
+            // 
+            // clm_total
+            // 
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle5.Format = "N2";
+            dataGridViewCellStyle5.NullValue = null;
+            this.clm_total.DefaultCellStyle = dataGridViewCellStyle5;
+            this.clm_total.HeaderText = "Total";
+            this.clm_total.Name = "clm_total";
+            this.clm_total.ReadOnly = true;
             // 
             // clm_remove
             // 
-            this.clm_remove.FillWeight = 174.7962F;
-            this.clm_remove.HeaderText = "X";
+            this.clm_remove.HeaderText = "Remove";
             this.clm_remove.Name = "clm_remove";
             this.clm_remove.ReadOnly = true;
+            this.clm_remove.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.clm_remove.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.clm_remove.Text = "X";
-            this.clm_remove.Width = 50;
+            this.clm_remove.ToolTipText = "Remove";
+            this.clm_remove.UseColumnTextForButtonValue = true;
             // 
             // frmPOS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1264, 717);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.pnl_customerSearch);
             this.Controls.Add(this.pnl_amount);
             this.Controls.Add(this.pnl_productSearch);
@@ -1281,7 +1292,6 @@
             this.pnl_amount.ResumeLayout(false);
             this.pnl_amount.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ntxt_loyalityPoint)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.pnl_productSearch.ResumeLayout(false);
             this.pnl_productSearch.PerformLayout();
             this.pnl_customerSearch.ResumeLayout(false);
@@ -1292,6 +1302,7 @@
             this.pnl_shortcut.ResumeLayout(false);
             this.pnl_foots.ResumeLayout(false);
             this.pnl_foots.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1345,7 +1356,6 @@
         private Label lbl_txtgrossAmount;
         private TextBox txt_customerID;
         private Label lbl_txtpoints;
-        private DataGridView dataGridView1;
         private Panel pnl_productSearch;
         private Label lbl_txtbcn;
         private TextBox txt_product;
@@ -1379,11 +1389,12 @@
         private TextBox ntxt_pay;
         private TextBox ntxt_useLoyalityPoint;
         private Button btn_backSpace;
+        private DataGridView dataGridView2;
         private DataGridViewTextBoxColumn clm_id;
         private DataGridViewTextBoxColumn clm_product;
-        private DataGridViewTextBoxColumn clm_unitPrice;
-        private DataGridViewTextBoxColumn clm_qty;
         private DataGridViewTextBoxColumn clm_price;
+        private DataGridViewTextBoxColumn clm_qty;
+        private DataGridViewTextBoxColumn clm_total;
         private DataGridViewButtonColumn clm_remove;
     }
 }

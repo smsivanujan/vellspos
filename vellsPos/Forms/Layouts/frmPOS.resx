@@ -1118,24 +1118,26 @@
         rzthX3A4oV8xOcyOIV/ypYR9zToyEpvJ5BsFS1VzumAn0QAAAABJRU5ErkJggg==
 </value>
   </data>
-  <metadata name="clm_id.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="clm_product.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="clm_unitPrice.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="clm_qty.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="clm_price.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="clm_remove.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
+  <data name="btn_card.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABGdBTUEAALGPC/xhBQAAAMpJREFUaEPt
+        2MENAjEQQ9HUsw3QHmVtCXTFJrccRhr+xXKEn+SbBxnEKSMiIqJwzdwzX5N8Zl4zP1nF6kMcsn7Y1vq2
+        1bFD1r+itR+4QJtQWQRtQmURtAmVRdAmVBZBm/by2yT7ptZedkyrOnJKqzpySqs6ckqrOnJKqzpySguV
+        RdAmVBZBm1BZBG1CZRG0CZVF0CZUFkGbUFkEbUJlEbQJlUXQJlQWQZtQWQRtQmURtAmVRdAmVBZBm45/
+        Wjz+cXc5+nk9IiL+xRgPJINaX1oX3mQAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="btn_cash.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABGdBTUEAALGPC/xhBQAAAUVJREFUaEPt
+        mLFtxDAMRT1PFsgkV6ZNnREyy5WZICMkQHZIcckcCX8h4MPi11GFYRHgA15DmtbJpnS2t6IoiqII8GC+
+        m38n+2E+mlOgwDvZmeKChsGsvZOcKbohjHeC5o95FL+mN2YzjFfc/DSP4sv0xmyG8YqbF/MoXkxvzGaH
+        SnKcfTWPBmN4Y8MOleQ4+hK3FlcnypP5Zt7Mb/NqPptRcJfRqlhv/Fs6VFLFI+CHcz2LCzEL13eopIrf
+        494ihJjgDFzboZIqPgItwnUj0WJRuK5DJVV8BPqc60bO3AWu61BJFR+Bxcp1I7G4o3Bdh0qq+Ij0E0jf
+        QukXMUi9jTaW+yNL/yjBpnyY25v6cRou9UKjkhzfu9QrpUqmeannA5g0n1X4gD0pPmzxgSmpCZzNirsN
+        DLPibgOnWGW3YYuiKIpCsG3/vY+8ntZLTDkAAAAASUVORK5CYII=
+</value>
+  </data>
   <metadata name="timer1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
@@ -1161,6 +1163,24 @@
         rzthX3A4oV8xOcyOIV/ypYR9zToyEpvJ5BsFS1VzumAn0QAAAABJRU5ErkJggg==
 </value>
   </data>
+  <metadata name="clm_id.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="clm_product.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="clm_price.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="clm_qty.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="clm_total.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="clm_remove.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>25</value>
   </metadata>

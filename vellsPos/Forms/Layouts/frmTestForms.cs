@@ -11,6 +11,7 @@ namespace vellsPos.Forms.Layouts
         private Rectangle originalPanelRect;
         private float originalButtonFontSize;
 
+
         public frmTestForms()
         {
             InitializeComponent();

@@ -115,6 +115,8 @@
             this.pnl_shortcut = new System.Windows.Forms.Panel();
             this.btn_productList = new System.Windows.Forms.Button();
             this.pnl_foots = new System.Windows.Forms.Panel();
+            this.lbl_cardStatus = new System.Windows.Forms.Label();
+            this.lbl_cashStatus = new System.Windows.Forms.Label();
             this.lbl_discountStatus = new System.Windows.Forms.Label();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.clm_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -315,7 +317,7 @@
             this.lbl_txtholdBill.AutoSize = true;
             this.lbl_txtholdBill.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lbl_txtholdBill.ForeColor = System.Drawing.Color.White;
-            this.lbl_txtholdBill.Location = new System.Drawing.Point(258, 14);
+            this.lbl_txtholdBill.Location = new System.Drawing.Point(258, 13);
             this.lbl_txtholdBill.Name = "lbl_txtholdBill";
             this.lbl_txtholdBill.Size = new System.Drawing.Size(42, 25);
             this.lbl_txtholdBill.TabIndex = 132;
@@ -442,7 +444,7 @@
             // ntxt_pay
             // 
             this.ntxt_pay.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.ntxt_pay.Location = new System.Drawing.Point(566, 45);
+            this.ntxt_pay.Location = new System.Drawing.Point(621, 45);
             this.ntxt_pay.Multiline = true;
             this.ntxt_pay.Name = "ntxt_pay";
             this.ntxt_pay.PlaceholderText = "0";
@@ -494,6 +496,7 @@
             this.lbl_netAmount.TabIndex = 131;
             this.lbl_netAmount.Text = "0.00";
             this.lbl_netAmount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbl_netAmount.TextChanged += new System.EventHandler(this.lbl_netAmount_TextChanged);
             // 
             // ntxt_loyalityPoint
             // 
@@ -568,7 +571,7 @@
             this.lbl_txtpayment.AutoSize = true;
             this.lbl_txtpayment.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lbl_txtpayment.ForeColor = System.Drawing.Color.White;
-            this.lbl_txtpayment.Location = new System.Drawing.Point(615, 16);
+            this.lbl_txtpayment.Location = new System.Drawing.Point(670, 16);
             this.lbl_txtpayment.Name = "lbl_txtpayment";
             this.lbl_txtpayment.Size = new System.Drawing.Size(87, 25);
             this.lbl_txtpayment.TabIndex = 49;
@@ -688,7 +691,7 @@
             // 
             // pnl_customerSearch
             // 
-            this.pnl_customerSearch.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.pnl_customerSearch.BackColor = System.Drawing.Color.DarkOrchid;
             this.pnl_customerSearch.Controls.Add(this.ntxt_useLoyalityPoint);
             this.pnl_customerSearch.Controls.Add(this.lbl_balanceLoyalityPoint);
             this.pnl_customerSearch.Controls.Add(this.txt_customer);
@@ -814,6 +817,7 @@
             this.btn_card.Text = "Card";
             this.btn_card.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btn_card.UseVisualStyleBackColor = false;
+            this.btn_card.Click += new System.EventHandler(this.btn_card_Click);
             // 
             // btn_cash
             // 
@@ -876,7 +880,7 @@
             // btn_numDouble0
             // 
             this.btn_numDouble0.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.btn_numDouble0.Font = new System.Drawing.Font("Segoe UI", 28F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_numDouble0.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_numDouble0.Location = new System.Drawing.Point(156, 218);
             this.btn_numDouble0.Name = "btn_numDouble0";
             this.btn_numDouble0.Size = new System.Drawing.Size(65, 65);
@@ -1148,6 +1152,8 @@
             // pnl_foots
             // 
             this.pnl_foots.BackColor = System.Drawing.Color.DodgerBlue;
+            this.pnl_foots.Controls.Add(this.lbl_cardStatus);
+            this.pnl_foots.Controls.Add(this.lbl_cashStatus);
             this.pnl_foots.Controls.Add(this.lbl_discountStatus);
             this.pnl_foots.Controls.Add(this.txt_customerID);
             this.pnl_foots.Controls.Add(this.txt_productID);
@@ -1157,11 +1163,31 @@
             this.pnl_foots.Size = new System.Drawing.Size(1264, 18);
             this.pnl_foots.TabIndex = 2;
             // 
+            // lbl_cardStatus
+            // 
+            this.lbl_cardStatus.AutoSize = true;
+            this.lbl_cardStatus.ForeColor = System.Drawing.Color.White;
+            this.lbl_cardStatus.Location = new System.Drawing.Point(88, 0);
+            this.lbl_cardStatus.Name = "lbl_cardStatus";
+            this.lbl_cardStatus.Size = new System.Drawing.Size(13, 15);
+            this.lbl_cardStatus.TabIndex = 134;
+            this.lbl_cardStatus.Text = "0";
+            // 
+            // lbl_cashStatus
+            // 
+            this.lbl_cashStatus.AutoSize = true;
+            this.lbl_cashStatus.ForeColor = System.Drawing.Color.White;
+            this.lbl_cashStatus.Location = new System.Drawing.Point(71, 0);
+            this.lbl_cashStatus.Name = "lbl_cashStatus";
+            this.lbl_cashStatus.Size = new System.Drawing.Size(13, 15);
+            this.lbl_cashStatus.TabIndex = 133;
+            this.lbl_cashStatus.Text = "0";
+            // 
             // lbl_discountStatus
             // 
             this.lbl_discountStatus.AutoSize = true;
             this.lbl_discountStatus.ForeColor = System.Drawing.Color.White;
-            this.lbl_discountStatus.Location = new System.Drawing.Point(6, 3);
+            this.lbl_discountStatus.Location = new System.Drawing.Point(6, 0);
             this.lbl_discountStatus.Name = "lbl_discountStatus";
             this.lbl_discountStatus.Size = new System.Drawing.Size(13, 15);
             this.lbl_discountStatus.TabIndex = 132;
@@ -1396,5 +1422,7 @@
         private DataGridViewTextBoxColumn clm_qty;
         private DataGridViewTextBoxColumn clm_total;
         private DataGridViewButtonColumn clm_remove;
+        private Label lbl_cardStatus;
+        private Label lbl_cashStatus;
     }
 }

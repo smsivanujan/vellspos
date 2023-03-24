@@ -1,24 +1,14 @@
-﻿using Microsoft.VisualBasic.ApplicationServices;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using vellsPos.Entities.Layouts;
+﻿using System.Text;
 using vellsPos.Forms.Layouts;
 using vellsPos.Services;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace vellsPos.Forms.Masters.user
 {
     public partial class frmLogin : Form
     {
         //private FormMovable formMove;
-
+        Control numberPadControl;
+        Control backSpacePadControl;
         public frmLogin()
         {
             InitializeComponent();
@@ -133,6 +123,29 @@ namespace vellsPos.Forms.Masters.user
                 getAuth(userName, password);
             }
         }
-       
+
+        private void btn_num0_Click(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            numberPadControl.Focus();
+            SendKeys.Send(btn.Text);
+        }
+
+        private void txt_password_Enter(object sender, EventArgs e)
+        {
+            numberPadControl = (Control)sender;
+            backSpacePadControl = (Control)sender;
+        }
+
+        private void btn_clear_Click(object sender, EventArgs e)
+        {
+            txt_password.Clear();
+        }
+
+        private void btn_backSpace_Click(object sender, EventArgs e)
+        {
+            backSpacePadControl.Focus();
+            SendKeys.Send("{BACKSPACE}");
+        }
     }
 }

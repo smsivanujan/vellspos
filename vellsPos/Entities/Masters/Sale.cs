@@ -56,7 +56,7 @@ namespace vellsPos.Entities.Masters
                 //store data
                 string sql = "INSERT INTO `sales` " +
                     "(`date`,`branch_id`,`invoice_number`,`total_amount`,`total_discount`,`status`,`user_id`) " +
-                    "VALUES (@branch_id,@invoice_number,@total_amount,@total_discount,@status,@user_id)";
+                    "VALUES (@date, @branch_id,@invoice_number,@total_amount,@total_discount,@status,@user_id)";
                 List<QueryParameter> parameters = new List<QueryParameter>();
                 parameters.Add(new QueryParameter("date", MySqlDbType.String, sale.Date));
                 parameters.Add(new QueryParameter("branch_id", MySqlDbType.Int32, sale.Branch.Id));

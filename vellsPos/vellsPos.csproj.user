@@ -40,6 +40,12 @@
     <Compile Update="Forms\Masters\User\frmAuthentication.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Reports\ReportForms\rfrmCustomercs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Reports\ReportForms\rfrmInvoice.cs">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Update="Reports\DataSets\InvoiceDataSet.xsd">

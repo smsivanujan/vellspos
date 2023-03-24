@@ -1,18 +1,5 @@
-﻿using Mysqlx.Crud;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Xml.Schema;
-using vellsPos.Entities.Layouts;
+﻿using vellsPos.Entities.Layouts;
 using vellsPos.Entities.Masters;
-using vellsPos.Properties;
 using vellsPos.Services;
 
 namespace vellsPos.Forms.Layouts
@@ -29,10 +16,13 @@ namespace vellsPos.Forms.Layouts
         Control backSpacePadControl;
         private FormMovable formMove;
         public static string productID;
-        private Decimal discount=0;
-        private Decimal lpoint = 0;
-        Decimal txtgrossAmount = 0;
-        Decimal txtdiscount = 0;
+        private Decimal discount;
+        private Decimal lpoint;
+        private Decimal txtgrossAmount;
+        private Decimal txtdiscount;
+
+        private Decimal cardAmount;
+        private Decimal totalDiscount;
 
 
         //form
@@ -477,22 +467,6 @@ namespace vellsPos.Forms.Layouts
             //resizeControl(rzclm_remove, clm_remove, rzclm_removeFontSize);
         }
 
-        private void frmPOS_Resize(object sender, EventArgs e)
-        {
-            resizeChildrenControls();
-        }
-
-        private void btn_payout_Click(object sender, EventArgs e)
-        {
-            frmPayout frmPayout = new frmPayout();
-            frmPayout.ShowDialog();
-        }
-
-        private void btn_return_Click(object sender, EventArgs e)
-        {
-            ProductReturn.showOnViewForm();
-        }
-
         private void resizeControl(Rectangle r, Control c, float ofs)
         {
             float xRatio = (float)(this.ClientRectangle.Width) / (float)(rzForm.Width);
@@ -518,7 +492,30 @@ namespace vellsPos.Forms.Layouts
             c.Font = newFont;
 
         }
+       
+        private void frmPOS_Resize(object sender, EventArgs e)
+        {
+            resizeChildrenControls();
+        }
 
+        private void btn_payout_Click(object sender, EventArgs e)
+        {
+            frmPayout frmPayout = new frmPayout();
+            frmPayout.ShowDialog();
+        }
+
+        private void btn_return_Click(object sender, EventArgs e)
+        {
+            ProductReturn.showOnViewForm();
+        }
+
+        private void txt_product_Click(object sender, EventArgs e)
+        {
+            Product.showOnViewFormProduct(txt_product, txt_productID);
+            txt_product.Clear();
+        }
+
+        
         private void txt_customerID_TextChanged(object sender, EventArgs e)
         {
             String loyalityPointCodeQuery = "SELECT " +
@@ -529,22 +526,15 @@ namespace vellsPos.Forms.Layouts
             
             lbl_balanceLoyalityPoint.Text = loyalityPoint;
             lpoint = Convert.ToDecimal(loyalityPoint);
-
-        }
-
-        private void txt_product_Click(object sender, EventArgs e)
-        {
-            Product.showOnViewFormProduct(txt_product,txt_productID);
-            txt_product.Clear();
         }
 
         public decimal calculateTotalBill(DataGridView dataGridView1)
         {
-            decimal TotalBill = 0;
+            Decimal TotalBill = 0;
 
             foreach (DataGridViewRow Row in dataGridView1.Rows)
             {
-                decimal ProductTotal = Convert.ToDecimal(Row.Cells["clm_price"].Value);
+                Decimal ProductTotal = Convert.ToDecimal(Row.Cells["clm_total"].Value);
 
                 TotalBill = TotalBill + ProductTotal;
             }
@@ -554,27 +544,26 @@ namespace vellsPos.Forms.Layouts
 
         public void autoIncrementQuantity()
         {
-            int Quantity = Convert.ToInt32(dataGridView2.Rows[RowIndex].Cells["clm_qty"].Value);
-            decimal Price = Convert.ToInt32(dataGridView2.Rows[RowIndex].Cells["clm_price"].Value);
+            Int32 Quantity = Convert.ToInt32(dataGridView2.Rows[RowIndex].Cells["clm_qty"].Value);
+            Decimal Price = Convert.ToInt32(dataGridView2.Rows[RowIndex].Cells["clm_price"].Value);
 
             Quantity++;
 
-            double TotalPrice = Convert.ToDouble(Quantity * Price);
+            Decimal TotalPrice = Convert.ToDecimal(Quantity) * Price;
 
             dataGridView2.Rows[RowIndex].Cells["clm_qty"].Value = Quantity;
             dataGridView2.Rows[RowIndex].Cells["clm_total"].Value = TotalPrice;
+
             txt_productID.Clear();
             txt_product.Clear();
-            lbl_grossAmount.Text = Math.Round(calculateTotalBill(dataGridView2), 2).ToString();
 
-
+            lbl_grossAmount.Text = calculateTotalBill(dataGridView2).ToString();
         }
 
         private void txt_productID_TextChanged(object sender, EventArgs e)
         {
             if (String.IsNullOrEmpty(txt_productID.Text))
             {
-                //
                 txt_productID.Clear();
                 txt_product.Text = " ";
             }
@@ -582,14 +571,17 @@ namespace vellsPos.Forms.Layouts
             {
                 Product x = Product.getOneProduct(Int32.Parse(txt_productID.Text));
                 String productID = Convert.ToString(x.Id);
-                //dvParam.TitleList = new List<string>() { "", "Customer Number", "Customer", "NIC", "Gender", "Date of Birth", "Phone Number", "Email" }; //Column titles
+               
                 if (CheckProductAlreadyAdded(productID))
                 {
                     autoIncrementQuantity();
                 }
                 else
                 {
-                    dataGridView2.Rows.Add(productID, x.ProductName, x.SalePrice, 1, x.SalePrice);
+                    Decimal TotalPrice = x.SalePrice * 1;
+
+                    dataGridView2.Rows.Add(productID, x.ProductName, x.SalePrice, 1, TotalPrice);
+
                     txt_productID.Clear();
                     txt_product.Clear();
                     //dataGridView1.Rows.Add(It_ID, ProductDetails.Name, ProductDetails.Price, 1, ProductDetails.Price * 1);
@@ -639,7 +631,9 @@ namespace vellsPos.Forms.Layouts
         {
             Int32 qty = Int32.Parse(txt_qty.Text) - 1;
             dataGridView2.Rows[RowIndex].Cells["clm_qty"].Value = qty;
+
             autoIncrementQuantity();
+
             txt_qty.Clear();
         }
 
@@ -674,11 +668,19 @@ namespace vellsPos.Forms.Layouts
             Customer.showOnViewFormCustomer(txt_customer, txt_customerID);
         }
 
-        private void lbl_grossAmount_TextChanged(object sender, EventArgs e)
+        private void calculationNetAmount()
         {
             Decimal minusTotal = ntxt_loyalityPoint.Value + discount;
             Decimal netAmount = Convert.ToDecimal(lbl_grossAmount.Text) - minusTotal;
-            lbl_netAmount.Text = Math.Round(netAmount, 2).ToString();
+            lbl_netAmount.Text = netAmount.ToString();
+        }
+        private void lbl_grossAmount_TextChanged(object sender, EventArgs e)
+        {
+            calculationNetAmount();
+            calculateBalance();
+            //Decimal minusTotal = ntxt_loyalityPoint.Value + discount;
+            //Decimal netAmount = Convert.ToDecimal(lbl_grossAmount.Text) - minusTotal;
+            //lbl_netAmount.Text = Math.Round(netAmount, 2).ToString();
         }
 
         private void rb_discountCash_CheckedChanged(object sender, EventArgs e)
@@ -705,8 +707,6 @@ namespace vellsPos.Forms.Layouts
                 }
                 else
                 {
-                    //txt_discount.Maximum = 100000;
-                    //txt_discount.Minimum = 0;
                     lbl_discountStatus.Text = "0";
 
                     Decimal calDiscount = txtgrossAmount * (txtdiscount / (decimal)100);
@@ -730,8 +730,6 @@ namespace vellsPos.Forms.Layouts
                 }
                 else
                 {
-                    //txt_discount.Maximum = 100;
-                    //txt_discount.Minimum = 0;
                     Decimal calDiscount = (txtdiscount / txtgrossAmount) * (decimal)100;
                     ntxt_discount.Text = calDiscount.ToString();//50
                 }
@@ -740,23 +738,144 @@ namespace vellsPos.Forms.Layouts
 
         private void ntxt_loyalityPoint_ValueChanged(object sender, EventArgs e)
         {
-            Decimal minusTotal = ntxt_loyalityPoint.Value + discount;
-            Decimal netAmount = Convert.ToDecimal(lbl_grossAmount.Text) - minusTotal;
-            lbl_netAmount.Text = Math.Round(netAmount, 2).ToString();
+            calculationNetAmount();
+        }
+
+        private void saveDataToSale()
+        {
+            string numbers = "1234567890";
+            string characters = numbers;
+            int length = 10;
+            string id = string.Empty;
+
+            for (int i = 0; i < length; i++)
+            {
+                string character = string.Empty;
+                do
+                {
+                    int index = new Random().Next(0, characters.Length);
+                    character = characters.ToCharArray()[index].ToString();
+                } while (id.IndexOf(character) != -1);
+                id += character;
+            }
+            String invoiceNumber = "INV" + id + DateTime.UtcNow.ToString("yyMMdd");
+
+            Branch branch = new Branch();
+            branch.Id = 1;
+            User user = new User();
+            user.Id = 1;
+
+            //sale
+            Sale sale = new Sale();
+            sale.Branch = branch;
+            sale.Date = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");//DateTime.UtcNow.ToString("yyyy-MM-dd  H:m:ss");
+            sale.InvoiceNumber = invoiceNumber;
+            sale.TotalAmount = Convert.ToDecimal(lbl_netAmount.Text);
+            sale.TotalDiscount = totalDiscount;
+            sale.Status = 1;
+            sale.User = user;
+            ReturnResult result = Sale.store(sale);
+        }
+
+        private void saveDataToSaleDetail()
+        {
+            String lastSaleIDQuery = "SELECT MAX(id) FROM sales";
+            String lastSaleID = DBTransactionService.getScalerData(lastSaleIDQuery);
+
+            //sale Detail
+            foreach (DataGridViewRow row in dataGridView2.Rows)
+            {
+                try
+                {
+                    Int32 saleId = Convert.ToInt32(lastSaleID);
+                    Int32 productId = Convert.ToInt32(row.Cells["clm_id"].Value);
+                    Int32 qty = Convert.ToInt32(row.Cells["clm_qty"].Value);
+                    Decimal amount = Convert.ToDecimal(row.Cells["clm_total"].Value);
+
+                    Sale sale = new Sale();
+                    sale.Id = saleId;
+                    Product product = new Product();
+                    product.Id = productId;
+
+                    SalesDetail salesDetail = new SalesDetail();
+                    salesDetail.Sale = sale;
+                    salesDetail.Product = product;
+                    salesDetail.Qty = qty;
+                    salesDetail.Amount = amount;
+                    ReturnResult result2 = SalesDetail.store(salesDetail);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
+
+        private void saveToPaymentOptionCash()
+        {
+            String lastSaleIDQuery = "SELECT MAX(id) FROM sales";
+            String lastSaleID = DBTransactionService.getScalerData(lastSaleIDQuery);
+
+            //sale Detail
+            Sale sale = new Sale();
+            sale.Id = Convert.ToInt32(lastSaleID);
+            PaymentMethod paymentMethod = new PaymentMethod();
+            paymentMethod.Id = 1;
+
+            PaymentOption paymentOption = new PaymentOption();
+            paymentOption.Sale = sale;
+            paymentOption.PaymentMethod = paymentMethod;
+            paymentOption.PaidAmount = Convert.ToDecimal(ntxt_pay.Text);
+            ReturnResult result3 = PaymentOption.store(paymentOption);
+        }
+
+        private void saveToPaymentOptionCard()
+        {
+            String lastSaleIDQuery = "SELECT MAX(id) FROM sales";
+            String lastSaleID = DBTransactionService.getScalerData(lastSaleIDQuery);
+
+            //sale Detail
+            Sale sale = new Sale();
+            sale.Id = Convert.ToInt32(lastSaleID);
+            PaymentMethod paymentMethod = new PaymentMethod();
+            paymentMethod.Id = 2;
+
+            PaymentOption paymentOption = new PaymentOption();
+            paymentOption.Sale = sale;
+            paymentOption.PaymentMethod = paymentMethod;
+            paymentOption.PaidAmount = cardAmount;
+            ReturnResult result3 = PaymentOption.store(paymentOption);
         }
 
         private void btn_cash_Click(object sender, EventArgs e)
         {
-            //Invoice tkt = new Invoice();
-            //tkt.TicketNo = 12112;
-            //tkt.TicketDate = "12-12-2022";
-            //tkt.Source = "fdfdf";
-            //tkt.Destination = "dfdfd";
-            //tkt.Amount = Convert.ToDecimal(ntxt_pay.Text);
-            //tkt.DrawnBy = "vcvcv";
+            lbl_cashStatus.Text = "1";
 
-            //tkt.print();
-            //MessageBox.Show("Ticket Printed Successfully");
+            saveDataToSale();
+            saveDataToSaleDetail();
+            saveToPaymentOptionCash();
+        }
+
+        private void btn_card_Click(object sender, EventArgs e)
+        {
+            lbl_cardStatus.Text = "1";
+
+            saveDataToSale();
+            saveDataToSaleDetail();
+
+            if (lbl_cashStatus.Text!="0" && lbl_cardStatus.Text!="0")
+            {
+                saveToPaymentOptionCash();
+                saveToPaymentOptionCard();
+            }
+            else if (lbl_cashStatus.Text == "0" && lbl_cardStatus.Text != "0")
+            {
+                saveToPaymentOptionCard();
+            }
+            else
+            {
+                //
+            }
         }
 
         private void ntxt_discount_TextChanged(object sender, EventArgs e)
@@ -764,25 +883,7 @@ namespace vellsPos.Forms.Layouts
             var box = (TextBox)sender;
             if (box.Text.StartsWith(".")) box.Text = "";
 
-            if (String.IsNullOrEmpty(ntxt_discount.Text))
-            {
-                //ntxt_discount.Text = "0";
-            }
-            else
-            {
-                if (rb_discountCash.Checked == true)
-                {
-                    discount = Convert.ToDecimal(ntxt_discount.Text);
-                }
-                else if (rb_discountPersentage.Checked == true)
-                {
-                    discount = txtgrossAmount * (Convert.ToDecimal(ntxt_discount.Text) / (decimal)100);
-                }
-
-                Decimal minusTotal = ntxt_loyalityPoint.Value + discount;
-                Decimal netAmount = Convert.ToDecimal(lbl_grossAmount.Text) - minusTotal;
-                lbl_netAmount.Text = Math.Round(netAmount, 2).ToString();
-            }
+            calculateDiscount();
 
             if (String.IsNullOrEmpty(lbl_grossAmount.Text))
             {
@@ -792,10 +893,19 @@ namespace vellsPos.Forms.Layouts
 
         private void ntxt_discount_KeyUp(object sender, KeyEventArgs e)
         {
+            calculateDiscount();
+
+            if (String.IsNullOrEmpty(lbl_grossAmount.Text))
+            {
+                lbl_grossAmount.Text = "0";
+            }
+        }
+
+        private void calculateDiscount()
+        {
             if (String.IsNullOrEmpty(ntxt_discount.Text))
             {
-                //ntxt_discount.Text = "0";
-
+                //
             }
             else
             {
@@ -810,30 +920,46 @@ namespace vellsPos.Forms.Layouts
 
                 Decimal minusTotal = ntxt_loyalityPoint.Value + discount;
                 Decimal netAmount = Convert.ToDecimal(lbl_grossAmount.Text) - minusTotal;
-                lbl_netAmount.Text = Math.Round(netAmount, 2).ToString();
-            }
-
-            if (String.IsNullOrEmpty(lbl_grossAmount.Text))
-            {
-                lbl_grossAmount.Text = "0";
+                lbl_netAmount.Text = netAmount.ToString();
             }
         }
 
-        private void ntxt_pay_TextChanged(object sender, EventArgs e)
+        private void calculateBalance()
         {
-            var box = (TextBox)sender;
-            if (box.Text.StartsWith(".")) box.Text = "0";
-
             if (String.IsNullOrEmpty(ntxt_pay.Text))
             {
-                //ntxt_pay.Text = "0";
-
+                //
             }
             else
             {
                 Decimal balance = Convert.ToDecimal(ntxt_pay.Text) - Convert.ToDecimal(lbl_netAmount.Text);
                 lbl_balance.Text = Math.Round(balance, 2).ToString();
+
+                if (balance < 0)
+                {
+                    lbl_cashStatus.Text = "1";
+                    lbl_cardStatus.Text = "1";
+                    btn_cash.Enabled = false;
+
+                    cardAmount = Convert.ToDecimal(lbl_netAmount.Text) - Convert.ToDecimal(ntxt_pay.Text);
+                }
+                else if ((balance >= 0))
+                {
+                    lbl_cardStatus.Text = "0";
+                    lbl_cashStatus.Text = "0";
+                    btn_cash.Enabled = true;
+
+                    cardAmount = 0;
+                }
             }
+        }
+        
+        private void ntxt_pay_TextChanged(object sender, EventArgs e)
+        {
+            var box = (TextBox)sender;
+            if (box.Text.StartsWith(".")) box.Text = "0";
+
+            calculateBalance();
 
             if (String.IsNullOrEmpty(lbl_netAmount.Text))
             {
@@ -843,20 +969,17 @@ namespace vellsPos.Forms.Layouts
 
         private void ntxt_pay_KeyUp(object sender, KeyEventArgs e)
         {
-            if (String.IsNullOrEmpty(ntxt_pay.Text))
-            {
-                //ntxt_pay.Text = "0";
-            }
-            else
-            {
-                Decimal balance = Convert.ToDecimal(ntxt_pay.Text) - Convert.ToDecimal(lbl_netAmount.Text);
-                lbl_balance.Text = Math.Round(balance, 2).ToString();
-            }
+            calculateBalance();
 
             if (String.IsNullOrEmpty(lbl_netAmount.Text))
             {
                 lbl_netAmount.Text = "0";
             }
+        }
+
+        private void lbl_netAmount_TextChanged(object sender, EventArgs e)
+        {
+            calculateBalance();
         }
 
         private void btn_num0_Click(object sender, EventArgs e)
@@ -940,6 +1063,6 @@ namespace vellsPos.Forms.Layouts
             {
                 e.Handled = true;
             }
-        }
+        }       
     }
 }

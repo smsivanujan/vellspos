@@ -41,7 +41,7 @@ namespace vellsPos.Entities.Masters
             {
                 //store data
                 string sql = "INSERT INTO `payments` " +
-                    "(`date`,`sale_id`,`payable_amount`) VALUES (@date,@sale_id,@payable_amount)";
+                    "(`date`,`sale_id`,`payable_amount`) VALUES (@date, @sale_id, @payable_amount)";
                 List<QueryParameter> parameters = new List<QueryParameter>();
                 parameters.Add(new QueryParameter("date", MySqlDbType.DateTime, payment.date));
                 parameters.Add(new QueryParameter("sale_id", MySqlDbType.Int32, payment.sale.Id));

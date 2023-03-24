@@ -11,7 +11,7 @@ namespace vellsPos.Entities.Masters
     internal class PaymentOption
     {
         private Int32 id;
-        private Payment payment;
+        private Sale sale;
         private PaymentMethod paymentMethod;
         private Decimal paidAmount;
 
@@ -19,18 +19,19 @@ namespace vellsPos.Entities.Masters
         {
 
         }
-        public PaymentOption(int id, Payment payment, PaymentMethod paymentMethod, decimal paidAmount)
+
+        public PaymentOption(int id, Sale sale, PaymentMethod paymentMethod, decimal paidAmount)
         {
-            this.Id = id;
-            this.Payment = payment;
-            this.PaymentMethod = paymentMethod;
-            this.PaidAmount = paidAmount;
+            this.id = id;
+            this.sale = sale;
+            this.paymentMethod = paymentMethod;
+            this.paidAmount = paidAmount;
         }
 
         public int Id { get => id; set => id = value; }
-        public decimal PaidAmount { get => paidAmount; set => paidAmount = value; }
-        internal Payment Payment { get => payment; set => payment = value; }
+        internal Sale Sale { get => sale; set => sale = value; }
         internal PaymentMethod PaymentMethod { get => paymentMethod; set => paymentMethod = value; }
+        public decimal PaidAmount { get => paidAmount; set => paidAmount = value; }
 
         public static ReturnResult store(PaymentOption paymentOption)
         {
@@ -40,11 +41,11 @@ namespace vellsPos.Entities.Masters
             {
                 //store data
                 string sql = "INSERT INTO `payment_options` " +
-                    "(`payment_id`,`payment_method_id`,`paid_amount`) VALUES (@payment_id,@payment_method_id,@paid_amount)";
+                    "(`sale_id`,`payment_method_id`,`paid_amount`) VALUES (@sale_id, @payment_method_id, @paid_amount)";
                 List<QueryParameter> parameters = new List<QueryParameter>();
-                parameters.Add(new QueryParameter("payment_id", MySqlDbType.Int32, paymentOption.payment.Id));
-                parameters.Add(new QueryParameter("payment_method_id", MySqlDbType.Int32, paymentOption.paymentMethod.Id));
-                parameters.Add(new QueryParameter("paid_amount", MySqlDbType.Decimal, paymentOption.paidAmount));
+                parameters.Add(new QueryParameter("sale_id", MySqlDbType.Int32, paymentOption.sale.Id));
+                parameters.Add(new QueryParameter("payment_method_id", MySqlDbType.Int32, paymentOption.PaymentMethod.Id));
+                parameters.Add(new QueryParameter("paid_amount", MySqlDbType.Decimal, paymentOption.PaidAmount));
 
                 commands.Add(new QueryCommand(sql, parameters));
                 result = DBTransactionService.executeNonQuery(commands);
@@ -67,14 +68,14 @@ namespace vellsPos.Entities.Masters
             try
             {
                 string sql = "UPDATE `payment_options` SET " +
-                    "`payment_id` = @payment_id, " +
+                    "`sale_id` = @sale_id, " +
                      "`payment_method_id` = @payment_method_id, " +
                     "`paid_amount` = @paid_amount " +
                     " WHERE `id` = @id ";
                 List<QueryParameter> parameters = new List<QueryParameter>();
-                parameters.Add(new QueryParameter("payment_id", MySqlDbType.Int32, paymentOption.payment.Id));
-                parameters.Add(new QueryParameter("payment_method_id", MySqlDbType.Int32, paymentOption.paymentMethod.Id));
-                parameters.Add(new QueryParameter("paid_amount", MySqlDbType.Decimal, paymentOption.paidAmount));
+                parameters.Add(new QueryParameter("sale_id", MySqlDbType.Int32, paymentOption.sale.Id));
+                parameters.Add(new QueryParameter("payment_method_id", MySqlDbType.Int32, paymentOption.PaymentMethod.Id));
+                parameters.Add(new QueryParameter("paid_amount", MySqlDbType.Decimal, paymentOption.PaidAmount));
                 parameters.Add(new QueryParameter("id", MySqlDbType.Int32, paymentOption.Id));
 
                 commands.Add(new QueryCommand(sql, parameters));
@@ -140,17 +141,36 @@ namespace vellsPos.Entities.Masters
         public static PaymentOption getOnePaymentOption(int id)
         {
             PaymentOption paymentOption = new PaymentOption();
-            Payment payment = new Payment();
+            Sale sale = new Sale();
             PaymentMethod paymentMethod = new PaymentMethod();
             try
             {
-                String query = "SELECT * FROM payment_options where id = '" + id + "'";
+                String query = "SELECT " +
+                    "s.id, " +
+                    "date_format(s.date,'%Y-%m-%d %H:%i') AS date, " +
+                    "b.branch_name, " +
+                    "s.invoice_number, " +
+                    "s.total_amount, " +
+                    "s.total_discount, " +
+                    "s.status, " +
+                    "pm.payment_method_name, " +
+                    "po.paid_amount " +
+                    "FROM payment_options po " +
+                    "INNER JOIN sales s ON po.sale_id = s.id " +
+                    "INNER JOIN branches b ON s.branch_id = b.id " +
+                    "INNER JOIN payment_methods pm ON pm.payment_method_id = b.id " +
+                    "WHERE po.id = '" + id + "'";
                 Dictionary<String, String> dbData = DBTransactionService.getDataAsDictionary(query);
 
                 if (dbData != null)
                 {
-                    paymentOption.payment = payment;
-                    paymentOption.paymentMethod = paymentMethod;
+                    sale.Date = dbData["date"];
+                    sale.InvoiceNumber= dbData["invoice_number"];
+                    sale.TotalAmount = Convert.ToDecimal(dbData["total_amount"]);
+                    sale.TotalDiscount = Convert.ToDecimal(dbData["total_discount"]);
+                    paymentOption.sale = sale;
+                    paymentMethod.PaymentMethodName= dbData["payment_method_name"];
+                    paymentOption.PaymentMethod = paymentMethod;
                     paymentOption.PaidAmount = Convert.ToDecimal(dbData["paid_amount"]);
                 }
                 else
